@@ -375,6 +375,8 @@ a:hover {
   cursor: default;
   padding: 0;
   margin-bottom: 1.5rem;
+  opacity: 1;
+  visibility: visible;
 }
 
 .post-card .card-body {
