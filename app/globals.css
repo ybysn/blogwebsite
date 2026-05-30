@@ -27,6 +27,7 @@
   --card-gradient-b: rgba(124, 58, 237, 0.06);
   --code-bg: #f3f4f6;
   --code-border: rgba(0, 0, 0, 0.08);
+  --pre-bg: #ffffff;
   --gradient-start: transparent;
   --gradient-mid: transparent;
   --gradient-end: transparent;
@@ -62,6 +63,7 @@
   --card-gradient-b: rgba(183, 78, 145, 0.3);
   --code-bg: rgba(255, 255, 255, 0.08);
   --code-border: rgba(255, 255, 255, 0.1);
+  --pre-bg: rgba(255, 255, 255, 0.04);
   --gradient-start: #2e3478;
   --gradient-mid: #323a82;
   --gradient-end: #4a3795;
@@ -451,7 +453,7 @@ a:hover {
 }
 
 .prose pre {
-  background: var(--surface);
+  background: var(--pre-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1rem 1.25rem;
