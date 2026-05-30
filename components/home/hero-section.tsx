@@ -41,12 +41,12 @@ export function HeroSection() {
         <p className="hero-tagline">{t('home.hero.tagline')}</p>
         <p className="hero-description">{t('home.hero.description')}</p>
         <div className="hero-ctas">
-          <Link href="/about" className="cta-primary">
-            {t('home.hero.cta.about')}
+          <Link href="/posts" className="cta-primary">
+            {t('home.hero.cta.primary')}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>
-          <Link href="/search" className="cta-secondary">
-            {t('home.hero.cta.search')}
+          <Link href="/about" className="cta-secondary">
+            {t('home.hero.cta.secondary')}
           </Link>
         </div>
       </section>

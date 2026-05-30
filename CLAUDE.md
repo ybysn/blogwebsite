@@ -18,6 +18,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Always run `npm run build` to verify. A passing build is the minimum deliverable.
 - If you can't verify visually (GSAP animations, layout), flag it as an unchecked risk.
 
+**After pushing to GitHub:**
+- Visit the live site at `https://ny.ybysn.org` and check for obvious bugs or layout issues.
+- Verify normal browsing logic: would a real visitor understand the navigation? Are CTAs guiding them to content, not dead ends? Is the information hierarchy reasonable?
+- Flag anything that feels confusing or broken for a first-time visitor.
+
 ### Content Rules
 
 When processing articles for the blog:
