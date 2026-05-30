@@ -2,6 +2,30 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Working Protocol
+
+**Before coding:**
+- Read relevant files first. Don't guess.
+- For new pages, new component types, or architectural changes: state the scope, affected files, and verification plan before writing code.
+- For single-file edits or content-only changes: explain what you're changing and go ahead.
+
+**While coding:**
+- Follow existing patterns. New pages use server→client split (`page.tsx` + `*-content.tsx`). Reuse existing components before creating new ones.
+- Match surrounding code style: same Tailwind patterns, same CSS variable usage, same i18n key naming.
+- Don't refactor unrelated files or change architecture without asking.
+
+**After coding:**
+- Always run `npm run build` to verify. A passing build is the minimum deliverable.
+- If you can't verify visually (GSAP animations, layout), flag it as an unchecked risk.
+
+### Content Rules
+
+When processing articles for the blog:
+- **Translation:** natural Chinese, not word-for-word. Technical terms (DNS, SSH, WAF, etc.) stay in English.
+- **Tables:** wrap in `<div align="center">` for center alignment.
+- **Code blocks:** strip "Copy" / "复制" UI buttons — keep raw code only.
+- **Frontmatter:** every post must have `title`, `date`, `description`, `tags`, `published`, `lang`, and `category`.
+
 ## Commands
 
 ```bash
@@ -28,6 +52,7 @@ date: "2026-05-30"            # required, ISO format
 description: "Description"    # required
 tags: ["tag1", "tag2"]        # required, string array
 published: true               # required — false hides the post
+category: "network-proxy"     # required — see lib/categories.ts for valid IDs
 lang: zh-CN                   # optional, 'en' (default) or 'zh-CN'
 ogImage: "https://..."        # optional, Open Graph image
 ---
@@ -55,18 +80,22 @@ Every page follows the same pattern: a **server component** (`page.tsx`) reads d
 
 ```
 app/
-  page.tsx              # Server: getAllPosts() → HomeContent
-  home-content.tsx      # Client: GSAP hero + post list animations
-  about/page.tsx        # Server
-  about-content.tsx     # Client
-  search/page.tsx       # Server: getSearchDocuments() → SearchContent
-  search-content.tsx    # Client: Fuse.js search UI
-  tags/page.tsx         # Server: getAllTags() → TagsContent
-  tags-content.tsx      # Client
-  tags/[tag]/page.tsx   # Server: getPostsByTag(tag) + generateStaticParams
-  tag-content.tsx       # Client
-  posts/[slug]/page.tsx # Server: getPostBySlug(slug) + generateStaticParams + generateMetadata
+  page.tsx                # Server: → HomeContent
+  home-content.tsx        # Client: GSAP hero animation only (entry page)
+  posts/page.tsx          # Server: getCategorizedPosts() → PostsContent
+  posts/posts-content.tsx # Client: categorized sections with GSAP animations
+  about/page.tsx          # Server
+  about-content.tsx       # Client
+  search/page.tsx         # Server: getSearchDocuments() → SearchContent
+  search-content.tsx      # Client: Fuse.js search UI
+  tags/page.tsx           # Server: getAllTags() → TagsContent
+  tags-content.tsx        # Client
+  tags/[tag]/page.tsx     # Server: getPostsByTag(tag) + generateStaticParams
+  tag-content.tsx         # Client
+  posts/[slug]/page.tsx   # Server: getPostBySlug(slug) + generateStaticParams + generateMetadata
 ```
+
+**Post categorization** — `lib/categories.ts` defines category groups and `getCategorizedPosts()` groups posts by their `category` frontmatter field. The `/posts` page renders each category as a separate section with `SectionHeader` + `PostList`.
 
 The post detail page (`posts/[slug]/page.tsx`) is the exception — it's a server component that handles most rendering inline (metadata, MDX content, post nav, Giscus) since the MDX rendering itself must be server-side.
 
