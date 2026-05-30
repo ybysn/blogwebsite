@@ -29,7 +29,6 @@ export function CategoryContent({ category, posts }: { category: Category; posts
             toggleActions: 'play none none none',
           },
           y: 40,
-          autoAlpha: 0,
           duration: 0.6,
           stagger: 0.1,
           ease: 'power3.out',
