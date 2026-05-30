@@ -17,7 +17,6 @@ export function Footer() {
         <div>
           <h4 className="footer-col-title">Links</h4>
           <Link href="/" className="footer-col-link">Home</Link>
-          <Link href="/tags" className="footer-col-link">Tags</Link>
           <Link href="/about" className="footer-col-link">About</Link>
           <Link href="/search" className="footer-col-link">Search</Link>
         </div>
