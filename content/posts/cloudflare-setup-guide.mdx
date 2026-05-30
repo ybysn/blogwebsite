@@ -1,0 +1,291 @@
+---
+title: "Cloudflare 配置指南：DNS、SSL、CDN 与安全防护"
+date: "2026-05-31"
+description: "从零配置 Cloudflare 的完整指南，涵盖域名添加、DNS 记录管理、SSL/TLS 加密模式选择、缓存优化、WAF 防火墙规则以及代理流量 CDN 兼容方案。"
+tags: ["Cloudflare", "DNS", "SSL", "CDN", "安全", "WAF", "教程"]
+published: true
+lang: zh-CN
+category: "network-proxy"
+---
+
+原文来源：[Cloudflare Setup Guide: DNS, SSL, CDN, and Security](https://www.samnet.dev/learn/networking/cloudflare-setup/)
+
+#### 准备工作
+
+- 一个已注册的域名
+- 域名注册商的 DNS 设置权限
+
+> **快速上手：** 打开 dash.cloudflare.com → 添加站点 → 输入你的域名 → 选择 Free 套餐 → Cloudflare 会分配两个 Nameserver → 去域名注册商处修改 Nameserver → 等待生效（5 分钟到 24 小时）。生效后，将 SSL/TLS 设为 **Full (Strict)** 并开启 **Always Use HTTPS**。
+
+> **需要 VPS 吗？** [Vultr](https://www.vultr.com/?ref=9891619)（免费额度）、[DigitalOcean](https://m.do.co/c/0faa855ea85d)（$200 免费额度）或 [RackNerd](https://my.racknerd.com/aff.php?aff=19190)（便宜年付套餐）。
+
+## 第一步：添加域名
+
+1. 前往 [dash.cloudflare.com](https://dash.cloudflare.com/)
+2. 点击 **Add a site**
+3. 输入你的域名（例如 `example.com`）
+4. 选择 **Free 套餐**（多数网站够用）
+5. Cloudflare 会扫描你现有的 DNS 记录
+
+## 第二步：修改 Nameserver
+
+Cloudflare 会分配两个 Nameserver，格式如下：
+
+```
+ns1.cloudflare.com
+ns2.cloudflare.com
+```
+
+去你的域名注册商（GoDaddy、Namecheap、Squarespace Domains 等）将 Nameserver 改为 Cloudflare 提供的那两个。
+
+**生效时间 5 分钟到 24 小时不等。** 生效后 Cloudflare 会发邮件通知你。
+
+## 第三步：DNS 记录
+
+### 基础记录
+
+<div align="center">
+
+| 类型     | 名称  | 值                  | 代理状态                      |
+| :------- | :---- | :------------------ | :---------------------------- |
+| **A**    | `@`   | 你的服务器 IP        | 橙色云朵 ON（已代理）          |
+| **A**    | `www` | 你的服务器 IP        | 橙色云朵 ON（已代理）          |
+| **AAAA** | `@`   | IPv6（如有）         | 橙色云朵 ON（已代理）          |
+| **MX**   | `@`   | 你的邮件服务器        | 灰色云朵（仅 DNS）             |
+| **TXT**  | `@`   | SPF 记录             | 灰色云朵                       |
+
+</div>
+
+### 橙色云朵 vs 灰色云朵
+
+<div align="center">
+
+|                              | 橙色云朵（已代理）        | 灰色云朵（仅 DNS）             |
+| :--------------------------- | :------------------------ | :----------------------------- |
+| **流量路径**                  | 经过 Cloudflare CDN       | 直连你的服务器                  |
+| **隐藏服务器 IP**             | 是                        | 否                             |
+| **CDN 缓存**                 | 是                        | 否                             |
+| **DDoS 防护**                | 是                        | 否                             |
+| **适用场景**                  | Web 流量（HTTP/HTTPS）    | 邮件（MX）、SSH、FTP 等非 HTTP |
+
+</div>
+
+**原则：** Web 流量用橙色云朵，其他用途用灰色云朵。
+
+## 第四步：SSL/TLS 配置
+
+前往 **SSL/TLS → Overview**。
+
+### SSL 模式说明
+
+<div align="center">
+
+| 模式              | 实际效果                                         | 适用场景                                |
+| :---------------- | :----------------------------------------------- | :-------------------------------------- |
+| **Off**           | 不加密                                           | 绝对不要用                              |
+| **Flexible**      | 用户到 CF 走 HTTPS，CF 到服务器走 HTTP            | 仅当服务器没有 SSL 证书时               |
+| **Full**          | 用户到 CF 走 HTTPS，CF 到服务器走 HTTPS（任意证书）| 服务器使用自签名证书时                  |
+| **Full (Strict)** | 用户到 CF 走 HTTPS，CF 到服务器走 HTTPS（有效证书）| 服务器有 Let's Encrypt 或 CA 证书时     |
+
+</div>
+
+**推荐始终使用 Full (Strict)**，这是最安全的模式。
+
+### 开启 Always HTTPS
+
+SSL/TLS → Edge Certificates → **Always Use HTTPS** → ON
+
+这会将所有 HTTP 流量自动重定向到 HTTPS。
+
+### 开启 HSTS
+
+SSL/TLS → Edge Certificates → **HTTP Strict Transport Security** → Enable
+
+推荐设置：
+
+- Max-Age：6 个月（15768000）
+- Include subdomains：是
+- Preload：是（如需提交到浏览器预加载列表）
+
+### 最低 TLS 版本
+
+SSL/TLS → Edge Certificates → **Minimum TLS Version** → TLS 1.2
+
+这会阻止过时和不安全的 TLS 版本。
+
+## 第五步：缓存
+
+### 缓存设置
+
+Caching → Configuration：
+
+- **Browser Cache TTL**：4 小时（静态站点可更长）
+- **Crawler Hints**：ON
+- **Always Online**：ON（服务器宕机时显示缓存版本）
+
+### 缓存规则
+
+为静态资源创建规则：
+
+1. Caching → Cache Rules → Create Rule
+2. 匹配：`*.jpg, *.png, *.css, *.js, *.woff2`
+3. Cache：**Eligible for cache**
+4. Edge TTL：7 天
+5. Browser TTL：1 天
+
+### 清除缓存
+
+网站更新后：
+
+Caching → Configuration → **Purge Everything**
+
+或清除特定 URL：
+
+Caching → Configuration → **Custom Purge** → 输入 URL
+
+## 第六步：安全防护
+
+### WAF（Web 应用防火墙）
+
+Security → WAF：
+
+- **Managed Rules**：ON（拦截已知攻击模式）
+- **Rate Limiting**：为 API 端点设置速率限制规则
+
+### 安全级别
+
+Security → Settings：
+
+- **Security Level**：Medium（遭受攻击时调至 High）
+- **Challenge Passage**：30 分钟
+- **Browser Integrity Check**：ON
+
+### Bot 防护
+
+Security → Bots：
+
+- **Bot Fight Mode**：ON（免费套餐可用）
+- 拦截已知恶意 Bot，同时放行正规 Bot（Googlebot、Bingbot）
+
+### 按国家/地区拦截（IP 访问规则）
+
+Security → WAF → Tools → IP Access Rules：
+
+添加规则以拦截或质询来自特定国家/地区的流量。
+
+## 第七步：性能优化
+
+### Speed 设置
+
+Speed → Optimization：
+
+- **Auto Minify**：CSS、JavaScript、HTML → 全部 ON
+- **Brotli**：ON（比 gzip 更好的压缩率）
+- **Early Hints**：ON
+- **Rocket Loader**：先试试 ON——如果你的网站出现异常，再关掉
+
+### 图片优化（Pro 套餐）
+
+Speed → Optimization → Image：
+
+- **Polish**：Lossless 或 Lossy
+- **WebP**：ON（向支持 WebP 的浏览器推送 WebP 格式）
+
+## Page Rules（免费套餐：3 条规则）
+
+几条实用的免费 Page Rules：
+
+### 全站强制 HTTPS
+
+- 匹配：`http://*example.com/*`
+- 设置：Always Use HTTPS
+
+### 静态资源全缓存
+
+- 匹配：`*example.com/static/*`
+- 设置：Cache Level → Cache Everything，Edge TTL：1 个月
+
+### 后台绕过缓存
+
+- 匹配：`*example.com/admin/*`
+- 设置：Cache Level → Bypass
+
+## Cloudflare 配合代理服务器（3X-UI）
+
+如果你在 Cloudflare 后面运行代理服务器（VLESS、VMess 等）：
+
+### CDN 兼容端口
+
+Cloudflare 只代理以下端口：
+
+**HTTP：** 80、8080、8880、2052、2082、2086、2095
+
+**HTTPS：** 443、2053、2083、2087、2096、8443
+
+你的代理必须监听以上端口之一。
+
+### 代理场景的 SSL 模式
+
+- **Flexible** —— 代理 Security=None 时（HTTP 端口）
+- **Full** —— 代理已配置 TLS 时（HTTPS 端口）
+- **不要用 Full (Strict)** 搭配自签名证书
+
+### WebSocket 支持
+
+Network → **WebSockets** → ON（WebSocket 类代理必需）
+
+### 关闭可能冲突的功能
+
+代理流量建议：
+
+- Security Level：**Essentially Off**
+- Browser Integrity Check：**OFF**
+- Rocket Loader：**OFF**
+
+详见 [3X-UI 面板搭建指南](https://www.samnet.dev/learn/networking/xui-setup/) 中的 CDN 配置章节。
+
+## 常见问题排查
+
+<div align="center">
+
+| 问题                                | 解决方法                                                              |
+| :---------------------------------- | :-------------------------------------------------------------------- |
+| 网站显示 Cloudflare 521 错误         | 服务器宕机或拦截了 Cloudflare IP                                        |
+| 522 错误（连接超时）                 | 服务器响应太慢，检查服务器健康状态                                       |
+| 523 错误（源站不可达）               | DNS A 记录指向了错误的 IP                                               |
+| 525 错误（SSL 握手失败）             | SSL 模式不匹配。自签名证书不要用 Full (Strict)，用 Full                  |
+| 526 错误（SSL 证书无效）             | 服务器证书已过期或无效                                                   |
+| 网站能加载但样式错乱                  | 清除缓存，检查 Rocket Loader 是否破坏了 JS                               |
+| 日志中看不到真实访问者 IP             | 安装 mod_cloudflare 或使用 CF-Connecting-IP 请求头                      |
+
+</div>
+
+### 还原真实访问者 IP（Nginx）
+
+```nginx
+# 添加到 nginx.conf 的 http 块中
+set_real_ip_from 103.21.244.0/22;
+set_real_ip_from 103.22.200.0/22;
+set_real_ip_from 103.31.4.0/22;
+set_real_ip_from 104.16.0.0/13;
+set_real_ip_from 104.24.0.0/14;
+set_real_ip_from 108.162.192.0/18;
+set_real_ip_from 131.0.72.0/22;
+set_real_ip_from 141.101.64.0/18;
+set_real_ip_from 162.158.0.0/15;
+set_real_ip_from 172.64.0.0/13;
+set_real_ip_from 173.245.48.0/20;
+set_real_ip_from 188.114.96.0/20;
+set_real_ip_from 190.93.240.0/20;
+set_real_ip_from 197.234.240.0/22;
+set_real_ip_from 198.41.128.0/17;
+real_ip_header CF-Connecting-IP;
+```
+
+## 参见
+
+- [3X-UI 面板搭建指南（CDN 章节）](https://www.samnet.dev/learn/networking/xui-setup/)
+- [Xray 路由指南](https://www.samnet.dev/learn/networking/xray-routing/)
+- [SSL/TLS 证书详解](https://www.samnet.dev/learn/networking/ssl-certificates-explained/)
+- [DNS 详解](https://www.samnet.dev/learn/networking/dns-explained/)
+- [Nginx 速查表](https://www.samnet.dev/learn/cheatsheets/nginx-cheat-sheet/)

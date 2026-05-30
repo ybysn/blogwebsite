@@ -7,6 +7,7 @@ export interface PostFrontmatter {
   lang?: string
   featured?: boolean
   ogImage?: string
+  category?: string
 }
 
 export interface PostMeta extends PostFrontmatter {
