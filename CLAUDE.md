@@ -85,22 +85,20 @@ Every page follows the same pattern: a **server component** (`page.tsx`) reads d
 
 ```
 app/
-  page.tsx                # Server: → HomeContent
-  home-content.tsx        # Client: GSAP hero animation only (entry page)
-  posts/page.tsx          # Server: getCategorizedPosts() → PostsContent
-  posts/posts-content.tsx # Client: categorized sections with GSAP animations
-  about/page.tsx          # Server
-  about-content.tsx       # Client
-  search/page.tsx         # Server: getSearchDocuments() → SearchContent
-  search-content.tsx      # Client: Fuse.js search UI
-  tags/page.tsx           # Server: getAllTags() → TagsContent
-  tags-content.tsx        # Client
-  tags/[tag]/page.tsx     # Server: getPostsByTag(tag) + generateStaticParams
-  tag-content.tsx         # Client
-  posts/[slug]/page.tsx   # Server: getPostBySlug(slug) + generateStaticParams + generateMetadata
+  page.tsx                          # Server: → HomeContent
+  home-content.tsx                  # Client: GSAP hero animation only (entry page)
+  posts/page.tsx                    # Server: getCategorizedPosts() → PostsContent
+  posts/posts-content.tsx           # Client: category cards linking to sub-pages
+  posts/category/[category]/page.tsx     # Server: getPostsByCategory() + generateStaticParams
+  posts/category/[category]/category-content.tsx  # Client: post list for one category
+  posts/[slug]/page.tsx             # Server: getPostBySlug(slug) + generateStaticParams + generateMetadata
+  about/page.tsx                    # Server
+  about-content.tsx                 # Client
+  search/page.tsx                   # Server: getSearchDocuments() → SearchContent
+  search-content.tsx                # Client: Fuse.js search UI
 ```
 
-**Post categorization** — `lib/categories.ts` defines category groups and `getCategorizedPosts()` groups posts by their `category` frontmatter field. The `/posts` page renders each category as a separate section with `SectionHeader` + `PostList`.
+**Post categorization** — `lib/categories.ts` defines 4 categories and exports `getCategorizedPosts()`, `getPostsByCategory()`, `getAllCategoryIds()`. The `/posts` page shows category cards (name + description + post count). Each card links to `/posts/category/[id]` which lists posts in that category.
 
 The post detail page (`posts/[slug]/page.tsx`) is the exception — it's a server component that handles most rendering inline (metadata, MDX content, post nav, Giscus) since the MDX rendering itself must be server-side.
 
