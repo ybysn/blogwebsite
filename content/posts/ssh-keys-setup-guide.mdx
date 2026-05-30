@@ -1,69 +1,69 @@
 ---
-title: "How to Set Up SSH Keys (Passwordless Login)"
+title: "SSH 密钥设置指南（免密登录）"
 date: "2026-05-30"
-description: "Learn how to set up SSH key authentication for passwordless server login, including key generation, copying keys, multiple key management, and disabling password auth."
+description: "学习如何配置 SSH 密钥认证实现免密登录服务器，包括密钥生成、复制密钥、多密钥管理以及禁用密码认证。"
 tags: ["ssh", "linux", "security", "tutorial", "server"]
 published: true
-lang: en
+lang: zh-CN
 ---
 
-> **Original Source:** [How to Set Up SSH Keys (Passwordless Login) — SamNet Learn](https://www.samnet.dev/learn/linux/ssh-keys-setup/)
+> **原文件来源：** [How to Set Up SSH Keys (Passwordless Login) — SamNet Learn](https://www.samnet.dev/learn/linux/ssh-keys-setup/)
 
-## Prerequisites
+## 先决条件
 
-- A server with SSH access
-- Terminal access on your local machine
+- 一台可以 SSH 访问的服务器
+- 本地电脑上有终端可用
 
-> **Quick Answer:** Run `ssh-keygen -t ed25519` on your local machine. Then `ssh-copy-id user@server` to copy the key. Now `ssh user@server` logs in without a password. Disable password auth in `/etc/ssh/sshd_config` by setting `PasswordAuthentication no`.
+> **简答：** 在本地电脑上运行 `ssh-keygen -t ed25519`，然后 `ssh-copy-id user@server` 把密钥复制到服务器。之后 `ssh user@server` 即可免密登录。在 `/etc/ssh/sshd_config` 中设置 `PasswordAuthentication no` 来禁用密码登录。
 
-> **Need a VPS?** [Vultr](https://www.vultr.com/?ref=9891619) (free credit), [DigitalOcean](https://m.do.co/c/0faa855ea85d) ($200 free credit), or [RackNerd](https://my.racknerd.com/aff.php?aff=19190) (cheap annual deals).
-
----
-
-## Why SSH Keys?
-
-|                   | Password                 | SSH Key                    |
-| :---------------- | :----------------------- | :------------------------- |
-| **Security**      | Can be brute-forced      | Nearly impossible to crack |
-| **Convenience**   | Type password every time | Automatic login            |
-| **Automation**    | Can't automate securely  | Scripts can use keys       |
-| **Best practice** | Discouraged for servers  | Industry standard          |
+> **需要 VPS 吗？** [Vultr](https://www.vultr.com/?ref=9891619)（免费额度）、[DigitalOcean](https://m.do.co/c/0faa855ea85d)（200 美元免费额度）或 [RackNerd](https://my.racknerd.com/aff.php?aff=19190)（价格实惠的年度套餐）。
 
 ---
 
-## Step 1: Generate a Key Pair
+## 为什么用 SSH 密钥？
 
-On your **local machine** (not the server):
+|                   | 密码                       | SSH 密钥                   |
+| :---------------- | :------------------------- | :------------------------- |
+| **安全性**        | 可被暴力破解               | 几乎不可能破解             |
+| **便利性**        | 每次都要输入密码           | 自动登录                   |
+| **自动化**        | 无法安全地自动化           | 脚本可以使用密钥           |
+| **最佳实践**      | 服务器上不推荐使用         | 行业标准                   |
+
+---
+
+## 第一步：生成密钥对
+
+在你的**本地电脑**上（不是服务器）：
 
 ```bash
 ssh-keygen -t ed25519 -C "your@email.com"
 ```
 
-- `-t ed25519` — Modern, secure algorithm (preferred over RSA)
-- `-C` — Comment to identify the key
+- `-t ed25519` — 现代安全算法（推荐，优于 RSA）
+- `-C` — 注释，用于标识密钥
 
-It asks:
+它会询问：
 
 ```text
 Enter file in which to save the key (/home/you/.ssh/id_ed25519):
 ```
 
-Press Enter to accept the default location.
+按回车接受默认位置。
 
 ```text
 Enter passphrase (empty for no passphrase):
 ```
 
-Optional but recommended — adds a password to the key itself. If someone steals your key file, they still need the passphrase.
+可选但建议设置 — 为密钥本身添加密码。即使有人窃取了你的密钥文件，仍需要密码短语才能使用。
 
-This creates two files:
+这会创建两个文件：
 
-| File                    | What        | Share it?            |
-| :---------------------- | :---------- | :------------------- |
-| `~/.ssh/id_ed25519`     | Private key | **NEVER share this** |
-| `~/.ssh/id_ed25519.pub` | Public key  | Copy to servers      |
+| 文件                      | 是什么     | 能分享吗？            |
+| :------------------------ | :--------- | :------------------- |
+| `~/.ssh/id_ed25519`       | 私钥       | **绝对不要分享**     |
+| `~/.ssh/id_ed25519.pub`   | 公钥       | 复制到服务器         |
 
-### If You Need RSA (older servers)
+### 如需使用 RSA（旧服务器）
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your@email.com"
@@ -71,56 +71,56 @@ ssh-keygen -t rsa -b 4096 -C "your@email.com"
 
 ---
 
-## Step 2: Copy the Key to Your Server
+## 第二步：将密钥复制到服务器
 
-### Method 1: ssh-copy-id (Easiest)
+### 方法一：ssh-copy-id（最简单）
 
 ```bash
 ssh-copy-id user@your-server-ip
 ```
 
-Type your password one last time. It copies the public key to the server's `~/.ssh/authorized_keys` file.
+最后一次输入密码。它会将公钥复制到服务器的 `~/.ssh/authorized_keys` 文件。
 
-### Method 2: Manual Copy
+### 方法二：手动复制
 
-If `ssh-copy-id` is not available:
+如果 `ssh-copy-id` 不可用：
 
 ```bash
-# Display your public key
+# 查看你的公钥
 cat ~/.ssh/id_ed25519.pub
 
-# SSH into the server with password
+# 用密码 SSH 登录服务器
 ssh user@your-server-ip
 
-# On the server, add the key
+# 在服务器上添加密钥
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
-echo "PASTE_YOUR_PUBLIC_KEY_HERE" >> ~/.ssh/authorized_keys
+echo "此处粘贴你的公钥内容" >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 ```
 
-### Method 3: From Windows (PowerShell)
+### 方法三：Windows（PowerShell）
 
 ```powershell
-# Generate key (if not done)
+# 生成密钥（如果还没生成）
 ssh-keygen -t ed25519
 
-# Copy key to server
+# 复制密钥到服务器
 type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh user@server "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 ```
 
 ---
 
-## Step 3: Test It
+## 第三步：测试
 
 ```bash
 ssh user@your-server-ip
 ```
 
-You should log in without typing a password. If it still asks for a password, check permissions:
+你应该无需输入密码即可登录。如果仍要求输入密码，请检查权限：
 
 ```bash
-# On the server
+# 在服务器上执行
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 chown -R $USER:$USER ~/.ssh
@@ -128,16 +128,16 @@ chown -R $USER:$USER ~/.ssh
 
 ---
 
-## Step 4: Disable Password Login (Recommended)
+## 第四步：禁用密码登录（建议）
 
-Once key auth works, disable password login to prevent brute-force attacks:
+密钥认证可正常使用后，禁用密码登录以防御暴力破解攻击：
 
 ```bash
-# On the server, edit SSH config
+# 在服务器上编辑 SSH 配置
 sudo nano /etc/ssh/sshd_config
 ```
 
-Change these settings:
+修改以下设置：
 
 ```text
 PasswordAuthentication no
@@ -145,29 +145,29 @@ PubkeyAuthentication yes
 ChallengeResponseAuthentication no
 ```
 
-Restart SSH:
+重启 SSH：
 
 ```bash
 sudo systemctl restart sshd
 ```
 
-> ⚠️ **Keep your current SSH session open** while testing with a new terminal. If something goes wrong, you can fix it from the existing session.
+> ⚠️ **保持当前 SSH 会话不要断开**，用新终端窗口测试。如果出问题了，你还可以通过现有会话修复。
 
 ---
 
-## Multiple Keys
+## 多密钥管理
 
-### Different Keys for Different Servers
+### 不同服务器使用不同密钥
 
 ```bash
-# Generate a key for work
+# 生成工作用密钥
 ssh-keygen -t ed25519 -f ~/.ssh/id_work -C "work@company.com"
 
-# Generate a key for personal
+# 生成个人用密钥
 ssh-keygen -t ed25519 -f ~/.ssh/id_personal -C "personal@email.com"
 ```
 
-Configure in `~/.ssh/config`:
+在 `~/.ssh/config` 中配置：
 
 ```text
 Host work-server
@@ -181,51 +181,51 @@ Host personal-vps
     IdentityFile ~/.ssh/id_personal
 ```
 
-Now just: `ssh work-server` or `ssh personal-vps`
+现在只需：`ssh work-server` 或 `ssh personal-vps`
 
-### Add Key to SSH Agent
+### 将密钥添加到 SSH Agent
 
-To avoid typing the passphrase every time:
+避免每次都输入密码短语：
 
 ```bash
-# Start the agent
+# 启动 agent
 eval "$(ssh-agent -s)"
 
-# Add your key
+# 添加你的密钥
 ssh-add ~/.ssh/id_ed25519
 
-# List loaded keys
+# 查看已加载的密钥
 ssh-add -l
 ```
 
 ---
 
-## Troubleshooting
+## 故障排除
 
-| Problem                              | Fix                                                          |
+| 问题                                 | 解决方法                                                     |
 | :----------------------------------- | :----------------------------------------------------------- |
-| Still asks for password              | Check permissions: `chmod 700 ~/.ssh` and `chmod 600 ~/.ssh/authorized_keys` |
-| Permission denied (publickey)        | Key not on server, or wrong user. Check `~/.ssh/authorized_keys` on server |
-| Agent refused connection             | Run `eval "$(ssh-agent -s)"` then `ssh-add`                  |
-| Key file too open                    | `chmod 600 ~/.ssh/id_ed25519` — SSH refuses keys with loose permissions |
-| Wrong key being used                 | Specify key: `ssh -i ~/.ssh/id_specific user@server`         |
-| Locked out after disabling passwords | Use server console (cloud provider's web terminal) to re-enable |
+| 仍然要求输入密码                     | 检查权限：`chmod 700 ~/.ssh` 和 `chmod 600 ~/.ssh/authorized_keys` |
+| Permission denied (publickey)        | 密钥未添加到服务器，或用户错误。检查服务器上的 `~/.ssh/authorized_keys` |
+| Agent refused connection             | 运行 `eval "$(ssh-agent -s)"` 然后 `ssh-add`                |
+| 密钥文件权限太宽松                   | `chmod 600 ~/.ssh/id_ed25519` — SSH 拒绝权限过于宽松的密钥  |
+| 使用了错误的密钥                     | 指定密钥：`ssh -i ~/.ssh/id_specific user@server`           |
+| 禁用密码后被锁定                     | 使用服务器控制台（云服务商的网页终端）重新启用               |
 
 ```bash
-# Debug SSH connection
-ssh -v user@server              # Verbose — shows what key is tried
-ssh -vvv user@server            # Extra verbose
+# 调试 SSH 连接
+ssh -v user@server              # 详细模式 — 显示尝试了哪个密钥
+ssh -vvv user@server            # 超详细模式
 ```
 
 ---
 
-## See Also
+## 参见
 
-- [SSH Config Guide](https://www.samnet.dev/learn/linux/ssh-config-guide/)
-- [Server Hardening Guide](https://www.samnet.dev/learn/security/server-hardening/)
-- [Linux File Permissions](https://www.samnet.dev/learn/linux/linux-file-permissions/)
-- [How to Check if a Port Is Open](https://www.samnet.dev/learn/how-to/how-to-check-if-port-is-open/)
+- [SSH Config 指南](https://www.samnet.dev/learn/linux/ssh-config-guide/)
+- [服务器加固指南](https://www.samnet.dev/learn/security/server-hardening/)
+- [Linux 文件权限](https://www.samnet.dev/learn/linux/linux-file-permissions/)
+- [如何检查端口是否开放](https://www.samnet.dev/learn/how-to/how-to-check-if-port-is-open/)
 
 ---
 
-> 📖 **Original Source:** [How to Set Up SSH Keys (Passwordless Login)](https://www.samnet.dev/learn/linux/ssh-keys-setup/) by SamNet Learn.
+> 📖 **原文件来源：** [How to Set Up SSH Keys (Passwordless Login)](https://www.samnet.dev/learn/linux/ssh-keys-setup/) by SamNet Learn.
