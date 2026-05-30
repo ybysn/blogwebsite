@@ -1,0 +1,239 @@
+---
+title: "Windows 11 Pro 搭建 WSL2 完整指南"
+date: "2026-05-30"
+description: "从零开始在 Windows 11 Pro 上搭建 WSL2 开发环境，涵盖 Ubuntu 安装、Node.js/Python 环境配置、文件互通与最佳实践。"
+tags: ["windows", "wsl2", "ubuntu", "dev-environment", "tutorial"]
+published: true
+lang: zh-CN
+---
+
+## 1. 用管理员 PowerShell 安装 WSL
+
+右键开始菜单 → **终端管理员 / Windows PowerShell 管理员**，执行：
+
+```powershell
+wsl --install
+```
+
+这个命令会启用 WSL 所需功能，并默认安装 Ubuntu。安装完成后重启电脑。微软官方当前推荐的主安装方式就是 `wsl --install`。([Microsoft Learn](https://learn.microsoft.com/en-us/windows/wsl/install?utm_source=chatgpt.com))
+
+---
+
+## 2. 第一次启动 Ubuntu
+
+重启后打开开始菜单，搜索：
+
+```text
+Ubuntu
+```
+
+首次启动会要求创建 Linux 用户名和密码。
+
+用户名建议用小写英文，例如：
+
+```text
+ling
+```
+
+密码输入时不会显示字符，正常输入后回车即可。
+
+---
+
+## 3. 检查 WSL 状态
+
+回到 PowerShell，执行：
+
+```powershell
+wsl -l -v
+```
+
+目标结果类似：
+
+```text
+NAME      STATE           VERSION
+Ubuntu    Running         2
+```
+
+微软文档说明，新版 `wsl --install` 安装的 Linux 发行版默认使用 WSL 2。([Microsoft Learn](https://learn.microsoft.com/en-us/windows/wsl/install?utm_source=chatgpt.com))
+
+---
+
+## 4. 设置默认 WSL 版本为 2
+
+执行：
+
+```powershell
+wsl --set-default-version 2
+```
+
+---
+
+## 5. 更新 WSL 内核
+
+执行：
+
+```powershell
+wsl --update
+```
+
+然后关闭并重启 WSL：
+
+```powershell
+wsl --shutdown
+```
+
+再打开 Ubuntu。
+
+---
+
+## 6. 更新 Ubuntu 软件源
+
+进入 Ubuntu 后执行：
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+安装常用工具：
+
+```bash
+sudo apt install -y curl wget git vim unzip build-essential
+```
+
+---
+
+## 7. 安装 Node.js 开发环境
+
+建议在 WSL 里用 `nvm` 管理 Node.js：
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+```
+
+重新加载 shell：
+
+```bash
+source ~/.bashrc
+```
+
+安装 Node LTS：
+
+```bash
+nvm install --lts
+nvm use --lts
+node -v
+npm -v
+```
+
+---
+
+## 8. 安装 Python 开发环境
+
+```bash
+sudo apt install -y python3 python3-pip python3-venv
+python3 --version
+pip3 --version
+```
+
+---
+
+## 9. Windows 访问 WSL 文件
+
+在文件资源管理器地址栏输入：
+
+```text
+\\wsl$
+```
+
+可以看到：
+
+```text
+Ubuntu
+```
+
+你的 Linux 用户目录位置通常是：
+
+```text
+\\wsl$\Ubuntu\home\你的用户名
+```
+
+---
+
+## 10. WSL 访问 Windows 磁盘
+
+在 Ubuntu 中访问 C 盘：
+
+```bash
+cd /mnt/c
+```
+
+访问 D 盘：
+
+```bash
+cd /mnt/d
+```
+
+访问 E 盘：
+
+```bash
+cd /mnt/e
+```
+
+---
+
+## 推荐开发目录
+
+建议把 Linux 项目放在 WSL 自己的 home 目录：
+
+```bash
+mkdir -p ~/projects
+cd ~/projects
+```
+
+例如：
+
+```bash
+git clone <你的项目地址>
+cd <项目目录>
+```
+
+不要把高频读写的 Node、Python、Git 项目长期放在 `/mnt/c`、`/mnt/d`、`/mnt/e` 下开发，跨文件系统会明显拖慢依赖安装、Git 操作和小文件读写。
+
+---
+
+## 常用 WSL 命令
+
+PowerShell 里执行：
+
+```powershell
+wsl
+```
+
+进入默认 Linux。
+
+查看已安装发行版：
+
+```powershell
+wsl -l -v
+```
+
+关闭 WSL：
+
+```powershell
+wsl --shutdown
+```
+
+安装 Debian：
+
+```powershell
+wsl --install -d Debian
+```
+
+查看可安装的 Linux 发行版：
+
+```powershell
+wsl --list --online
+```
+
+微软文档也说明，可以用 `wsl --list --online` 查看可安装发行版，用 `wsl --install -d <DistroName>` 安装指定发行版。([Microsoft Learn](https://learn.microsoft.com/en-us/windows/wsl/install?utm_source=chatgpt.com))
