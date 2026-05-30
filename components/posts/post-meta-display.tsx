@@ -19,7 +19,7 @@ export function PostMetaDisplay({
         alignItems: 'center',
         gap: '0.75rem',
         fontSize: '0.92rem',
-        color: 'var(--color-muted)',
+        color: 'var(--text-3)',
       }}
     >
       <time dateTime={date}>{formatDate(date, locale)}</time>

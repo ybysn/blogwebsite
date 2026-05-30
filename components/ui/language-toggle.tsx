@@ -10,7 +10,11 @@ export function LanguageToggle() {
   }
 
   return (
-    <button onClick={toggleLocale} className="lang-toggle">
+    <button
+      onClick={toggleLocale}
+      className="lang-toggle"
+      aria-label={locale === 'en' ? 'Switch to Chinese' : 'Switch to English'}
+    >
       {locale === 'en' ? '中' : 'EN'}
     </button>
   )

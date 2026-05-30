@@ -41,7 +41,7 @@ export function PostsContent({ categorized }: { categorized: CategoryGroup[] }) 
 
   if (categorized.length === 0) {
     return (
-      <div style={{ textAlign: 'center', padding: '3rem 0', color: 'var(--color-muted)' }}>
+      <div style={{ textAlign: 'center', padding: '3rem 0', color: 'var(--text-3)' }}>
         {t('posts.empty')}
       </div>
     )

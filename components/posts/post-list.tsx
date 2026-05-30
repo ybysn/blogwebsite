@@ -9,7 +9,7 @@ export function PostList({ posts }: { posts: PostMeta[] }) {
 
   if (posts.length === 0) {
     return (
-      <p style={{ color: 'var(--color-muted)', textAlign: 'center', padding: '3rem 0' }}>
+      <p style={{ color: 'var(--text-3)', textAlign: 'center', padding: '3rem 0' }}>
         {t('post.empty')}
       </p>
     )
