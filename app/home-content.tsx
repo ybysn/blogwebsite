@@ -1,21 +1,27 @@
 'use client'
 
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import type { PostMeta } from '@/types'
 import { useTranslation } from '@/components/layout/language-provider'
-import { PostList } from '@/components/posts/post-list'
+import { HeroSection } from '@/components/home/hero-section'
+import { PostListSection } from '@/components/home/post-list-section'
+
+gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 export function HomeContent({ posts }: { posts: PostMeta[] }) {
   const { t } = useTranslation()
 
   return (
     <div>
-      <div style={{ marginBottom: '2.5rem' }}>
-        <h1 style={{ marginBottom: '0.5rem' }}>{t('home.latest')}</h1>
-        <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem' }}>
-          {t('home.tagline')}
-        </p>
-      </div>
-      <PostList posts={posts} />
+      <HeroSection />
+      <PostListSection
+        posts={posts}
+        number="01"
+        quote={t('home.section.posts.quote')}
+        subtitle={t('home.latest')}
+      />
     </div>
   )
 }

@@ -43,3 +43,4 @@ next-env.d.ts
 # Claude Code local settings
 .claude/
 如何创建密钥（无密码登录）.pdf
+gsap-skills/
