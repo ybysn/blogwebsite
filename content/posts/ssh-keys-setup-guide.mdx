@@ -1,0 +1,235 @@
+---
+title: "如何设置 SSH 密钥（免密码登录）"
+date: "2026-05-30"
+description: "使用 SSH 密钥实现免密码登录服务器，涵盖密钥生成、复制、多密钥管理、禁用密码登录与常见问题排查。"
+tags: ["ssh", "linux", "security", "tutorial", "server"]
+published: true
+lang: zh-CN
+---
+
+> **原文件来源：** [How to Set Up SSH Keys (Passwordless Login) — SamNet Learn](https://www.samnet.dev/learn/linux/ssh-keys-setup/)
+
+## 准备工作
+
+- 一台有 SSH 访问权限的服务器
+- 本机终端访问权限
+
+**快速上手：** 在本机执行 `ssh-keygen -t ed25519`，然后 `ssh-copy-id user@server` 复制密钥。之后 `ssh user@server` 即可免密码登录。最后在 `/etc/ssh/sshd_config` 中设置 `PasswordAuthentication no` 禁用密码认证。
+
+需要 VPS？[Vultr](https://www.vultr.com/)（免费额度）、[DigitalOcean](https://www.digitalocean.com/)（$200 免费额度）或 [RackNerd](https://www.racknerd.com/)（低价年付）。
+
+---
+
+## 为什么要用 SSH 密钥？
+
+|        | 密码                       | SSH 密钥                     |
+| ------ | -------------------------- | ---------------------------- |
+| 安全性 | 可被暴力破解               | 几乎不可能被破解             |
+| 便利性 | 每次输入密码               | 自动登录                     |
+| 自动化 | 无法安全地自动化           | 脚本可安全使用密钥           |
+| 最佳实践 | 不推荐用于服务器           | 行业标准                     |
+
+---
+
+## 步骤 1：生成密钥对
+
+在**本机**（不是服务器）上执行：
+
+```bash
+ssh-keygen -t ed25519 -C "your@email.com"
+```
+
+- `-t ed25519` — 现代安全算法（优于 RSA）
+- `-C` — 添加注释以识别该密钥
+
+系统会询问：
+
+```text
+Enter file in which to save the key (/home/you/.ssh/id_ed25519):
+```
+
+按 **Enter** 使用默认位置。
+
+```text
+Enter passphrase (empty for no passphrase):
+```
+
+**可选但建议设置** — 为密钥本身添加密码保护。即使私钥文件被盗，仍需密码才能使用。
+
+这会创建两个文件：
+
+| 文件                              | 类型       | 可以分享？      |
+| --------------------------------- | ---------- | --------------- |
+| `~/.ssh/id_ed25519`               | 私钥       | **绝不分享**     |
+| `~/.ssh/id_ed25519.pub`           | 公钥       | 复制到服务器     |
+
+**如果需要 RSA（兼容旧服务器）：**
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your@email.com"
+```
+
+---
+
+## 步骤 2：将密钥复制到服务器
+
+### 方法 1：ssh-copy-id（最简单）
+
+```bash
+ssh-copy-id user@your-server-ip
+```
+
+最后一次输入密码。它会将公钥复制到服务器的 `~/.ssh/authorized_keys` 文件。
+
+### 方法 2：手动复制
+
+如果 `ssh-copy-id` 不可用：
+
+```bash
+# 显示本机公钥
+cat ~/.ssh/id_ed25519.pub
+
+# 使用密码 SSH 登录服务器
+ssh user@your-server-ip
+
+# 在服务器上添加密钥
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+echo "粘贴你的公钥到这里" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+### 方法 3：Windows (PowerShell)
+
+```powershell
+# 生成密钥（如果尚未生成）
+ssh-keygen -t ed25519
+
+# 将密钥复制到服务器
+type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh user@server "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+---
+
+## 步骤 3：测试
+
+```bash
+ssh user@your-server-ip
+```
+
+应该无需输入密码直接登录。如果仍然要求输入密码，请检查权限：
+
+```bash
+# 在服务器上执行
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+chown -R $USER:$USER ~/.ssh
+```
+
+---
+
+## 步骤 4：禁用密码登录（推荐）
+
+密钥认证生效后，禁用密码登录以防止暴力破解：
+
+```bash
+# 在服务器上编辑 SSH 配置
+sudo nano /etc/ssh/sshd_config
+```
+
+修改以下配置：
+
+```text
+PasswordAuthentication no
+PubkeyAuthentication yes
+ChallengeResponseAuthentication no
+```
+
+重启 SSH：
+
+```bash
+sudo systemctl restart sshd
+```
+
+> ⚠️ **保持当前 SSH 会话打开**，在**新终端窗口**中测试连接。如果出现问题，还能用现有会话修复。
+
+---
+
+## 多密钥管理
+
+### 不同服务器使用不同密钥
+
+```bash
+# 为工作生成密钥
+ssh-keygen -t ed25519 -f ~/.ssh/id_work -C "work@company.com"
+
+# 为个人生成密钥
+ssh-keygen -t ed25519 -f ~/.ssh/id_personal -C "personal@email.com"
+```
+
+在 `~/.ssh/config` 中配置：
+
+```text
+Host work-server
+    HostName 10.0.0.5
+    User admin
+    IdentityFile ~/.ssh/id_work
+
+Host personal-vps
+    HostName 203.0.113.50
+    User sam
+    IdentityFile ~/.ssh/id_personal
+```
+
+现在只需：`ssh work-server` 或 `ssh personal-vps`
+
+### 将密钥添加到 SSH Agent
+
+避免每次输入密钥密码：
+
+```bash
+# 启动 agent
+eval "$(ssh-agent -s)"
+
+# 添加你的密钥
+ssh-add ~/.ssh/id_ed25519
+
+# 列出已加载的密钥
+ssh-add -l
+```
+
+---
+
+## 常见问题排查
+
+| 问题                             | 解决方案                                                     |
+| -------------------------------- | ------------------------------------------------------------ |
+| 仍然要求输入密码                 | 检查权限：`chmod 700 ~/.ssh` 和 `chmod 600 ~/.ssh/authorized_keys` |
+| Permission denied (publickey)    | 密钥未在服务器上，或用户不匹配。检查服务器上的 `~/.ssh/authorized_keys` |
+| Agent refused connection         | 执行 `eval "$(ssh-agent -s)"` 然后 `ssh-add`                 |
+| 密钥文件权限过于宽松             | `chmod 600 ~/.ssh/id_ed25519` — SSH 拒绝权限过于宽松的密钥   |
+| 使用了错误的密钥                 | 指定密钥：`ssh -i ~/.ssh/id_specific user@server`             |
+| 禁用密码后被锁定                 | 使用云服务商的 Web 控制台重新启用密码认证                     |
+
+### 调试 SSH 连接
+
+```bash
+# 详细模式 — 显示尝试了哪个密钥
+ssh -v user@server
+
+# 超级详细模式
+ssh -vvv user@server
+```
+
+---
+
+## 相关阅读
+
+- [SSH Config 配置指南](https://www.samnet.dev/learn/linux/ssh-config/)
+- [服务器安全加固指南](https://www.samnet.dev/learn/linux/server-hardening/)
+- [Linux 文件权限](https://www.samnet.dev/learn/linux/file-permissions/)
+- [如何检查端口是否开放](https://www.samnet.dev/learn/linux/check-port-open/)
+
+---
+
+> 📖 **原文件来源：** [How to Set Up SSH Keys (Passwordless Login)](https://www.samnet.dev/learn/linux/ssh-keys-setup/) by SamNet Learn. 本文为中文翻译版。
