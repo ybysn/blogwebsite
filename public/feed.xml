@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>凌's Blog</title>
+        <link>https://ny.ybysn.org</link>
+        <description>A personal blog about technology and more.</description>
+        <lastBuildDate>Sat, 30 May 2026 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>All rights reserved 2026</copyright>
+        <item>
+            <title><![CDATA[如何激活 Windows / Office / 扩展安全更新 (ESU)]]></title>
+            <link>https://ny.ybysn.org/posts/mas-activation-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/mas-activation-guide</guid>
+            <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[使用 Microsoft Activation Scripts (MAS) 激活 Windows、Office 和 ESU 的方法，支持 PowerShell 一键方式和传统离线方式。]]></description>
+            <category>windows</category>
+            <category>activation</category>
+            <category>tutorial</category>
+            <category>tools</category>
+        </item>
+        <item>
+            <title><![CDATA[自建 Bitwarden (Vaultwarden) 完整搭建笔记]]></title>
+            <link>https://ny.ybysn.org/posts/self-hosted-vaultwarden-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/self-hosted-vaultwarden-guide</guid>
+            <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[从零开始在 Ubuntu 上搭建 Vaultwarden 密码管理器，涵盖 Docker 部署、Nginx 反向代理、SSL 证书、SMTP 邮件配置、备份策略与故障排查。]]></description>
+            <category>self-hosted</category>
+            <category>docker</category>
+            <category>security</category>
+            <category>vaultwarden</category>
+            <category>bitwarden</category>
+            <category>nginx</category>
+            <category>ubuntu</category>
+        </item>
+        <item>
+            <title><![CDATA[How to Set Up SSH Keys (Passwordless Login)]]></title>
+            <link>https://ny.ybysn.org/posts/ssh-keys-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/ssh-keys-setup-guide</guid>
+            <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to set up SSH key authentication for passwordless server login, including key generation, copying keys, multiple key management, and disabling password auth.]]></description>
+            <category>ssh</category>
+            <category>linux</category>
+            <category>security</category>
+            <category>tutorial</category>
+            <category>server</category>
+        </item>
+        <item>
+            <title><![CDATA[Windows 暂停更新]]></title>
+            <link>https://ny.ybysn.org/posts/windows-pause-updates</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/windows-pause-updates</guid>
+            <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[通过修改注册表将 Windows 更新暂停天数延长至 3650 天，告别频繁更新打扰。]]></description>
+            <category>windows</category>
+            <category>registry</category>
+            <category>tutorial</category>
+        </item>
+        <item>
+            <title><![CDATA[Windows 11 Pro 搭建 WSL2 完整指南]]></title>
+            <link>https://ny.ybysn.org/posts/windows11-wsl2-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/windows11-wsl2-setup-guide</guid>
+            <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[从零开始在 Windows 11 Pro 上搭建 WSL2 开发环境，涵盖 Ubuntu 安装、Node.js/Python 环境配置、文件互通与最佳实践。]]></description>
+            <category>windows</category>
+            <category>wsl2</category>
+            <category>ubuntu</category>
+            <category>dev-environment</category>
+            <category>tutorial</category>
+        </item>
+    </channel>
+</rss>
