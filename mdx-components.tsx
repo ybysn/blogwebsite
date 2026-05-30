@@ -103,7 +103,8 @@ const components: MDXComponents = {
     <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
       <table
         style={{
-          width: '100%',
+          width: 'auto',
+          margin: '0 auto',
           borderCollapse: 'separate',
           borderSpacing: 0,
           borderRadius: '10px',
