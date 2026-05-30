@@ -1,0 +1,281 @@
+---
+title: "自建 Bitwarden (Vaultwarden) 完整搭建笔记"
+date: "2026-05-30"
+description: "从零开始在 Ubuntu 上搭建 Vaultwarden 密码管理器，涵盖 Docker 部署、Nginx 反向代理、SSL 证书、SMTP 邮件配置、备份策略与故障排查。"
+tags: ["self-hosted", "docker", "security", "vaultwarden", "bitwarden", "nginx", "ubuntu"]
+published: true
+---
+
+> 系统：Ubuntu 20.04/22.04 | 每一步已包含常见问题的解决方法，按顺序执行即可。
+
+## 1. 购买云服务器与准备
+
+- **最低配置**：1核 / 512MB内存 / 20GB硬盘（个人够用）
+- **带宽**：1~3Mbps
+- **系统**：Ubuntu 22.04（推荐）
+- **域名**：准备一个域名，解析 A 记录 `vault.your-domain.com` 到服务器 IP
+- **防火墙**：入站开放 80、443、22；出站保持全部允许（否则影响邮件、时间同步）
+
+## 2. 连接服务器并安装基础环境
+
+```bash
+ssh root@你的服务器IP
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y docker.io docker-compose nginx certbot python3-certbot-nginx
+sudo systemctl enable --now docker
+```
+
+> ✅ **验证 Docker**：`docker run hello-world`（若失败，检查网络或重启系统）
+
+---
+
+## 3. 部署 Vaultwarden（Docker Compose）
+
+> **注意**：本步骤已预先配置 DNS，避免后续容器无法访问外网。
+
+### 3.1 创建目录与配置文件
+
+```bash
+mkdir -p ~/vaultwarden && cd ~/vaultwarden
+nano docker-compose.yml
+```
+
+粘贴以下内容（**请修改 `DOMAIN` 和 `ADMIN_TOKEN`**）：
+
+```yaml
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    volumes:
+      - ./vw-data:/data
+    environment:
+      DOMAIN: https://vault.example.com        # 改为你的真实域名
+      ADMIN_TOKEN: '$$argon2id$$v=19$$m=4096,t=3,p=1$$...'   # 见下方生成方法
+      SIGNUPS_ALLOWED: 'true'
+      WEBSOCKET_ENABLED: 'true'
+    ports:
+      - "127.0.0.1:8080:80"
+    dns:                     # 预先配置 DNS，防止容器无法访问外网
+      - 8.8.8.8
+      - 114.114.114.114
+```
+
+### 3.2 生成安全的 `ADMIN_TOKEN` 哈希
+
+> ⚠️ **如果遇到 `executable file not found` 错误**，使用以下命令之一：
+
+```bash
+# 方法一（推荐）
+docker run --rm --entrypoint /vaultwarden vaultwarden/server:latest hash
+
+# 方法二（进入临时 shell）
+docker run --rm -it --entrypoint /bin/sh vaultwarden/server:latest
+/vaultwarden hash
+```
+
+执行后会提示输入密码（两次），输出类似：
+
+```
+$argon2id$v=19$m=4096,t=3,p=1$R5e...（很长的字符串）
+```
+
+**复制这个哈希值**，并修改 `docker-compose.yml` 中的 `ADMIN_TOKEN` 值。
+
+> ⚠️ **重要转义**：哈希中包含 `$` 符号，必须将每个 `$` 替换为 `$$`，且整行用 **单引号** 包裹，例如：
+> `ADMIN_TOKEN: '$$argon2id$$v=19$$m=4096,t=3,p=1$$R5e...'`
+
+### 3.3 启动容器
+
+```bash
+docker-compose up -d
+```
+
+> ⚠️ **如果启动时出现警告 `The "xxx" variable is not set`**：
+> 说明 `ADMIN_TOKEN` 中的 `$` 未被正确转义，请返回 3.2 检查转义格式。修正后执行 `docker-compose down && docker-compose up -d`。
+
+查看容器状态：
+
+```bash
+docker ps
+```
+
+---
+
+## 4. 配置 Nginx 反向代理 + SSL 证书
+
+### 4.1 创建 Nginx 站点配置
+
+```bash
+sudo vim /etc/nginx/sites-available/vaultwarden
+```
+
+粘贴以下内容（将 `vault.example.com` 替换为你的域名）：
+
+```nginx
+server {
+    listen 80;
+    server_name vault.example.com;
+    root /var/www/html;
+
+    location /.well-known/acme-challenge/ {
+        allow all;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+> ✅ **WebSocket 支持**：上面已包含 `Upgrade` 和 `Connection` 头，可避免诊断页面报 `Websocket enabled: Error`。
+
+### 4.2 启用站点并测试
+
+```bash
+sudo ln -s /etc/nginx/sites-available/vaultwarden /etc/nginx/sites-enabled/
+sudo nginx -t               # 必须显示 successful
+sudo systemctl restart nginx
+```
+
+### 4.3 获取 SSL 证书（Let's Encrypt）
+
+```bash
+sudo certbot --nginx -d vault.example.com
+```
+
+按提示输入邮箱、同意条款。证书会自动续期。
+
+---
+
+## 5. 首次访问与关闭开放注册
+
+1. 浏览器打开 `https://vault.example.com`
+
+2. 创建你的管理员账号（邮箱 + 主密码）
+
+   > ❗ **主密码一旦丢失且未配置邮件找回，数据将无法恢复！**
+
+3. **立即关闭公共注册**：
+
+   ```bash
+   cd ~/vaultwarden
+   nano docker-compose.yml
+   # 将 SIGNUPS_ALLOWED: 'true' 改为 SIGNUPS_ALLOWED: 'false'
+   docker-compose down && docker-compose up -d
+   ```
+
+---
+
+## 6. 配置 SMTP 邮件（必须！否则无法找回密码）
+
+> 若不配置邮件，忘记主密码将永久丢失所有密码数据。
+
+### 6.1 登录管理员面板
+
+访问 `https://vault.example.com/admin`，输入你在 `ADMIN_TOKEN` 中设置的**明文密码**（不是那串哈希）。
+
+### 6.2 填写 SMTP 信息（以 QQ 邮箱为例）
+
+在 **SMTP Email Settings** 区域：
+
+| 字段                | 填写内容                       |
+| ------------------- | ------------------------------ |
+| Enabled             | ✅ 勾选                         |
+| Use Sendmail        | ❌ 不勾选                       |
+| Host                | `smtp.qq.com`                  |
+| Secure SMTP         | StartTLS                       |
+| Port                | `587`                          |
+| From Address        | `你的QQ号@qq.com`              |
+| From Name           | `Vaultwarden`                  |
+| Username            | `你的QQ号@qq.com`              |
+| Password            | **QQ邮箱授权码**（非登录密码） |
+| SMTP Auth mechanism | `Login`                        |
+| 其他保持默认        |                                |
+
+> ⚠️ **获取授权码**：登录 QQ 邮箱 → 设置 → 账户 → POP3/IMAP/SMTP 服务 → 生成授权码。
+
+### 6.3 保存并测试
+
+点击 **Save settings**，然后点击 **Test email**，输入你的接收邮箱。
+如果收到测试邮件，说明配置成功。
+
+> ❗ **如果发送失败**：
+>
+> - 检查是否使用了授权码而不是 QQ 密码
+> - 检查云服务器安全组出站是否开放 TCP 587
+> - 由于我们在第 3 步已配置 DNS，一般不会出现网络问题，但仍可执行 `docker exec vaultwarden curl -I https://github.com` 测试容器外网连通性。
+
+---
+
+## 7. 客户端使用
+
+- **浏览器插件**：登录时点击"自托管"，输入 `https://vault.example.com`
+- **手机 App**：设置 → 更改服务器 URL
+- **桌面客户端**：同样修改服务器地址
+
+---
+
+## 8. 验证安装是否完整（诊断页面）
+
+访问 `https://vault.example.com/admin/diagnostics`，检查以下几项：
+
+| 检查项                | 正常状态        | 如果错误                                                     |
+| --------------------- | --------------- | ------------------------------------------------------------ |
+| **Internet access**   | Ok              | 由于已配置 DNS，极少出现。若仍报错，检查宿主机网络和防火墙出站规则。 |
+| **Websocket enabled** | Yes（无 Error） | 检查 Nginx 配置中是否包含 WebSocket 头（见 4.1）             |
+| **NTP (时间同步)**    | Ok              | 通常与外网问题相关，解决 Internet access 即可                |
+| **DNS (github.com)**  | 显示 IP         | 若解析失败，手动检查容器内 `/etc/resolv.conf`                |
+
+---
+
+## 9. 数据备份（防止服务器崩溃）
+
+### 9.1 自动备份脚本
+
+```bash
+# 创建备份目录
+mkdir -p ~/backups
+
+# 编辑 crontab
+crontab -e
+# 添加以下行（每天凌晨 3 点备份）
+0 3 * * * /usr/bin/zip -r /root/backups/vaultwarden_$(date +\%Y\%m\%d).zip /root/vaultwarden/vw-data
+```
+
+### 9.2 安全建议
+
+- 将备份文件加密后上传至其他云存储（如 rclone 同步到 Google Drive、OneDrive）
+- 定期从 Bitwarden 客户端导出未加密的 `.json` 密码库作为第二重备份
+
+---
+
+## 10. 升级 Vaultwarden 到最新版本
+
+```bash
+cd ~/vaultwarden
+docker-compose pull
+docker-compose down && docker-compose up -d
+```
+
+升级后检查诊断页面，确保一切正常。
+
+---
+
+## 附录：常用维护命令速查
+
+| 操作                 | 命令                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| 查看容器日志         | `docker logs -f vaultwarden`                                 |
+| 重启 Vaultwarden     | `cd ~/vaultwarden && docker-compose restart`                 |
+| 进入容器内部 Shell   | `docker exec -it vaultwarden /bin/sh`                        |
+| 手动续期 SSL 证书    | `sudo certbot renew`                                         |
+| 重新生成 ADMIN_TOKEN | `docker run --rm --entrypoint /vaultwarden vaultwarden/server:latest hash` |
