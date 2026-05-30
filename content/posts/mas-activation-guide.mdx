@@ -1,5 +1,5 @@
 ---
-title: "How to Activate Windows / Office / Extended Security Updates (ESU)"
+title: "如何激活 Windows / Office / 扩展安全更新 (ESU)"
 date: "2026-05-30"
 description: "使用 Microsoft Activation Scripts (MAS) 激活 Windows、Office 和 ESU 的方法，支持 PowerShell 一键方式和传统离线方式。"
 tags: ["windows", "activation", "tutorial", "tools"]
@@ -7,36 +7,36 @@ published: true
 lang: zh-CN
 ---
 
-## Method 1 - PowerShell ❤️
+## 方法 1 - PowerShell ❤️
 
-1. Click the **Start Menu**, type `PowerShell`, and open it.
+1. 点击 **开始菜单**，输入 `PowerShell`，然后打开它。
 
-2. Copy and paste the code below and press **Enter.**
+2. 复制并粘贴以下代码，然后按 **Enter** 键。
 
-   - For **Windows 8.1, 10 and 11**:
+   - 适用于 **Windows 8.1、10 和 11**：
 
      ```
      irm https://get.activated.win | iex
      ```
 
-     If the above is blocked (by ISP/DNS), try this (needs updated Windows 10 or 11):
+     如果上述方法被（ISP/DNS）阻止，请尝试以下方法（需要已更新的 Windows 10 或 11）：
 
      ```
      iex (curl.exe -s --doh-url https://1.1.1.1/dns-query https://get.activated.win | Out-String)
      ```
 
-   - **Script not launching? Use the below-listed Method 2.**
+   - **脚本无法运行？请使用下文列出的方法 2。**
 
-3. In the menu that appears, type the number corresponding to one of the **Green** options.
+3. 在弹出的菜单中，输入对应其中一个 **绿色** 选项的数字。
 
 ---
 
-## Method 2 - Traditional (Windows Vista and later)
+## 方法 2 - 传统方法（Windows Vista 及更高版本）
 
-1. Download the script:
-   - [**MAS_AIO.cmd**](https://dev.azure.com/massgrave/Microsoft-Activation-Scripts/_apis/git/repositories/Microsoft-Activation-Scripts/items?path=/MAS/All-In-One-Version-KL/MAS_AIO.cmd&download=true) (Direct script)
-   - [**MAS_AIO.zip**](https://dev.azure.com/massgrave/Microsoft-Activation-Scripts/_apis/git/repositories/Microsoft-Activation-Scripts/items?$format=zip) (If the direct script is blocked by your browser)
-2. Run the `MAS_AIO.cmd` file.
-3. In the menu that appears, type the number corresponding to one of the **Green** options.
+1. 下载脚本：
+   - [**MAS_AIO.cmd**](https://dev.azure.com/massgrave/Microsoft-Activation-Scripts/_apis/git/repositories/Microsoft-Activation-Scripts/items?path=/MAS/All-In-One-Version-KL/MAS_AIO.cmd&download=true) (直接脚本)
+   - [**MAS_AIO.zip**](https://dev.azure.com/massgrave/Microsoft-Activation-Scripts/_apis/git/repositories/Microsoft-Activation-Scripts/items?$format=zip)（如果直接脚本被您的浏览器拦截）
+2. 运行 `MAS_AIO.cmd` 文件。
+3. 在弹出的菜单中，输入与其中一个 **绿色** 选项对应的数字。
 
-Original：https://github.com/massgravel/Microsoft-Activation-Scripts
+原文：https://github.com/massgravel/Microsoft-Activation-Scripts
