@@ -1,0 +1,47 @@
+---
+title: "Why TypeScript Matters"
+date: "2026-05-20"
+description: "TypeScript has become the standard for web development. Here's why it deserves that position."
+tags: ["typescript", "javascript", "opinion"]
+published: true
+---
+
+TypeScript is not just JavaScript with types — it's a fundamentally better development experience.
+
+## Catch bugs before they ship
+
+```typescript
+// This compiles and crashes at runtime
+function add(a, b) {
+  return a + b
+}
+add(1, "2") // "12" — probably not what you wanted
+
+// TypeScript catches this at compile time
+function add(a: number, b: number): number {
+  return a + b
+}
+add(1, "2") // Error: Argument of type 'string' is not assignable to parameter of type 'number'.
+```
+
+## Better editor experience
+
+TypeScript powers IntelliSense in VS Code and other editors. You get:
+
+1. **Autocomplete** — know what properties and methods are available
+2. **Go to definition** — jump to any function or type
+3. **Rename symbols** — refactor confidently across files
+4. **Inline documentation** — see JSDoc comments as you type
+
+## Gradual adoption
+
+You don't need to convert your entire codebase. TypeScript supports:
+
+- Strict mode for new code
+- Loose `any` types for migration
+- Type inference so you don't annotate everything
+- `.js` and `.ts` files coexisting
+
+> The best time to adopt TypeScript was three years ago. The second best time is now.
+
+TypeScript has won. Most major libraries ship with type definitions, and the ecosystem has fully embraced it.
