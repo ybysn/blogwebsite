@@ -4,11 +4,24 @@
         <title>凌's Blog</title>
         <link>https://ny.ybysn.org</link>
         <description>A personal blog about technology and more.</description>
-        <lastBuildDate>Sat, 30 May 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 31 May 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2026</copyright>
+        <item>
+            <title><![CDATA[3X-UI 面板搭建指南：所有协议详解（从入门到进阶）]]></title>
+            <link>https://ny.ybysn.org/posts/3x-ui-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/3x-ui-setup-guide</guid>
+            <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[手把手教你搭建 3X-UI 面板，逐一详解 VLESS、VMess、Shadowsocks、Reality、Trojan 等全部协议的配置方法，包含 Cloudflare 和 AWS CloudFront CDN 进阶方案。]]></description>
+            <category>教程</category>
+            <category>网络</category>
+            <category>VPS</category>
+            <category>代理</category>
+            <category>Xray</category>
+            <category>CDN</category>
+        </item>
         <item>
             <title><![CDATA[Hysteria2 设置指南：最快的绕过审查协议]]></title>
             <link>https://ny.ybysn.org/posts/hysteria2-setup-guide</link>

@@ -1,0 +1,251 @@
+---
+title: "3X-UI 面板搭建指南：所有协议详解（从入门到进阶）"
+date: "2026-05-31"
+description: "手把手教你搭建 3X-UI 面板，逐一详解 VLESS、VMess、Shadowsocks、Reality、Trojan 等全部协议的配置方法，包含 Cloudflare 和 AWS CloudFront CDN 进阶方案。"
+tags: ["教程", "网络", "VPS", "代理", "Xray", "CDN"]
+published: true
+lang: zh-CN
+---
+
+原文来源：[3X-UI Panel Setup Guide: Every Protocol Explained Step by Step](https://www.samnet.dev/learn/networking/xui-setup/)
+
+---
+
+#### 准备工作
+
+- 一台运行 Ubuntu 或 Debian 的全新 VPS
+- 一个已注册的域名（CDN 章节需要）
+- 基本的 SSH 和 Linux 终端操作知识
+
+本指南将逐一讲解 [3X-UI](https://github.com/mhsanaei/3x-ui) 面板支持的全部协议——从基础的 VLESS 到进阶的 CDN 路由配置。每个章节独立成篇：按需选择你需要的协议，跳过不需要的部分。
+
+## 目录
+
+1. 准备工作与安装
+2. VLESS + WebSocket（端口 443）
+3. VMess + TCP 高端口
+4. Shadowsocks（端口 8388）
+5. VLESS + Reality + XTLS-Vision（端口 8443）
+6. Trojan + TCP 高端口
+7. VLESS + WebSocket + CDN（Cloudflare & AWS）
+8. 订阅服务
+9. 日志轮转
+10. 快速参考与测试顺序
+
+------
+
+## 准备工作与安装
+
+在配置任何协议之前，先将 3X-UI 面板安装到你的 VPS 上。
+
+### 安装 3X-UI
+
+```bash
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+```
+
+安装完成后：
+
+- **面板地址:** `http://你的服务器IP:2053`
+- **默认登录:** `admin` / `admin`
+
+> 首次登录后请立即修改密码。
+
+------
+
+## 1. VLESS + WebSocket（端口 443）
+
+这是最基础的配置。WebSocket 传输方式使其后续可以兼容 CDN 路由。
+
+### 面板设置
+
+进入 **入站列表 → 添加入站**，进行如下配置：
+
+| 字段     | 值          |
+| :------- | :---------- |
+| 备注     | `VLESS-WS`  |
+| 协议     | `vless`     |
+| 端口     | `443`       |
+
+**客户端：** Email=`user1`，UUID=自动生成，Flow=留空。**传输：** 网络=`ws`，路径=`/`。**安全性：** 无，嗅探=开启。
+
+**为什么选择：** 配置简单直接，WebSocket 为后续 CDN 接入提供兼容性。
+
+------
+
+## 2. VMess + TCP 高端口
+
+### 面板设置
+
+| 字段     | 值            |
+| :------- | :------------ |
+| 备注     | `VMess-TCP`   |
+| 协议     | `vmess`       |
+| 端口     | `10410-10417` |
+
+**客户端：** Email=`user1-vmess`，UUID=同上，AlterID=`0`。**传输：** 网络=`tcp`，Header=`none`。**安全性：** 无，嗅探=开启。
+
+**为什么选择：** 高端口受到的 DPI（深度包检测）审查更少。VMess 内置加密机制。
+
+------
+
+## 3. Shadowsocks（端口 8388）
+
+### 面板设置
+
+| 字段     | 值                         |
+| :------- | :------------------------- |
+| 备注     | `Shadowsocks`              |
+| 协议     | `shadowsocks`              |
+| 端口     | `8388`                     |
+| 加密方式 | `2022-blake3-aes-128-gcm`  |
+
+### Shadowsocks 2022 重要说明
+
+`2022-blake3` 加密方式需要一个 Base64 编码的 16 字节密钥：
+
+```bash
+openssl rand -base64 16
+```
+
+将生成的密钥填入密码字段即可。
+
+------
+
+## 4. VLESS + Reality + XTLS-Vision（端口 8443）
+
+Reality 是目前最先进的隐匿协议。
+
+### 第一步：生成 x25519 密钥对
+
+```bash
+/usr/local/x-ui/bin/xray-linux-amd64 x25519
+```
+
+记下输出的 `Private key` 和 `Public key`。
+
+### 第二步：生成 Short ID
+
+```bash
+openssl rand -hex 8
+```
+
+### 第三步：在面板中添加入站
+
+| 字段       | 值                          |
+| :--------- | :-------------------------- |
+| 协议       | `vless`                     |
+| 端口       | `8443`                      |
+| Flow       | `xtls-rprx-vision`          |
+| 安全性     | `reality`                   |
+| 目标地址   | `yahoo.com:443`             |
+| SNI        | `yahoo.com, www.yahoo.com`  |
+| 指纹       | `chrome`                    |
+
+填入第一步和第二步生成的公钥和 Short ID。
+
+**为什么选择：** Reality 使你的 TLS 流量与访问 yahoo.com 的真实连接无法区分，伪装效果极佳。
+
+连接链接格式：
+
+```
+vless://UUID@IP:8443?type=tcp&security=reality&pbk=公钥&fp=chrome&sni=yahoo.com&sid=ShortID&spx=/&flow=xtls-rprx-vision&encryption=none#名称
+```
+
+------
+
+## 5. Trojan + TCP 高端口（无 TLS）
+
+### 面板设置
+
+| 字段     | 值            |
+| :------- | :------------ |
+| 协议     | `trojan`      |
+| 端口     | `10420-10427` |
+| 安全性   | `无`          |
+
+**为什么选择：** 当 VLESS/VMess 被封锁时，Trojan 可作为备用方案。
+
+------
+
+## 6. VLESS + WebSocket + CDN
+
+最具抗封锁能力的配置。流量通过 CDN 中转——审查方只能看到 CDN 的 IP，你的服务器真实 IP 始终隐藏。
+
+### 6-A：Cloudflare 配置
+
+1. 将域名添加到 Cloudflare
+2. 创建 DNS A 记录，开启橙色云朵（代理模式）
+3. 设置 SSL 模式（HTTP 端口选 Flexible，HTTPS 端口选 Full）
+4. 关闭安全级别（Security Level 设为 Essentially Off）
+5. 确保 WebSocket 功能已启用（Network 设置中）
+
+### 6-B：AWS CloudFront 配置
+
+1. 创建 CloudFront 分配（Distribution）
+2. 源站（Origin）填写你的服务器 IP
+3. 仅使用 HTTP 协议，端口 443
+4. 关闭缓存（Cache Policy 选 CachingDisabled）
+5. 请求策略（Request Policy）选 AllViewer
+
+### 6-C：CDN 对应的 X-UI 入站设置
+
+**HTTP 端口（2082、8880）：** VLESS-WS，安全性=无，Host 头=你的 CDN 域名。
+
+**HTTPS 端口（2083、2087）：** VLESS-WS，安全性=TLS，需填入证书和密钥文件路径。
+
+### 6-D：CDN 常见问题排查
+
+- **525 SSL 错误** → SSL 模式不匹配，检查 Cloudflare 的 SSL 设置
+- **403 Forbidden** → WAF 防火墙拦截，检查安全规则
+- **连接超时** → 依次检查：端口是否开放、WebSocket 是否启用、橙色云朵是否开启、Host 头是否正确
+
+------
+
+## 7. 订阅服务
+
+安装 Nginx 作为订阅服务器：
+
+```bash
+apt install nginx -y
+```
+
+创建 `/etc/nginx/sites-available/subscription` 配置文件，在 8080 端口上分别提供原始格式和 Base64 编码格式的订阅链接。
+
+------
+
+## 8. 日志轮转
+
+防止日志文件占满磁盘空间：
+
+```bash
+sed -i 's/#SystemMaxUse=.*/SystemMaxUse=100M/' /etc/systemd/journald.conf
+systemctl restart systemd-journald
+journalctl --vacuum-size=100M
+```
+
+------
+
+## 9. 快速参考 — 全部端口一览
+
+| 端口        | 协议             | 用途              |
+| :---------- | :--------------- | :---------------- |
+| 443         | VLESS-WS         | 基础 WebSocket    |
+| 8388        | Shadowsocks      | SS 2022-blake3    |
+| 8443        | VLESS-Reality    | 隐匿 TLS          |
+| 10410-10417 | VMess-TCP        | 高端口 VMess      |
+| 10420-10427 | Trojan-TCP       | 高端口 Trojan     |
+| 2082、8880  | VLESS-WS-CDN     | Cloudflare HTTP   |
+| 2083、2087  | VLESS-WS-CDN-TLS | Cloudflare HTTPS  |
+| 2053        | 3X-UI 面板       | 管理后台          |
+| 8080        | Nginx            | 订阅服务          |
+
+------
+
+## 10. 推荐测试顺序
+
+1. **CDN 配置**（2082/8880 或 2083/2087）—— 最稳定可靠
+2. **Reality**（8443）—— 伪装成真实 TLS 流量，隐匿性最强
+3. **Trojan/VMess 高端口** —— DPI 审查较少
+4. **Shadowsocks**（8388）—— 良好的备用方案
+5. **VLESS-WS 443 端口** —— 可能被针对性过滤，放在最后测试
