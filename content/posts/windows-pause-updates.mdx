@@ -1,0 +1,16 @@
+---
+title: "Windows 暂停更新"
+date: "2026-05-30"
+description: "通过修改注册表将 Windows 更新暂停天数延长至 3650 天，告别频繁更新打扰。"
+tags: ["windows", "registry", "tutorial"]
+published: true
+lang: zh-CN
+---
+
+1. `Win + R` 打开运行窗口
+2. 输入 `regedit`，打开注册表
+3. 找到以下路径：`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings`
+4. 接着在右侧空白处，点击【右键】，选择【新建 - DWORD (32 位) 值 (D)】
+5. 将刚才新建的 DWORD (32 位) 值 (D) 命名为 `FlightSettingsMaxPauseDays`
+6. 再双击打开 `FlightSettingsMaxPauseDays`，编辑 DWORD (32 位) 值窗口，基数选择【十进制】，数值数据输入你想暂停更新的天数，比如我设置的 `3650` 天，再点击【确定】
+7. 重启电脑，然后打开设置 → Windows 更新 → 暂停更新下拉框可选拓展到 3650 天
