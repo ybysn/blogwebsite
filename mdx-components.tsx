@@ -116,7 +116,7 @@ const components: MDXComponents = {
       </table>
     </div>
   ),
-  th: ({ children, ...props }) => (
+  th: ({ children, style: propStyle, ...props }) => (
     <th
       style={{
         padding: '10px 16px',
@@ -125,25 +125,27 @@ const components: MDXComponents = {
         color: 'var(--text)',
         fontWeight: 700,
         fontSize: '0.9rem',
+        ...(propStyle as React.CSSProperties),
       }}
       {...props}
     >
       {children}
     </th>
   ),
-  td: ({ children, ...props }) => (
+  td: ({ children, style: propStyle, ...props }) => (
     <td
       style={{
         padding: '8px 16px',
         borderTop: '1px solid var(--border)',
         fontSize: '0.9rem',
+        ...(propStyle as React.CSSProperties),
       }}
       {...props}
     >
       {children}
     </td>
   ),
-  pre: ({ children, ...props }) => (
+  pre: ({ children, style: propStyle, ...props }) => (
     <pre
       style={{
         background: 'var(--pre-bg)',
@@ -153,19 +155,21 @@ const components: MDXComponents = {
         overflowX: 'auto',
         margin: '1.5rem 0',
         color: 'var(--text-2)',
+        ...(propStyle as React.CSSProperties),
       }}
       {...props}
     >
       {children}
     </pre>
   ),
-  code: ({ children, ...props }) => {
+  code: ({ children, style: propStyle, ...props }) => {
     return (
       <code
         style={{
           fontSize: '0.875rem',
           fontFamily: 'var(--font-mono)',
           color: 'var(--text-2)',
+          ...(propStyle as React.CSSProperties),
         }}
         {...props}
       >
