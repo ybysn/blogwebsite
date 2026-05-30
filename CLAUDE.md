@@ -2,103 +2,99 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-> **Note:** This directory is currently empty. This CLAUDE.md encodes the engineering process. Update it with project-specific build/test commands and architecture once a codebase is cloned here.
+## Commands
 
-## Engineering Process
+```bash
+npm run dev          # Start dev server (http://localhost:3000)
+npm run build        # Production build → out/ (runs prebuild RSS script first)
+npm run start        # Serve production build
+npm run lint         # ESLint
+```
 
-### Before Every Task
+## Architecture
 
-1. Read project docs (CLAUDE.md, AGENTS.md, README.md, docs/) and relevant source files first. Do not modify code immediately.
-2. Summarize your understanding of the requirement, existing implementation, and scope of impact.
-3. State assumptions explicitly. If you can't make a reasonable assumption, ask the user.
-4. For multi-file, complex, unfamiliar, or high-risk tasks: produce a phased plan with verification steps. For single-line low-risk fixes: state scope and verification, then execute directly.
+**Static export** — `next.config.ts` sets `output: 'export'` with `images.unoptimized: true`. The entire site builds to static HTML in `out/`. No API routes, no database, no server-side data fetching. All content is read from the filesystem at build time.
 
-### Context Management
+**Page extensions** — Next.js treats `.md` and `.mdx` files as pages (`pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx']`).
 
-- Do not mix unrelated tasks in the same long-running session. When context is polluted by irrelevant exploration, failed patches, or long logs, first summarize confirmed facts, modified files, test commands, and remaining issues, then start a clean session.
-- If the same issue gets corrected more than 2 times in a row, stop patching in polluted context. Distill new facts and a more precise initial prompt, then restart diagnosis or implementation fresh.
-- Long tasks must use persistent files to carry context (SPEC.md, plan.md, research.md, .ai/task-handoff.md). Record at minimum: goal, scope, key files, important decisions, attempted approaches, test commands, unresolved risks, and next steps.
-- Before session compaction, restore, or handoff: preserve the modified files list, verification commands, unfinished TODOs, and key decisions.
+## Content: MDX Blog Posts
 
-### Implementation Rules
+Posts live in `content/posts/` as `.mdx` files with YAML frontmatter:
 
-- Reuse existing architecture, directory structure, tech stack, and code style.
-- No refactoring unrelated to the current task.
-- No unapproved changes to architecture, database schema, auth, permissions, security, payments, or deployment configuration.
-- Minimize scope of changes. Follow existing patterns.
+```yaml
+---
+title: "Post Title"           # required
+date: "2026-05-30"            # required, ISO format
+description: "Description"    # required
+tags: ["tag1", "tag2"]        # required, string array
+published: true               # required — false hides the post
+lang: zh-CN                   # optional, 'en' (default) or 'zh-CN'
+ogImage: "https://..."        # optional, Open Graph image
+---
+```
 
-### Verification Gates
+**Adding a new post** — create a `.mdx` file in `content/posts/`, set `published: true`, and rebuild. `lib/posts.ts` scans the directory at build time; posts with `published: false` are excluded from listings but still reachable by direct slug.
 
-- Define pass/fail criteria before implementation (tests, build, lint, type check, repro script, fixture diff, screenshots, or manual run steps).
-- UI/interaction changes require visual verification. If you can't screenshot or drive a browser, explicitly state uncovered visual risks in the final response.
-- Deliver verification evidence, not just "verified." Include commands, exit codes, key output, screenshot paths, or before/after behavior differences.
-- After complex, high-risk, or long-running changes: perform a second review in a fresh context. Check the diff against the plan, requirements, boundary conditions, test coverage, security, and regression risks.
-- In review: only correctness, requirements, scope, security, and maintainability issues are blocking. Pure style preferences are optional.
+**MDX rendering** happens in two paths:
+1. `@next/mdx` webpack loader (configured in `next.config.ts`) — for imported MDX
+2. Runtime evaluation (`components/posts/mdx-remote.tsx`) — dynamically compiles MDX source with `@mdx-js/mdx` evaluate, used in `mdx-content.tsx`
 
-### Bug Fix Flow (mandatory)
+Both paths share `mdx-components.tsx` for rendering, and both use the same remark/rehype plugins: `remark-gfm`, `rehype-slug`, `rehype-pretty-code` (Shiki with `github-light`/`github-dark-dimmed` themes).
 
-1. Reproduce the problem. Do not guess and patch.
-2. Write down at least 2 possible root causes.
-3. Prove the hypothesis with logs, tests, breakpoints, code paths, or data.
-4. Fix only after root cause is confirmed.
-5. Add or update regression tests.
-6. Document what was learned.
+### Reading time
 
-Never do random trial-and-error patching. Before each change, state: current hypothesis, evidence supporting it, expected result of this change.
+`lib/utils.ts` has `estimateReadingTime(text)` which handles mixed CJK/Latin text (CJK: 400 chars/min, Latin: 200 words/min). The `reading-time` package in `package.json` is unused — the custom implementation is the real one.
 
-### When Multiple Fixes Fail (diagnostic mode)
+### RSS
 
-Stop writing code and output:
-- Attempted approaches and why each failed
-- Confirmed facts
-- Unknown information
-- Top 3 most likely root causes
-- Next minimal verification experiment
-- Additional logs, tests, or breakpoints needed
+`scripts/generate-rss.mjs` runs as `prebuild` and writes `public/feed.xml`. Uses `gray-matter` to parse frontmatter and the `feed` package to generate RSS 2.0.
 
-### High-Risk Changes (plan required before any code)
+## Component Pattern: Server → Client Content Split
 
-- Architecture changes
-- Database schema changes
-- Auth, permission, security logic
-- Payment, order, billing, financial logic
-- Deployment, CI/CD, production config
-- Data deletion or migration
-- New dependencies or core technology replacement
+Every page follows the same pattern: a **server component** (`page.tsx`) reads data at build time and passes it as props to a **client component** (`*-content.tsx`) that handles interactivity (GSAP animations, search, theme/language context).
 
-Plan must include: why it's needed, affected modules, compatibility/rollback approach, verification method, and risks.
+```
+app/
+  page.tsx              # Server: getAllPosts() → HomeContent
+  home-content.tsx      # Client: GSAP hero + post list animations
+  about/page.tsx        # Server
+  about-content.tsx     # Client
+  search/page.tsx       # Server: getSearchDocuments() → SearchContent
+  search-content.tsx    # Client: Fuse.js search UI
+  tags/page.tsx         # Server: getAllTags() → TagsContent
+  tags-content.tsx      # Client
+  tags/[tag]/page.tsx   # Server: getPostsByTag(tag) + generateStaticParams
+  tag-content.tsx       # Client
+  posts/[slug]/page.tsx # Server: getPostBySlug(slug) + generateStaticParams + generateMetadata
+```
 
-### Lessons Learned
+The post detail page (`posts/[slug]/page.tsx`) is the exception — it's a server component that handles most rendering inline (metadata, MDX content, post nav, Giscus) since the MDX rendering itself must be server-side.
 
-After solving a problem, capture the learning in the right place:
-1. Automated test (if it can be tested automatically)
-2. Check script (if it can be scripted)
-3. Runbook or debugging playbook (if it can become a repeatable process)
-4. ADR (architecture decision record — if it affects architecture choices)
-5. Lessons learned doc (otherwise)
+## Theming & i18n
 
-### Final Delivery Format
+Both are client-side React Context providers in `components/layout/`:
 
-Every completed task response must include:
-- **Completed:** What was done
-- **Modified files:** List of changed files
-- **Verification results:** Commands, outputs, evidence
-- **Lessons captured:** Tests, docs, or scripts created/updated
-- **Remaining risks:** Known gaps or unverified areas
-- **Next steps:** Recommended follow-up
+- **ThemeProvider** — toggles `.dark` class on `<html>`, persists to localStorage. An inline `<script>` in `app/layout.tsx` reads localStorage before React hydrates to prevent flash.
+- **LanguageProvider** — manages `'en'`/`'zh-CN'` locale, exposes `t(key, params?)` for translation lookups. All translation strings are in `lib/i18n.ts`.
 
-## Recommended Docs Directory
+CSS variables define the actual theme values (in `app/globals.css`): `:root` for light, `.dark` for dark. Tailwind CSS 4 uses `@theme inline` to map these CSS variables into Tailwind design tokens.
 
-When a project is set up, create these as needed:
+## Styling
 
-| File | Purpose |
-|------|---------|
-| `docs/architecture.md` | System architecture |
-| `docs/engineering-process.md` | Team engineering workflow |
-| `docs/debugging-playbook.md` | Common debugging procedures |
-| `docs/lessons-learned.md` | Lessons learned log |
-| `docs/common-failures.md` | Known failure modes |
-| `docs/testing-strategy.md` | Testing approach |
-| `docs/adr/` | Architecture decision records |
-| `.ai/project-map.md` | Entry points, core modules, API layer, DB, auth, tests, deploy files, forbidden actions, debug commands |
-| `.ai/review-checklist.md` | Code review checklist |
+Tailwind CSS 4 via `@tailwindcss/postcss`, with `@tailwindcss/typography` as a plugin. Most styles live in `app/globals.css` using Tailwind utilities and CSS variables. Components occasionally use inline `style={}` props for dynamic values referencing CSS variables. The custom dark mode variant is `&:where(.dark, .dark *)` (not `prefers-color-scheme`).
+
+## GSAP Animations
+
+Three components use GSAP + ScrollTrigger: `hero-section.tsx` (fade-in sequence), `section-header.tsx` (scroll-triggered slide/fade), and `post-list-section.tsx` (scroll-triggered staggered cards). All use `gsap.matchMedia()` with `prefers-reduced-motion: no-preference` and proper cleanup via `useGSAP` from `@gsap/react`.
+
+## Search
+
+Client-side Fuse.js v7 in `components/posts/search-input.tsx`. Search documents are pre-built at build time by `lib/search.ts` (title, description, tags only — no full content). Weighted search: title ×2, description ×1.5, tags ×1. Threshold: 0.4.
+
+## Giscus Comments
+
+Configured in `lib/constants.ts` (`GISCUS_CONFIG`). Rendered by `components/posts/giscus.tsx` which subscribes to theme and language contexts. Appears at the bottom of every post page.
+
+## Dynamic Routes with Static Generation
+
+Both `posts/[slug]/page.tsx` and `tags/[tag]/page.tsx` export `generateStaticParams()` to pre-build all possible paths. Slugs are read from the filesystem; tag slugs use `encodeURIComponent`.

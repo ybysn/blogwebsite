@@ -10,6 +10,19 @@
         <language>en</language>
         <copyright>All rights reserved 2026</copyright>
         <item>
+            <title><![CDATA[Hysteria2 设置指南：最快的绕过审查协议]]></title>
+            <link>https://ny.ybysn.org/posts/hysteria2-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/hysteria2-setup-guide</guid>
+            <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Hysteria2 是基于 QUIC 的抗审查代理协议，速度比 VLESS+Reality 更快。本文涵盖服务器搭建、客户端配置、性能调优与安全加固。]]></description>
+            <category>hysteria2</category>
+            <category>proxy</category>
+            <category>censorship</category>
+            <category>quic</category>
+            <category>tutorial</category>
+            <category>server</category>
+        </item>
+        <item>
             <title><![CDATA[如何激活 Windows / Office / 扩展安全更新 (ESU)]]></title>
             <link>https://ny.ybysn.org/posts/mas-activation-guide</link>
             <guid isPermaLink="false">https://ny.ybysn.org/posts/mas-activation-guide</guid>
@@ -35,11 +48,11 @@
             <category>ubuntu</category>
         </item>
         <item>
-            <title><![CDATA[How to Set Up SSH Keys (Passwordless Login)]]></title>
+            <title><![CDATA[SSH 密钥设置指南（免密登录）]]></title>
             <link>https://ny.ybysn.org/posts/ssh-keys-setup-guide</link>
             <guid isPermaLink="false">https://ny.ybysn.org/posts/ssh-keys-setup-guide</guid>
             <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[Learn how to set up SSH key authentication for passwordless server login, including key generation, copying keys, multiple key management, and disabling password auth.]]></description>
+            <description><![CDATA[学习如何配置 SSH 密钥认证实现免密登录服务器，包括密钥生成、复制密钥、多密钥管理以及禁用密码认证。]]></description>
             <category>ssh</category>
             <category>linux</category>
             <category>security</category>

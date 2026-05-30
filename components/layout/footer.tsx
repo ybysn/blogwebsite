@@ -4,34 +4,56 @@ import { SOCIAL_LINKS, SITE_NAME, AUTHOR } from '@/lib/constants'
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="footer-inner">
-        <span className="footer-item">
-          &copy; {new Date().getFullYear()} {AUTHOR} &mdash; {SITE_NAME}
-        </span>
-        <span className="footer-sep" aria-hidden="true">&middot;</span>
-        {SOCIAL_LINKS.github && (
-          <a
-            href={SOCIAL_LINKS.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-item"
-          >
-            GitHub
-          </a>
-        )}
-        {SOCIAL_LINKS.twitter && (
-          <a
-            href={SOCIAL_LINKS.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-item"
-          >
-            Twitter
-          </a>
-        )}
-        <Link href="/feed.xml" className="footer-item">
-          RSS
-        </Link>
+      <div className="footer-grid">
+        {/* Column 1: About */}
+        <div>
+          <h4 className="footer-col-title">{SITE_NAME}</h4>
+          <p className="footer-col-desc">
+            A personal blog about programming, self-hosting, and the tools that shape how we build.
+          </p>
+        </div>
+
+        {/* Column 2: Navigation */}
+        <div>
+          <h4 className="footer-col-title">Links</h4>
+          <Link href="/" className="footer-col-link">Home</Link>
+          <Link href="/tags" className="footer-col-link">Tags</Link>
+          <Link href="/about" className="footer-col-link">About</Link>
+          <Link href="/search" className="footer-col-link">Search</Link>
+        </div>
+
+        {/* Column 3: Social */}
+        <div>
+          <h4 className="footer-col-title">Social</h4>
+          {SOCIAL_LINKS.github && (
+            <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="footer-col-link">
+              GitHub
+            </a>
+          )}
+          {SOCIAL_LINKS.twitter && (
+            <a href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" className="footer-col-link">
+              Twitter / X
+            </a>
+          )}
+        </div>
+
+        {/* Column 4: Subscribe */}
+        <div>
+          <h4 className="footer-col-title">Subscribe</h4>
+          <Link href="/feed.xml" className="footer-col-link">RSS Feed</Link>
+        </div>
+
+        {/* Column 5: Stack */}
+        <div>
+          <h4 className="footer-col-title">Stack</h4>
+          <span className="footer-col-link">Next.js 16</span>
+          <span className="footer-col-link">Tailwind CSS 4</span>
+          <span className="footer-col-link">MDX</span>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        &copy; {new Date().getFullYear()} {AUTHOR}. All rights reserved.
       </div>
     </footer>
   )

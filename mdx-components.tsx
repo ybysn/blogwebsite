@@ -24,7 +24,7 @@ const components: MDXComponents = {
     </h4>
   ),
   p: ({ children, ...props }) => (
-    <p style={{ lineHeight: 1.75, margin: '1rem 0' }} {...props}>
+    <p style={{ lineHeight: 1.65, margin: '1rem 0' }} {...props}>
       {children}
     </p>
   ),
@@ -36,7 +36,7 @@ const components: MDXComponents = {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: 'var(--color-accent-a)', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+          style={{ color: 'var(--color-accent-a)', textDecoration: 'underline', textUnderlineOffset: '2px', fontWeight: 500 }}
           {...props}
         >
           {children}
@@ -46,7 +46,7 @@ const components: MDXComponents = {
     return (
       <Link
         href={href ?? '#'}
-        style={{ color: 'var(--color-accent-a)', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+        style={{ color: 'var(--color-accent-a)', textDecoration: 'underline', textUnderlineOffset: '2px', fontWeight: 500 }}
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {children}
@@ -78,7 +78,7 @@ const components: MDXComponents = {
   blockquote: ({ children, ...props }) => (
     <blockquote
       style={{
-        borderLeft: '3px solid var(--accent-a)',
+        borderLeft: '4px solid var(--accent-a)',
         paddingLeft: '1rem',
         fontStyle: 'italic',
         color: 'var(--color-text-3)',
@@ -168,7 +168,8 @@ const components: MDXComponents = {
         style={{
           fontSize: '0.875rem',
           fontFamily: 'var(--font-mono)',
-          color: 'var(--text-2)',
+          color: 'var(--color-accent-a)',
+          fontWeight: 500,
           ...(propStyle as React.CSSProperties),
         }}
         {...props}

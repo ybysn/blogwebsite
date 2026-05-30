@@ -33,19 +33,23 @@ export function HeroSection() {
   )
 
   return (
-    <section ref={containerRef} className="hero-section">
-      <p className="hero-greeting">{t('home.hero.greeting')}</p>
-      <h1 className="hero-name">{AUTHOR}</h1>
-      <p className="hero-tagline">{t('home.hero.tagline')}</p>
-      <p className="hero-description">{t('home.hero.description')}</p>
-      <div className="hero-ctas">
-        <Link href="/about" className="cta-primary">
-          {t('home.hero.cta.about')}
-        </Link>
-        <Link href="/search" className="cta-secondary">
-          {t('home.hero.cta.search')}
-        </Link>
-      </div>
-    </section>
+    <div ref={containerRef} className="hero-section-wrap">
+      <div className="hero-gradient-bg" aria-hidden="true" />
+      <section className="hero-section">
+        <p className="hero-greeting">{t('home.hero.greeting')}</p>
+        <h1 className="hero-name hero-gradient-text">{AUTHOR}</h1>
+        <p className="hero-tagline">{t('home.hero.tagline')}</p>
+        <p className="hero-description">{t('home.hero.description')}</p>
+        <div className="hero-ctas">
+          <Link href="/about" className="cta-primary">
+            {t('home.hero.cta.about')}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </Link>
+          <Link href="/search" className="cta-secondary">
+            {t('home.hero.cta.search')}
+          </Link>
+        </div>
+      </section>
+    </div>
   )
 }

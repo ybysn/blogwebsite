@@ -22,7 +22,7 @@ export function TagContent({
     <div>
       <div style={{ marginBottom: '2.5rem' }}>
         <h1 style={{ marginBottom: '0.4rem' }}>
-          <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 400 }}>#</span>
+          <span style={{ color: 'var(--text-3)', fontWeight: 400, opacity: 0.5 }}>#</span>
           {tag}
         </h1>
         <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem' }}>
@@ -36,7 +36,7 @@ export function TagContent({
         style={{
           marginTop: '3rem',
           paddingTop: '1.5rem',
-          borderTop: '1px solid rgba(255,255,255,0.08)',
+          borderTop: '1px solid var(--border)',
         }}
       >
         <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', marginBottom: '0.75rem' }}>

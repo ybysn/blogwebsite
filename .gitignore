@@ -40,7 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Claude Code local settings
+# Claude Code local settings (contains tokens)
 .claude/
+.mcp.json
+.agents/
+skills-lock.json
 如何创建密钥（无密码登录）.pdf
 gsap-skills/
