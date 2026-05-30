@@ -9,7 +9,7 @@ export function Footer() {
         <div>
           <h4 className="footer-col-title">{SITE_NAME}</h4>
           <p className="footer-col-desc">
-            A personal blog about programming, self-hosting, and the tools that shape how we build.
+            A statically generated blog about technology, built with Next.js and MDX. No ads, no tracking — just writing.
           </p>
         </div>
 
@@ -17,6 +17,7 @@ export function Footer() {
         <div>
           <h4 className="footer-col-title">Links</h4>
           <Link href="/" className="footer-col-link">Home</Link>
+          <Link href="/posts" className="footer-col-link">Posts</Link>
           <Link href="/about" className="footer-col-link">About</Link>
           <Link href="/search" className="footer-col-link">Search</Link>
         </div>
