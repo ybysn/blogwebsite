@@ -78,7 +78,7 @@ const components: MDXComponents = {
   blockquote: ({ children, ...props }) => (
     <blockquote
       style={{
-        borderLeft: '3px solid rgba(138,176,255,0.4)',
+        borderLeft: '3px solid var(--accent-a)',
         paddingLeft: '1rem',
         fontStyle: 'italic',
         color: 'var(--color-text-3)',
@@ -94,7 +94,7 @@ const components: MDXComponents = {
       style={{
         margin: '2rem 0',
         border: 'none',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
+        borderTop: '1px solid var(--border)',
       }}
       {...props}
     />
@@ -108,7 +108,7 @@ const components: MDXComponents = {
           borderSpacing: 0,
           borderRadius: '10px',
           overflow: 'hidden',
-          border: '1px solid rgba(255,255,255,0.08)',
+          border: '1px solid var(--border)',
         }}
         {...props}
       >
@@ -121,8 +121,8 @@ const components: MDXComponents = {
       style={{
         padding: '10px 16px',
         textAlign: 'left',
-        background: 'rgba(255,255,255,0.06)',
-        color: '#fff',
+        background: 'var(--surface)',
+        color: 'var(--text)',
         fontWeight: 700,
         fontSize: '0.9rem',
       }}
@@ -135,7 +135,7 @@ const components: MDXComponents = {
     <td
       style={{
         padding: '8px 16px',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
+        borderTop: '1px solid var(--border)',
         fontSize: '0.9rem',
       }}
       {...props}
@@ -146,12 +146,13 @@ const components: MDXComponents = {
   pre: ({ children, ...props }) => (
     <pre
       style={{
-        background: 'rgba(0,0,0,0.3)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        background: 'var(--pre-bg)',
+        border: '1px solid var(--border)',
         borderRadius: '12px',
         padding: '1rem 1.25rem',
         overflowX: 'auto',
         margin: '1.5rem 0',
+        color: 'var(--text-2)',
       }}
       {...props}
     >
@@ -162,12 +163,9 @@ const components: MDXComponents = {
     return (
       <code
         style={{
-          padding: '2px 7px',
-          borderRadius: '6px',
-          background: 'rgba(255,255,255,0.08)',
-          border: '1px solid rgba(255,255,255,0.1)',
           fontSize: '0.875rem',
           fontFamily: 'var(--font-mono)',
+          color: 'var(--text-2)',
         }}
         {...props}
       >
