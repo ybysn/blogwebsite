@@ -1,0 +1,86 @@
+export type Locale = 'en' | 'zh-CN'
+
+export const translations: Record<Locale, Record<string, string>> = {
+  en: {
+    'nav.home': 'Home',
+    'nav.tags': 'Tags',
+    'nav.about': 'About',
+    'nav.search': 'Search',
+    'home.latest': 'Latest Posts',
+    'home.tagline': 'Thoughts on technology, programming, and more.',
+    'footer.rights': 'All rights reserved',
+    'footer.builtWith': 'Built with Next.js and Tailwind CSS',
+    'post.prev': 'Previous',
+    'post.next': 'Next',
+    'post.empty': 'No posts yet. Check back soon!',
+    'post.comments': 'Comments',
+    'search.placeholder': 'Search posts...',
+    'search.prompt': 'Start typing to search across {count} posts.',
+    'search.noResults': 'No results found for "{query}".',
+    'search.results': '{count} result(s) for "{query}"',
+    'tags.title': 'Tags',
+    'tags.empty': 'No tags yet.',
+    'tags.browse': 'Browse all tags:',
+    'tags.postCount': '{count} post(s) tagged with this topic.',
+    'tags.metaDescription': 'Browse all posts tagged with "{tag}".',
+    'about.title': 'About',
+    'about.p1': 'Welcome to my personal blog. I write about technology, programming, and whatever else catches my interest.',
+    'about.p2': 'This site is built with Next.js, TypeScript, Tailwind CSS, and MDX. It features tags, full-text search, RSS, dark mode, and comments via Giscus — all statically generated for maximum performance.',
+    'about.p3': 'Feel free to reach out on social media or subscribe to the RSS feed to stay updated with new posts.',
+    'about.description': 'About {name} and its author.',
+    'search.title': 'Search',
+    'search.description': 'Search all posts by title, description, and tags.',
+    'readingTime.lessThan1': 'Less than 1 min read',
+    'readingTime.min1': '1 min read',
+    'readingTime.minN': '{minutes} min read',
+    'post.notFound': 'Post Not Found',
+    'switchToZh': '中',
+    'switchToEn': 'EN',
+  },
+  'zh-CN': {
+    'nav.home': '首页',
+    'nav.tags': '标签',
+    'nav.about': '关于',
+    'nav.search': '搜索',
+    'home.latest': '最新文章',
+    'home.tagline': '关于技术、编程和更多精彩内容。',
+    'footer.rights': '保留所有权利',
+    'footer.builtWith': '基于 Next.js 和 Tailwind CSS 构建',
+    'post.prev': '上一篇',
+    'post.next': '下一篇',
+    'post.empty': '还没有文章，敬请期待！',
+    'post.comments': '评论',
+    'search.placeholder': '搜索文章...',
+    'search.prompt': '输入关键词搜索 {count} 篇文章。',
+    'search.noResults': '未找到与 "{query}" 相关的结果。',
+    'search.results': '找到 {count} 条关于 "{query}" 的结果',
+    'tags.title': '标签',
+    'tags.empty': '暂无标签。',
+    'tags.browse': '浏览全部标签：',
+    'tags.postCount': '该标签下有 {count} 篇文章。',
+    'tags.metaDescription': '浏览所有标记为 "{tag}" 的文章。',
+    'about.title': '关于',
+    'about.p1': '欢迎来到我的个人博客。我在这里分享关于技术、编程以及一切我感兴趣的内容。',
+    'about.p2': '本站使用 Next.js、TypeScript、Tailwind CSS 和 MDX 构建。支持标签、全文搜索、RSS、深色模式和 Giscus 评论功能 —— 全部静态生成，性能卓越。',
+    'about.p3': '欢迎通过社交媒体联系我，或订阅 RSS feed 获取最新文章更新。',
+    'about.description': '关于 {name} 及其作者。',
+    'search.title': '搜索',
+    'search.description': '按标题、描述和标签搜索所有文章。',
+    'readingTime.lessThan1': '不到 1 分钟',
+    'readingTime.min1': '约 1 分钟',
+    'readingTime.minN': '约 {minutes} 分钟',
+    'post.notFound': '文章未找到',
+    'switchToZh': '中',
+    'switchToEn': 'EN',
+  },
+}
+
+export function t(locale: Locale, key: string, params?: Record<string, string | number>): string {
+  let str = translations[locale]?.[key] ?? translations['en']?.[key] ?? key
+  if (params) {
+    for (const [k, v] of Object.entries(params)) {
+      str = str.replace(`{${k}}`, String(v))
+    }
+  }
+  return str
+}

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { getSearchDocuments } from '@/lib/search'
-import { SearchInput } from '@/components/posts/search-input'
+import { SearchContent } from '@/app/search-content'
 
 export const metadata: Metadata = {
   title: 'Search',
@@ -10,10 +10,5 @@ export const metadata: Metadata = {
 export default function SearchPage() {
   const documents = getSearchDocuments()
 
-  return (
-    <div>
-      <h1 style={{ marginBottom: '2rem' }}>Search</h1>
-      <SearchInput documents={documents} />
-    </div>
-  )
+  return <SearchContent documents={documents} />
 }

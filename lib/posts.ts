@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import readingTime from 'reading-time'
+import { estimateReadingTime } from '@/lib/utils'
 import type { PostFrontmatter, PostMeta, Post, TagWithCount } from '@/types'
 
 const POSTS_DIR = path.join(process.cwd(), 'content', 'posts')
@@ -49,12 +49,12 @@ export function getAllPosts(): PostMeta[] {
 
     if (!frontmatter.published) continue
 
-    const stats = readingTime(content)
+    const stats = estimateReadingTime(content)
 
     posts.push({
       ...frontmatter,
       slug,
-      readingTime: stats.minutes,
+      readingTime: stats,
     })
   }
 
@@ -80,13 +80,13 @@ export function getPostBySlug(slug: string): Post | null {
     return null
   }
 
-  const stats = readingTime(content)
+  const stats = estimateReadingTime(content)
 
   return {
     meta: {
       ...data,
       slug,
-      readingTime: stats.minutes,
+      readingTime: stats,
     },
     content,
   }

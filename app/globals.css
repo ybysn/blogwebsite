@@ -541,6 +541,29 @@ a:hover {
   color: var(--text);
 }
 
+/* ========== Language toggle ========== */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-3);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.lang-toggle:hover {
+  border-color: var(--accent-a);
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
 /* ========== Adjacent post navigation ========== */
 .post-nav {
   display: grid;

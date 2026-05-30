@@ -5,10 +5,12 @@ import Fuse from 'fuse.js'
 import Link from 'next/link'
 import type { SearchDocument } from '@/types'
 import { formatDate } from '@/lib/utils'
+import { useLocale } from '@/components/layout/language-provider'
 import { TagBadge } from '@/components/ui/tag-badge'
 
 export function SearchInput({ documents }: { documents: SearchDocument[] }) {
   const [query, setQuery] = useState('')
+  const { locale, t } = useLocale()
 
   const fuse = useMemo(
     () =>
@@ -45,7 +47,7 @@ export function SearchInput({ documents }: { documents: SearchDocument[] }) {
         </svg>
         <input
           type="text"
-          placeholder="Search posts..."
+          placeholder={t('search.placeholder')}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           autoFocus
@@ -55,16 +57,16 @@ export function SearchInput({ documents }: { documents: SearchDocument[] }) {
 
       {query.trim() === '' ? (
         <p className="text-center py-8" style={{ color: 'var(--muted)' }}>
-          Start typing to search across {documents.length} posts.
+          {t('search.prompt', { count: documents.length })}
         </p>
       ) : results.length === 0 ? (
         <p className="text-center py-8" style={{ color: 'var(--muted)' }}>
-          No results found for &ldquo;{query}&rdquo;.
+          {t('search.noResults', { query })}
         </p>
       ) : (
         <div>
           <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '1.5rem' }}>
-            {results.length} result{results.length !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;
+            {t('search.results', { count: results.length, query })}
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {results.map(({ item }) => (
@@ -78,7 +80,7 @@ export function SearchInput({ documents }: { documents: SearchDocument[] }) {
                     {item.title}
                   </h2>
                   <div className="card-meta">
-                    {formatDate(item.date)}
+                    {formatDate(item.date, locale)}
                   </div>
                   <p className="card-desc">{item.description}</p>
                   <div className="card-tags">

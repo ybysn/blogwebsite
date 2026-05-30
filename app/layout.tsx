@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/theme-provider'
+import { LanguageProvider } from '@/components/layout/language-provider'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
@@ -64,14 +65,32 @@ export default function RootLayout({
             `,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var locale = localStorage.getItem('locale');
+                  if (locale === 'zh-CN' || locale === 'en') {
+                    document.documentElement.lang = locale;
+                  } else {
+                    document.documentElement.lang = 'en';
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          <Header />
-          <main className="flex-1 w-full max-w-[1100px] mx-auto px-6 py-12">
-            {children}
-          </main>
-          <Footer />
+          <LanguageProvider>
+            <Header />
+            <main className="flex-1 w-full max-w-[1100px] mx-auto px-6 py-12">
+              {children}
+            </main>
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

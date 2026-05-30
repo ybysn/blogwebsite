@@ -2,10 +2,12 @@
 
 import Giscus from '@giscus/react'
 import { useTheme } from '@/components/layout/theme-provider'
+import { useLocale } from '@/components/layout/language-provider'
 import { GISCUS_CONFIG } from '@/lib/constants'
 
 export function GiscusComments() {
   const { theme } = useTheme()
+  const { locale, t } = useLocale()
 
   return (
     <section
@@ -16,7 +18,7 @@ export function GiscusComments() {
       }}
     >
       <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>
-        Comments
+        {t('post.comments')}
       </h2>
       <Giscus
         repo={GISCUS_CONFIG.repo}
@@ -28,7 +30,7 @@ export function GiscusComments() {
         emitMetadata="0"
         inputPosition="top"
         theme={theme === 'dark' ? 'dark_dimmed' : 'light'}
-        lang="en"
+        lang={locale}
         loading="lazy"
       />
     </section>

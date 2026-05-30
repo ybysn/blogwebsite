@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getPostBySlug, getAllPostSlugs, getAdjacentPosts } from '@/lib/posts'
-import { formatDate, formatReadingTime } from '@/lib/utils'
 import { TagBadge } from '@/components/ui/tag-badge'
 import { PostNav } from '@/components/posts/post-nav'
+import { PostMetaDisplay } from '@/components/posts/post-meta-display'
 import { GiscusComments } from '@/components/posts/giscus'
 import { SITE_URL } from '@/lib/constants'
 import { MDXContent } from '@/components/posts/mdx-content'
@@ -67,19 +67,7 @@ export default async function PostPage({ params }: PageProps) {
           ))}
         </div>
         <h1 style={{ marginBottom: '0.75rem' }}>{meta.title}</h1>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            fontSize: '0.92rem',
-            color: 'var(--color-muted)',
-          }}
-        >
-          <time dateTime={meta.date}>{formatDate(meta.date)}</time>
-          <span aria-hidden="true" style={{ color: 'rgba(255,255,255,0.3)' }}>&middot;</span>
-          <span>{formatReadingTime(meta.readingTime)}</span>
-        </div>
+        <PostMetaDisplay date={meta.date} readingTime={meta.readingTime} />
       </header>
 
       <div className="prose">
