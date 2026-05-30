@@ -47,6 +47,15 @@ export function getCategoryById(id: string): Category | undefined {
   return CATEGORIES.find((c) => c.id === id)
 }
 
+export function getPostsByCategory(categoryId: string): PostMeta[] {
+  const allPosts = getAllPosts()
+  return allPosts.filter((p) => p.category === categoryId)
+}
+
+export function getAllCategoryIds(): string[] {
+  return CATEGORIES.map((c) => c.id)
+}
+
 export interface CategoryGroup {
   category: Category
   posts: PostMeta[]

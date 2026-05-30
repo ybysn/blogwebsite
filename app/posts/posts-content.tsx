@@ -1,13 +1,13 @@
 'use client'
 
 import { useRef } from 'react'
+import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { useTranslation, useLocale } from '@/components/layout/language-provider'
 import type { CategoryGroup } from '@/lib/categories'
 import { SectionHeader } from '@/components/home/section-header'
-import { PostList } from '@/components/posts/post-list'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
@@ -20,22 +20,18 @@ export function PostsContent({ categorized }: { categorized: CategoryGroup[] }) 
     () => {
       const mm = gsap.matchMedia()
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        // Animate each category section on scroll
-        const sections = containerRef.current?.querySelectorAll('.category-section')
-        sections?.forEach((section, i) => {
-          gsap.from(section.querySelectorAll('.post-card'), {
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 80%',
-              once: true,
-              toggleActions: 'play none none none',
-            },
-            y: 40,
-            autoAlpha: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'power3.out',
-          })
+        gsap.from('.category-card', {
+          scrollTrigger: {
+            trigger: '.category-cards',
+            start: 'top 80%',
+            once: true,
+            toggleActions: 'play none none none',
+          },
+          y: 40,
+          autoAlpha: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power3.out',
         })
       })
       return () => mm.revert()
@@ -53,18 +49,38 @@ export function PostsContent({ categorized }: { categorized: CategoryGroup[] }) 
 
   return (
     <div ref={containerRef}>
-      {categorized.map((group, index) => (
-        <div key={group.category.id} className="category-section">
-          <SectionHeader
-            number={String(index + 1).padStart(2, '0')}
-            quote={group.category.name[locale] ?? group.category.name.en}
-            subtitle={group.category.description[locale] ?? group.category.description.en}
-          />
-          <div className="post-list-container" style={{ marginBottom: index < categorized.length - 1 ? '3rem' : 0 }}>
-            <PostList posts={group.posts} />
-          </div>
-        </div>
-      ))}
+      <SectionHeader
+        number="01"
+        quote={t('posts.title')}
+        subtitle={t('posts.description')}
+      />
+      <div className="category-cards">
+        {categorized.map((group, index) => (
+          <Link
+            key={group.category.id}
+            href={`/posts/category/${group.category.id}`}
+            className="category-card card"
+          >
+            <span className="category-card-number">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div className="category-card-body">
+              <h2 className="category-card-title">
+                {group.category.name[locale] ?? group.category.name.en}
+              </h2>
+              <p className="category-card-desc">
+                {group.category.description[locale] ?? group.category.description.en}
+              </p>
+              <span className="category-card-count">
+                {group.posts.length} {locale === 'zh-CN' ? '篇文章' : 'posts'}
+              </span>
+            </div>
+            <svg className="category-card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
