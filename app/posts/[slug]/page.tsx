@@ -63,6 +63,7 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <div className="post-layout">
+      <TableOfContents headings={headings} />
       <article className="post-article">
         <header style={{ marginBottom: '2.5rem' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem' }}>
@@ -81,8 +82,6 @@ export default async function PostPage({ params }: PageProps) {
         <PostNav prev={prev} next={next} />
         <GiscusComments />
       </article>
-
-      <TableOfContents headings={headings} />
     </div>
   )
 }

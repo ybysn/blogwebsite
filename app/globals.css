@@ -800,8 +800,7 @@ a:hover {
   flex-shrink: 0;
   max-height: calc(100vh - 64px - 4rem);
   overflow-y: auto;
-  padding-left: 0.5rem;
-  order: 1;
+  padding-right: 0.5rem;
   transition: width 0.25s ease;
 }
 
@@ -813,7 +812,7 @@ a:hover {
 
 .toc--collapsed {
   width: 44px;
-  padding-left: 0;
+  padding-right: 0;
 }
 
 .toc-header {
