@@ -44,6 +44,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'readingTime.minN': '{minutes} min read',
     'post.notFound': 'Post Not Found',
     'post.toc': 'On this page',
+    'post.toc.collapse': 'Collapse TOC',
+    'post.toc.expand': 'Expand TOC',
   },
   'zh-CN': {
     'nav.home': '首页',
@@ -88,6 +90,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'readingTime.minN': '约 {minutes} 分钟',
     'post.notFound': '文章未找到',
     'post.toc': '此页内容',
+    'post.toc.collapse': '折叠大纲',
+    'post.toc.expand': '展开大纲',
   },
 }
 

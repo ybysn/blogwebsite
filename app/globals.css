@@ -801,6 +801,8 @@ a:hover {
   max-height: calc(100vh - 64px - 4rem);
   overflow-y: auto;
   padding-left: 0.5rem;
+  order: 1;
+  transition: width 0.25s ease;
 }
 
 @media (min-width: 1024px) {
@@ -809,13 +811,51 @@ a:hover {
   }
 }
 
+.toc--collapsed {
+  width: 44px;
+  padding-left: 0;
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.toc--collapsed .toc-header {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.toc-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-3);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.toc-toggle:hover {
+  border-color: var(--accent-a);
+  color: var(--accent-a);
+  background: var(--accent-glow);
+}
+
 .toc-title {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-3);
-  margin: 0 0 0.75rem 0;
+  margin: 0;
 }
 
 .toc-list {
