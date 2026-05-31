@@ -33,3 +33,9 @@ export interface SearchDocument {
   tags: string[]
   date: string
 }
+
+export interface TocEntry {
+  id: string
+  text: string
+  level: 2 | 3
+}
