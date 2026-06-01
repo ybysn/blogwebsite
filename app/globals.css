@@ -225,23 +225,27 @@ a:hover {
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.42rem;
-  padding: 5px 10px;
+  gap: 0.35rem;
+  padding: 5px 12px;
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: var(--text-2);
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
+  letter-spacing: 0.01em;
+  color: var(--accent-a);
+  background: var(--accent-glow);
+  border: 1px solid transparent;
   text-decoration: none;
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .chip:hover {
   border-color: var(--accent-a);
   background: var(--accent-glow);
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 2px 12px var(--accent-glow);
   text-decoration: none;
-  color: var(--text);
+  color: var(--accent-a);
 }
 
 /* ========== Footer grid ========== */
