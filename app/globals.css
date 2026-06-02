@@ -1046,3 +1046,253 @@ a:hover {
     font-size: 2.5rem;
   }
 }
+
+/* ─── Tutorial layout ────────────────────────────────────────────── */
+
+.tutorial-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.tutorial-sidebar {
+  display: none;
+  width: 250px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(64px + 2rem);
+  max-height: calc(100vh - 64px - 4rem);
+  overflow-y: auto;
+  padding-right: 1rem;
+  border-right: 1px solid var(--border);
+}
+
+.tutorial-sidebar-header {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tutorial-sidebar-group {
+  font-family: inherit;
+}
+
+.tutorial-sidebar-group:hover {
+  color: var(--accent-a) !important;
+}
+
+.tutorial-sidebar-link:hover {
+  color: var(--accent-a) !important;
+  background: var(--accent-glow) !important;
+}
+
+.tutorial-sidebar-overlay {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .tutorial-sidebar {
+    display: block;
+  }
+  .tutorial-sidebar-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .tutorial-layout {
+    flex-direction: column;
+  }
+
+  .tutorial-sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 50;
+    background: var(--bg);
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--border);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .tutorial-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .tutorial-sidebar-overlay {
+    display: block;
+  }
+
+  .tutorial-sidebar-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.tutorial-article {
+  flex: 1;
+  min-width: 0;
+  max-width: 720px;
+}
+
+/* Stage badge */
+.tutorial-stage-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--accent-glow);
+  color: var(--accent-a);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Attribution footer */
+.tutorial-attribution a:hover {
+  text-decoration: underline;
+}
+
+/* Stage cards on landing page */
+.tutorial-stage-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  border-color: var(--accent-a);
+}
+
+/* Admonition blocks */
+.admonition {
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  background: var(--surface);
+}
+
+.admonition p {
+  margin: 0.5rem 0;
+}
+
+.admonition-title {
+  font-weight: 700;
+  margin: 0 0 0.5rem 0 !important;
+  font-size: 0.95rem;
+}
+
+.admonition-info {
+  border-color: var(--accent-a);
+  background: var(--accent-glow);
+}
+
+.admonition-tip {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.06);
+}
+
+.admonition-warning {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.admonition-danger {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.admonition-details {
+  border-color: var(--border);
+  background: var(--surface);
+  border-left: 4px solid var(--border);
+}
+
+.admonition-details summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Vue demo placeholder */
+.vue-demo-placeholder {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: var(--text-3);
+  margin: 1.5rem 0;
+  background: var(--surface);
+}
+
+.vue-demo-placeholder a.demo-original-link {
+  color: var(--accent-a);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.vue-demo-placeholder a.demo-original-link:hover {
+  text-decoration: underline;
+}
+
+/* Tutorial card (converted from el-card) */
+.tutorial-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  background: var(--surface);
+}
+
+/* Chips from el-tag conversion */
+.chip {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: var(--accent-glow);
+  color: var(--accent-a);
+}
+
+.chip-success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.chip-primary {
+  background: var(--accent-glow);
+  color: var(--accent-a);
+}
+
+.chip-warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.chip-danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.chip-info {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+}
+
+/* Tutorial chapter introduction */
+.tutorial-chapter-intro {
+  border-left: 3px solid var(--accent-a);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: var(--accent-glow);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Tutorial nav */
+.tutorial-nav-link:hover {
+  color: var(--accent-a) !important;
+}

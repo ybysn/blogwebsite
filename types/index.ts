@@ -39,3 +39,46 @@ export interface TocEntry {
   text: string
   level: 2 | 3
 }
+
+// ─── Tutorial types ───────────────────────────────────────────────
+
+export interface TutorialFrontmatter {
+  title: string
+  description?: string
+  date: string
+  tags: string[]
+  published: boolean
+  stage: number
+  lang?: string
+  section?: string
+  original_url?: string
+}
+
+export interface TutorialMeta extends TutorialFrontmatter {
+  slug: string           // URL path string e.g. "stage-1/learning-map"
+  slugSegments: string[] // path segments for catch-all route
+  readingTime: number
+}
+
+export interface Tutorial {
+  meta: TutorialMeta
+  content: string
+}
+
+export interface TutorialNode {
+  title: string
+  slug: string
+  slugSegments: string[]
+  children: TutorialNode[]
+  meta?: TutorialMeta
+}
+
+export interface TutorialNavigation {
+  tree: TutorialNode[]
+  flat: Record<string, {          // slug → adjacency
+    meta: TutorialMeta
+    prevSlug: string | null
+    nextSlug: string | null
+  }>
+  stageLabels: { stage: number; label: string }[]
+}

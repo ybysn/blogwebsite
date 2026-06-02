@@ -46,6 +46,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     'post.toc': 'On this page',
     'post.toc.collapse': 'Collapse TOC',
     'post.toc.expand': 'Expand TOC',
+    'nav.tutorial': 'Tutorial',
+    'tutorial.hero.title': 'Easy-Vibe Tutorial',
+    'tutorial.hero.description':
+      'A comprehensive AI programming tutorial by Datawhale. From zero to building real apps with AI — learn vibe coding step by step.',
+    'tutorial.sidebar.title': 'Course Outline',
+    'tutorial.sidebar.toggle': 'Toggle sidebar',
+    'tutorial.stage': 'Stage {n}',
+    'tutorial.chapters': '{n} chapters',
   },
   'zh-CN': {
     'nav.home': '首页',
@@ -92,6 +100,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     'post.toc': '此页内容',
     'post.toc.collapse': '折叠大纲',
     'post.toc.expand': '展开大纲',
+    'nav.tutorial': '教程',
+    'tutorial.hero.title': 'Easy-Vibe 教程',
+    'tutorial.hero.description':
+      'Datawhale 出品的 AI 编程完整教程。从零基础到用 AI 开发真实应用 —— 一步步掌握 Vibe Coding。',
+    'tutorial.sidebar.title': '课程大纲',
+    'tutorial.sidebar.toggle': '切换侧栏',
+    'tutorial.stage': '第 {n} 阶段',
+    'tutorial.chapters': '{n} 章',
   },
 }
 

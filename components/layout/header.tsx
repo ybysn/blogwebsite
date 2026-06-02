@@ -20,6 +20,7 @@ export function Header() {
           <Link href="/search" className="nav-link">{t('nav.search')}</Link>
           <Link href="/posts" className="nav-link">{t('nav.posts')}</Link>
           <Link href="/about" className="nav-link">{t('nav.about')}</Link>
+          <Link href="/tutorial" className="nav-link">{t('nav.tutorial')}</Link>
           <DarkToggle />
           <LanguageToggle />
         </div>

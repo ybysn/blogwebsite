@@ -1,14 +1,28 @@
 import type { SearchDocument } from '@/types'
 import { getAllPosts } from './posts'
+import { getAllTutorials } from './tutorial'
 
 export function getSearchDocuments(): SearchDocument[] {
   const posts = getAllPosts()
-  return posts.map((post) => ({
+  const tutorials = getAllTutorials()
+
+  const postDocs: SearchDocument[] = posts.map((post) => ({
     slug: post.slug,
     title: post.title,
     description: post.description,
-    content: '', // content loaded on demand — titles + descriptions are enough for fast search
+    content: '',
     tags: post.tags,
     date: post.date,
   }))
+
+  const tutorialDocs: SearchDocument[] = tutorials.map((t) => ({
+    slug: `tutorial/${t.slug}`,
+    title: `[教程] ${t.title}`,
+    description: t.description || t.title,
+    content: '',
+    tags: t.tags,
+    date: t.date,
+  }))
+
+  return [...postDocs, ...tutorialDocs]
 }
