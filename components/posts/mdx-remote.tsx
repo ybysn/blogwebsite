@@ -66,7 +66,7 @@ function preprocessMdxSource(source: string): string {
 function transformSection(text: string): string {
   // Normalize heading levels: strip leading H1 at top of content
   // (page template already provides <h1>), downgrade other # to ##
-  let result = text.replace(/^#\s+(.+?)(?:\s*\{[^}]*\})?\s*\n+/, '')
+  let result = text.replace(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*\n+/, '')
   result = result.replace(/^#\s+/gm, '## ')
 
   return result

@@ -114,7 +114,7 @@ export function getAllTutorials(): TutorialMeta[] {
     // If title is "Index", extract the real title from first # heading in content
     let displayTitle = data.title
     if (displayTitle === 'Index') {
-      const match = content.match(/^#\s+(.+?)(?:\s*\{[^}]*\})?\s*$/m)
+      const match = content.match(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*$/m)
       displayTitle = match ? match[1].trim() : data.title
     }
 
@@ -172,7 +172,7 @@ export function getTutorialBySlug(slug: string[]): Tutorial | null {
       let displayTitle = data.title
       let displayContent = content
       if (displayTitle === 'Index') {
-        const match = content.match(/^#\s+(.+?)(?:\s*\{[^}]*\})?\s*\n?/m)
+        const match = content.match(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*\n?/m)
         if (match) {
           displayTitle = match[1].trim()
           // Strip the extracted heading from content to avoid duplication
