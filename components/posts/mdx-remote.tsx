@@ -102,6 +102,9 @@ function transformSection(text: string): string {
     // MDX treats <> as a JSX fragment opening
     .replace(/<>/g, '`<>`')
     .replace(/<\/>/g, '`</>`')
+    // Strip explicit <p> and </p> tags — MDX handles paragraph wrapping itself
+    // Keeping them causes invalid <p> nesting (e.g. <p><p>...</p></p>)
+    .replace(/<p(\s[^>]*)?>|<\/p>/g, '')
     // Fix HTML class="..." → className="..." (React/JSX requirement)
     .replace(/\sclass="/g, ' className="')
     // Remove <script> tags and their content (React can't render them)
