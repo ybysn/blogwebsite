@@ -111,8 +111,18 @@ export function getAllTutorials(): TutorialMeta[] {
     const slug = slugSegments.join('/')
     const stats = estimateReadingTime(content)
 
+    // Generate meaningful title for index pages instead of "Index"
+    const displayTitle =
+      data.title === 'Index'
+        ? slugSegments[slugSegments.length - 1]
+            .split('-')
+            .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(' ')
+        : data.title
+
     tutorials.push({
       ...data,
+      title: displayTitle,
       slug,
       slugSegments,
       readingTime: stats,
