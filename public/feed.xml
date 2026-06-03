@@ -4,11 +4,79 @@
         <title>凌's Blog</title>
         <link>https://ny.ybysn.org</link>
         <description>A personal blog about technology and more.</description>
-        <lastBuildDate>Sat, 30 May 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 31 May 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2026</copyright>
+        <item>
+            <title><![CDATA[3X-UI 面板搭建指南：所有协议详解（从入门到进阶）]]></title>
+            <link>https://ny.ybysn.org/posts/3x-ui-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/3x-ui-setup-guide</guid>
+            <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[手把手教你搭建 3X-UI 面板，逐一详解 VLESS、VMess、Shadowsocks、Reality、Trojan 等全部协议的配置方法，包含 Cloudflare 和 AWS CloudFront CDN 进阶方案。]]></description>
+            <category>教程</category>
+            <category>网络</category>
+            <category>VPS</category>
+            <category>代理</category>
+            <category>Xray</category>
+            <category>CDN</category>
+        </item>
+        <item>
+            <title><![CDATA[Claude Code 命令行版 + DeepSeek API 的全平台安装教程]]></title>
+            <link>https://ny.ybysn.org/posts/claude-code-deepseek-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/claude-code-deepseek-setup-guide</guid>
+            <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[覆盖 Windows、macOS、Linux、WSL 全平台的 Claude Code 安装指南，包含 DeepSeek API 配置、v2rayN 本地代理配置、终端自动代理脚本与排错方法。]]></description>
+            <category>Claude Code</category>
+            <category>DeepSeek</category>
+            <category>教程</category>
+            <category>代理</category>
+            <category>终端</category>
+            <category>开发环境</category>
+        </item>
+        <item>
+            <title><![CDATA[Cloudflare 配置指南：DNS、SSL、CDN 与安全防护]]></title>
+            <link>https://ny.ybysn.org/posts/cloudflare-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/cloudflare-setup-guide</guid>
+            <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[从零配置 Cloudflare 的完整指南，涵盖域名添加、DNS 记录管理、SSL/TLS 加密模式选择、缓存优化、WAF 防火墙规则以及代理流量 CDN 兼容方案。]]></description>
+            <category>Cloudflare</category>
+            <category>DNS</category>
+            <category>SSL</category>
+            <category>CDN</category>
+            <category>安全</category>
+            <category>WAF</category>
+            <category>教程</category>
+        </item>
+        <item>
+            <title><![CDATA[SSL/TLS 证书详解：HTTPS 的工作原理]]></title>
+            <link>https://ny.ybysn.org/posts/ssl-tls-certificates-explained</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/ssl-tls-certificates-explained</guid>
+            <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[深入理解 TLS 握手过程、SSL 证书类型与验证级别、证书链机制、Let's Encrypt 自动化证书，以及常见 SSL 错误的排查方法。]]></description>
+            <category>SSL</category>
+            <category>TLS</category>
+            <category>HTTPS</category>
+            <category>安全</category>
+            <category>证书</category>
+            <category>Let's Encrypt</category>
+            <category>教程</category>
+        </item>
+        <item>
+            <title><![CDATA[全新 VPS 从零配置指南（新手完整教程）]]></title>
+            <link>https://ny.ybysn.org/posts/vps-setup-guide</link>
+            <guid isPermaLink="false">https://ny.ybysn.org/posts/vps-setup-guide</guid>
+            <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[VPS 到手后的完整初始化流程：SSH 登录、创建非 root 用户、配置 SSH 密钥、防火墙设置、自动安全更新，以及 Web 服务器、Docker、数据库的安装方法。]]></description>
+            <category>VPS</category>
+            <category>Linux</category>
+            <category>服务器</category>
+            <category>SSH</category>
+            <category>安全</category>
+            <category>入门</category>
+            <category>教程</category>
+        </item>
         <item>
             <title><![CDATA[Hysteria2 设置指南：最快的绕过审查协议]]></title>
             <link>https://ny.ybysn.org/posts/hysteria2-setup-guide</link>

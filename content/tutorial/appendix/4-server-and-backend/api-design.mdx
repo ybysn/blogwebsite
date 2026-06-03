@@ -302,8 +302,8 @@ HTTP/1.1 500 Internal Server Error
 
 | 接口 | v1（旧版） | v2（新版） | 变化说明 |
 | :--- | :--- | :--- | :--- |
-| **获取用户** | `GET /v1/users`<br>返回：`name, email` | `GET /v2/users`<br>返回：`name, email, avatar, phone` | 新增头像、手机号字段 |
-| **创建订单** | `POST /v1/orders`<br>接收：`items[]` | `POST /v2/orders`<br>接收：`items[], coupons[]` | 新增优惠券支持 |
+| **获取用户** | `GET /v1/users`<br />返回：`name, email` | `GET /v2/users`<br />返回：`name, email, avatar, phone` | 新增头像、手机号字段 |
+| **创建订单** | `POST /v1/orders`<br />接收：`items[]` | `POST /v2/orders`<br />接收：`items[], coupons[]` | 新增优惠券支持 |
 | **批量操作** | 无 | `POST /v2/orders/batch` | 新增批量创建接口 |
 
 <div class="admonition admonition-tip">

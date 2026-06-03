@@ -1449,16 +1449,16 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **操作系统内核开发** | 编写 Linux 内核模块（自定义文件系统、网络协议栈）；基于 FreeRTOS / RT-Thread 开发 RTOS；Windows/Linux 设备驱动程序（USB/显卡驱动）；仿 xv6 教学 OS 学习内核原理 | Linux Kernel<br>Windows NT<br>FreeRTOS<br>RT-Thread<br>Zephyr OS<br>xv6 |
-| **嵌入式系统开发** | STM32 固件开发（传感器、电机、工业仪表）；Arduino 硬件项目（智能小车、环境监测）；ESP32 IoT 固件（Wi-Fi/MQTT/OTA）；FPGA 上层控制；树莓派底层 GPIO | STM32CubeIDE 项目<br>Arduino IDE 项目<br>ESP-IDF 项目<br>PlatformIO 项目<br>Keil MDK 项目 |
-| **上下位机通信开发** | Qt 串口调试工具（与 STM32/PLC 通信）；Modbus RTU/TCP 协议对接；CAN 总线汽车电子 ECU 通信；SCADA 工业监控系统 | VOFA+ 串口调试助手<br>MCGS 触摸屏程序<br>组态王<br>WinCC |
-| **跨平台桌面应用** | Qt/QML 跨平台桌面 GUI；MFC Windows 工具；GTK+ Linux 桌面应用；ImGui 游戏内工具/编辑器 | WPS Office<br>VirtualBox<br>OBS Studio<br>Telegram Desktop<br>KDE 全家桶<br>GIMP |
-| **游戏引擎与游戏开发** | Unreal Engine 5 游戏开发；自研 2D/3D 引擎；OpenGL/Vulkan/DirectX 图形编程；游戏服务器后端 | UE5 蓝图+C++ 项目<br>DOOM 引擎<br>id Tech<br>CryEngine<br>Cocos2d-x |
-| **音视频与流媒体** | FFmpeg 转码/编解码；WebRTC C++ 层实时通信；直播推拉流 SDK；VST 音频插件；视频监控 NVR | FFmpeg<br>OBS Studio<br>VLC<br>WebRTC Native<br>SRS 流媒体服务器 |
-| **数据库与存储引擎** | 自研 KV 存储引擎；MySQL 存储引擎插件；Redis Module 扩展；分布式文件系统模块 | LevelDB<br>RocksDB<br>MySQL InnoDB<br>Redis<br>SQLite<br>TiKV |
-| **编译器与语言工具** | 自研语言词法/语法分析器（LLVM 后端）；DSL 编译器；代码静态分析；JIT 编译器 | LLVM/Clang<br>GCC<br>V8 引擎<br>JavaScriptCore<br>MSVC |
-| **高性能计算** | CUDA GPU 并行计算（深度学习推理加速）；OpenMP/MPI 多核并行；流体/分子仿真；量化交易低延迟系统 | CUDA Toolkit<br>TensorRT<br>OpenFOAM<br>GROMACS<br>QuantLib |
-| **网络安全与逆向** | 网络抓包分析；渗透工具；二进制逆向；杀毒引擎；加解密库 | Wireshark<br>Nmap<br>IDA Pro 插件<br>Ghidra 模块<br>OpenSSL |
+| **操作系统内核开发** | 编写 Linux 内核模块（自定义文件系统、网络协议栈）；基于 FreeRTOS / RT-Thread 开发 RTOS；Windows/Linux 设备驱动程序（USB/显卡驱动）；仿 xv6 教学 OS 学习内核原理 | Linux Kernel<br />Windows NT<br />FreeRTOS<br />RT-Thread<br />Zephyr OS<br />xv6 |
+| **嵌入式系统开发** | STM32 固件开发（传感器、电机、工业仪表）；Arduino 硬件项目（智能小车、环境监测）；ESP32 IoT 固件（Wi-Fi/MQTT/OTA）；FPGA 上层控制；树莓派底层 GPIO | STM32CubeIDE 项目<br />Arduino IDE 项目<br />ESP-IDF 项目<br />PlatformIO 项目<br />Keil MDK 项目 |
+| **上下位机通信开发** | Qt 串口调试工具（与 STM32/PLC 通信）；Modbus RTU/TCP 协议对接；CAN 总线汽车电子 ECU 通信；SCADA 工业监控系统 | VOFA+ 串口调试助手<br />MCGS 触摸屏程序<br />组态王<br />WinCC |
+| **跨平台桌面应用** | Qt/QML 跨平台桌面 GUI；MFC Windows 工具；GTK+ Linux 桌面应用；ImGui 游戏内工具/编辑器 | WPS Office<br />VirtualBox<br />OBS Studio<br />Telegram Desktop<br />KDE 全家桶<br />GIMP |
+| **游戏引擎与游戏开发** | Unreal Engine 5 游戏开发；自研 2D/3D 引擎；OpenGL/Vulkan/DirectX 图形编程；游戏服务器后端 | UE5 蓝图+C++ 项目<br />DOOM 引擎<br />id Tech<br />CryEngine<br />Cocos2d-x |
+| **音视频与流媒体** | FFmpeg 转码/编解码；WebRTC C++ 层实时通信；直播推拉流 SDK；VST 音频插件；视频监控 NVR | FFmpeg<br />OBS Studio<br />VLC<br />WebRTC Native<br />SRS 流媒体服务器 |
+| **数据库与存储引擎** | 自研 KV 存储引擎；MySQL 存储引擎插件；Redis Module 扩展；分布式文件系统模块 | LevelDB<br />RocksDB<br />MySQL InnoDB<br />Redis<br />SQLite<br />TiKV |
+| **编译器与语言工具** | 自研语言词法/语法分析器（LLVM 后端）；DSL 编译器；代码静态分析；JIT 编译器 | LLVM/Clang<br />GCC<br />V8 引擎<br />JavaScriptCore<br />MSVC |
+| **高性能计算** | CUDA GPU 并行计算（深度学习推理加速）；OpenMP/MPI 多核并行；流体/分子仿真；量化交易低延迟系统 | CUDA Toolkit<br />TensorRT<br />OpenFOAM<br />GROMACS<br />QuantLib |
+| **网络安全与逆向** | 网络抓包分析；渗透工具；二进制逆向；杀毒引擎；加解密库 | Wireshark<br />Nmap<br />IDA Pro 插件<br />Ghidra 模块<br />OpenSSL |
 
 ---
 
@@ -1470,15 +1470,15 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **Tauri 跨平台桌面应用** | Tauri 2.0 替代 Electron（体积小 10 倍+）；笔记/API 调试/文件管理/密码管理等工具应用；前端 React/Vue + 后端 Rust 逻辑 | Tauri App<br>Cody (AI 编辑器)<br>Spacedrive (文件管理)<br>AppFlowy (Notion 替代) |
-| **WebAssembly 浏览器模块** | Rust → WASM 高性能计算（图像处理/PDF/加密）；Web 端视频编解码；在线 IDE 编译器后端 | Figma 渲染引擎<br>wasm-pack 项目<br>Photon 图像处理<br>SWC (JS 编译器) |
-| **CLI 命令行工具** | ripgrep/fd/bat/exa/starship 等现代 CLI；编译为单二进制，零依赖分发 | ripgrep (rg)<br>fd-find<br>bat<br>eza<br>starship<br>zoxide<br>delta |
-| **操作系统开发** | Redox OS 微内核 OS；Linux 6.1+ Rust 内核模块；嵌入式 RTOS；Bootloader | Redox OS<br>Linux Rust 模块<br>Theseus OS<br>Stock OS |
-| **嵌入式开发** | embedded-rust 在 STM32/ESP32/nRF52 固件；RTIC 实时并发框架；比 C 更安全的嵌入式替代 | embassy-rs<br>RTIC 项目<br>probe-rs<br>ESP-RS |
-| **Serverless / 边缘计算** | Cloudflare Workers Rust→WASM；Fastly Compute@Edge；冷启动极快，性能远超 JS/Python | Cloudflare Workers<br>Fastly Compute<br>Fermyon Spin<br>WasmEdge |
-| **高性能网络工具** | 网络代理（类 clash）；反向代理/负载均衡；VPN；内网穿透；DNS | sing-box<br>Pingora (Cloudflare)<br>Linkerd2-proxy<br>Hickory DNS<br>rathole |
-| **区块链开发** | Solana 链上程序 (Anchor)；Substrate 框架 (Polkadot)；零知识证明；撮合引擎 | Solana Program<br>Substrate/Polkadot<br>StarkNet Cairo<br>Sui Move |
-| **Web 后端服务** | Actix-web / Axum 高性能 API；适合低延迟金融/游戏后端；gRPC | Axum API<br>Actix-web 服务<br>Tonic gRPC<br>Loco (Rails-like) |
+| **Tauri 跨平台桌面应用** | Tauri 2.0 替代 Electron（体积小 10 倍+）；笔记/API 调试/文件管理/密码管理等工具应用；前端 React/Vue + 后端 Rust 逻辑 | Tauri App<br />Cody (AI 编辑器)<br />Spacedrive (文件管理)<br />AppFlowy (Notion 替代) |
+| **WebAssembly 浏览器模块** | Rust → WASM 高性能计算（图像处理/PDF/加密）；Web 端视频编解码；在线 IDE 编译器后端 | Figma 渲染引擎<br />wasm-pack 项目<br />Photon 图像处理<br />SWC (JS 编译器) |
+| **CLI 命令行工具** | ripgrep/fd/bat/exa/starship 等现代 CLI；编译为单二进制，零依赖分发 | ripgrep (rg)<br />fd-find<br />bat<br />eza<br />starship<br />zoxide<br />delta |
+| **操作系统开发** | Redox OS 微内核 OS；Linux 6.1+ Rust 内核模块；嵌入式 RTOS；Bootloader | Redox OS<br />Linux Rust 模块<br />Theseus OS<br />Stock OS |
+| **嵌入式开发** | embedded-rust 在 STM32/ESP32/nRF52 固件；RTIC 实时并发框架；比 C 更安全的嵌入式替代 | embassy-rs<br />RTIC 项目<br />probe-rs<br />ESP-RS |
+| **Serverless / 边缘计算** | Cloudflare Workers Rust→WASM；Fastly Compute@Edge；冷启动极快，性能远超 JS/Python | Cloudflare Workers<br />Fastly Compute<br />Fermyon Spin<br />WasmEdge |
+| **高性能网络工具** | 网络代理（类 clash）；反向代理/负载均衡；VPN；内网穿透；DNS | sing-box<br />Pingora (Cloudflare)<br />Linkerd2-proxy<br />Hickory DNS<br />rathole |
+| **区块链开发** | Solana 链上程序 (Anchor)；Substrate 框架 (Polkadot)；零知识证明；撮合引擎 | Solana Program<br />Substrate/Polkadot<br />StarkNet Cairo<br />Sui Move |
+| **Web 后端服务** | Actix-web / Axum 高性能 API；适合低延迟金融/游戏后端；gRPC | Axum API<br />Actix-web 服务<br />Tonic gRPC<br />Loco (Rails-like) |
 
 ---
 
@@ -1490,20 +1490,20 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **AI 模型训练与推理** | PyTorch / TensorFlow 深度学习；Hugging Face 微调 LLM（LoRA/QLoRA）；YOLO 检测；Stable Diffusion 生图；ONNX 导出 | PyTorch 训练脚本<br>Hugging Face Trainer<br>YOLO 项目<br>Diffusers Pipeline<br>vLLM 推理服务 |
-| **AI Agent 应用开发** | LangChain / LangGraph 多步 Agent；AutoGPT 自主 Agent；Function Calling 工具调用；多 Agent 协作 | LangChain Agent<br>CrewAI<br>AutoGen<br>Dify 工作流<br>Coze Bot |
-| **RAG 知识库应用** | 向量数据库（Chroma/Pinecone/Milvus）检索增强生成；企业私有知识库问答；文档解析→Embedding→检索→生成 | LlamaIndex 项目<br>Dify RAG<br>FastGPT<br>MaxKB<br>QAnything |
-| **AI 演示界面** | Gradio 模型 Demo；Streamlit 数据/AI 应用；Chainlit ChatGPT 风格界面；Mesop | Gradio Demo<br>Streamlit App<br>Chainlit Chat<br>Open WebUI |
-| **MCP Server 开发** | 为 AI 助手开发 MCP 工具服务；让 AI 调用自定义 API/数据库/文件系统 | MCP Filesystem<br>MCP Database<br>MCP GitHub<br>自定义 MCP 工具 |
-| **Web 后端开发** | Django 全栈（ORM/Admin/Auth）；FastAPI 异步 API（自动 OpenAPI 文档）；Flask 微服务；Celery 异步任务 | Django 项目<br>FastAPI 服务<br>Flask App<br>Sanic<br>Litestar |
-| **网络爬虫** | Scrapy 分布式爬虫；Selenium/Playwright 动态爬取；BeautifulSoup 解析 | Scrapy 项目<br>Playwright 脚本<br>Crawl4AI<br>新闻/电商爬虫 |
-| **数据分析与可视化** | Pandas 清洗分析；NumPy 科学计算；Matplotlib/Seaborn/Plotly 可视化；Jupyter 交互报告 | Jupyter Notebook<br>Pandas Pipeline<br>Plotly Dashboard<br>Kaggle Kernel |
-| **自动化脚本** | 办公自动化（Excel/Word/PDF/邮件）；文件批处理；自动化测试（pytest）；RPA | openpyxl 脚本<br>python-docx<br>PyAutoGUI<br>Robot Framework |
-| **Bot 开发** | Telegram Bot；Discord Bot；微信 Bot；飞书/钉钉机器人 Webhook | python-telegram-bot<br>discord.py Bot<br>wechaty<br>飞书 Bot |
-| **DevOps 运维** | Ansible 配置管理；Fabric 远程操作；云 SDK 管理资源 | Ansible Playbook<br>Fabric 脚本<br>Boto3 (AWS)<br>Pulumi |
-| **嵌入式 / IoT** | MicroPython 在 ESP32 运行；CircuitPython（Adafruit）；树莓派 GPIO/传感器/智能家居网关 | MicroPython 固件<br>CircuitPython 项目<br>树莓派 Home Assistant |
-| **科学计算与仿真** | SciPy 工程计算；SymPy 符号数学；SimPy 离散事件模拟；天文/生物仿真 | SciPy 仿真<br>SymPy 推导<br>AstroPy<br>BioPython |
-| **3D / 创意工具脚本** | Blender Python 插件；Maya/Houdini 脚本；Pillow/OpenCV 图像批处理 | Blender Addon<br>Maya MEL/Py<br>OpenCV 流水线<br>Pillow 批处理 |
+| **AI 模型训练与推理** | PyTorch / TensorFlow 深度学习；Hugging Face 微调 LLM（LoRA/QLoRA）；YOLO 检测；Stable Diffusion 生图；ONNX 导出 | PyTorch 训练脚本<br />Hugging Face Trainer<br />YOLO 项目<br />Diffusers Pipeline<br />vLLM 推理服务 |
+| **AI Agent 应用开发** | LangChain / LangGraph 多步 Agent；AutoGPT 自主 Agent；Function Calling 工具调用；多 Agent 协作 | LangChain Agent<br />CrewAI<br />AutoGen<br />Dify 工作流<br />Coze Bot |
+| **RAG 知识库应用** | 向量数据库（Chroma/Pinecone/Milvus）检索增强生成；企业私有知识库问答；文档解析→Embedding→检索→生成 | LlamaIndex 项目<br />Dify RAG<br />FastGPT<br />MaxKB<br />QAnything |
+| **AI 演示界面** | Gradio 模型 Demo；Streamlit 数据/AI 应用；Chainlit ChatGPT 风格界面；Mesop | Gradio Demo<br />Streamlit App<br />Chainlit Chat<br />Open WebUI |
+| **MCP Server 开发** | 为 AI 助手开发 MCP 工具服务；让 AI 调用自定义 API/数据库/文件系统 | MCP Filesystem<br />MCP Database<br />MCP GitHub<br />自定义 MCP 工具 |
+| **Web 后端开发** | Django 全栈（ORM/Admin/Auth）；FastAPI 异步 API（自动 OpenAPI 文档）；Flask 微服务；Celery 异步任务 | Django 项目<br />FastAPI 服务<br />Flask App<br />Sanic<br />Litestar |
+| **网络爬虫** | Scrapy 分布式爬虫；Selenium/Playwright 动态爬取；BeautifulSoup 解析 | Scrapy 项目<br />Playwright 脚本<br />Crawl4AI<br />新闻/电商爬虫 |
+| **数据分析与可视化** | Pandas 清洗分析；NumPy 科学计算；Matplotlib/Seaborn/Plotly 可视化；Jupyter 交互报告 | Jupyter Notebook<br />Pandas Pipeline<br />Plotly Dashboard<br />Kaggle Kernel |
+| **自动化脚本** | 办公自动化（Excel/Word/PDF/邮件）；文件批处理；自动化测试（pytest）；RPA | openpyxl 脚本<br />python-docx<br />PyAutoGUI<br />Robot Framework |
+| **Bot 开发** | Telegram Bot；Discord Bot；微信 Bot；飞书/钉钉机器人 Webhook | python-telegram-bot<br />discord.py Bot<br />wechaty<br />飞书 Bot |
+| **DevOps 运维** | Ansible 配置管理；Fabric 远程操作；云 SDK 管理资源 | Ansible Playbook<br />Fabric 脚本<br />Boto3 (AWS)<br />Pulumi |
+| **嵌入式 / IoT** | MicroPython 在 ESP32 运行；CircuitPython（Adafruit）；树莓派 GPIO/传感器/智能家居网关 | MicroPython 固件<br />CircuitPython 项目<br />树莓派 Home Assistant |
+| **科学计算与仿真** | SciPy 工程计算；SymPy 符号数学；SimPy 离散事件模拟；天文/生物仿真 | SciPy 仿真<br />SymPy 推导<br />AstroPy<br />BioPython |
+| **3D / 创意工具脚本** | Blender Python 插件；Maya/Houdini 脚本；Pillow/OpenCV 图像批处理 | Blender Addon<br />Maya MEL/Py<br />OpenCV 流水线<br />Pillow 批处理 |
 
 ---
 
@@ -1515,23 +1515,23 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **Web 前端 SPA** | React+Next.js / Vue+Nuxt.js / Svelte+SvelteKit / Angular；TailwindCSS/Shadcn UI | Next.js 项目<br>Nuxt 项目<br>SvelteKit 项目<br>Angular 企业前端 |
-| **微信小程序** | 原生小程序 / Taro 多端 / uni-app（Vue 语法）；小程序云开发 | 微信原生小程序<br>Taro 跨端项目<br>uni-app 项目<br>微信云开发 |
-| **支付宝/抖音/百度小程序** | 支付宝小程序（生活号）；抖音小程序（短视频/直播挂载）；多端框架统一 | 支付宝小程序<br>抖音小程序<br>百度智能小程序<br>快手小程序 |
-| **React Native 移动端** | 一套代码 Android+iOS；Expo 快速开发；React Navigation 路由 | Expo App<br>RN 电商 App<br>RN 社交 App<br>Instagram (部分 RN) |
-| **Electron 桌面应用** | 跨平台桌面应用（Web 技术）；electron-builder 打包分发 | VS Code<br>Slack<br>Notion<br>Discord<br>Figma Desktop<br>Obsidian |
-| **浏览器插件开发** | Chrome Extension Manifest V3；内容脚本/Background Worker/Popup/SidePanel | uBlock Origin<br>Tampermonkey<br>沉浸式翻译<br>Bitwarden<br>React DevTools |
-| **VS Code 插件** | TypeScript 编写 Extension；语法高亮/补全/Linter/Webview 面板；LSP | Prettier<br>ESLint<br>GitLens<br>Copilot<br>主题插件 |
-| **Obsidian 插件** | TypeScript 编写 Obsidian Plugin；自定义视图/与外部 API 集成 | Dataview<br>Calendar<br>Kanban<br>Templater<br>Excalidraw |
-| **Node.js 后端** | Express/Koa/NestJS/Next.js API；tRPC 类型安全；Socket.io 实时通信 | NestJS 服务<br>Express API<br>Next.js API Routes<br>Socket.io 聊天 |
-| **Serverless / 边缘函数** | Cloudflare Workers / Vercel Edge / AWS Lambda / Netlify Functions | Vercel Serverless<br>Cloudflare Worker<br>AWS Lambda Node<br>Netlify Function |
-| **全栈框架一体化** | Next.js App Router / Remix / Nuxt 3 / Astro / T3 Stack | T3 Stack 项目<br>Remix 全栈<br>Astro 博客<br>SolidStart |
-| **3D Web 与 Web 游戏** | Three.js 3D 场景/数字孪生；Babylon.js 引擎；Phaser 2D 游戏；A-Frame VR | Three.js 展厅<br>R3F 项目<br>Phaser 游戏<br>Babylon 场景 |
-| **PWA 渐进式 Web 应用** | Service Worker 离线 + Manifest 类原生体验；Web Push 推送 | Twitter Lite<br>Starbucks PWA<br>Pinterest PWA<br>自建 PWA 工具 |
-| **实时协作应用** | WebSocket/Socket.io；Yjs/Automerge CRDT 多人协同编辑 | 在线协作文档<br>实时白板<br>Liveblocks 项目<br>多人游戏 |
-| **CLI 命令行工具** | Commander/Yargs + Ink 终端 UI；oclif 框架；npx 分发 | create-react-app<br>Vercel CLI<br>GitHub CLI (部分)<br>Ink TUI 工具 |
-| **Telegram / Discord Bot** | Telegram Bot API；Discord.js；自动化社群管理 | Telegram 机器人<br>Discord 音乐 Bot<br>社群管理 Bot |
-| **低代码/无代码平台** | 基于 React/Vue 的可视化搭建平台；表单/流程设计器 | 阿里低代码引擎<br>百度 Amis<br>自研搭建平台 |
+| **Web 前端 SPA** | React+Next.js / Vue+Nuxt.js / Svelte+SvelteKit / Angular；TailwindCSS/Shadcn UI | Next.js 项目<br />Nuxt 项目<br />SvelteKit 项目<br />Angular 企业前端 |
+| **微信小程序** | 原生小程序 / Taro 多端 / uni-app（Vue 语法）；小程序云开发 | 微信原生小程序<br />Taro 跨端项目<br />uni-app 项目<br />微信云开发 |
+| **支付宝/抖音/百度小程序** | 支付宝小程序（生活号）；抖音小程序（短视频/直播挂载）；多端框架统一 | 支付宝小程序<br />抖音小程序<br />百度智能小程序<br />快手小程序 |
+| **React Native 移动端** | 一套代码 Android+iOS；Expo 快速开发；React Navigation 路由 | Expo App<br />RN 电商 App<br />RN 社交 App<br />Instagram (部分 RN) |
+| **Electron 桌面应用** | 跨平台桌面应用（Web 技术）；electron-builder 打包分发 | VS Code<br />Slack<br />Notion<br />Discord<br />Figma Desktop<br />Obsidian |
+| **浏览器插件开发** | Chrome Extension Manifest V3；内容脚本/Background Worker/Popup/SidePanel | uBlock Origin<br />Tampermonkey<br />沉浸式翻译<br />Bitwarden<br />React DevTools |
+| **VS Code 插件** | TypeScript 编写 Extension；语法高亮/补全/Linter/Webview 面板；LSP | Prettier<br />ESLint<br />GitLens<br />Copilot<br />主题插件 |
+| **Obsidian 插件** | TypeScript 编写 Obsidian Plugin；自定义视图/与外部 API 集成 | Dataview<br />Calendar<br />Kanban<br />Templater<br />Excalidraw |
+| **Node.js 后端** | Express/Koa/NestJS/Next.js API；tRPC 类型安全；Socket.io 实时通信 | NestJS 服务<br />Express API<br />Next.js API Routes<br />Socket.io 聊天 |
+| **Serverless / 边缘函数** | Cloudflare Workers / Vercel Edge / AWS Lambda / Netlify Functions | Vercel Serverless<br />Cloudflare Worker<br />AWS Lambda Node<br />Netlify Function |
+| **全栈框架一体化** | Next.js App Router / Remix / Nuxt 3 / Astro / T3 Stack | T3 Stack 项目<br />Remix 全栈<br />Astro 博客<br />SolidStart |
+| **3D Web 与 Web 游戏** | Three.js 3D 场景/数字孪生；Babylon.js 引擎；Phaser 2D 游戏；A-Frame VR | Three.js 展厅<br />R3F 项目<br />Phaser 游戏<br />Babylon 场景 |
+| **PWA 渐进式 Web 应用** | Service Worker 离线 + Manifest 类原生体验；Web Push 推送 | Twitter Lite<br />Starbucks PWA<br />Pinterest PWA<br />自建 PWA 工具 |
+| **实时协作应用** | WebSocket/Socket.io；Yjs/Automerge CRDT 多人协同编辑 | 在线协作文档<br />实时白板<br />Liveblocks 项目<br />多人游戏 |
+| **CLI 命令行工具** | Commander/Yargs + Ink 终端 UI；oclif 框架；npx 分发 | create-react-app<br />Vercel CLI<br />GitHub CLI (部分)<br />Ink TUI 工具 |
+| **Telegram / Discord Bot** | Telegram Bot API；Discord.js；自动化社群管理 | Telegram 机器人<br />Discord 音乐 Bot<br />社群管理 Bot |
+| **低代码/无代码平台** | 基于 React/Vue 的可视化搭建平台；表单/流程设计器 | 阿里低代码引擎<br />百度 Amis<br />自研搭建平台 |
 
 ---
 
@@ -1543,16 +1543,16 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **云原生基础设施** | Kubernetes 控制器/Operator；Docker 容器工具；Service Mesh；云厂商 SDK | K8s Operator<br>Docker CLI<br>Istio 组件<br>云厂商 CLI |
-| **微服务架构** | Gin/Echo Web 框架；gRPC 服务；服务发现/配置中心 | 微服务 API<br>gRPC 后端<br>服务网关 |
-| **API 网关** | Kong/Traefik 插件开发；自研网关；限流/鉴权/路由 | API Gateway<br>反向代理<br>负载均衡器 |
-| **区块链开发** | Hyperledger Fabric 链码；Go-Ethereum 节点；交易所撮合引擎 | Fabric Chaincode<br>Geth 节点<br>交易所后端 |
-| **DevOps 工具链** | CI/CD 流水线工具；监控/日志系统；自动化运维平台 | Jenkins Plugin<br>Prometheus Exporter<br>自动化部署工具 |
-| **分布式系统** | 分布式锁；分布式任务调度；消息队列；分布式缓存 | 分布式任务调度<br>消息队列中间件<br>缓存服务 |
-| **网络工具** | 网络扫描器；端口转发；内网穿透；网络监控 | 网络扫描工具<br>内网穿透工具<br>网络监控服务 |
-| **CLI 工具** | Cobra 框架；单二进制分发；跨平台支持 | kubectl<br>hugo<br>terraform<br>docker CLI |
-| **实时推送服务** | WebSocket 长连接；消息推送；在线状态管理 | 消息推送服务<br>在线客服系统<br>实时通知系统 |
-| **数据处理管道** | ETL 数据清洗；日志收集分析；流式处理 | 日志收集器<br>数据清洗工具<br>流处理管道 |
+| **云原生基础设施** | Kubernetes 控制器/Operator；Docker 容器工具；Service Mesh；云厂商 SDK | K8s Operator<br />Docker CLI<br />Istio 组件<br />云厂商 CLI |
+| **微服务架构** | Gin/Echo Web 框架；gRPC 服务；服务发现/配置中心 | 微服务 API<br />gRPC 后端<br />服务网关 |
+| **API 网关** | Kong/Traefik 插件开发；自研网关；限流/鉴权/路由 | API Gateway<br />反向代理<br />负载均衡器 |
+| **区块链开发** | Hyperledger Fabric 链码；Go-Ethereum 节点；交易所撮合引擎 | Fabric Chaincode<br />Geth 节点<br />交易所后端 |
+| **DevOps 工具链** | CI/CD 流水线工具；监控/日志系统；自动化运维平台 | Jenkins Plugin<br />Prometheus Exporter<br />自动化部署工具 |
+| **分布式系统** | 分布式锁；分布式任务调度；消息队列；分布式缓存 | 分布式任务调度<br />消息队列中间件<br />缓存服务 |
+| **网络工具** | 网络扫描器；端口转发；内网穿透；网络监控 | 网络扫描工具<br />内网穿透工具<br />网络监控服务 |
+| **CLI 工具** | Cobra 框架；单二进制分发；跨平台支持 | kubectl<br />hugo<br />terraform<br />docker CLI |
+| **实时推送服务** | WebSocket 长连接；消息推送；在线状态管理 | 消息推送服务<br />在线客服系统<br />实时通知系统 |
+| **数据处理管道** | ETL 数据清洗；日志收集分析；流式处理 | 日志收集器<br />数据清洗工具<br />流处理管道 |
 
 ---
 
@@ -1564,18 +1564,18 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **企业级后端系统** | Spring Boot/Spring Cloud 微服务；ERP/CRM/OA 系统；工作流引擎 | 企业 ERP 系统<br>CRM 客户管理<br>OA 办公系统<br>工作流引擎 |
-| **金融核心系统** | 银行核心记账；支付清算；风控系统；证券交易 | 银行核心系统<br>支付网关<br>风控引擎<br>证券交易系统 |
-| **电商平台** | 订单/库存/促销系统；秒杀系统；供应链系统 | 电商后台<br>秒杀系统<br>供应链系统<br>WMS 仓储 |
-| **大数据处理** | Hadoop/Spark/Flink 生态；数据仓库；实时计算 | Hadoop 集群<br>Spark 计算<br>Flink 实时计算<br>数据仓库 |
-| **Android 应用开发** | 原生 Android App；Kotlin 混合开发；Android 系统定制 | Android App<br>系统 ROM<br>车载 Android |
-| **中间件开发** | 消息队列（Kafka/RocketMQ）；RPC 框架（Dubbo）；缓存（Redis 客户端） | Kafka<br>RocketMQ<br>Dubbo<br>Redis 客户端 |
-| **搜索引擎** | Elasticsearch 二次开发；全文检索；日志分析 | Elasticsearch 插件<br>搜索引擎服务<br>日志分析平台 |
-| **物联网平台** | 设备接入；规则引擎；数据采集；边缘计算 | IoT 平台<br>设备管理系统<br>边缘计算网关 |
-| **云计算平台** | OpenStack；Kubernetes Java 客户端；云管平台 | 云管理平台<br>资源调度系统<br>多云管理 |
-| **游戏服务器** | 网络游戏后端；游戏大厅；匹配系统；排行榜 | MMORPG 后端<br>游戏大厅服务<br>匹配系统 |
-| **政府/事业单位系统** | 政务系统；公共服务平台；数据交换平台 | 政务服务平台<br>数据共享平台<br>公共服务平台 |
-| **教育/医疗系统** | 在线教育系统；医院 HIS 系统；电子病历 | 在线教育平台<br>HIS 系统<br>电子病历系统 |
+| **企业级后端系统** | Spring Boot/Spring Cloud 微服务；ERP/CRM/OA 系统；工作流引擎 | 企业 ERP 系统<br />CRM 客户管理<br />OA 办公系统<br />工作流引擎 |
+| **金融核心系统** | 银行核心记账；支付清算；风控系统；证券交易 | 银行核心系统<br />支付网关<br />风控引擎<br />证券交易系统 |
+| **电商平台** | 订单/库存/促销系统；秒杀系统；供应链系统 | 电商后台<br />秒杀系统<br />供应链系统<br />WMS 仓储 |
+| **大数据处理** | Hadoop/Spark/Flink 生态；数据仓库；实时计算 | Hadoop 集群<br />Spark 计算<br />Flink 实时计算<br />数据仓库 |
+| **Android 应用开发** | 原生 Android App；Kotlin 混合开发；Android 系统定制 | Android App<br />系统 ROM<br />车载 Android |
+| **中间件开发** | 消息队列（Kafka/RocketMQ）；RPC 框架（Dubbo）；缓存（Redis 客户端） | Kafka<br />RocketMQ<br />Dubbo<br />Redis 客户端 |
+| **搜索引擎** | Elasticsearch 二次开发；全文检索；日志分析 | Elasticsearch 插件<br />搜索引擎服务<br />日志分析平台 |
+| **物联网平台** | 设备接入；规则引擎；数据采集；边缘计算 | IoT 平台<br />设备管理系统<br />边缘计算网关 |
+| **云计算平台** | OpenStack；Kubernetes Java 客户端；云管平台 | 云管理平台<br />资源调度系统<br />多云管理 |
+| **游戏服务器** | 网络游戏后端；游戏大厅；匹配系统；排行榜 | MMORPG 后端<br />游戏大厅服务<br />匹配系统 |
+| **政府/事业单位系统** | 政务系统；公共服务平台；数据交换平台 | 政务服务平台<br />数据共享平台<br />公共服务平台 |
+| **教育/医疗系统** | 在线教育系统；医院 HIS 系统；电子病历 | 在线教育平台<br />HIS 系统<br />电子病历系统 |
 
 ---
 
@@ -1587,16 +1587,16 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **Web 后端 API** | Express/Koa/NestJS 框架；RESTful/GraphQL API；BFF 层 | API 服务<br>BFF 中间层<br>GraphQL 服务 |
-| **实时应用** | Socket.io 实时通信；在线聊天；协同编辑；直播弹幕 | 在线聊天室<br>协同文档<br>直播弹幕系统 |
-| **Serverless 函数** | Vercel/Netlify/AWS Lambda 函数；边缘计算 | Serverless API<br>边缘函数<br>Webhook 处理 |
-| **静态站点生成** | Next.js/Gatsby/Nuxt 服务端渲染；静态站点生成 | SSR 应用<br>静态博客<br>营销页面 |
-| **构建工具开发** | Webpack/Vite/Rollup 插件；Babel 插件；代码转换 | Webpack Loader<br>Vite 插件<br>代码转译工具 |
-| **桌面应用** | Electron 跨平台桌面应用；Tauri（Rust 后端） | 桌面客户端<br>开发工具<br>效率工具 |
-| **命令行工具** | npm 包；脚手架工具；自动化脚本 | CLI 工具<br>项目脚手架<br>自动化脚本 |
-| **物联网/硬件** | Johnny-Five 机器人；硬件控制；传感器数据采集 | 硬件控制<br>物联网网关<br>传感器数据采集 |
-| **爬虫与数据采集** | Puppeteer/Playwright 无头浏览器；数据采集 | 网页爬虫<br>数据采集服务<br>截图服务 |
-| **微服务架构** | 轻量级微服务；服务网格；API 网关 | 微服务<br>API 网关<br>服务网格 |
+| **Web 后端 API** | Express/Koa/NestJS 框架；RESTful/GraphQL API；BFF 层 | API 服务<br />BFF 中间层<br />GraphQL 服务 |
+| **实时应用** | Socket.io 实时通信；在线聊天；协同编辑；直播弹幕 | 在线聊天室<br />协同文档<br />直播弹幕系统 |
+| **Serverless 函数** | Vercel/Netlify/AWS Lambda 函数；边缘计算 | Serverless API<br />边缘函数<br />Webhook 处理 |
+| **静态站点生成** | Next.js/Gatsby/Nuxt 服务端渲染；静态站点生成 | SSR 应用<br />静态博客<br />营销页面 |
+| **构建工具开发** | Webpack/Vite/Rollup 插件；Babel 插件；代码转换 | Webpack Loader<br />Vite 插件<br />代码转译工具 |
+| **桌面应用** | Electron 跨平台桌面应用；Tauri（Rust 后端） | 桌面客户端<br />开发工具<br />效率工具 |
+| **命令行工具** | npm 包；脚手架工具；自动化脚本 | CLI 工具<br />项目脚手架<br />自动化脚本 |
+| **物联网/硬件** | Johnny-Five 机器人；硬件控制；传感器数据采集 | 硬件控制<br />物联网网关<br />传感器数据采集 |
+| **爬虫与数据采集** | Puppeteer/Playwright 无头浏览器；数据采集 | 网页爬虫<br />数据采集服务<br />截图服务 |
+| **微服务架构** | 轻量级微服务；服务网格；API 网关 | 微服务<br />API 网关<br />服务网格 |
 
 ---
 
@@ -1652,16 +1652,16 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **内容管理系统 (CMS)** | WordPress 二次开发；Drupal 定制；自建 CMS；企业官网 | WordPress<br>Drupal<br>Joomla<br>织梦 CMS<br>帝国 CMS |
-| **电子商务平台** | Magento 电商系统；Shopify 应用开发；自建商城；跨境电商 | Magento<br>WooCommerce<br>ECShop<br>Shopware<br>OpenCart |
-| **社交媒体平台** | Facebook 早期架构；论坛系统；社区网站；社交网络 | Facebook (早期)<br>Discuz!<br>phpBB<br>XenForo<br>MyBB |
-| **API 后端服务** | Laravel/Lumen 框架；RESTful API；微服务；BFF 层 | Laravel API<br>Lumen 微服务<br>API Platform<br>Hyperf |
-| **企业级应用** | Symfony 企业级框架；ERP 系统；OA 系统；财务系统 | Symfony 应用<br>YII 框架<br>Zend Framework<br>ThinkPHP |
-| **在线教育平台** | Moodle 二次开发；在线课程系统；考试系统；直播教学 | Moodle<br>Canvas LMS<br>自建教育平台<br>E-learning 系统 |
-| **在线游戏后端** | 页游后端；游戏管理后台；充值系统；用户系统 | 页游服务器<br>游戏后台<br>充值接口<br>用户中心 |
-| **支付网关集成** | PayPal/支付宝/微信支付；支付系统；金融接口；第三方支付 | 支付宝 SDK<br>微信支付<br>PayPal 集成<br>Stripe PHP |
-| **任务调度与队列** | Gearman；Beanstalkd；CRON 任务；定时任务管理 | Cron 任务<br>队列系统<br>任务调度<br>定时处理 |
-| **API 网关与中间件** | Kong 插件；API 网关；微服务治理；流量控制 | API 网关<br>限流中间件<br>认证服务<br>路由服务 |
+| **内容管理系统 (CMS)** | WordPress 二次开发；Drupal 定制；自建 CMS；企业官网 | WordPress<br />Drupal<br />Joomla<br />织梦 CMS<br />帝国 CMS |
+| **电子商务平台** | Magento 电商系统；Shopify 应用开发；自建商城；跨境电商 | Magento<br />WooCommerce<br />ECShop<br />Shopware<br />OpenCart |
+| **社交媒体平台** | Facebook 早期架构；论坛系统；社区网站；社交网络 | Facebook (早期)<br />Discuz!<br />phpBB<br />XenForo<br />MyBB |
+| **API 后端服务** | Laravel/Lumen 框架；RESTful API；微服务；BFF 层 | Laravel API<br />Lumen 微服务<br />API Platform<br />Hyperf |
+| **企业级应用** | Symfony 企业级框架；ERP 系统；OA 系统；财务系统 | Symfony 应用<br />YII 框架<br />Zend Framework<br />ThinkPHP |
+| **在线教育平台** | Moodle 二次开发；在线课程系统；考试系统；直播教学 | Moodle<br />Canvas LMS<br />自建教育平台<br />E-learning 系统 |
+| **在线游戏后端** | 页游后端；游戏管理后台；充值系统；用户系统 | 页游服务器<br />游戏后台<br />充值接口<br />用户中心 |
+| **支付网关集成** | PayPal/支付宝/微信支付；支付系统；金融接口；第三方支付 | 支付宝 SDK<br />微信支付<br />PayPal 集成<br />Stripe PHP |
+| **任务调度与队列** | Gearman；Beanstalkd；CRON 任务；定时任务管理 | Cron 任务<br />队列系统<br />任务调度<br />定时处理 |
+| **API 网关与中间件** | Kong 插件；API 网关；微服务治理；流量控制 | API 网关<br />限流中间件<br />认证服务<br />路由服务 |
 
 ---
 
@@ -1673,16 +1673,16 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **Web 应用开发** | Ruby on Rails 框架；敏捷开发；MVP 快速验证 | GitHub (早期)<br>Twitter (早期)<br>Shopify<br>Basecamp |
-| **创业公司 MVP** | 快速原型开发；最小可行产品；敏捷迭代；创业验证 | Airbnb (早期)<br>GitHub<br>GitLab<br>Zendesk |
-| **电商平台** | Shopify 平台；电商定制开发；在线商店；购物车系统 | Shopify<br>Spree Commerce<br>Solidus<br>Thredded |
-| **DevOps 工具链** | Chef 配置管理；Vagrant 虚拟化；Puppet；自动化部署 | Chef<br>Vagrant<br>Puppet<br>Capybara |
-| **API 服务** | Grape 框架；RESTful API；GraphQL 服务；微服务 | Grape API<br>GraphQL Ruby<br>Sidekiq 队列<br>Resque |
-| **测试自动化** | Cucumber BDD；RSpec 测试；自动化测试；行为驱动开发 | Cucumber<br>RSpec<br>Capybara<br>Watir |
-| **内容管理系统** | Refinery CMS；Comfortable Mexican Sofa；静态生成 | Refinery CMS<br>Alchemy CMS<br>Locomotive<br>Locomotive |
-| **数据处理管道** | 数据清洗；ETL 任务；报表生成；数据转换 | DataMapper<br>Sequel<br>ActiveRecord<br>CSV 处理 |
-| **桌面应用** | Shoes GUI 框架；FXRuby；QtRuby；RubyMotion | Shoes<br>FXRuby<br>QtRuby<br>MacRuby |
-| **聊天机器人** | Hubot 脚本；Slack Bot；Telegram Bot；自动化助手 | Hubot<br>Slack Bot<br>Telegram Bot<br>ChatOps |
+| **Web 应用开发** | Ruby on Rails 框架；敏捷开发；MVP 快速验证 | GitHub (早期)<br />Twitter (早期)<br />Shopify<br />Basecamp |
+| **创业公司 MVP** | 快速原型开发；最小可行产品；敏捷迭代；创业验证 | Airbnb (早期)<br />GitHub<br />GitLab<br />Zendesk |
+| **电商平台** | Shopify 平台；电商定制开发；在线商店；购物车系统 | Shopify<br />Spree Commerce<br />Solidus<br />Thredded |
+| **DevOps 工具链** | Chef 配置管理；Vagrant 虚拟化；Puppet；自动化部署 | Chef<br />Vagrant<br />Puppet<br />Capybara |
+| **API 服务** | Grape 框架；RESTful API；GraphQL 服务；微服务 | Grape API<br />GraphQL Ruby<br />Sidekiq 队列<br />Resque |
+| **测试自动化** | Cucumber BDD；RSpec 测试；自动化测试；行为驱动开发 | Cucumber<br />RSpec<br />Capybara<br />Watir |
+| **内容管理系统** | Refinery CMS；Comfortable Mexican Sofa；静态生成 | Refinery CMS<br />Alchemy CMS<br />Locomotive<br />Locomotive |
+| **数据处理管道** | 数据清洗；ETL 任务；报表生成；数据转换 | DataMapper<br />Sequel<br />ActiveRecord<br />CSV 处理 |
+| **桌面应用** | Shoes GUI 框架；FXRuby；QtRuby；RubyMotion | Shoes<br />FXRuby<br />QtRuby<br />MacRuby |
+| **聊天机器人** | Hubot 脚本；Slack Bot；Telegram Bot；自动化助手 | Hubot<br />Slack Bot<br />Telegram Bot<br />ChatOps |
 
 ---
 
@@ -1694,17 +1694,17 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **企业级后端系统** | ASP.NET Core Web API；微服务架构；企业 ERP/CRM | ASP.NET Core<br>微服务<br>企业系统<br>Web API |
-| **云服务开发** | Azure 云服务；AWS Lambda (.NET)；云原生应用 | Azure Functions<br>AWS Lambda<br>Azure App Service<br>云服务 |
-| **桌面应用** | WPF；Windows Forms；MAUI 跨平台；企业工具 | Visual Studio<br>企业工具<br>桌面软件<br>办公应用 |
-| **游戏开发** | Unity 3D 游戏引擎；游戏服务器；游戏逻辑 | Unity 游戏<br>Unity 插件<br>游戏服务器<br>AR/VR 应用 |
-| **移动应用** | Xamarin 跨平台；MAUI；原生移动应用 | Xamarin App<br>MAUI App<br>移动应用<br>跨平台 App |
-| **金融服务** | 银行核心系统；高频交易；金融分析；风控系统 | 交易系统<br>风控引擎<br>金融分析<br>银行系统 |
-| **Web 应用** | ASP.NET MVC；Blazor；Razor Pages；企业门户 | ASP.NET MVC<br>Blazor App<br>企业门户<br>Web 应用 |
-| **物联网平台** | Azure IoT；设备管理；数据采集；边缘计算 | Azure IoT Hub<br>IoT 设备<br>数据采集<br>边缘计算 |
-| **实时通信** | SignalR 实时推送；WebSocket；在线聊天；协作 | SignalR<br>实时推送<br>在线聊天<br>协作系统 |
-| **数据分析** | ML.NET；数据处理；报表系统；商业智能 | ML.NET<br>Power BI<br>数据分析<br>报表系统 |
-| **微服务架构** | Orleans 分布式；Service Fabric；容器化部署 | Orleans<br>Service Fabric<br>微服务<br>容器化 |
+| **企业级后端系统** | ASP.NET Core Web API；微服务架构；企业 ERP/CRM | ASP.NET Core<br />微服务<br />企业系统<br />Web API |
+| **云服务开发** | Azure 云服务；AWS Lambda (.NET)；云原生应用 | Azure Functions<br />AWS Lambda<br />Azure App Service<br />云服务 |
+| **桌面应用** | WPF；Windows Forms；MAUI 跨平台；企业工具 | Visual Studio<br />企业工具<br />桌面软件<br />办公应用 |
+| **游戏开发** | Unity 3D 游戏引擎；游戏服务器；游戏逻辑 | Unity 游戏<br />Unity 插件<br />游戏服务器<br />AR/VR 应用 |
+| **移动应用** | Xamarin 跨平台；MAUI；原生移动应用 | Xamarin App<br />MAUI App<br />移动应用<br />跨平台 App |
+| **金融服务** | 银行核心系统；高频交易；金融分析；风控系统 | 交易系统<br />风控引擎<br />金融分析<br />银行系统 |
+| **Web 应用** | ASP.NET MVC；Blazor；Razor Pages；企业门户 | ASP.NET MVC<br />Blazor App<br />企业门户<br />Web 应用 |
+| **物联网平台** | Azure IoT；设备管理；数据采集；边缘计算 | Azure IoT Hub<br />IoT 设备<br />数据采集<br />边缘计算 |
+| **实时通信** | SignalR 实时推送；WebSocket；在线聊天；协作 | SignalR<br />实时推送<br />在线聊天<br />协作系统 |
+| **数据分析** | ML.NET；数据处理；报表系统；商业智能 | ML.NET<br />Power BI<br />数据分析<br />报表系统 |
+| **微服务架构** | Orleans 分布式；Service Fabric；容器化部署 | Orleans<br />Service Fabric<br />微服务<br />容器化 |
 
 ---
 
@@ -1716,14 +1716,14 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **Android 应用开发** | Google 官方推荐；Jetpack Compose；原生 Android App | Android App<br>Compose UI<br>Google App<br>企业 App |
-| **后端开发** | Spring Boot Kotlin；Ktor 框架；微服务；Web API | Spring Boot<br>Ktor<br>微服务<br>Web API |
-| **跨平台移动开发** | Kotlin Multiplatform；共享业务逻辑；iOS/Android | Multiplatform<br>共享代码<br>跨平台 App<br>业务逻辑 |
-| **桌面应用** | Compose for Desktop；JavaFX Kotlin；跨平台 GUI | Compose Desktop<br>桌面应用<br>跨平台 GUI<br>工具应用 |
-| **Web 前端** | Kotlin/JS；React Kotlin；TypeScript 替代；前端框架 | Kotlin/JS<br>React Kotlin<br>前端应用<br>Web 应用 |
-| **原生开发** | Kotlin/Native；iOS 开发；嵌入式；C 互操作 | Kotlin/Native<br>iOS App<br>嵌入式<br>C 互操作 |
-| **数据科学** | Kotlin DataFrame；数值计算；统计分析；机器学习 | Kotlin DataFrame<br>数值计算<br>统计分析<br>ML 库 |
-| **函数式编程** | Arrow 库；函数式编程范式；不可变数据；响应式 | Arrow<br>函数式编程<br>响应式<br>不可变数据 |
+| **Android 应用开发** | Google 官方推荐；Jetpack Compose；原生 Android App | Android App<br />Compose UI<br />Google App<br />企业 App |
+| **后端开发** | Spring Boot Kotlin；Ktor 框架；微服务；Web API | Spring Boot<br />Ktor<br />微服务<br />Web API |
+| **跨平台移动开发** | Kotlin Multiplatform；共享业务逻辑；iOS/Android | Multiplatform<br />共享代码<br />跨平台 App<br />业务逻辑 |
+| **桌面应用** | Compose for Desktop；JavaFX Kotlin；跨平台 GUI | Compose Desktop<br />桌面应用<br />跨平台 GUI<br />工具应用 |
+| **Web 前端** | Kotlin/JS；React Kotlin；TypeScript 替代；前端框架 | Kotlin/JS<br />React Kotlin<br />前端应用<br />Web 应用 |
+| **原生开发** | Kotlin/Native；iOS 开发；嵌入式；C 互操作 | Kotlin/Native<br />iOS App<br />嵌入式<br />C 互操作 |
+| **数据科学** | Kotlin DataFrame；数值计算；统计分析；机器学习 | Kotlin DataFrame<br />数值计算<br />统计分析<br />ML 库 |
+| **函数式编程** | Arrow 库；函数式编程范式；不可变数据；响应式 | Arrow<br />函数式编程<br />响应式<br />不可变数据 |
 
 ---
 
@@ -1735,14 +1735,14 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **大数据处理** | Apache Spark；Apache Kafka；Hadoop 生态；流处理 | Apache Spark<br>Kafka<br>Hadoop<br>Storm |
-| **分布式系统** | Akka 框架；分布式计算；容错系统；集群管理 | Akka<br>Distributed System<br>Cluster<br>容错系统 |
-| **Web 后端开发** | Play Framework；Akka HTTP；微服务；API 服务 | Play Framework<br>Akka HTTP<br>微服务<br>Web API |
-| **金融行业** | 高频交易；风险计算；金融建模；量化分析 | 交易平台<br>风险计算<br>金融建模<br>量化系统 |
-| **实时流处理** | Apache Flink；Spark Streaming；Kafka Streams | Flink<br>Streaming<br>实时计算<br>流处理 |
-| **机器学习** | Spark MLlib；Breeze 数值计算；ScalaNLP | Spark MLlib<br>Breeze<br>ScalaNLP<br>ML 系统 |
-| **企业级应用** | 高并发系统；容错服务；复杂业务逻辑；企业后端 | 企业系统<br>高并发服务<br>容错系统<br>业务逻辑 |
-| **函数式编程** | Cats 库；Scalaz；纯函数式；类型级编程 | Cats<br>Scalaz<br>函数式<br>Type-level |
+| **大数据处理** | Apache Spark；Apache Kafka；Hadoop 生态；流处理 | Apache Spark<br />Kafka<br />Hadoop<br />Storm |
+| **分布式系统** | Akka 框架；分布式计算；容错系统；集群管理 | Akka<br />Distributed System<br />Cluster<br />容错系统 |
+| **Web 后端开发** | Play Framework；Akka HTTP；微服务；API 服务 | Play Framework<br />Akka HTTP<br />微服务<br />Web API |
+| **金融行业** | 高频交易；风险计算；金融建模；量化分析 | 交易平台<br />风险计算<br />金融建模<br />量化系统 |
+| **实时流处理** | Apache Flink；Spark Streaming；Kafka Streams | Flink<br />Streaming<br />实时计算<br />流处理 |
+| **机器学习** | Spark MLlib；Breeze 数值计算；ScalaNLP | Spark MLlib<br />Breeze<br />ScalaNLP<br />ML 系统 |
+| **企业级应用** | 高并发系统；容错服务；复杂业务逻辑；企业后端 | 企业系统<br />高并发服务<br />容错系统<br />业务逻辑 |
+| **函数式编程** | Cats 库；Scalaz；纯函数式；类型级编程 | Cats<br />Scalaz<br />函数式<br />Type-level |
 
 ---
 
@@ -1754,13 +1754,13 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **iOS/macOS 应用** | UIKit/SwiftUI；原生 iOS App；macOS 应用；Catalyst | iOS App<br>macOS App<br>SwiftUI<br>Catalyst App |
-| **服务端开发** | Vapor 框架；Perfect 框架；Kitura；API 服务 | Vapor<br>Perfect<br>Kitura<br>Server-side Swift |
-| **跨平台开发** | SwiftUI 跨平台；Flux；Swift on Server | SwiftUI Cross-platform<br>Swift on Linux<br>Server-side |
-| **游戏开发** | SpriteKit；SceneKit；Metal；游戏引擎 | SpriteKit Games<br>SceneKit Apps<br>Game Engines<br>iOS Games |
-| **命令行工具** | Swift CLI；终端工具；系统工具；自动化脚本 | Swift CLI<br>Terminal Tools<br>System Tools<br>Automation |
-| **机器学习** | Core ML；Create ML；Swift for TensorFlow | Core ML<br>Create ML<br>TensorFlow Swift<br>ML Models |
-| **嵌入式开发** | Swift on Embedded；物联网设备；传感器控制 | Embedded Swift<br>IoT Devices<br>传感器控制<br>设备固件 |
+| **iOS/macOS 应用** | UIKit/SwiftUI；原生 iOS App；macOS 应用；Catalyst | iOS App<br />macOS App<br />SwiftUI<br />Catalyst App |
+| **服务端开发** | Vapor 框架；Perfect 框架；Kitura；API 服务 | Vapor<br />Perfect<br />Kitura<br />Server-side Swift |
+| **跨平台开发** | SwiftUI 跨平台；Flux；Swift on Server | SwiftUI Cross-platform<br />Swift on Linux<br />Server-side |
+| **游戏开发** | SpriteKit；SceneKit；Metal；游戏引擎 | SpriteKit Games<br />SceneKit Apps<br />Game Engines<br />iOS Games |
+| **命令行工具** | Swift CLI；终端工具；系统工具；自动化脚本 | Swift CLI<br />Terminal Tools<br />System Tools<br />Automation |
+| **机器学习** | Core ML；Create ML；Swift for TensorFlow | Core ML<br />Create ML<br />TensorFlow Swift<br />ML Models |
+| **嵌入式开发** | Swift on Embedded；物联网设备；传感器控制 | Embedded Swift<br />IoT Devices<br />传感器控制<br />设备固件 |
 
 ---
 
@@ -1772,14 +1772,14 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **高性能 Web 应用** | 图像处理；音频处理；视频编码；计算密集型任务 | Image Processing<br>Audio Processing<br>Video Encoding<br>Canvas Graphics |
-| **游戏引擎** | Unity WebGL；Unreal Engine WebGL；自研游戏引擎 | Unity WebGL<br>UE WebGL<br>Game Engines<br>Web Games |
-| **桌面应用** | Tauri；Electron 替代；桌面应用性能提升 | Tauri Apps<br>Desktop Apps<br>Performance Boost<br>Cross-platform |
-| **区块链应用** | 智能合约；DApp 前端；加密货币钱包；DeFi | Smart Contracts<br>DApp Frontend<br>Wallets<br>DeFi Apps |
-| **多媒体处理** | FFmpeg WASM；PDF 处理；音视频编解码；图像识别 | FFmpeg WASM<br>PDF.js<br>Media Processing<br>Recognition |
-| **编程语言运行时** | Python WASM；Ruby WASM；Go WASM；语言移植 | Pyodide<br>Ruby WASM<br>Go WASM<br>Language Runtime |
-| **边缘计算** | Cloudflare Workers；Fastly Compute；边缘函数 | Cloudflare Workers<br>Fastly Compute<br>Edge Computing<br>Serverless |
-| **虚拟机/仿真器** | DOSBox WASM；NES Emulator；系统仿真 | DOSBox<br>Emulators<br>System Simulation<br>Virtual Machines |
+| **高性能 Web 应用** | 图像处理；音频处理；视频编码；计算密集型任务 | Image Processing<br />Audio Processing<br />Video Encoding<br />Canvas Graphics |
+| **游戏引擎** | Unity WebGL；Unreal Engine WebGL；自研游戏引擎 | Unity WebGL<br />UE WebGL<br />Game Engines<br />Web Games |
+| **桌面应用** | Tauri；Electron 替代；桌面应用性能提升 | Tauri Apps<br />Desktop Apps<br />Performance Boost<br />Cross-platform |
+| **区块链应用** | 智能合约；DApp 前端；加密货币钱包；DeFi | Smart Contracts<br />DApp Frontend<br />Wallets<br />DeFi Apps |
+| **多媒体处理** | FFmpeg WASM；PDF 处理；音视频编解码；图像识别 | FFmpeg WASM<br />PDF.js<br />Media Processing<br />Recognition |
+| **编程语言运行时** | Python WASM；Ruby WASM；Go WASM；语言移植 | Pyodide<br />Ruby WASM<br />Go WASM<br />Language Runtime |
+| **边缘计算** | Cloudflare Workers；Fastly Compute；边缘函数 | Cloudflare Workers<br />Fastly Compute<br />Edge Computing<br />Serverless |
+| **虚拟机/仿真器** | DOSBox WASM；NES Emulator；系统仿真 | DOSBox<br />Emulators<br />System Simulation<br />Virtual Machines |
 
 ---
 
@@ -1791,14 +1791,14 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **电信系统** | 高可用通信；软交换；信令系统；网络协议 | Ericsson AXD301<br>Telecom Switches<br>Signaling Systems<br>Protocol Stack |
-| **即时通讯** | WhatsApp 后端；Ejabberd；XMPP 服务器；聊天系统 | WhatsApp<br>Ejabberd<br>XMPP Server<br>Chat Systems |
-| **分布式数据库** | Riak；CouchDB；Mnesia；高可用存储 | Riak<br>CouchDB<br>Mnesia<br>Distributed DB |
-| **Web 应用** | Phoenix 框架；高并发网站；实时应用；API 服务 | Phoenix<br>Real-time Apps<br>Web APIs<br>Concurrent Sites |
-| **游戏服务器** | MMORPG 后端；实时游戏；多人在线；游戏逻辑 | Game Servers<br>MMORPG<br>Multiplayer<br>Real-time Games |
-| **金融交易系统** | 高频交易；交易引擎；风险控制；订单系统 | Trading Engine<br>HFT Systems<br>Risk Control<br>Order Matching |
-| **IoT 平台** | 设备管理；消息路由；协议转换；设备通信 | IoT Platforms<br>Device Management<br>Message Routing<br>Protocol Translation |
-| **容错系统** | 99.999% 可用性；热升级；故障恢复；监控系统 | Fault-tolerant Systems<br>Hot Upgrade<br>Recovery Systems<br>Monitoring |
+| **电信系统** | 高可用通信；软交换；信令系统；网络协议 | Ericsson AXD301<br />Telecom Switches<br />Signaling Systems<br />Protocol Stack |
+| **即时通讯** | WhatsApp 后端；Ejabberd；XMPP 服务器；聊天系统 | WhatsApp<br />Ejabberd<br />XMPP Server<br />Chat Systems |
+| **分布式数据库** | Riak；CouchDB；Mnesia；高可用存储 | Riak<br />CouchDB<br />Mnesia<br />Distributed DB |
+| **Web 应用** | Phoenix 框架；高并发网站；实时应用；API 服务 | Phoenix<br />Real-time Apps<br />Web APIs<br />Concurrent Sites |
+| **游戏服务器** | MMORPG 后端；实时游戏；多人在线；游戏逻辑 | Game Servers<br />MMORPG<br />Multiplayer<br />Real-time Games |
+| **金融交易系统** | 高频交易；交易引擎；风险控制；订单系统 | Trading Engine<br />HFT Systems<br />Risk Control<br />Order Matching |
+| **IoT 平台** | 设备管理；消息路由；协议转换；设备通信 | IoT Platforms<br />Device Management<br />Message Routing<br />Protocol Translation |
+| **容错系统** | 99.999% 可用性；热升级；故障恢复；监控系统 | Fault-tolerant Systems<br />Hot Upgrade<br />Recovery Systems<br />Monitoring |
 
 ---
 
@@ -1810,11 +1810,11 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **区块链开发** | Hyperledger Fabric 链码；Go-Ethereum 节点；交易所撮合引擎 | Fabric Chaincode<br>Geth 节点<br>交易所后端<br>区块链节点 |
-| **DevOps 工具链** | CI/CD 流水线工具；监控/日志系统；自动化运维平台 | Jenkins Plugin<br>Prometheus Exporter<br>自动化部署工具<br>监控系统 |
-| **分布式系统** | 分布式锁；分布式任务调度；消息队列；分布式缓存 | 分布式任务调度<br>消息队列中间件<br>缓存服务<br>分布式协调 |
-| **网络工具** | 网络扫描器；端口转发；内网穿透；网络监控 | 网络扫描工具<br>内网穿透工具<br>网络监控服务<br>代理工具 |
-| **数据处理管道** | ETL 数据清洗；日志收集分析；流式处理 | 日志收集器<br>数据清洗工具<br>流处理管道<br>数据同步 |
+| **区块链开发** | Hyperledger Fabric 链码；Go-Ethereum 节点；交易所撮合引擎 | Fabric Chaincode<br />Geth 节点<br />交易所后端<br />区块链节点 |
+| **DevOps 工具链** | CI/CD 流水线工具；监控/日志系统；自动化运维平台 | Jenkins Plugin<br />Prometheus Exporter<br />自动化部署工具<br />监控系统 |
+| **分布式系统** | 分布式锁；分布式任务调度；消息队列；分布式缓存 | 分布式任务调度<br />消息队列中间件<br />缓存服务<br />分布式协调 |
+| **网络工具** | 网络扫描器；端口转发；内网穿透；网络监控 | 网络扫描工具<br />内网穿透工具<br />网络监控服务<br />代理工具 |
+| **数据处理管道** | ETL 数据清洗；日志收集分析；流式处理 | 日志收集器<br />数据清洗工具<br />流处理管道<br />数据同步 |
 
 ---
 
@@ -1826,11 +1826,11 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **自动化运维** | Ansible Playbook；SaltStack；Fabric 自动化；CMDB | Ansible<br>SaltStack<br>Fabric<br>自动化运维 |
-| **网络编程** | Twisted 框架；异步网络库；Socket 编程；协议实现 | Twisted<br>asyncio<br>Scapy<br>网络协议 |
-| **GUI 应用** | PyQt/PySide；Tkinter；Kivy 移动；跨平台桌面 | PyQt 应用<br>PySide<br>Tkinter<br>跨平台 GUI |
-| **科学计算** | NumPy/SciPy；SymPy 符号计算；Pandas 数据分析；数值模拟 | NumPy<br>SciPy<br>SymPy<br>数值计算 |
-| **测试自动化** | Selenium WebDriver；Pytest；Behave BDD；接口测试 | Selenium<br>Pytest<br>Behave<br>接口测试框架 |
+| **自动化运维** | Ansible Playbook；SaltStack；Fabric 自动化；CMDB | Ansible<br />SaltStack<br />Fabric<br />自动化运维 |
+| **网络编程** | Twisted 框架；异步网络库；Socket 编程；协议实现 | Twisted<br />asyncio<br />Scapy<br />网络协议 |
+| **GUI 应用** | PyQt/PySide；Tkinter；Kivy 移动；跨平台桌面 | PyQt 应用<br />PySide<br />Tkinter<br />跨平台 GUI |
+| **科学计算** | NumPy/SciPy；SymPy 符号计算；Pandas 数据分析；数值模拟 | NumPy<br />SciPy<br />SymPy<br />数值计算 |
+| **测试自动化** | Selenium WebDriver；Pytest；Behave BDD；接口测试 | Selenium<br />Pytest<br />Behave<br />接口测试框架 |
 
 ---
 
@@ -1842,11 +1842,11 @@ Rust 很酷，但如果你的团队只有 PHP 经验，强行切换可能带来�
 
 | 应用方向 | 细分示例与说明 | 典型应用 / 程序 |
 | :--- | :--- | :--- |
-| **区块链/Web3** | Ethereum DApp；Web3.js；Smart Contract；DeFi 应用 | MetaMask<br>Uniswap<br>OpenSea<br>Web3 DApp |
-| **3D 图形渲染** | Three.js；Babylon.js；WebGL；3D 可视化 | Three.js<br>3D 可视化<br>WebGL<br>图形渲染 |
-| **AI/ML 推理** | TensorFlow.js；ONNX.js；Web 端 AI 推理；模型部署 | TensorFlow.js<br>ML 推理<br>Web AI<br>模型部署 |
-| **实时通信** | WebRTC；Socket.io；SignalR；实时数据传输 | WebRTC<br>实时聊天<br>视频通话<br>实时协作 |
-| **IoT 开发** | Johnny-Five；Cylon.js；硬件编程；设备控制 | Arduino 控制<br>Raspberry Pi<br>硬件编程<br>设备控制 |
+| **区块链/Web3** | Ethereum DApp；Web3.js；Smart Contract；DeFi 应用 | MetaMask<br />Uniswap<br />OpenSea<br />Web3 DApp |
+| **3D 图形渲染** | Three.js；Babylon.js；WebGL；3D 可视化 | Three.js<br />3D 可视化<br />WebGL<br />图形渲染 |
+| **AI/ML 推理** | TensorFlow.js；ONNX.js；Web 端 AI 推理；模型部署 | TensorFlow.js<br />ML 推理<br />Web AI<br />模型部署 |
+| **实时通信** | WebRTC；Socket.io；SignalR；实时数据传输 | WebRTC<br />实时聊天<br />视频通话<br />实时协作 |
+| **IoT 开发** | Johnny-Five；Cylon.js；硬件编程；设备控制 | Arduino 控制<br />Raspberry Pi<br />硬件编程<br />设备控制 |
 
 ---
 
