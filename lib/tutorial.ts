@@ -111,11 +111,15 @@ export function getAllTutorials(): TutorialMeta[] {
     const slug = slugSegments.join('/')
     const stats = estimateReadingTime(content)
 
-    // If title is "Index", extract the real title from first # heading in content
+    // Use first # heading in content as title if it differs from frontmatter
+    // (frontmatter often has generic titles like "Index" or "PRD")
     let displayTitle = data.title
-    if (displayTitle === 'Index') {
-      const match = content.match(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*$/m)
-      displayTitle = match ? match[1].trim() : data.title
+    const firstH1 = content.match(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*$/m)
+    if (firstH1) {
+      const h1Title = firstH1[1].trim()
+      if (h1Title !== data.title) {
+        displayTitle = h1Title
+      }
     }
 
     tutorials.push({
@@ -168,15 +172,16 @@ export function getTutorialBySlug(slug: string[]): Tutorial | null {
 
       const stats = estimateReadingTime(content)
 
-      // If title is "Index", extract real title from first # heading
+      // Use first # heading in content as title if it differs from frontmatter
       let displayTitle = data.title
       let displayContent = content
-      if (displayTitle === 'Index') {
-        const match = content.match(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*\n?/m)
-        if (match) {
-          displayTitle = match[1].trim()
-          // Strip the extracted heading from content to avoid duplication
-          displayContent = content.slice(match.index! + match[0].length)
+      const firstH1 = content.match(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*\n?/m)
+      if (firstH1) {
+        const h1Title = firstH1[1].trim()
+        if (h1Title !== data.title) {
+          displayTitle = h1Title
+          // Strip the heading from content to avoid duplication
+          displayContent = content.slice(firstH1.index! + firstH1[0].length)
         }
       }
 
