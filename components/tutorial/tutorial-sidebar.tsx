@@ -90,6 +90,7 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
         ) : (
           <Link
             href={`/tutorial/${node.slug}`}
+            scroll={false}
             className={`tutorial-sidebar-link${active ? ' tutorial-sidebar-link--active' : ''}`}
             style={{
               display: 'block',
