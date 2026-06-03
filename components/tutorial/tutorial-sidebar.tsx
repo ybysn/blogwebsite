@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import type { TutorialNavigation, TutorialMeta } from '@/types'
 import { useTranslation } from '@/components/layout/language-provider'
+
+const SIDEBAR_SCROLL_KEY = 'tutorial-sidebar-scroll'
 
 interface TutorialSidebarProps {
   navigation: TutorialNavigation
@@ -14,6 +16,26 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
   const { t } = useTranslation()
   const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set())
   const [mobileOpen, setMobileOpen] = useState(false)
+  const asideRef = useRef<HTMLElement>(null)
+
+  // Restore sidebar scroll position on mount
+  useEffect(() => {
+    const saved = sessionStorage.getItem(SIDEBAR_SCROLL_KEY)
+    if (saved && asideRef.current) {
+      asideRef.current.scrollTop = parseInt(saved, 10)
+    }
+  }, [])
+
+  // Save scroll position when clicking a link
+  const handleSidebarClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.closest('a') && asideRef.current) {
+      sessionStorage.setItem(
+        SIDEBAR_SCROLL_KEY,
+        String(asideRef.current.scrollTop),
+      )
+    }
+  }
 
   const toggleGroup = (slug: string) => {
     setCollapsedGroups((prev) => {
@@ -140,6 +162,8 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
 
       {/* Sidebar */}
       <aside
+        ref={asideRef}
+        onClick={handleSidebarClick}
         className={`tutorial-sidebar${mobileOpen ? ' tutorial-sidebar--open' : ''}`}
       >
         <div className="tutorial-sidebar-header">
