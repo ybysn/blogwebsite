@@ -1068,9 +1068,54 @@ a:hover {
 }
 
 .tutorial-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 0.75rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
+}
+
+.tutorial-sidebar-collapse-btn:hover {
+  color: var(--accent-a) !important;
+  background: var(--accent-glow) !important;
+}
+
+.tutorial-sidebar--hidden {
+  display: none !important;
+}
+
+.tutorial-sidebar-expand {
+  display: none;
+  position: fixed;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  width: 32px;
+  height: 64px;
+  border-radius: 0 8px 8px 0;
+  background: var(--surface);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-left: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+  transition: opacity 0.2s;
+}
+
+.tutorial-sidebar-expand:hover {
+  color: var(--accent-a);
+  background: var(--accent-glow);
+}
+
+@media (min-width: 1024px) {
+  .tutorial-sidebar-expand--visible {
+    display: flex !important;
+  }
 }
 
 .tutorial-sidebar-group {

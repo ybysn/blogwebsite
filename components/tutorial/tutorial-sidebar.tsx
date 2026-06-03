@@ -16,6 +16,12 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
   const { t } = useTranslation()
   const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set())
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [sidebarHidden, setSidebarHidden] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('tutorial-sidebar-hidden') === 'true'
+    }
+    return false
+  })
   const asideRef = useRef<HTMLElement>(null)
 
   // Restore sidebar scroll position on mount
@@ -25,6 +31,14 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
       asideRef.current.scrollTop = parseInt(saved, 10)
     }
   }, [])
+
+  const toggleSidebar = () => {
+    setSidebarHidden((prev) => {
+      const next = !prev
+      localStorage.setItem('tutorial-sidebar-hidden', String(next))
+      return next
+    })
+  }
 
   // Save scroll position when clicking a link
   const handleSidebarClick = (e: React.MouseEvent) => {
@@ -164,7 +178,7 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
       <aside
         ref={asideRef}
         onClick={handleSidebarClick}
-        className={`tutorial-sidebar${mobileOpen ? ' tutorial-sidebar--open' : ''}`}
+        className={`tutorial-sidebar${mobileOpen ? ' tutorial-sidebar--open' : ''}${sidebarHidden ? ' tutorial-sidebar--hidden' : ''}`}
       >
         <div className="tutorial-sidebar-header">
           <Link
@@ -178,6 +192,24 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
           >
             {t('tutorial.sidebar.title')}
           </Link>
+          <button
+            onClick={toggleSidebar}
+            className="tutorial-sidebar-collapse-btn"
+            aria-label={t('tutorial.sidebar.collapse')}
+            title="隐藏侧边栏"
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '1.1rem',
+              color: 'var(--text-3)',
+              padding: '2px 4px',
+              borderRadius: '4px',
+              lineHeight: 1,
+            }}
+          >
+            ◀
+          </button>
         </div>
         <nav>
           <ul style={{ padding: 0, margin: 0 }}>
@@ -185,6 +217,16 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
           </ul>
         </nav>
       </aside>
+
+      {/* Floating expand button when sidebar is hidden (desktop only) */}
+      <button
+        className={`tutorial-sidebar-expand${sidebarHidden ? ' tutorial-sidebar-expand--visible' : ''}`}
+        onClick={toggleSidebar}
+        aria-label={t('tutorial.sidebar.expand')}
+        title="显示侧边栏"
+      >
+        ▶
+      </button>
 
       {/* Mobile overlay */}
       {mobileOpen && (
