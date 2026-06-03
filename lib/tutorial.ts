@@ -111,14 +111,12 @@ export function getAllTutorials(): TutorialMeta[] {
     const slug = slugSegments.join('/')
     const stats = estimateReadingTime(content)
 
-    // Generate meaningful title for index pages instead of "Index"
-    const displayTitle =
-      data.title === 'Index'
-        ? slugSegments[slugSegments.length - 1]
-            .split('-')
-            .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-            .join(' ')
-        : data.title
+    // If title is "Index", extract the real title from first # heading in content
+    let displayTitle = data.title
+    if (displayTitle === 'Index') {
+      const match = content.match(/^#\s+(.+?)(?:\s*\{[^}]*\})?\s*$/m)
+      displayTitle = match ? match[1].trim() : data.title
+    }
 
     tutorials.push({
       ...data,
@@ -170,14 +168,27 @@ export function getTutorialBySlug(slug: string[]): Tutorial | null {
 
       const stats = estimateReadingTime(content)
 
+      // If title is "Index", extract real title from first # heading
+      let displayTitle = data.title
+      let displayContent = content
+      if (displayTitle === 'Index') {
+        const match = content.match(/^#\s+(.+?)(?:\s*\{[^}]*\})?\s*\n?/m)
+        if (match) {
+          displayTitle = match[1].trim()
+          // Strip the extracted heading from content to avoid duplication
+          displayContent = content.slice(match.index! + match[0].length)
+        }
+      }
+
       return {
         meta: {
           ...data,
+          title: displayTitle,
           slug: slugStr,
           slugSegments: slug,
           readingTime: stats,
         },
-        content,
+        content: displayContent,
       }
     }
   }
