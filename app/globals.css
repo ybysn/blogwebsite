@@ -1186,6 +1186,11 @@ a:hover {
   max-width: 720px;
 }
 
+/* When sidebar is hidden, let article fill the full width */
+.tutorial-layout:has(.tutorial-sidebar--hidden) .tutorial-article {
+  max-width: none;
+}
+
 /* Stage badge */
 .tutorial-stage-badge {
   display: inline-block;
