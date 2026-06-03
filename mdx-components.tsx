@@ -1,5 +1,4 @@
 import type { MDXComponents } from 'mdx/types'
-import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 
 const components: MDXComponents = {
@@ -54,10 +53,11 @@ const components: MDXComponents = {
     )
   },
   img: (props) => (
-    <Image
-      sizes="100vw"
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      alt=""
+      {...(props as React.ImgHTMLAttributes<HTMLImageElement>)}
       style={{ width: '100%', height: 'auto', borderRadius: '12px', margin: '2rem 0' }}
-      {...(props as ImageProps)}
     />
   ),
   ul: ({ children, ...props }) => (

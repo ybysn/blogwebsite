@@ -102,6 +102,10 @@ function transformSection(text: string): string {
     // MDX treats <> as a JSX fragment opening
     .replace(/<>/g, '`<>`')
     .replace(/<\/>/g, '`</>`')
+    // Fix HTML class="..." → className="..." (React/JSX requirement)
+    .replace(/\sclass="/g, ' className="')
+    // Remove <script> tags and their content (React can't render them)
+    .replace(/<script[\s\S]*?<\/script>/g, '')
     // Fix <el-xxx> custom element tags (Element UI components)
     // Use [\s\S]*? for multiline matching (tags can span multiple lines)
     .replace(/<el-([\w-]+)([\s\S]*?)>/g, '`<el-$1$2>`')
