@@ -12,12 +12,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 # AI Agent 与工具调用
 > 💡 **学习指南**：本章节无需编程基础，通过交互式演示带你深入了解 AI Agent（智能体）的工作原理。我们将从最基本的"工具调用"讲起，一直到 Agent 是如何规划、记忆和协作的。
 
-<div class="vue-demo-placeholder" data-demo="AgentQuickStart">
-<p>📦 Interactive Demo: <strong>AgentQuickStart</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 0. 引言：从"能说"到"能做"
 
 你一定用过 ChatGPT、Claude 这样的聊天机器人。它们很强大，但有一个明显的局限：
@@ -84,12 +78,6 @@ LLM 生成调用指令：
 LLM 生成最终回答："北京今天天气晴朗，气温25度..."
 ```
 
-<div class="vue-demo-placeholder" data-demo="AgentToolUse">
-<p>📦 Interactive Demo: <strong>AgentToolUse</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **关键点**：Tool Calling 的本质是 **LLM 生成结构化文本**，告诉外部系统该做什么。
 
 ---
@@ -120,12 +108,6 @@ LLM 生成最终回答："北京今天天气晴朗，气温25度..."
 ### 2.2 解决方案：Planning（规划能力）
 
 Agent 会像**项目经理**一样，先把大任务拆解成小步骤：
-
-<div class="vue-demo-placeholder" data-demo="AgentPlanning">
-<p>📦 Interactive Demo: <strong>AgentPlanning</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **规划的核心流程**：
 
@@ -164,12 +146,6 @@ Agent：抱歉，我不记得了...
 
 Agent 通常采用三种记忆类型协同工作：
 
-<div class="vue-demo-placeholder" data-demo="AgentMemory">
-<p>📦 Interactive Demo: <strong>AgentMemory</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **三种记忆的分工**：
 
 | 记忆类型 | 作用 | 存储内容 | 持久化 |
@@ -184,12 +160,6 @@ Agent 通常采用三种记忆类型协同工作：
 
 现在我们把三个核心能力整合起来，看看 Agent 的完整工作流程：
 
-<div class="vue-demo-placeholder" data-demo="AgentWorkflow">
-<p>📦 Interactive Demo: <strong>AgentWorkflow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **感知-决策-行动-观察**的循环会持续进行，直到任务完成。
 
 ---
@@ -197,12 +167,6 @@ Agent 通常采用三种记忆类型协同工作：
 ## 5. Agent 的能力分级
 
 不是所有 Agent 都一样强大。根据能力不同，Agent 可以分为多个等级：
-
-<div class="vue-demo-placeholder" data-demo="AgentLevel">
-<p>📦 Interactive Demo: <strong>AgentLevel</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **各级别说明**：
 
@@ -220,12 +184,6 @@ Agent 通常采用三种记忆类型协同工作：
 ## 6. Agent 的核心架构
 
 一个典型的 Agent 由以下模块组成：
-
-<div class="vue-demo-placeholder" data-demo="AgentArchitecture">
-<p>📦 Interactive Demo: <strong>AgentArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **各模块详解**：
 
@@ -266,12 +224,6 @@ Agent 通常采用三种记忆类型协同工作：
 ## 7. 主流框架对比
 
 目前主流的 Agent 开发框架有很多，包括 LangChain、LlamaIndex、CrewAI、AutoGen，以及 Anthropic 官方推出的 Claude Agent SDK。它们各有特色，适用于不同的场景。
-
-<div class="vue-demo-placeholder" data-demo="FrameworkComparison">
-<p>📦 Interactive Demo: <strong>FrameworkComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 7.1 核心差异：官方原生 vs 第三方封装
 
@@ -537,12 +489,6 @@ print(f"\n✅ 结果: {result}")
 
 ## 10. 挑战与局限
 
-<div class="vue-demo-placeholder" data-demo="AgentChallenges">
-<p>📦 Interactive Demo: <strong>AgentChallenges</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 10.1 技术挑战
 
 **1. 规划不稳定性**
@@ -579,12 +525,6 @@ Agent 可能被诱导执行危险操作。
 ---
 
 ## 11. 未来趋势
-
-<div class="vue-demo-placeholder" data-demo="AgentFuture">
-<p>📦 Interactive Demo: <strong>AgentFuture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 11.1 技术演进方向
 
@@ -649,7 +589,6 @@ Agent 可能被诱导执行危险操作。
 > —— AI 研究员
 
 **记住**：Agent 的未来属于那些敢于实践的人。现在就开始构建你的第一个 Agent 吧！🚀
-
 
 ---
 

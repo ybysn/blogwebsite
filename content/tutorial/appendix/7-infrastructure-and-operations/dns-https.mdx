@@ -60,12 +60,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 
 DNS（Domain Name System）的工作原理就像查电话簿：你知道对方的名字（域名），需要查到对方的电话号码（IP 地址）。但互联网的"电话簿"不是一本，而是一个分层的分布式系统。
 
-<div class="vue-demo-placeholder" data-demo="DnsResolution">
-<p>📦 Interactive Demo: <strong>DnsResolution</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **DNS 解析的四个步骤**</p>
 
@@ -88,12 +82,6 @@ DNS（Domain Name System）的工作原理就像查电话簿：你知道对方�
 ## 2. DNS 记录类型：域名背后的"配置表"
 
 DNS 不只是把域名翻译成 IP。通过不同类型的 DNS 记录，你可以控制邮件投递、域名跳转、服务发现等多种行为。理解这些记录类型，是配置域名和排查网络问题的基础。
-
-<div class="vue-demo-placeholder" data-demo="DnsRecordType">
-<p>📦 Interactive Demo: <strong>DnsRecordType</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 记录类型 | 用途 | 示例 |
 |---------|------|------|
@@ -122,12 +110,6 @@ HTTP 协议的数据是明文传输的——就像寄明信片，邮递员（中
 
 TLS 握手是建立安全连接的关键步骤，它在正式传输数据之前，完成身份验证和密钥协商。
 
-<div class="vue-demo-placeholder" data-demo="HttpsHandshake">
-<p>📦 Interactive Demo: <strong>HttpsHandshake</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **TLS 1.3 握手的核心步骤**</p>
 
@@ -152,12 +134,6 @@ TLS 握手是建立安全连接的关键步骤，它在正式传输数据之前�
 
 TLS 握手中最关键的一步是"证书验证"。浏览器怎么判断一个网站的证书是真的，而不是攻击者伪造的？答案是**证书信任链**——一个层层背书的信任体系。
 
-<div class="vue-demo-placeholder" data-demo="CertificateChain">
-<p>📦 Interactive Demo: <strong>CertificateChain</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **证书信任链的三层结构**</p>
 
@@ -179,12 +155,6 @@ TLS 握手中最关键的一步是"证书验证"。浏览器怎么判断一个�
 ## 5. HTTP vs HTTPS：为什么加密是底线？
 
 2024 年，全球超过 95% 的网页流量已经通过 HTTPS 传输。Chrome 浏览器会对 HTTP 网站标记"不安全"警告，搜索引擎也会降低 HTTP 网站的排名。HTTPS 不再是"可选项"，而是现代 Web 的底线要求。
-
-<div class="vue-demo-placeholder" data-demo="DnsHttpsComparison">
-<p>📦 Interactive Demo: <strong>DnsHttpsComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 维度 | HTTP | HTTPS |
 |------|------|-------|
@@ -223,7 +193,6 @@ TLS 握手中最关键的一步是"证书验证"。浏览器怎么判断一个�
 - [Cloudflare Learning Center](https://www.cloudflare.com/learning/dns/what-is-dns/) - DNS 和网络安全系统教程
 - [TLS 1.3 RFC 8446](https://datatracker.ietf.org/doc/html/rfc8446) - TLS 1.3 协议规范
 - [SSL Labs](https://www.ssllabs.com/ssltest/) - 在线检测网站 HTTPS 配置质量
-
 
 ---
 

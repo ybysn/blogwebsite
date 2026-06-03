@@ -12,12 +12,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 
 2017 年，Google 在论文《Attention Is All You Need》中提出的 Transformer 架构，彻底改变了自然语言处理的游戏规则。它抛弃了传统的循环神经网络（RNN），仅依靠注意力机制就实现了更强的性能和更高的训练效率。今天，几乎所有的大语言模型——GPT、BERT、T5、LLaMA——都建立在 Transformer 的基础之上。
 
-<div class="vue-demo-placeholder" data-demo="TransformerQuickStart">
-<p>📦 Interactive Demo: <strong>TransformerQuickStart</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 一、RNN 的困境与 Transformer 的突破
@@ -36,12 +30,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 
 Transformer 通过**自注意力机制（Self-Attention）**，让模型能够"一眼看全"整个序列，直接计算任意两个位置之间的关系，无需逐步传递信息。
 
-<div class="vue-demo-placeholder" data-demo="RnnVsTransformer">
-<p>📦 Interactive Demo: <strong>RnnVsTransformer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **Transformer 的核心优势**</p>
 
@@ -57,12 +45,6 @@ Transformer 通过**自注意力机制（Self-Attention）**，让模型能够"�
 
 Transformer 的完整架构由**编码器（Encoder）**和**解码器（Decoder）**两部分组成，分别负责理解输入和生成输出。
 
-<div class="vue-demo-placeholder" data-demo="TransformerArchitecture">
-<p>📦 Interactive Demo: <strong>TransformerArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 2.1 编码器（Encoder）
 
 以句子"银行账户里的余额不足"为例。当模型处理"余额"这个词时，它会自动计算与其他词的相关性：
@@ -72,12 +54,6 @@ Transformer 的完整架构由**编码器（Encoder）**和**解码器（Decoder
 - "余额"与"的"、"里"等虚词相关性低（0.05-0.10）
 
 这种相关性不是人工规定的，而是模型通过大量数据自动学习出来的。
-
-<div class="vue-demo-placeholder" data-demo="SelfAttention">
-<p>📦 Interactive Demo: <strong>SelfAttention</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.2 注意力的计算过程
 
@@ -102,12 +78,6 @@ Transformer 的注意力机制借鉴了信息检索的思想，将每个词映�
 **Value（值）**：代表"我的内容是什么"。实际要传递的信息，根据注意力权重被加权求和。
 
 这种设计的巧妙之处在于：**相似度计算（Q·K）和信息传递（V）是解耦的**。模型可以学习到"哪些词应该关注"和"关注后应该提取什么信息"是两个独立的问题。
-
-<div class="vue-demo-placeholder" data-demo="QKVMechanism">
-<p>📦 Interactive Demo: <strong>QKVMechanism</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 3.2 注意力计算公式
 
@@ -141,12 +111,6 @@ Attention(Q, K, V) = softmax(QK^T / √d_k) V
 - **指代头**：解析代词指向（如"他"指向"小明"）
 - **情感头**：识别褒贬色彩和情绪倾向
 - **实体头**：识别人名、地名等命名实体
-
-<div class="vue-demo-placeholder" data-demo="MultiHeadAttention">
-<p>📦 Interactive Demo: <strong>MultiHeadAttention</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 4.2 多头的优势
 
@@ -190,12 +154,6 @@ Transformer 的完整架构由**编码器（Encoder）**和**解码器（Decoder
 2. **交叉注意力（Cross-Attention）**：连接编码器和解码器，让解码器关注输入序列
 3. **前馈神经网络**：与编码器相同
 
-<div class="vue-demo-placeholder" data-demo="TransformerArchitecture">
-<p>📦 Interactive Demo: <strong>TransformerArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 5.3 现代变体：仅编码器 vs 仅解码器
 
 虽然原始 Transformer 包含编码器和解码器，但现代大模型通常只使用其中一种：
@@ -222,12 +180,6 @@ Transformer 的自注意力机制本身是**位置无关**的——它把句子�
 ### 6.1 位置编码的必要性
 
 为了让模型感知位置信息，Transformer 在输入嵌入中加入**位置编码（Positional Encoding）**。位置编码是一个与词嵌入维度相同的向量，直接加到词嵌入上。
-
-<div class="vue-demo-placeholder" data-demo="PositionalEncoding">
-<p>📦 Interactive Demo: <strong>PositionalEncoding</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 6.2 正弦余弦位置编码
 
@@ -302,7 +254,6 @@ Transformer 和注意力机制的提出，标志着深度学习从"手工设计�
 理解 Transformer，就是理解现代 AI 的核心。从 BERT 的双向编码，到 GPT 的自回归生成，再到多模态大模型的统一表示，所有这些突破都建立在 Transformer 的肩膀上。
 
 未来，随着算力的提升和算法的优化，Transformer 还将继续演化，推动 AI 向更强大、更通用的方向发展。
-
 
 ---
 

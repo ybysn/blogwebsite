@@ -50,12 +50,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-brows
 
 **这就是"前端路由"要解决的核心问题：在不刷新页面的情况下，实现视图的切换和 URL 的同步更新。**
 
-<div class="vue-demo-placeholder" data-demo="RouteMatching">
-<p>📦 Interactive Demo: <strong>RouteMatching</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 1.2 一个真实的踩坑故事：为什么你需要理解路由模式
 
 你可能会说："我用 Vue Router 或者 React Router，配置一下就能用，为什么还需要了解这些底层原理？" 让我讲一个真实的故事，你就会明白为什么这些知识如此重要。
@@ -215,12 +209,6 @@ const routes = [
 | **SEO 友好度** | 较差（搜索引擎可能忽略 hash） | 良好（URL 结构清晰） |
 | **用户体验** | URL 有 `#`，看起来像"锚点跳转" | URL 美观，接近传统网站 |
 | **部署难度** | 低，无需特殊配置 | 高，需要正确配置服务器 |
-
-<div class="vue-demo-placeholder" data-demo="HashVsHistory">
-<p>📦 Interactive Demo: <strong>HashVsHistory</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **📊 从表格中你能看到什么？**</p>
@@ -599,12 +587,6 @@ server `{
 
 了解了实际案例后，让我们深入看看前端路由的工作原理，理解 Hash 和 History 两种模式到底有什么不同。
 
-<div class="vue-demo-placeholder" data-demo="RouterArchitecture">
-<p>📦 Interactive Demo: <strong>RouterArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 4.1 Hash 模式的工作原理
 
 Hash 模式的核心是利用 URL 中的 `hash` 部分（即 `#` 后面的内容）。hash 有两个重要特性：
@@ -851,12 +833,6 @@ const routes = [
 ]
 ```
 
-<div class="vue-demo-placeholder" data-demo="CodeSplitting">
-<p>📦 Interactive Demo: <strong>CodeSplitting</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **💡 懒加载的原理**</p>
 
@@ -1028,7 +1004,6 @@ const router = createRouter(`{
 希望这篇文章能帮助你建立起对前端路由的整体认知。当你在实际项目中遇到路由相关的问题时，能够知道从哪里入手、如何定位、怎样解决。
 
 </div>
-
 
 ---
 

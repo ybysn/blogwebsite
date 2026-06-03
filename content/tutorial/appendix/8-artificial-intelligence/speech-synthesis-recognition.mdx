@@ -12,12 +12,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 # 语音合成与识别原理
 > 💡 **学习指南**：本章节将带你深入了解 AI 音频底层原理。我们不仅会探讨“生涩”的声学专业术语（如 STFT、流匹配、音色嵌入），还会通过通俗的比喻和直观的交互演示，让你彻底明白 AI 是如何“听懂人话”并“开口说话”的。即使你是零基础读者，也能轻松掌握！
 
-<div class="vue-demo-placeholder" data-demo="AudioQuickStart">
-<p>📦 Interactive Demo: <strong>AudioQuickStart</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 0. 引言：物理声波的“数字化翻译”
 
 人类的语音和世界上的各种声音，本质上是空气振动产生的**连续物理声波**。但计算机的脑子里只有 `0` 和 `1`，它听不见声音。因此，让 AI 处理声音的第一步，就是跨越“物理世界”与“数字世界”的鸿沟。
@@ -46,11 +40,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 经过对数转换后，我们得到了当代音频 AI 的灵魂基石——**梅尔频谱 (Mel-Spectrogram)**。
 
 👇 **动手点点看**：在下方观察一维的机器波形如何被转化为符合人类感知的二维色彩图谱。
-<div class="vue-demo-placeholder" data-demo="MelSpectrogram">
-<p>📦 Interactive Demo: <strong>MelSpectrogram</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -62,12 +51,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 伴随 ChatGPT 的火爆，科学家们思考：如果把声音也变成一个接一个的“汉字（Token）”，大语言模型（LLM）是不是就能直接唱歌说话了？
 - **压缩与量化**：依靠强大的 **神经编解码器 (Neural Codec，如 EnCodec)** 和 VQ-VAE 架构，一段几兆大小的音频会被极限压缩，最终变成一本字典里的一个个离散代号（比如序列：`[82, 105, 33...]`）。
 - **生成接龙**：AI 模型只需像做文字接龙一样，预测下一个声音 Token 是什么。这极大地统一了多模态学习的底层架构！
-
-<div class="vue-demo-placeholder" data-demo="AudioTokenization">
-<p>📦 Interactive Demo: <strong>AudioTokenization</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.2 范式二：把声音当画作 (Spectrogram Generation)
 这是目前大量成熟语音软件的基石方案，可控性极佳。
@@ -83,12 +66,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 - **自动语音识别 (ASR)**：将声音翻译为文字。这是一道**多对一的收敛选择题**。模型（如 Whisper）必须在充满嘈杂环境噪音、口音变化、同音字干扰（“期中”与“期终”）的海量音频中，提炼锁定出唯一正确的语义文字。
 - **文本转语音 (TTS)**：将文字翻译为声音。这是一道**一对多的发散创作题**。同样一句干瘪的“你好”，它可以带着一万种不同的语速、情绪、停顿和嗓音。模型必须有能力脑补出这些缺失的参数。
 
-<div class="vue-demo-placeholder" data-demo="ASRvsTTS">
-<p>📦 Interactive Demo: <strong>ASRvsTTS</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 4. 从“挤牙膏”到“直通车”：TTS 核心架构换代
@@ -98,12 +75,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 - **串行笨方法 (自回归 AR)**：老一代模型必须遵循时间先后，生成完上一毫秒，才能以此为基准预测下一毫秒。这种方法虽然稳妥，但**极易卡壳且速度缓慢**。
 - **神级预判 (非自回归 NAR)**：后续的模型引入了**时长预测器 (Duration Predictor)**，不再排队生成，而是一次性为每个声素“算命”出它该有的时长，接着兵分多路**瞬间并行输出整句音频**。
 - **常微分快车道 (流匹配 Flow Matching)**：这是当下的**终极前沿方案**（如 F5-TTS）。它运用连续正规化流和常微分方程 (ODE) 等复杂数学原理，摒弃了传统的生硬搭建。模型学习的是一条从“纯白噪声”到“完美频谱”的最优直达运动轨迹（概率流）。不仅计算效率呈指数级上升，其声音的平滑与自然度也达到了巅峰。
-
-<div class="vue-demo-placeholder" data-demo="TTSPipeline">
-<p>📦 Interactive Demo: <strong>TTSPipeline</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -115,12 +86,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 - 这不仅是一个监听器，更是一个**“基因提取仪”**。它的任务是剥离掉音频里的背景噪音和具体说了什么话（Text），强行且唯一地抓取出关于你的生理恒定特征：声带有多宽？共鸣音腔有多大？咬字有什么习惯？
 - 这些特征最终会被压扁成一个几百维的**说话人嵌入向量 (Speaker Embeddings, 如 x-vector)**。这串如同条形码般的数字完全表征了你的声音身份。随后的 TTS 模型只要“带上这串向量”进行条件生成，吐出的任何语言都会带上你的嗓音特色。
 
-<div class="vue-demo-placeholder" data-demo="VoiceCloning">
-<p>📦 Interactive Demo: <strong>VoiceCloning</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 6. 赋予灵魂：情感节奏与细粒度风格控制
@@ -129,12 +94,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 
 学术界提出了 **全局风格 Token (GST)** 以及特征瓶颈机制。大模型可以从海量的人类演绎录音中聚类提取出对应的“伤心”、“激动”、“慵懒”等抽象的软向量。
 在工程落地时，我们还引入了基频 (F0，掌控音调升降)、能量 (Energy，掌控音量爆破音) 等直观的适配器调节参数，赋予了创作者像捏游戏人物脸型一样，精细捏合“语音情绪”的能力。
-
-<div class="vue-demo-placeholder" data-demo="EmotionControl">
-<p>📦 Interactive Demo: <strong>EmotionControl</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -157,7 +116,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 | **Vocoder** | 声码器 | “逆向翻译官”：负责将二维的梅尔频谱图重新物理渲染回能驱动音响发声的一维音频波形。 |
 | **Speaking Embeddings** | 说话人特征向量 | 将特定人员的专属嗓音音色固定下来的极高维度且不可变的数学 ID（如 x-vector）。 |
 | **Flow Matching** | 流匹配 | 将正态分布转化为经验数据分布的一种无需昂贵微分随机计算，而是沿常微分方程建立一条常态直线平滑生成路径的前沿 AI 推断过程。 |
-
 
 ---
 

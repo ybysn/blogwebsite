@@ -47,12 +47,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 2. **内存踩踏事故**：微信和游戏都在使用仓库（内存）。如果没有保安规划区域，游戏一不小心把装备数据放到了微信的盒子里，微信直接当场崩溃。
 3. **硬盘迷宫**：硬盘硬件只是一张张刻满 0 和 1 的巨大光盘。要想找到昨天存的照片，你必须准确记住它存放在"第 1 盘面、第 56 磁道、第 8 扇区"，没人能记住这种反人类的坐标。
 
-<div class="vue-demo-placeholder" data-demo="OSArchitecture">
-<p>📦 Interactive Demo: <strong>OSArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 为了解决上述的三大噩梦，操作系统祭出了它的三板斧：**进程管理**、**内存管理**和**文件系统**。
 
 ---
@@ -62,12 +56,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 你平时用电脑，常常是一边挂着微信，一边听着音乐，还能一边打字。但如果你买的电脑其实只有一个 CPU 核心，它是怎么同时做这三件事的？
 
 答案是：**它并没有同时做。而是操作系统在进行疯狂的"时间管理"。**
-
-<div class="vue-demo-placeholder" data-demo="Process">
-<p>📦 Interactive Demo: <strong>Process</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 1.1 什么是"进程"？
 每一个正在运行的程序，就被称为一个**进程**。你可以把它理解为一个"项目组"，有自己的代码（做事清单）、自己的内存数据（项目资金），排着队等待 CPU 接见。
@@ -80,12 +68,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 ## 2. 内存管理：虚拟地址空间
 
 解决了 CPU 轮流用的问题，接下来是内存空间。如果不加管理，所有软件都直接往物理内存条写数据，必然会发生**互相覆盖**的踩踏惨剧。
-
-<div class="vue-demo-placeholder" data-demo="Memory">
-<p>📦 Interactive Demo: <strong>Memory</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.1 虚拟内存（Virtual Memory）
 操作系统对每一个进程都撒了一个大谎："嘿，你独占了整台电脑所有的可用内存，随便用！"
@@ -103,12 +85,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 如果你买了一块崭新的硬盘，它里面其实是一片荒芜的存储单元。如果你想存一张照片，硬盘只会问你："请告诉我你要存在第几个字节？"
 
-<div class="vue-demo-placeholder" data-demo="Filesystem">
-<p>📦 Interactive Demo: <strong>Filesystem</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 3.1 文件系统做了什么？
 1. **切割硬盘**：把硬盘切成无数个固定大小的**块**（通常是 4KB）
 2. **建立账本**：记录哪些块是满的，哪些是空的
@@ -122,12 +98,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 我们已经分别了解了操作系统的三大模块，下面看看当你**双击打开一个程序**时，它们是如何协同工作的：
 
-<div class="vue-demo-placeholder" data-demo="ProgramLaunch">
-<p>📦 Interactive Demo: <strong>ProgramLaunch</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 无论是你点击桌面图标，还是代码中的一句 `print("Hello World")`，都离不开这一套复杂的暗箱操作。我们之所以能那么轻松地在数字世界里冲浪，全都是因为底层的操作系统在替我们负重前行。
 
 ---
@@ -138,7 +108,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 - **进程与线程**：如果进程是项目组，那"线程"就是组里干活的员工
 - **并发与锁**：当两个进程同时竞争同一个资源时，如何防止死锁
 - **系统调用**：操作系统给上层应用提供的"服务窗口"
-
 
 ---
 

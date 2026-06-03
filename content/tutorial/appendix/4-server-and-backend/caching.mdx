@@ -50,12 +50,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 
 **这就是"缓存"要解决的核心问题：通过存储常用数据的副本，减少对慢速存储（数据库）的访问，让系统更快、更稳定。**
 
-<div class="vue-demo-placeholder" data-demo="CachePerformanceComparison">
-<p>📦 Interactive Demo: <strong>CachePerformanceComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 1.2 一个真实的踩坑故事：为什么缓存是救命稻草
 
 你可能会想："我的系统现在还行，为什么要提前设计缓存？"让我讲一个真实的故事，你就会明白为什么缓存不是"可选项"，而是"必选项"。
@@ -197,12 +191,6 @@ return userFromDB
 
 👇 **动手看看**：
 下面这个演示展示了缓存的生命周期。点击"新增缓存"，观察缓存如何经历写入、命中、过期、淘汰的全过程：
-
-<div class="vue-demo-placeholder" data-demo="CacheLifecycle">
-<p>📦 Interactive Demo: <strong>CacheLifecycle</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -874,12 +862,6 @@ async function getProduct(productId) {
 👇 **动手看看**：
 下面这个演示对比了缓存穿透、击穿、雪崩三种问题的场景和解决方案：
 
-<div class="vue-demo-placeholder" data-demo="CacheProblems">
-<p>📦 Interactive Demo: <strong>CacheProblems</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 5. 缓存一致性策略：如何让缓存和数据库保持同步
@@ -1036,12 +1018,6 @@ async function updateProduct(productId, updateData) {
 👇 **动手看看**：
 下面这个演示对比了三种一致性策略的效果。点击"更新数据"，观察缓存和数据库的一致性变化：
 
-<div class="vue-demo-placeholder" data-demo="CacheConsistency">
-<p>📦 Interactive Demo: <strong>CacheConsistency</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 6. 实战：构建一个完整的缓存系统
@@ -1167,12 +1143,6 @@ async function updateProduct(productId, updateData) {
 👇 **动手看看**：
 下面这个演示展示了多级缓存系统的完整工作流程。点击"查询商品"，观察请求如何在各级缓存中流转：
 
-<div class="vue-demo-placeholder" data-demo="EcommerceCacheArchitecture">
-<p>📦 Interactive Demo: <strong>EcommerceCacheArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 7. 总结与学习路径
@@ -1226,7 +1196,6 @@ async function updateProduct(productId, updateData) {
 希望这篇文章能帮助你建立起对缓存系统的完整认知。当你在实际项目中遇到性能问题时，能够想到："是否可以用缓存来解决？"
 
 </div>
-
 
 ---
 

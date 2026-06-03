@@ -1647,11 +1647,9 @@ serve(async (req) => {
     1. 禁止 WebView 登录：Google OAuth 不支持应用内浏览器登录，需参考 [Google 官方文档](https://support.google.com/cloud/answer/7657789) 调整。
     2. 切换发布状态：默认“Testing”状态仅支持 100 个测试用户，需在 OAuth consent screen 将“Publishing status”改为 In production （需通过 Google 审核）。
     3. 阻止子邮箱：Clerk 默认拦截含 `+`/`=`/`#` 的 Google 邮箱（如 `user+alias@example.com`），可在 Google 连接详情页开启/关闭 Block email subaddresses （建议开启提升安全性）。
-    4. 支持 Google One Tap：配置完成后，可集成 Clerk `<div class="vue-demo-placeholder" data-demo="GoogleOneTap">
-<p>📦 Interactive Demo: <strong>GoogleOneTap</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/database-supabase/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>` 组件实现“一键登录”，参考 [Clerk 组件文档](https://clerk.com/docs/components/social-connections/google-one-tap)。
+    4. 支持 Google One Tap：配置完成后，可集成 Clerk `
+
+` 组件实现“一键登录”，参考 [Clerk 组件文档](https://clerk.com/docs/components/social-connections/google-one-tap)。
 
 3. 测试第三方登录连接
 
@@ -1749,7 +1747,6 @@ serve(async (req) => {
 # 📚 课后作业
 
 1. 开发一个包含用户管理系统和数据库的应用程序。最好包含更多的Supabase 功能 (Realtime / cloud storage / Edge function).
-
 
 ---
 

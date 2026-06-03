@@ -96,12 +96,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 当你在浏览器输入 `google.com` 并按下回车，你就是那个"买家"，浏览器通过一系列操作，最终把远方服务器上的"商品"（网页内容）送到你的屏幕上。
 
-<div class="vue-demo-placeholder" data-demo="UrlToBrowserQuickStart">
-<p>📦 Interactive Demo: <strong>UrlToBrowserQuickStart</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-info">
 <p class="admonition-title">ℹ️ **💡 核心启示**</p>
 
@@ -142,12 +136,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 | **路径** `/path/page.html` | 服务器上的文件位置   | **货架位置**：日用品区/第三排                      | 指定服务器上的具体资源位置                                               |
 | **查询参数** `?id=123`     | 附加信息             | **订单备注**：红色、XL码                           | 传递给服务器的额外数据，如搜索关键词、页码等                             |
 | **锚点** `#section`        | 页面内的位置         | **说明书页码**：翻到第5页                          | 页面加载后自动滚动到指定位置，不发送给服务器                             |
-
-<div class="vue-demo-placeholder" data-demo="UrlParser">
-<p>📦 Interactive Demo: <strong>UrlParser</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-info">
 <p class="admonition-title">ℹ️ **💡 关键理解**</p>
@@ -199,12 +187,6 @@ URL 的存在是为了让**人类**能记住和输入。计算机最终需要的
 - **递归查询（Recursive Query）**：浏览器只发一次请求，本地 DNS 负责层层查询后返回结果
 - **迭代查询（Iterative Query）**：每一层只告诉下一层去哪查，浏览器需要多次查询
 - **缓存机制**：查询结果会被缓存，下次直接返回，大大加速访问
-
-<div class="vue-demo-placeholder" data-demo="DnsLookup">
-<p>📦 Interactive Demo: <strong>DnsLookup</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-info">
 <p class="admonition-title">ℹ️ **💡 为什么需要这么多层？**</p>
@@ -266,12 +248,6 @@ URL 的存在是为了让**人类**能记住和输入。计算机最终需要的
 - **顺序重组**：确保数据包按正确顺序组装
 - **错误重传**：丢包后自动重新发送
 - **流量控制**：根据网络状况调整发送速度
-
-<div class="vue-demo-placeholder" data-demo="TcpHandshake">
-<p>📦 Interactive Demo: <strong>TcpHandshake</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 > **HTTPS 的额外步骤**：如果是 HTTPS（安全的网站），在 TCP 握手后还会进行 **TLS 握手**（1-RTT 或 2-RTT），双方交换加密密钥，确保之后的对话内容只有双方能看懂，就像用暗语通话。
 
@@ -363,12 +339,6 @@ Set-Cookie: user_id=xyz789        ← 设置 Cookie
 | **502**     | 网关错误   | 上游服务器无响应 | "总仓没货了，分仓也调不到"       |
 | **503**     | 服务不可用 | 服务器过载或维护 | "爆单了，暂停接单"               |
 
-<div class="vue-demo-placeholder" data-demo="HttpExchange">
-<p>📦 Interactive Demo: <strong>HttpExchange</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 5. 第五步：拆开"包裹" —— 浏览器渲染
@@ -450,12 +420,6 @@ DOM 树 + CSSOM 树 = **渲染树 (Render Tree)**。
 #### 步骤6：合成 (Composite) —— 最终展示
 
 现代浏览器会将页面分成多个**图层 (Layers)** 分别绘制（比如 3D 变换、滚动条独立图层），最后由 GPU 将它们像 Photoshop 图层一样叠加在一起，呈现在屏幕上。
-
-<div class="vue-demo-placeholder" data-demo="BrowserRendering">
-<p>📦 Interactive Demo: <strong>BrowserRendering</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-info">
 <p class="admonition-title">ℹ️ **💡 你知道吗？**</p>
@@ -633,7 +597,6 @@ DOM 树 + CSSOM 树 = **渲染树 (Render Tree)**。
 **这就是理解技术原理的价值** — 遇到问题时，你能知道从哪里找原因，而不是束手无策。
 
 </div>
-
 
 ---
 

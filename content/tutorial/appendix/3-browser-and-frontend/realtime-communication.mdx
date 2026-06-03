@@ -38,12 +38,6 @@ HTTP 协议的设计初衷是用于文档检索，它具有**无状态（Statele
 
 最直接的解决方案是**短轮询**。即客户端利用定时器（如 `setInterval`），每隔一段固定的时间，自动向服务端发送 HTTP 请求，询问是否有新数据到达。
 
-<div class="vue-demo-placeholder" data-demo="Polling">
-<p>📦 Interactive Demo: <strong>Polling</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **技术特点与局限：**
 - **优点**：实现机制极其简单，完全依赖标准的 HTTP 协议和 AJAX/Fetch 技术。
 - **缺点**：可能产生巨大的网络开销与资源浪费。大多数时间里，服务端的响应可能是“无新数据”。无论有无数据，每次请求都需要携带完整的 HTTP 头部（Headers、Cookies 等），在并发量较高的场景下，会导致网络资源被大量无意义的查询占据。
@@ -55,12 +49,6 @@ HTTP 协议的设计初衷是用于文档检索，它具有**无状态（Statele
 为了降低频繁建立 HTTP 连接的开销，**Server-Sent Events (SSE)** 提供了一种轻型的单向数据流推送架构。
 
 SSE 建立在 HTTP 协议之上。客户端发起一个包含特殊请求头（`Accept: text/event-stream`）的 HTTP 请求后，服务端在返回响应时会保持底层的 TCP 连接不断开。随后，服务端可以通过这条持久的通道，持续不断地向客户端推送文本格式的数据。
-
-<div class="vue-demo-placeholder" data-demo="SSE">
-<p>📦 Interactive Demo: <strong>SSE</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **技术特点与局限：**
 - **优点**：连接持久化，网络开销小；浏览器原生支持断线自动重连机制；非常适合从服务端向客户端**单向**传输流式数据（例如大语言模型的文本逐字输出、实时交易行情推送）。
@@ -76,12 +64,6 @@ WebSocket 是一种独立的网络通信协议。它精妙地借助了 HTTP 协�
 1. **握手阶段**：客户端发送一个特殊的 HTTP 请求，声明希望将其升级为新协议（携带 `Upgrade: websocket` 头部）。
 2. **连接质变**：服务端若支持并同意该协议，则回复 `101 Switching Protocols` 状态码。
 3. **彻底自由**：此时 HTTP 的规范使命结束，底层的 TCP 连接被移交给 WebSocket 协议。此后，客户端与服务端享有平等的全双工（Full-Duplex）通信权利，双方可随时收发极简格式的数据帧。
-
-<div class="vue-demo-placeholder" data-demo="WebSocket">
-<p>📦 Interactive Demo: <strong>WebSocket</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **技术特点与局限：**
 - **优点**：支持真正意义上的双向实时通信；数据帧的头部信息极小，通信延迟低、吞吐效率高；支持原生二进制数据（ArrayBuffer）的传输。
@@ -99,7 +81,6 @@ WebSocket 是一种独立的网络通信协议。它精妙地借助了 HTTP 协�
 | **典型应用场景** | 定时检查后台异步任务的完成状态 | 大模型对话单向流输出、新闻或系统通知推送 | 实时音视频信令、多人在线对战、协同白板与编辑 |
 
 在实际工程中，开发者应依据具体业务场景对实时性与双向交互频率的要求，在系统的维护复杂度和通信效率之间取得平衡，选择最契合的技术栈。
-
 
 ---
 

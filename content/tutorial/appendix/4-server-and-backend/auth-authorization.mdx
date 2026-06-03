@@ -12,12 +12,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 # 认证与授权体系
 > 💡 **学习指南**：本章节带你深入理解后端系统的"门禁系统"——鉴权与授权。我们将从最基础的"你是谁"讲起，一步步掌握 Session、JWT、OAuth2.0 等现代鉴权方案。
 
-<div class="vue-demo-placeholder" data-demo="AuthEvolution">
-<p>📦 Interactive Demo: <strong>AuthEvolution</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 0. 引言：系统的"门禁"
 
 你登录微信后，为什么关掉再打开还是登录状态？
@@ -39,21 +33,9 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 - **权限控制**：管理员可以删除用户，普通用户不行。
 - **防止滥用**：防止恶意调用、刷接口。
 
-<div class="vue-demo-placeholder" data-demo="AuthBasics">
-<p>📦 Interactive Demo: <strong>AuthBasics</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 0.2 交互式演示：登录流程
 
 让我们通过一个真实的登录演示，来理解认证和授权是如何工作的。
-
-<div class="vue-demo-placeholder" data-demo="AuthInteractiveLogin">
-<p>📦 Interactive Demo: <strong>AuthInteractiveLogin</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **关键点**：鉴权是第一道防线，所有敏感操作都必须先验证身份。
 
@@ -85,12 +67,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
       验证身份               检查权限
       (Token 有效？)         (有 delete 权限？)
 ```
-
-<div class="vue-demo-placeholder" data-demo="AuthNvsAuthZ">
-<p>📦 Interactive Demo: <strong>AuthNvsAuthZ</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **关键点**：先认证，再授权。只有确认了"你是谁"，才能判断"你能干什么"。
 
@@ -170,12 +146,6 @@ def get_users():
     users = db.get_all_users()
     return {"users": users}
 ```
-
-<div class="vue-demo-placeholder" data-demo="SessionCookie">
-<p>📦 Interactive Demo: <strong>SessionCookie</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **优点**：
 
@@ -263,12 +233,6 @@ def get_users():
     return {"users": users}
 ```
 
-<div class="vue-demo-placeholder" data-demo="JWTWorkflow">
-<p>📦 Interactive Demo: <strong>JWTWorkflow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **优点**：
 
 - **无状态**：服务端不存储 Session，易于横向扩展。
@@ -283,12 +247,6 @@ def get_users():
 - **Token 过大**：每次请求都要带上，几百字节。
 
 **结论**：现代 Web 和移动端的标准方案。
-
-<div class="vue-demo-placeholder" data-demo="SessionVsJWT">
-<p>📦 Interactive Demo: <strong>SessionVsJWT</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -343,12 +301,6 @@ def get_users():
      openid=OPENID
    → 返回: `{ "nickname": "张三", "headimgurl": "..." }`
 ```
-
-<div class="vue-demo-placeholder" data-demo="OAuth2Flow">
-<p>📦 Interactive Demo: <strong>OAuth2Flow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **代码示例**：
 
@@ -432,12 +384,6 @@ def wechat_callback():
 | **密码模式 (Resource Owner)**       | 高度信任的应用（如官方 App） | ⭐⭐             |
 | **客户端模式 (Client Credentials)** | 服务器间通信（无用户）       | ⭐⭐⭐⭐         |
 
-<div class="vue-demo-placeholder" data-demo="OAuth2Modes">
-<p>📦 Interactive Demo: <strong>OAuth2Modes</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 4. 实战：设计一个完整的鉴权系统
@@ -519,12 +465,6 @@ CREATE TABLE token_blacklist (
     INDEX idx_expired_at (expired_at)
 );
 ```
-
-<div class="vue-demo-placeholder" data-demo="AuthDatabase">
-<p>📦 Interactive Demo: <strong>AuthDatabase</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 4.4 代码实现
 
@@ -706,12 +646,6 @@ def refresh_token():
         return {"error": str(e)}, 401
 ```
 
-<div class="vue-demo-placeholder" data-demo="CompleteAuthSystem">
-<p>📦 Interactive Demo: <strong>CompleteAuthSystem</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 5. 安全最佳实践
@@ -750,12 +684,6 @@ if bcrypt.checkpw(password.encode('utf-8'), password_hash):
 - **慢**：故意设计得很慢（毫秒级），防暴力破解。
 - **自适应**：可以调整 rounds，随硬件变强而增强。
 - **加盐**：自带随机盐，防彩虹表。
-
-<div class="vue-demo-placeholder" data-demo="PasswordHashing">
-<p>📦 Interactive Demo: <strong>PasswordHashing</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 5.2 防暴力破解
 
@@ -861,12 +789,6 @@ app.config.update(
 3.  **使用 JWT（不用 Cookie）**：
     - JWT 存在 `localStorage`，不会自动带上，天然防 CSRF。
 
-<div class="vue-demo-placeholder" data-demo="CSRFDefense">
-<p>📦 Interactive Demo: <strong>CSRFDefense</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 5.4 防 XSS (Cross-Site Scripting)
 
 **攻击场景**：
@@ -907,12 +829,6 @@ app.config.update(
     SESSION_COOKIE_HTTPONLY=True
 )
 ```
-
-<div class="vue-demo-placeholder" data-demo="XSSDefense">
-<p>📦 Interactive Demo: <strong>XSSDefense</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -987,7 +903,6 @@ app.config.update(
 | **Refresh Token** | -                           | **刷新令牌**。长期有效的令牌，用于获取新的 Access Token。                          |
 | **Scope**         | -                           | **权限范围**。OAuth 2.0 中的概念，表示第三方应用请求的权限（如读取用户信息）。     |
 | **PKCE**          | Proof Key for Code Exchange | **授权码交换的证明密钥**。OAuth 2.0 的扩展，用于公共客户端（如 SPA）的安全增强。   |
-
 
 ---
 

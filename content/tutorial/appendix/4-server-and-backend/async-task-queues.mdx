@@ -64,12 +64,6 @@ Web 应用中有很多类似的"做菜"操作：
 
 在同步模式下，这些操作串行执行，用户必须等所有操作完成才能看到结果。在异步模式下，只需要完成核心操作（扣减库存、创建订单），其余操作丢到队列里后台处理。
 
-<div class="vue-demo-placeholder" data-demo="AsyncTaskFlow">
-<p>📦 Interactive Demo: <strong>AsyncTaskFlow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 对比维度 | 同步处理 | 异步处理 |
 |---------|---------|---------|
 | 用户等待时间 | 所有操作总耗时 | 仅核心操作耗时 |
@@ -95,12 +89,6 @@ Web 应用中有很多类似的"做菜"操作：
 - **队列（Queue）**：存储待处理任务的缓冲区，通常用 Redis、RabbitMQ 等实现
 - **消费者（Consumer/Worker）**：从队列中取出任务并执行的工作进程
 
-<div class="vue-demo-placeholder" data-demo="TaskWorker">
-<p>📦 Interactive Demo: <strong>TaskWorker</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **队列的三大价值**</p>
 
@@ -125,12 +113,6 @@ Web 应用中有很多类似的"做菜"操作：
 
 最核心的两个问题：**任务丢失**（消费者处理到一半崩溃了）和**重复执行**（任务被投递了两次）。
 
-<div class="vue-demo-placeholder" data-demo="TaskRetry">
-<p>📦 Interactive Demo: <strong>TaskRetry</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **可靠性三板斧**</p>
 
@@ -153,12 +135,6 @@ Web 应用中有很多类似的"做菜"操作：
 ## 4. 框架选型：选择适合你的工具
 
 不同语言生态有不同的异步任务框架，它们在功能丰富度、性能、易用性上各有侧重。选择框架时，首先考虑你的技术栈，然后根据项目规模和需求做决定。
-
-<div class="vue-demo-placeholder" data-demo="AsyncComparison">
-<p>📦 Interactive Demo: <strong>AsyncComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **选型建议**</p>
@@ -194,7 +170,6 @@ Web 应用中有很多类似的"做菜"操作：
 - [Sidekiq Wiki](https://github.com/sidekiq/sidekiq/wiki) - Ruby 生态的任务处理标杆
 - [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials) - 消息中间件入门教程
 - [异步任务最佳实践](https://brandur.org/job-drain) - 任务队列的设计模式与陷阱
-
 
 ---
 

@@ -54,12 +54,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 CPU 接收到复位信号后，把内部所有寄存器和缓存清零，从一个预设的地址开始执行指令。这个地址通常指向 **BIOS/UEFI** 芯片。
 
-<div class="vue-demo-placeholder" data-demo="PowerOn">
-<p>📦 Interactive Demo: <strong>PowerOn</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 > **接力第一棒完成** ⛳ 到这里，硬件层面的工作已经完成：电源把交流电转成了稳定的直流电，主板芯片组被唤醒并开始协调各部件，CPU 也完成了复位、清空了寄存器，准备好执行第一条指令。
@@ -70,12 +64,6 @@ CPU 接收到复位信号后，把内部所有寄存器和缓存清零，从一�
 
 ## 2. BIOS/UEFI：硬件的自检
 
-<div class="vue-demo-placeholder" data-demo="BiosUefiInteractive">
-<p>📦 Interactive Demo: <strong>BiosUefiInteractive</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 > **接力第二棒完成** ⛳ BIOS/UEFI 圆满完成了它的三项使命：通过 POST 自检确认内存、显卡、键盘等硬件全部工作正常；初始化各硬件的工作模式；按照启动顺序找到了硬盘上的启动扇区。
@@ -85,12 +73,6 @@ CPU 接收到复位信号后，把内部所有寄存器和缓存清零，从一�
 > 交接的方式很具体：BIOS/UEFI 读取硬盘第一个扇区（启动扇区）里的引导程序代码，把它加载到内存中，然后让 CPU 跳转到这段代码开始执行。从这一刻起，控制权正式从固件交给了操作系统的引导程序。引导程序会一步步把操作系统内核加载进来，启动系统服务，最终呈现出你熟悉的桌面。这条链路中最复杂的一棒，开始了。
 
 ## 3. 操作系统启动：从内核到桌面
-
-<div class="vue-demo-placeholder" data-demo="OSBootInteractive">
-<p>📦 Interactive Demo: <strong>OSBootInteractive</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -137,12 +119,6 @@ CPU 接收到复位信号后，把内部所有寄存器和缓存清零，从一�
 | **UI 后端** | 绘制基础 UI 组件 |
 | **数据存储** | Cookie、LocalStorage 等 |
 
-<div class="vue-demo-placeholder" data-demo="BrowserArchitecture">
-<p>📦 Interactive Demo: <strong>BrowserArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 > **接力第四棒完成** ⛳ 浏览器已经成功启动。操作系统为它创建了独立的进程，分配了内存空间，浏览器自身的各个模块也已初始化完毕：渲染引擎准备好解析 HTML/CSS，JavaScript 引擎准备好执行脚本，网络模块准备好发送和接收数据。
@@ -173,12 +149,6 @@ URL 的结构：
 ### 5.2 访问 URL 的完整过程
 
 当你访问 `https://www.example.com` 时，发生了这些事情：
-
-<div class="vue-demo-placeholder" data-demo="URLRequest">
-<p>📦 Interactive Demo: <strong>URLRequest</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 #### 第一步：URL 解析
 
@@ -302,12 +272,6 @@ HTTP 响应格式：
 
 浏览器收到响应后，开始**渲染页面**：
 
-<div class="vue-demo-placeholder" data-demo="Rendering">
-<p>📦 Interactive Demo: <strong>Rendering</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 1. **解析 HTML**：构建 DOM 树
 2. **解析 CSS**：计算样式，构建渲染树
 3. **执行 JavaScript**：执行页面中的 JS 代码
@@ -336,12 +300,6 @@ HTTP 响应格式：
 ## 6. 完整流程回顾
 
 让我们把整个过程串起来：
-
-<div class="vue-demo-placeholder" data-demo="FullProcess">
-<p>📦 Interactive Demo: <strong>FullProcess</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ```
 从按下电源到访问网站的完整流程：
@@ -411,7 +369,6 @@ HTTP 响应格式：
 - **计算机网络**：深入理解网络协议
 
 </div>
-
 
 ---
 

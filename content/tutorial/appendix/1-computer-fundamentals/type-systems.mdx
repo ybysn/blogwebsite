@@ -58,12 +58,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 ## 1. 什么是类型系统：数据的交通规则
 
-<div class="vue-demo-placeholder" data-demo="TypeSystem">
-<p>📦 Interactive Demo: <strong>TypeSystem</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 类型系统的本质是一套**约束规则**，它告诉编译器或解释器：
 
 - 这个变量能存什么值？
@@ -84,12 +78,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 ## 2. 静态类型 vs 动态类型：什么时候检查？
 
 这是类型系统最重要的分类维度——**检查时机**。
-
-<div class="vue-demo-placeholder" data-demo="StaticVsDynamic">
-<p>📦 Interactive Demo: <strong>StaticVsDynamic</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **核心区别**</p>
@@ -121,12 +109,6 @@ Python 加了 Type Hints，JavaScript 社区转向 TypeScript——动态语言�
 
 第二个分类维度是**类型转换的严格程度**。
 
-<div class="vue-demo-placeholder" data-demo="StrongVsWeak">
-<p>📦 Interactive Demo: <strong>StrongVsWeak</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **核心区别**</p>
 
@@ -148,12 +130,6 @@ Python 加了 Type Hints，JavaScript 社区转向 TypeScript——动态语言�
 
 早期的静态类型语言（如 Java）要求你显式声明每个变量的类型，写起来很啰嗦。现代语言通过**类型推断**解决了这个问题——编译器自动推断类型，你不用写，但它帮你严格检查。
 
-<div class="vue-demo-placeholder" data-demo="TypeInferenceFlow">
-<p>📦 Interactive Demo: <strong>TypeInferenceFlow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **类型推断的价值**</p>
 
@@ -170,12 +146,6 @@ Python 加了 Type Hints，JavaScript 社区转向 TypeScript——动态语言�
 ## 5. 泛型：写一次，适用所有类型
 
 当你写了一个"取数组第一个元素"的函数，你会发现：数字数组要写一个、字符串数组要写一个、对象数组又要写一个……代码完全一样，只是类型不同。**泛型（Generics）**就是解决这个问题的——用一个"类型参数"代替具体类型，让一份代码适用于所有类型。
-
-<div class="vue-demo-placeholder" data-demo="GenericType">
-<p>📦 Interactive Demo: <strong>GenericType</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **泛型的核心价值**</p>
@@ -199,12 +169,6 @@ Python 加了 Type Hints，JavaScript 社区转向 TypeScript——动态语言�
 
 理论学完了，来看看实际开发中最容易踩的类型坑。这些陷阱不分语言，几乎每个开发者都会遇到。
 
-<div class="vue-demo-placeholder" data-demo="TypeSafetyPractice">
-<p>📦 Interactive Demo: <strong>TypeSafetyPractice</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **类型安全的四条黄金法则**</p>
 
@@ -227,12 +191,6 @@ Python 加了 Type Hints，JavaScript 社区转向 TypeScript——动态语言�
 ## 7. 语言类型象限图：给编程语言"画像"
 
 把"静态/动态"和"强/弱"两个维度组合起来，就得到了一个四象限分类图。每种编程语言都可以放进这个图里。
-
-<div class="vue-demo-placeholder" data-demo="LanguageTypeModel">
-<p>📦 Interactive Demo: <strong>LanguageTypeModel</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 象限 | 特点 | 代表语言 | 适用场景 |
 |------|------|---------|---------|
@@ -275,7 +233,6 @@ Python 加了 Type Hints，JavaScript 社区转向 TypeScript——动态语言�
 - [Rust Book - Data Types](https://doc.rust-lang.org/book/ch03-02-data-types.html) - Rust 的类型系统入门
 - [Type Systems (Wikipedia)](https://en.wikipedia.org/wiki/Type_system) - 类型系统的学术概述
 - [What To Know Before Debating Type Systems](https://cdsmith.wordpress.com/2011/01/09/an-old-article-i-wrote/) - 关于类型系统的经典讨论
-
 
 ---
 

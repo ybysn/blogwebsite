@@ -147,12 +147,6 @@ Shell 才是那个能听懂你说话、并指挥计算机干活的“大脑”�
 
 _下面的演示展示了这个过程，注意看 Shell 和内核之间那道“墙”，以及字符是如何一来一回的：_
 
-<div class="vue-demo-placeholder" data-demo="Architecture">
-<p>📦 Interactive Demo: <strong>Architecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 3. 视觉模型：网格系统 (The Grid System)
 
 与现代图形界面使用“像素”不同，终端的显示基础是**字符网格（Character Grid）**。
@@ -177,12 +171,6 @@ _请在下方交互区域尝试操作，观察网格如何承载字符：_
 
 _点击下方单元格，查看每个格子背后包含的样式属性：_
 
-<div class="vue-demo-placeholder" data-demo="CellInspector">
-<p>📦 Interactive Demo: <strong>CellInspector</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 4. 通信协议：转义序列 (Escape Sequences)
 
 你可能会疑惑：既然终端只传输文本，那彩色的文字、移动的光标、清屏操作是如何实现的？
@@ -200,12 +188,6 @@ _点击下方单元格，查看每个格子背后包含的样式属性：_
 
 _点击下方的“播放”按钮，观察终端是如何逐个处理字符流，并识别出隐藏的指令：_
 
-<div class="vue-demo-placeholder" data-demo="EscapeParser">
-<p>📦 Interactive Demo: <strong>EscapeParser</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 _下方组件则展示了更多种类的转义序列及其渲染效果：_
 
 ## 5. 输入机制：字节流 (Input as Byte Stream)
@@ -221,12 +203,6 @@ _下方组件则展示了更多种类的转义序列及其渲染效果：_
 **关键点**：所有的按键（包括功能键、鼠标点击）在传输层面上都是**字节数据**。
 
 _在下方尝试按键，观察你的输入是如何被转换为底层数据的：_
-
-<div class="vue-demo-placeholder" data-demo="InputVisualizer">
-<p>📦 Interactive Demo: <strong>InputVisualizer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ## 6. 运行模式：打字机 vs 游戏机 (Cooked vs. Raw Mode)
 
@@ -246,12 +222,6 @@ _在下方尝试按键，观察你的输入是如何被转换为底层数据的�
 
 _点击下方按钮切换模式，体验“写信”与“打游戏”的不同手感：_
 
-<div class="vue-demo-placeholder" data-demo="CookedRaw">
-<p>📦 Interactive Demo: <strong>CookedRaw</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 7. 进程控制：信号 (Signals)
 
 在终端中按下 `Ctrl+C` 通常能停止程序。这并非通过发送字符实现，而是触发了**信号 (Signal)**。
@@ -262,12 +232,6 @@ _点击下方按钮切换模式，体验“写信”与“打游戏”的不同�
 - **Ctrl+Z** → 发送 `SIGTSTP` (Suspend)：通知程序“请暂停并挂起到后台”。
 
 这一机制绕过了标准的数据输入通道，确保在程序卡死时用户仍有控制权。
-
-<div class="vue-demo-placeholder" data-demo="Signals">
-<p>📦 Interactive Demo: <strong>Signals</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ## 8. 高级应用：全屏界面与缓冲区 (Buffers & TUI)
 
@@ -287,12 +251,6 @@ _点击下方按钮切换模式，体验“写信”与“打游戏”的不同�
   - _用于：Vim, Nano, 游戏等全屏软件。_
 
 _点击下方按钮，体验“草稿本”和“黑板”是如何瞬间切换的：_
-
-<div class="vue-demo-placeholder" data-demo="BufferSwitch">
-<p>📦 Interactive Demo: <strong>BufferSwitch</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -320,7 +278,6 @@ _点击下方按钮，体验“草稿本”和“黑板”是如何瞬间切换�
 ## 参考资料 (Reference)
 
 - [How Terminals Work](https://how-terminals-work.vercel.app/)：本文的结构与演示灵感深受该项目的启发。如果你希望深入了解工程实现细节，强烈推荐阅读原版教程。
-
 
 ---
 

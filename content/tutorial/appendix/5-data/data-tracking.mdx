@@ -43,12 +43,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/
 
 不同的选择，对应不同的埋点方案。
 
-<div class="vue-demo-placeholder" data-demo="DataTracking">
-<p>📦 Interactive Demo: <strong>DataTracking</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **💡 三种主流的埋点方式**
 
 行业中常用的埋点方案有三种，各有优劣：
@@ -93,12 +87,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/
 **本步目标**：规定一个统一的"记录模板"，让所有埋点记录的格式保持一致。
 
 **为什么需要统一格式？** 想象一下：如果奶茶店有三个店员同时记录销售情况，一个写"小明买了珍珠奶茶 15 元"，另一个写"15，奶茶，珍珠"，第三个写"珍珠奶茶一杯"。到了月底汇总的时候，这些记录格式完全不同，整理起来会非常痛苦。所以我们需要一张统一的"记录表"，规定每条记录必须填写哪些栏位。
-
-<div class="vue-demo-placeholder" data-demo="DataTracking">
-<p>📦 Interactive Demo: <strong>DataTracking</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **💡 核心原理：4W1H 记录模板**
 
@@ -149,12 +137,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/
 
 **为什么不能直接发送？** 如果每产生一条记录就立刻发一次网络请求，就像每写一封信就跑一趟邮局一样 — 效率太低了。更合理的做法是：攒一批信，一次性送过去。
 
-<div class="vue-demo-placeholder" data-demo="DataTracking">
-<p>📦 Interactive Demo: <strong>DataTracking</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **💡 核心原理：数据传输的三道保障**
 
 数据从用户手机到服务器，需要经过三道保障机制，确保既高效又不丢数据：
@@ -195,12 +177,6 @@ SDK（埋点工具包）不会每产生一条记录就发送一次，而是先�
 - **E**xtract（提取）：从消息队列中取出数据
 - **T**ransform（转换）：检查和修复数据格式
 - **L**oad（加载）：把清洗好的数据写入数据库
-
-<div class="vue-demo-placeholder" data-demo="DataTracking">
-<p>📦 Interactive Demo: <strong>DataTracking</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **💡 核心原理：清洗数据的两个关键动作**
 
@@ -249,7 +225,6 @@ SDK（埋点工具包）不会每产生一条记录就发送一次，而是先�
 这就是数据埋点的完整过程。它把用户分散的、看不见的操作行为，转化成了可以查询、可以分析的结构化数据。产品经理可以据此了解用户喜欢什么功能、在哪里流失；运营人员可以评估活动效果；开发者可以定位问题出现在哪个版本。
 
 这套"采集 → 建模 → 传输 → 清洗"的体系，是数据驱动决策的基础设施。
-
 
 ---
 

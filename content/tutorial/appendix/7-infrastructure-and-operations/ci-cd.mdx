@@ -25,12 +25,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 
 怎么办？你需要**把菜端到餐厅里**。这就是"服务上线"要做的事——把你写的代码，从个人电脑，搬到一个7×24小时永远开着的"公共电脑"上。这样任何人只要能上网，就能访问你的网站。
 
-<div class="vue-demo-placeholder" data-demo="DeploymentOverview">
-<p>📦 Interactive Demo: <strong>DeploymentOverview</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 服务上线涉及很多环节。就像开餐厅不仅仅是端菜出去，你还需要租店面、装修、办执照、雇服务员等。开发网站也是同理。从代码到用户能访问的网站，中间隔着很多步骤。需要一步步完成构建、部署、配置网络、保证安全等工作。
 
 下面我会把整个流程拆开来讲。每个环节都掰碎、揉细。保证连完全没基础的小白也能看懂。
@@ -74,12 +68,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 这是非常重要的一步。但很多人会忽略。构建完成后，文件名会变成类似 `app.abc123.js`、`vendor.def456.css` 这样的格式。后面那串字母数字混合的字符串叫"哈希"。
 
 哈希的作用是：当代码有任何改动时，哈希值就会变化。浏览器就知道"这个文件变了，需要重新下载"。没变的文件，浏览器继续使用缓存。不用重复下载。这样既能保证用户看到最新代码，又能充分利用缓存提升速度。
-
-<div class="vue-demo-placeholder" data-demo="DeploymentBuild">
-<p>📦 Interactive Demo: <strong>DeploymentBuild</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.3 怎么执行构建？
 
@@ -125,12 +113,6 @@ pnpm build
 其次，你家的网络也不行。家用宽带的上传速度通常很慢。而且家用宽带的 IP 是动态变化的。今天是这个 IP，明天可能就变成另外一个了。根本没法用来做网站服务器。服务器用的是数据中心的高速网络。IP 固定，网速飞快。
 
 第三，你家的电脑没有"公网IP"。什么叫公网IP？就是全世界独一无二的地址。只有有这个地址，别人才能在互联网上找到你的电脑。你家电脑的 IP 通常只能在你家局域网里用。外面的人根本找不到你。服务器就不同了。它有一个固定的公网 IP。全世界的人都能通过这个 IP 找到它。
-
-<div class="vue-demo-placeholder" data-demo="DeploymentServer">
-<p>📦 Interactive Demo: <strong>DeploymentServer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 3.2 怎么选服务器？
 
@@ -201,12 +183,6 @@ ssh root@123.45.67.89
 4. **启动服务**：让应用程序跑起来。开始监听用户的请求。
 
 这四个步骤听起来挺复杂。但其实做起来没那么难。下面会详细介绍每一步怎么做。
-
-<div class="vue-demo-placeholder" data-demo="DeploymentServer">
-<p>📦 Interactive Demo: <strong>DeploymentServer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 4.2 怎么把代码上传到服务器？
 
@@ -346,12 +322,6 @@ sudo systemctl restart nginx
 
 域名就是网站的名字。好记、专业。还能体现品牌形象。想象一下。告诉别人"访问我做的网站，IP 是 123.45.67.89"，和"访问 woshishuaige.com"，哪个更像那么回事？
 
-<div class="vue-demo-placeholder" data-demo="DeploymentDns">
-<p>📦 Interactive Demo: <strong>DeploymentDns</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 5.2 DNS 是什么？
 
 好。现在买了一个域名。比如叫 `my-awesome-website.com`。但问题来了：电脑只认识 IP 地址。不认识 "my-awesome-website.com" 这种人类语言啊。
@@ -411,12 +381,6 @@ ping 你的域名
 **HTTP（HyperText Transfer Protocol）** 是用来传输网页的协议。可以把它理解成运输数据的卡车。但这辆卡车是**透明的**。里面装的东西所有人都能看见。在 HTTP 网站上输入的密码、填写的个人信息。在传输过程中可能被中间的任何人偷看到。
 
 **HTTPS（HTTP Secure）** 是给这辆卡车加了一个**密封的集装箱**。还配了一把钥匙。只有发送方和接收方有钥匙。中间的人就算截获了也看不懂里面是什么东西。这就是加密传输。
-
-<div class="vue-demo-placeholder" data-demo="DeploymentHttps">
-<p>📦 Interactive Demo: <strong>DeploymentHttps</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 6.2 为什么要 HTTPS？
 
@@ -486,12 +450,6 @@ CI/CD 是两个词的缩写：**C**ontinuous **I**ntegration（持续集成）�
 2. 喝茶坐等
 3. （机器人自动完成上面9个步骤）
 4. 网站自动更新了
-
-<div class="vue-demo-placeholder" data-demo="DeploymentCicd">
-<p>📦 Interactive Demo: <strong>DeploymentCicd</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 这就是 CI/CD 的魅力：**只需要把代码推上去。剩下的全部自动完成**。
 
@@ -606,12 +564,6 @@ jobs:
 - **提前发现问题**：CPU 使用率 90% 了。提前加服务器。
 - **快速定位问题**：网站慢了。查监控看是哪里瓶颈。
 - **心里有底**：每天多少人访问、访问量什么时候最高。
-
-<div class="vue-demo-placeholder" data-demo="DeploymentMonitor">
-<p>📦 Interactive Demo: <strong>DeploymentMonitor</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 8.2 监控哪些指标？
 
@@ -745,7 +697,6 @@ tail -f /var/log/nginx/error.log
 | CI/CD | Continuous Integration/Deployment | 自动化流水线。代码 push 后自动测试部署。 |
 | SSL/TLS | Secure Sockets Layer / Transport Layer Security | 加密协议。给 HTTPS 提供安全保障。 |
 | PM2 | Process Manager 2 | Node.js 进程管理器。让应用持续运行。 |
-
 
 ---
 

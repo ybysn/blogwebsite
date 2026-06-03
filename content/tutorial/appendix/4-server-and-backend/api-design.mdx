@@ -88,23 +88,11 @@ HTTP/1.1 200 OK
 
 👇 **动手试试看**：点击下方按钮，观察一次完整的 API 请求-响应流程：
 
-<div class="vue-demo-placeholder" data-demo="ApiRequest">
-<p>📦 Interactive Demo: <strong>ApiRequest</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 2. API 设计哲学：RPC / REST / GraphQL / gRPC
 
 在开始具体的 RESTful 设计之前，先了解四种主流的 API 设计风格：
-
-<div class="vue-demo-placeholder" data-demo="ApiStyleCompare">
-<p>📦 Interactive Demo: <strong>ApiStyleCompare</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.1 REST vs RESTful：有什么区别？
 
@@ -218,12 +206,6 @@ HTTP 状态码是服务器告诉客户端"发生了什么"的标准方式。
 
 👇 **动手试试看**：点击下方按钮，了解常见状态码的含义：
 
-<div class="vue-demo-placeholder" data-demo="StatusCode">
-<p>📦 Interactive Demo: <strong>StatusCode</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 5. 错误处理：优雅地"拒绝"
@@ -265,12 +247,6 @@ HTTP/1.1 500 Internal Server Error
 ### 5.2 正确的错误处理演示
 
 👇 **动手试试看**：对比"好的"和"差的"错误响应设计：
-
-<div class="vue-demo-placeholder" data-demo="ErrorHandling">
-<p>📦 Interactive Demo: <strong>ErrorHandling</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -321,12 +297,6 @@ HTTP/1.1 500 Internal Server Error
 ## 7. 响应结构设计
 
 响应结构是前后端协作的"数据契约"，统一格式能大幅降低沟通成本。
-
-<div class="vue-demo-placeholder" data-demo="ResponseStructure">
-<p>📦 Interactive Demo: <strong>ResponseStructure</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 7.1 大厂实践参考
 
@@ -551,19 +521,7 @@ public class Result<T> {
 
 `data` 是响应的核心，其设计直接影响前端开发效率。
 
-<div class="vue-demo-placeholder" data-demo="DataFieldDesign">
-<p>📦 Interactive Demo: <strong>DataFieldDesign</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 7.4 错误响应设计进阶
-
-<div class="vue-demo-placeholder" data-demo="ErrorResponseDesign">
-<p>📦 Interactive Demo: <strong>ErrorResponseDesign</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **参考链接**</p>
@@ -714,7 +672,6 @@ AI 可以帮助你快速生成符合规范的 API 设计。关键在于提供清
 | **Header** | Header | 请求/响应的元数据（如 Content-Type） |
 | **认证** | Authentication | 验证"你是谁"（登录、Token） |
 | **授权** | Authorization | 验证"你能做什么"（权限） |
-
 
 ---
 

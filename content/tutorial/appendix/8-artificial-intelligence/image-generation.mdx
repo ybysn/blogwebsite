@@ -12,12 +12,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 # 图像生成原理
 > 💡 **学习指南**：本章节将系统探究生成式视觉大模型的工作机制。我们将从“烧显卡”的高维像素空间难题切入，详细解构变分自编码器（VAE）、扩散模型（Diffusion）以及交叉注意力（Cross-Attention）背后的严谨数学原理。同时，巧妙且生动的交互式组件将确保你——即使毫无 AI 基础，也能迅速领悟这些尖端科技！
 
-<div class="vue-demo-placeholder" data-demo="ImageGenQuickStart">
-<p>📦 Interactive Demo: <strong>ImageGenQuickStart</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 0. 引言：直击千万级像素的“维度灾难”
 
 当我们惊叹于 Midjourney 或 Stable Diffusion 生成的极致绚丽大作时，首先要理解计算机在底层所面临的数字压力。
@@ -40,12 +34,6 @@ VAE 的职责极其单一却又至关重要：
 👇 **动手点点看**：
 拖拽下列空间平面上的红点坐标参数，去直观感受潜空间（Latent Space）里仅仅两个数学坐标维度的毫厘偏移，是如何被解码映射成截然不同的表象特征的！
 
-<div class="vue-demo-placeholder" data-demo="LatentSpaceViz">
-<p>📦 Interactive Demo: <strong>LatentSpaceViz</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 2. 演化核心：用扩散模型 (Diffusion) 剥离迷雾
@@ -60,12 +48,6 @@ VAE 的职责极其单一却又至关重要：
 
 通过成败上千次的反复退火微调剥离，它硬是从一团无序的马赛克里硬生生“预测”出了一幅精美元伦的画面特征。
 
-<div class="vue-demo-placeholder" data-demo="DiffusionProcess">
-<p>📦 Interactive Demo: <strong>DiffusionProcess</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 3. 多模态对齐：听懂人话的关键 (Cross-Attention)
@@ -76,12 +58,6 @@ AI 掌握了作画本领后，如果脱离管控，它只会随心所欲地产�
 - **执行指令 (交叉注意力 Cross-Attention)**：这是大模型中的神来之笔。在以上去噪步骤的每一个瞬息循环里，生成图片潜层充当 Query（查询器），向外伸出触手去匹配 CLIP 发来的文本 Key/Value（指令键值）。
   
 一旦系统进入到勾勒画面轮廓时，“喵星人”这个词的向量权重就会在注意力机制中被几何倍放大激活，并聚焦染色在将要形成动物身体的那片区域网格上。**此时，你的语言化为了手电筒光束，照亮了 AI 理工直男下笔该着重的那些局部细节！**
-
-<div class="vue-demo-placeholder" data-demo="PromptVisualizer">
-<p>📦 Interactive Demo: <strong>PromptVisualizer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -94,12 +70,6 @@ AI 掌握了作画本领后，如果脱离管控，它只会随心所欲地产�
 
 在解析几何思维的加持下：通过最优传输论 (Optimal Transport, OT) 的极简逻辑引导，模型不再靠纯纯的随机兜圈摸索。**算法被直接强行套入一段解算自源端纯噪声到末端数据目标点之间近似笔直的常微分方程 (ODE) 平滑矢量轨道之中！**
 不绕路了！这也使得应用 流匹配 架构的模型只需要堪称“降维式”的极低步数（仅需 4 至 8 步），即可高速渲染出惊为天人的画面结果！
-
-<div class="vue-demo-placeholder" data-demo="FlowMatching">
-<p>📦 Interactive Demo: <strong>FlowMatching</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -123,7 +93,6 @@ AI 掌握了作画本领后，如果脱离管控，它只会随心所欲地产�
 | **CLIP** | Contrastive Language-Image Pre-Training | 利用亿万张人类给图写的批注进行对称对比训练而出，解决语言字符和色彩事物应该怎么联想挂钩互通的强力组件。 |
 | **Cross-Attention** | 交叉注意力机制 | 大模型内部进行序列特征混融的方法；通俗说即要求图像自身网格在发生计算时刻，必须以一定权重抬头核对外部下发的语言要求重点的一种照耀映射工具。 |
 | **Flow Matching** | 流匹配算法 | 基于前人随机盲跑基础重修出来的高阶优化连续映射，依靠解方程约束一条平稳的确定直线通路从而让渲染时间被数百倍节省的核心加速路线技巧。 |
-
 
 ---
 

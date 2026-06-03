@@ -60,12 +60,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 
 计算机世界有三种主要的存储方式，它们解决不同层次的问题。
 
-<div class="vue-demo-placeholder" data-demo="FileStorageType">
-<p>📦 Interactive Demo: <strong>FileStorageType</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 维度 | 块存储 | 文件存储 | 对象存储 |
 |------|--------|---------|---------|
 | 数据单位 | 固定大小的块 | 文件 + 目录 | 对象（Key-Value） |
@@ -120,12 +114,6 @@ my-app-bucket/                    ← Bucket（桶）
 
 文件上传有两种主流方案：服务端中转和客户端直传。对于大多数场景，**客户端直传**是更优的选择。
 
-<div class="vue-demo-placeholder" data-demo="FileUploadFlow">
-<p>📦 Interactive Demo: <strong>FileUploadFlow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **客户端直传的优势**</p>
 
@@ -143,12 +131,6 @@ my-app-bucket/                    ← Bucket（桶）
 ## 4. CDN 加速：让全球用户都快
 
 当你的用户遍布全球时，从单一源站下载文件会很慢。CDN（Content Delivery Network）通过在全球部署边缘节点，将文件缓存到离用户最近的节点，大幅降低访问延迟。
-
-<div class="vue-demo-placeholder" data-demo="CDNAcceleration">
-<p>📦 Interactive Demo: <strong>CDNAcceleration</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | CDN 概念 | 说明 |
 |---------|------|
@@ -201,7 +183,6 @@ my-app-bucket/                    ← Bucket（桶）
 - [MinIO 文档](https://min.io/docs/minio/linux/index.html) - 开源的 S3 兼容对象存储
 - [Cloudflare R2](https://developers.cloudflare.com/r2/) - 零出口费用的对象存储
 - [Pre-signed URL 详解](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) - 客户端直传的核心机制
-
 
 ---
 

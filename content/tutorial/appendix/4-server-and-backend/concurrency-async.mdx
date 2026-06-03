@@ -21,12 +21,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 
 ## 0. 引言：为什么你的服务一到高峰期就"卡死"？
 
-<div class="vue-demo-placeholder" data-demo="ProcessThreadCoroutine">
-<p>📦 Interactive Demo: <strong>ProcessThreadCoroutine</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 很多人在实际开发中都会遇到类似的情况：
 
 - 本地测试时服务响应飞快，一上线就"卡成 PPT"；
@@ -58,12 +52,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 
 ### 1.2 深入对比：三者的本质差异
 
-<div class="vue-demo-placeholder" data-demo="ProcessIsolation">
-<p>📦 Interactive Demo: <strong>ProcessIsolation</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 #### 进程：资源隔离的"集装箱"
 
 **核心特点**：
@@ -78,12 +66,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 
 #### 线程：共享内存的"轻骑兵"
 
-<div class="vue-demo-placeholder" data-demo="ThreadScheduling">
-<p>📦 Interactive Demo: <strong>ThreadScheduling</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **核心特点**：
 - **共享内存**：同一进程内的线程共享代码段、数据段、堆
 - **独立栈空间**：每个线程有自己的栈（通常 1MB 左右）
@@ -96,12 +78,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 - 对延迟敏感的后台任务
 
 #### 协程：用户态的"绿色线程"
-
-<div class="vue-demo-placeholder" data-demo="CoroutineLightweight">
-<p>📦 Interactive Demo: <strong>CoroutineLightweight</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **核心特点**：
 - **用户态调度**：由程序/运行时库调度，不经过操作系统
@@ -239,12 +215,6 @@ async def create_order(product_id: int):
 
 #### 内存隔离机制
 
-<div class="vue-demo-placeholder" data-demo="ProcessIsolation">
-<p>📦 Interactive Demo: <strong>ProcessIsolation</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 每个进程拥有独立的虚拟地址空间：
 
 ```
@@ -282,12 +252,6 @@ async def create_order(product_id: int):
 
 #### 线程调度原理
 
-<div class="vue-demo-placeholder" data-demo="ThreadScheduling">
-<p>📦 Interactive Demo: <strong>ThreadScheduling</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 操作系统线程调度器的基本工作：
 
 ```
@@ -315,12 +279,6 @@ async def create_order(product_id: int):
 | **无锁队列** | CAS 操作实现 | 高并发下性能优异 | 实现复杂，ABA 问题 |
 
 ### 3.3 协程模型：用户态调度
-
-<div class="vue-demo-placeholder" data-demo="CoroutineLightweight">
-<p>📦 Interactive Demo: <strong>CoroutineLightweight</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 #### 协程的核心优势
 
@@ -350,12 +308,6 @@ async def create_order(product_id: int):
 ```
 
 #### async/await 的工作机制
-
-<div class="vue-demo-placeholder" data-demo="AsyncAwait">
-<p>📦 Interactive Demo: <strong>AsyncAwait</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ```python
 import asyncio
@@ -400,12 +352,6 @@ asyncio.run(main())
 
 ### 3.4 事件循环：协程的"心脏"
 
-<div class="vue-demo-placeholder" data-demo="EventLoop">
-<p>📦 Interactive Demo: <strong>EventLoop</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 事件循环是协程调度的核心机制：
 
 ```python
@@ -442,12 +388,6 @@ class EventLoop:
 ```
 
 ### 3.5 并发 vs 并行：不是一回事
-
-<div class="vue-demo-placeholder" data-demo="ConcurrentVsParallel">
-<p>📦 Interactive Demo: <strong>ConcurrentVsParallel</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 概念 | 英文 | 含义 | 比喻 | 需要条件 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -488,12 +428,6 @@ class EventLoop:
 ## 4. 实战：Go 协程与绿色线程
 
 ### 4.1 Go 的并发哲学
-
-<div class="vue-demo-placeholder" data-demo="GoroutineGreenThread">
-<p>📦 Interactive Demo: <strong>GoroutineGreenThread</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 Go 语言的并发设计哲学：**不要通过共享内存来通信，而要通过通信来共享内存**。
 
@@ -937,7 +871,6 @@ func main() `{
 ```
 
 希望这篇指南能帮助你建立起对并发编程的系统认知。记住，**并发不是目的，而是手段**——真正的目标是构建高性能、高可用的服务。理解原理、选对模型、写好代码，你就能在并发这条路上越走越远。
-
 
 ---
 

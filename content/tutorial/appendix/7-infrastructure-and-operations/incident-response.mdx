@@ -60,12 +60,6 @@ Netflix 有一个著名的工具叫 Chaos Monkey——它会随机杀掉生产�
 
 一个按钮颜色显示错误和整个支付系统瘫痪，显然不是同一个级别的问题。**事故分级**的目的是让团队用合适的力度响应合适级别的问题——既不过度反应浪费资源，也不轻视问题导致损失扩大。
 
-<div class="vue-demo-placeholder" data-demo="SeverityLevel">
-<p>📦 Interactive Demo: <strong>SeverityLevel</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 级别 | 名称 | 影响范围 | 响应要求 | 示例 |
 |------|------|---------|---------|------|
 | P0 | 致命 | 核心业务完全不可用 | 立即响应，全员待命 | 支付系统瘫痪、数据泄露 |
@@ -90,12 +84,6 @@ Netflix 有一个著名的工具叫 Chaos Monkey——它会随机杀掉生产�
 
 一次事故响应就像一场接力赛，每个阶段都有明确的目标和交接点。清晰的时间线能让团队在混乱中保持有序。
 
-<div class="vue-demo-placeholder" data-demo="IncidentTimeline">
-<p>📦 Interactive Demo: <strong>IncidentTimeline</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **事故响应的五个阶段**</p>
 
@@ -119,12 +107,6 @@ Netflix 有一个著名的工具叫 Chaos Monkey——它会随机杀掉生产�
 
 大型事故中最怕的不是技术难题，而是**混乱**——十几个人同时在排查，没人知道别人在做什么，关键信息在各个群里碎片化传播。事故指挥体系（Incident Command System）就是为了解决这个问题。
 
-<div class="vue-demo-placeholder" data-demo="IncidentCommand">
-<p>📦 Interactive Demo: <strong>IncidentCommand</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **三个核心角色**</p>
 
@@ -139,12 +121,6 @@ Netflix 有一个著名的工具叫 Chaos Monkey——它会随机杀掉生产�
 ## 4. 告警升级：确保关键问题不被遗漏
 
 告警系统是事故响应的"眼睛"。但告警太少会漏报，告警太多会导致"告警疲劳"——当每天收到几百条告警时，真正重要的那条很容易被淹没。**告警升级策略**就是解决这个问题的关键。
-
-<div class="vue-demo-placeholder" data-demo="AlertEscalation">
-<p>📦 Interactive Demo: <strong>AlertEscalation</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **告警升级的三层机制**</p>
@@ -166,12 +142,6 @@ Netflix 有一个著名的工具叫 Chaos Monkey——它会随机杀掉生产�
 ## 5. 事后复盘：从故障中学习
 
 事故恢复后，最重要的一步是**复盘（Postmortem）**。复盘不是为了追责，而是为了找到系统性的改进机会。Google、Meta 等公司都奉行"无责复盘"文化——关注"系统为什么允许这个错误发生"，而不是"谁犯了这个错误"。
-
-<div class="vue-demo-placeholder" data-demo="Postmortem">
-<p>📦 Interactive Demo: <strong>Postmortem</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **"五个为什么"分析法**</p>
@@ -208,7 +178,6 @@ Netflix 有一个著名的工具叫 Chaos Monkey——它会随机杀掉生产�
 - [Atlassian Incident Management](https://www.atlassian.com/incident-management) - Atlassian 的事故管理最佳实践
 - [Learning from Incidents](https://www.learningfromincidents.io/) - 从事故中学习的社区资源
 - [Chaos Engineering (O'Reilly)](https://www.oreilly.com/library/view/chaos-engineering/9781492043850/) - 混沌工程原理与实践
-
 
 ---
 

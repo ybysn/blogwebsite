@@ -61,12 +61,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 
 微调不是"把数据丢给模型就完事"。它是一个严谨的工程流程，每个环节都会影响最终效果。
 
-<div class="vue-demo-placeholder" data-demo="FinetuningPipeline">
-<p>📦 Interactive Demo: <strong>FinetuningPipeline</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **微调的五个阶段**</p>
 
@@ -91,12 +85,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 ## 2. 训练数据：微调效果的天花板
 
 在微调中有一句老话：**"Garbage in, garbage out"**。训练数据的质量直接决定了微调效果的上限。100 条高质量数据的效果，往往好过 10000 条低质量数据。
-
-<div class="vue-demo-placeholder" data-demo="TrainingData">
-<p>📦 Interactive Demo: <strong>TrainingData</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **微调数据的三种常见格式**</p>
@@ -123,12 +111,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 
 LoRA（Low-Rank Adaptation）提供了一个优雅的解决方案：**冻结原始模型参数，只训练一小组新增的低秩矩阵**。这些矩阵的参数量通常只有原模型的 0.1%~1%，但能达到接近全量微调的效果。
 
-<div class="vue-demo-placeholder" data-demo="LoRA">
-<p>📦 Interactive Demo: <strong>LoRA</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **LoRA 的核心思想**</p>
 
@@ -150,12 +132,6 @@ LoRA（Low-Rank Adaptation）提供了一个优雅的解决方案：**冻结原�
 ## 4. 模型量化：让大模型"瘦身"
 
 一个 70B 参数的模型，如果用 FP32（32 位浮点数）存储，需要 280GB 显存——没有几块顶级 GPU 根本跑不起来。量化（Quantization）技术通过降低数值精度来压缩模型体积，让大模型能在消费级硬件上运行。
-
-<div class="vue-demo-placeholder" data-demo="ModelQuantization">
-<p>📦 Interactive Demo: <strong>ModelQuantization</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **量化的核心权衡**</p>
@@ -179,12 +155,6 @@ LoRA（Low-Rank Adaptation）提供了一个优雅的解决方案：**冻结原�
 ## 5. 模型部署：从实验室到生产环境
 
 模型训练好了，量化压缩了，最后一步是把它部署成可供调用的服务。模型部署不只是"把模型跑起来"，还涉及并发处理、负载均衡、成本控制等工程问题。
-
-<div class="vue-demo-placeholder" data-demo="ModelServing">
-<p>📦 Interactive Demo: <strong>ModelServing</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **三种主流部署方案**</p>
@@ -223,7 +193,6 @@ LoRA（Low-Rank Adaptation）提供了一个优雅的解决方案：**冻结原�
 - [Unsloth](https://github.com/unslothai/unsloth) - 2x 加速的 LoRA 微调框架
 - [GGUF 格式说明](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md) - llama.cpp 使用的量化模型格式
 - [OpenAI Fine-tuning Guide](https://platform.openai.com/docs/guides/fine-tuning) - OpenAI 官方微调指南
-
 
 ---
 

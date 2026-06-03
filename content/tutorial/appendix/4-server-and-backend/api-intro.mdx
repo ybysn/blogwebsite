@@ -78,43 +78,19 @@ result = response.choices[0].message.content
 
 ### 1.2 三种 API 形态对比
 
-<div class="vue-demo-placeholder" data-demo="ApiTypesComparison">
-<p>📦 Interactive Demo: <strong>ApiTypesComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 1.3 函数 API vs HTTP API 的区别
 
 很多初学者会困惑：函数 API 和 HTTP API 到底有什么区别？看文档时该如何区分？
 
-<div class="vue-demo-placeholder" data-demo="ApiFunctionVsHttp">
-<p>📦 Interactive Demo: <strong>ApiFunctionVsHttp</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 1.4 不同类型的 API 文档怎么看
 
 面对不同类型的 API 文档，关注重点各不相同：
-
-<div class="vue-demo-placeholder" data-demo="DocumentTypesComparison">
-<p>📦 Interactive Demo: <strong>DocumentTypesComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
 ## 2. 一次完整的 API 调用
 
 👇 **动手试试看**:点击下方按钮,观察一次完整的 API 请求-响应流程:
-
-<div class="vue-demo-placeholder" data-demo="ApiRequest">
-<p>📦 Interactive Demo: <strong>ApiRequest</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.1 API 调用的四个阶段
 
@@ -149,12 +125,6 @@ result = response.choices[0].message.content
 | 你想换一道菜 | "把宫保鸡丁改成糖醋里脊" | **PUT** - 替换数据 |
 | 你想改口味 | "宫保鸡丁不要放花生" | **PATCH** - 部分修改 |
 | 你不想要了 | "算了,那道菜不要了" | **DELETE** - 删除数据 |
-
-<div class="vue-demo-placeholder" data-demo="HttpMethods">
-<p>📦 Interactive Demo: <strong>HttpMethods</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-warning">
 <p class="admonition-title">⚠️ **关于幂等性**</p>
@@ -201,12 +171,6 @@ result = response.choices[0].message.content
 
 👇 **动手试试看**:点击下方按钮,了解常见状态码的含义:
 
-<div class="vue-demo-placeholder" data-demo="StatusCode">
-<p>📦 Interactive Demo: <strong>StatusCode</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 5. HTTP vs SDK:自己跑腿还是让管家代办?
@@ -246,12 +210,6 @@ API 文档就像说明书和菜单的结合体。你不需要从头读到尾,只
 
 打开任何一个 API 文档(比如 OpenAI 或 DeepSeek),你只需要找这几样东西:
 
-<div class="vue-demo-placeholder" data-demo="ApiDocument">
-<p>📦 Interactive Demo: <strong>ApiDocument</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 项目 | 说明 | 示例 |
 | :--- | :--- | :--- |
 | **Base URL** | API 的根地址 | `https://api.deepseek.com` |
@@ -273,12 +231,6 @@ API 文档就像说明书和菜单的结合体。你不需要从头读到尾,只
 ## 7. 动手练习:模拟 API 调用
 
 光说不练假把式。这里有个模拟 API,你可以随便填参数、随便改地址,看看会发生什么。
-
-<div class="vue-demo-placeholder" data-demo="ApiPlayground">
-<p>📦 Interactive Demo: <strong>ApiPlayground</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 试着触发以下场景:
 - ✅ **成功请求**:填入正确的 Endpoint 和 API Key
@@ -329,7 +281,6 @@ API 文档就像说明书和菜单的结合体。你不需要从头读到尾,只
 | **RPC** | Remote Procedure Call | 远程过程调用 |
 | **GraphQL** | - | 一种查询语言 API |
 | **gRPC** | - | Google 开发的高性能 RPC 框架 |
-
 
 ---
 

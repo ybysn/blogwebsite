@@ -21,12 +21,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-devel
 
 点击下方列表里的任意变量，在终端里"查看"它的值：
 
-<div class="vue-demo-placeholder" data-demo="EnvVarOverview">
-<p>📦 Interactive Demo: <strong>EnvVarOverview</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 1. PATH：Shell 怎么找到你输入的命令
@@ -39,12 +33,6 @@ $ echo $PATH
 ```
 
 选择一个命令，观察 Shell 逐目录搜索的过程：
-
-<div class="vue-demo-placeholder" data-demo="PathSearch">
-<p>📦 Interactive Demo: <strong>PathSearch</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **三个关键规律**：
 - 目录在 PATH 里越靠前，优先级越高
@@ -92,23 +80,11 @@ pipx install aider-chat
 
 下图展示三个层级。在「用户级」里 export 一个新变量，看它是否出现在「进程级」：
 
-<div class="vue-demo-placeholder" data-demo="EnvScope">
-<p>📦 Interactive Demo: <strong>EnvScope</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 4. export：决定子进程能不能读到这个变量
 
 设置变量时，加不加 `export` 是完全不同的两件事：
-
-<div class="vue-demo-placeholder" data-demo="EnvExport">
-<p>📦 Interactive Demo: <strong>EnvExport</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 要让变量跨会话永久存在，把 `export` 写入配置文件：
 
@@ -130,12 +106,6 @@ source ~/.bashrc
 
 最常见的错误是把密钥直接写在代码里：
 
-<div class="vue-demo-placeholder" data-demo="ApiKeyDanger">
-<p>📦 Interactive Demo: <strong>ApiKeyDanger</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 6. 本地开发：用 .env 文件管密钥
@@ -144,23 +114,11 @@ source ~/.bashrc
 
 左边写配置，右边读取——切换语言看两种写法：
 
-<div class="vue-demo-placeholder" data-demo="DotEnv">
-<p>📦 Interactive Demo: <strong>DotEnv</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 7. 生产环境：让运行平台注入密钥
 
 `.env` 是开发阶段的便利工具。服务器和云平台上，应该由**运行环境**负责注入密钥，代码本身完全不感知密钥放在哪里：
-
-<div class="vue-demo-placeholder" data-demo="ServerSecret">
-<p>📦 Interactive Demo: <strong>ServerSecret</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -216,7 +174,6 @@ which python
 | **.env.example** | 变量名完整、值留空的模板，可以安全提交到 Git |
 | **chmod 600** | 文件权限：只有所有者可读写，适合保护密钥文件 |
 | **Secret Scanner** | GitHub 等平台自动扫描密钥泄露，发现后通知厂商吊销 |
-
 
 ---
 

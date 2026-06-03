@@ -219,12 +219,6 @@ UPDATE users SET age = 26 WHERE user_id = 1001;
 - **易于维护**：张三换手机号，只改用户表，所有订单自动关联新手机号
 - **灵活查询**：可以轻松回答"每个用户的总消费是多少"这类复杂问题
 
-<div class="vue-demo-placeholder" data-demo="DatabaseRelation">
-<p>📦 Interactive Demo: <strong>DatabaseRelation</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 3. 如何和数据库对话？SQL 入门与实战
@@ -429,12 +423,6 @@ WHERE u.name = '张三';
 3. `JOIN products p ON o.product_id = p.product_id`：通过 product_id 关联商品表
 4. `WHERE u.name = '张三'`：筛选张三的订单
 
-<div class="vue-demo-placeholder" data-demo="SqlPlayground">
-<p>📦 Interactive Demo: <strong>SqlPlayground</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 4. 为什么数据库这么快？索引原理揭秘
@@ -534,12 +522,6 @@ WHERE u.name = '张三';
 
 这就是数据库查询飞快的秘密。
 
-<div class="vue-demo-placeholder" data-demo="BPlusTree">
-<p>📦 Interactive Demo: <strong>BPlusTree</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 5. 事务：如何保证数据不丢、不乱？
@@ -623,12 +605,6 @@ WHERE u.name = '张三';
 - **不可重复读**：你第一次查余额 1000 元，第二次查变成 800 元（被扣款了）
 - **幻读**：你第一次查到 5 笔交易，第二次查变成 6 笔（新增了一笔）
 
-</div>
-
-<div class="vue-demo-placeholder" data-demo="TransactionACID">
-<p>📦 Interactive Demo: <strong>TransactionACID</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
 </div>
 
 ---
@@ -763,12 +739,6 @@ SELECT user_id, name, email FROM users WHERE user_id = 1;
 
 </div>
 
-<div class="vue-demo-placeholder" data-demo="QueryOptimization">
-<p>📦 Interactive Demo: <strong>QueryOptimization</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 7. 总结与学习路线
@@ -799,7 +769,6 @@ SELECT user_id, name, email FROM users WHERE user_id = 1;
 记住：**理论 + 实践 = 真正的掌握**。
 
 </div>
-
 
 ---
 

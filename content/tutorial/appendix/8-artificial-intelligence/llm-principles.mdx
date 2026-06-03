@@ -12,12 +12,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 # 大语言模型的工作原理
 > 💡 **学习指南**：本章节无需编程基础，通过交互式演示带你深入了解大语言模型（LLM）的底层工作原理。我们将从最基础的分词讲起，一直到 GPT 是如何训练和推理的。
 
-<div class="vue-demo-placeholder" data-demo="LlmQuickStart">
-<p>📦 Interactive Demo: <strong>LlmQuickStart</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 0. 引言：从人类语言到机器计算
 
 人类用语言交流，计算机用数字计算。
@@ -89,12 +83,6 @@ index=171,   string='！'
 >
 > 这种机制保证了**无论输入什么字符，模型都能处理，永远不会出现 OOV (Out Of Vocabulary) 问题**。
 
-<div class="vue-demo-placeholder" data-demo="Tokenization">
-<p>📦 Interactive Demo: <strong>Tokenization</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **关键点**：LLM 处理的不是单词，而是 **Token ID**（一串数字索引）。
 
 ---
@@ -123,12 +111,6 @@ index=171,   string='！'
 - 比如：`[0.8 (是水果), 0.1 (红色), 0.9 (甜)...]`
   这样，我们不仅压缩了数据，还把词义变成了可以计算的“坐标”。
 
-<div class="vue-demo-placeholder" data-demo="Embedding">
-<p>📦 Interactive Demo: <strong>Embedding</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 3. 从 单词 到 矩阵
@@ -154,12 +136,6 @@ index=171,   string='！'
 2.  **索引**：把碎片变成 ID。
 3.  **Embedding**：把 ID 变成向量（为了语义和压缩）。
 4.  **堆叠**：把向量拼成矩阵（为了 GPU 高效计算）。
-
-<div class="vue-demo-placeholder" data-demo="TokenizerToMatrix">
-<p>📦 Interactive Demo: <strong>TokenizerToMatrix</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -256,12 +232,6 @@ KV Cache 就像是一个**“增量笔记本”**。
 
 这就是为什么长文本对话（Long Context）会消耗大量显存的原因——**不是模型变大了，而是笔记（KV Cache）太厚了。**
 
-<div class="vue-demo-placeholder" data-demo="RNNvsTransformer">
-<p>📦 Interactive Demo: <strong>RNNvsTransformer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 5. 揭秘：从“续写”到“对话”
@@ -291,12 +261,6 @@ KV Cache 就像是一个**“增量笔记本”**。
 ### 5.3 深度交互演示
 
 下方的演示将带你一步步看清 LLM 的本质。请依次点击 **1. 本能 -> 2. 技巧 -> 3. 原理 -> 4. 进阶**，亲手试一试！
-
-<div class="vue-demo-placeholder" data-demo="TrainingInference">
-<p>📦 Interactive Demo: <strong>TrainingInference</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -349,12 +313,6 @@ Thinking Model 就是学会了这种**慢思考 (System 2)** 能力的模型。
 
 - **快思考 (System 1)**：凭直觉，脱口而出。容易犯错。
 - **慢思考 (System 2)**：通过产生一段“思维链 (Chain of Thought)”，一步步推理，最后给出答案。
-
-<div class="vue-demo-placeholder" data-demo="ThinkingModel">
-<p>📦 Interactive Demo: <strong>ThinkingModel</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 7.2 训练揭秘：从“模仿”到“探索”
 
@@ -418,12 +376,6 @@ Thinking Model 就是学会了这种**慢思考 (System 2)** 能力的模型。
   - **特点**：虽然总人数多（参数量大），但处理每个字时只有几个人干活（激活参数少）。**又博学，又快**。
   - **代表**：GPT-4, DeepSeek-V3, Mixtral。
 
-<div class="vue-demo-placeholder" data-demo="MoE">
-<p>📦 Interactive Demo: <strong>MoE</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 7.6 效率革命：突破长度极限 (Linear Attention)
 
 除了 MoE，还有一个核心痛点：**上下文长度**。
@@ -449,12 +401,6 @@ Thinking Model 就是学会了这种**慢思考 (System 2)** 能力的模型。
 - **线性 Attention (线性) —— 为什么可以不回看？**
   - **原理**：模型学会了“做笔记”。读完“苹果”，它把“有一个苹果”这个信息压缩进**状态 (State)** 里；读到“它”时，直接查阅手里的状态，就能知道“它=苹果”。
   - **代价**：虽然快，但在“压缩”过程中可能会丢失一些细节（比如忘记了苹果是红色的）。
-
-<div class="vue-demo-placeholder" data-demo="LinearAttention">
-<p>📦 Interactive Demo: <strong>LinearAttention</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 7.7 架构大比拼：RNN vs Transformer vs RWKV
 
@@ -501,7 +447,6 @@ Thinking Model 就是学会了这种**慢思考 (System 2)** 能力的模型。
 | **CoT**            | Chain of Thought                           | **思维链**。引导模型在给出最终答案前，先生成推理步骤的技术。                                   |
 | **MoE**            | Mixture of Experts                         | **混合专家模型**。由多个“专家”子模型组成，根据问题自动选择激活哪部分专家，效率更高。           |
 | **Temperature**    | -                                          | **温度**。控制模型生成随机性的参数。温度越高，回答越有创造力但越不可控；温度越低，回答越确定。 |
-
 
 ---
 

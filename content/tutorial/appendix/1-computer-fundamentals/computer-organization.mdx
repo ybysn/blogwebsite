@@ -41,12 +41,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 在上一章"从晶体管到 CPU"中，我们已经理解了 CPU 内部是如何工作的——从取指、译码、执行到写回。但 CPU 本身只是一个执行单元，要让计算机真正"能用"，还需要一系列外围部件的配合。
 
-<div class="vue-demo-placeholder" data-demo="CpuArchitecture">
-<p>📦 Interactive Demo: <strong>CpuArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **逐层解构：计算机硬件系统**</p>
 
@@ -89,12 +83,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 ### 1.2 五大组成部件
 
 冯诺依曼架构将计算机划分为五个核心组成部分：
-
-<div class="vue-demo-placeholder" data-demo="Register">
-<p>📦 Interactive Demo: <strong>Register</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 部件 | 英文 | 功能 | 主要组成 |
 |------|------|------|---------|
@@ -141,12 +129,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 我们先建立一个全局认知：你在编辑器里写的代码，和 CPU 实际执行的东西，中间隔了好几层翻译。
 
-<div class="vue-demo-placeholder" data-demo="CodeToInstruction">
-<p>📦 Interactive Demo: <strong>CodeToInstruction</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 这个翻译链路是理解指令系统的关键：
 
 | 层次 | 内容 | 谁能看懂 |
@@ -185,12 +167,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 根据操作数的数量，指令格式从简单到复杂分为四种：
 
-<div class="vue-demo-placeholder" data-demo="InstructionFormat">
-<p>📦 Interactive Demo: <strong>InstructionFormat</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 格式 | 结构 | 例子 | 使用场景 |
 |------|------|------|---------|
 | 零地址 | 只有操作码 | `RET`（返回） | 堆栈计算机，操作数隐含在栈顶 |
@@ -218,12 +194,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 | **直接寻址** | 知道门牌号，直接上门 | `MOV R1, [0x1000]` | 指令里写了内存地址 |
 | **间接寻址** | 问前台「张三在哪个房间」 | `MOV R1, [R2]` | 寄存器里存的是地址，要多查一次 |
 | **变址寻址** | 「3号楼 + 5层」算出房间 | `MOV R1, [R2+10]` | 基地址 + 偏移量，用于数组访问 |
-
-<div class="vue-demo-placeholder" data-demo="AddressingMode">
-<p>📦 Interactive Demo: <strong>AddressingMode</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **为什么需要这么多寻址方式？**</p>
@@ -266,12 +236,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 这个分歧产生了两大阵营，直接影响了你今天用的每一台设备：
 
-<div class="vue-demo-placeholder" data-demo="CISCvsRISC">
-<p>📦 Interactive Demo: <strong>CISCvsRISC</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 用一个类比来理解：
 - **CISC 像瑞士军刀**：一把刀集成了剪刀、开瓶器、螺丝刀……功能多但每个不一定最好用
 - **RISC 像专业工具套装**：每个工具只做一件事，但做得又快又好
@@ -300,12 +264,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 控制器是 CPU 的"大脑"，负责协调各部件按指令要求工作：
 
-<div class="vue-demo-placeholder" data-demo="Controller">
-<p>📦 Interactive Demo: <strong>Controller</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 组件 | 功能 |
 |------|------|
 | **程序计数器 (PC)** | 存放下一条指令的地址 |
@@ -313,12 +271,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 | **指令译码器** | 解析指令的操作码和操作数 |
 | **时序发生器** | 产生节拍信号，控制各部件时序 |
 | **微操作序列生成器** | 产生执行指令所需的一系列控制信号 |
-
-<div class="vue-demo-placeholder" data-demo="PSWFlag">
-<p>📦 Interactive Demo: <strong>PSWFlag</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 3.2 指令周期
 
@@ -358,12 +310,6 @@ CPU 执行一条指令需要经历一个完整的**指令周期**，通常包括
 ### 4.1 存储层次结构
 
 计算机的存储设备构成了一个金字塔结构：
-
-<div class="vue-demo-placeholder" data-demo="StorageHierarchy">
-<p>📦 Interactive Demo: <strong>StorageHierarchy</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 层次 | 存储类型 | 访问时间 | 典型容量 | 位置 |
 |------|---------|---------|---------|------|
@@ -409,12 +355,6 @@ CPU 执行一条指令需要经历一个完整的**指令周期**，通常包括
 平均访问时间 = 命中率 × 缓存时间 + (1-命中率) × 内存时间
 ```
 
-<div class="vue-demo-placeholder" data-demo="Cache">
-<p>📦 Interactive Demo: <strong>Cache</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 4.3 缓存映射方式
 
 | 方式 | 原理 | 优点 | 缺点 |
@@ -450,12 +390,6 @@ CPU 执行一条指令需要经历一个完整的**指令周期**，通常包括
 
 **总线(Bus)** 是连接计算机各部件的数据通道：
 
-<div class="vue-demo-placeholder" data-demo="BusSystem">
-<p>📦 Interactive Demo: <strong>BusSystem</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 总线类型 | 功能 | 方向 | 典型宽度 |
 |---------|------|------|---------|
 | **地址总线** | 传送内存地址 | 单向(CPU→内存) | 32位/64位 |
@@ -479,21 +413,9 @@ CPU 执行一条指令需要经历一个完整的**指令周期**，通常包括
 | **中断方式** | I/O 完成后主动通知 CPU | CPU 可并行工作 | 中断处理有开销 |
 | **DMA** | I/O 设备直接访问内存 | CPU 完全不参与 | 需要 DMA 控制器 |
 
-<div class="vue-demo-placeholder" data-demo="IOMethod">
-<p>📦 Interactive Demo: <strong>IOMethod</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 5.4 DMA 原理
 
 **DMA (Direct Memory Access，直接内存访问)** 允许 I/O 设备直接与内存交换数据：
-
-<div class="vue-demo-placeholder" data-demo="NetworkOverview">
-<p>📦 Interactive Demo: <strong>NetworkOverview</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 - **无 DMA**：CPU 全程参与数据传送，CPU 无法做其他事
 - **有 DMA**：CPU 告诉 DMA 控制器"从哪里传到哪里、传多少"，然后去执行其他任务，DMA 完成后通知 CPU
@@ -523,12 +445,6 @@ CPU 执行一条指令需要经历一个完整的**指令周期**，通常包括
 ### 6.1 指令流水线
 
 **指令流水线**是一种让 CPU 效率最大化的并行技术：
-
-<div class="vue-demo-placeholder" data-demo="Pipeline">
-<p>📦 Interactive Demo: <strong>Pipeline</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 #### 流水线的工作原理
 
@@ -586,7 +502,6 @@ CPU 执行一条指令需要经历一个完整的**指令周期**，通常包括
 
 - **[操作系统](./operating-systems.md)**：了解程序是如何在操作系统上运行的，进程、线程、内存管理是如何实现的
 - **[数据的编码、存储与传输](./data-encoding-storage.md)**：深入理解数据在计算机中的表示方式
-
 
 ---
 

@@ -63,12 +63,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 
 IaC 的核心思想是：**用声明式代码描述你想要的基础设施状态，让工具自动帮你实现**。你不需要告诉工具"先创建 VPC，再创建子网，再创建安全组"（命令式），只需要说"我要一个这样的网络环境"（声明式），工具会自动计算出需要执行的步骤。
 
-<div class="vue-demo-placeholder" data-demo="IaCConcept">
-<p>📦 Interactive Demo: <strong>IaCConcept</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 维度 | 手动运维 | 基础设施即代码 |
 |------|---------|--------------|
 | 操作方式 | 登录控制台点击 | 编写代码文件 |
@@ -93,12 +87,6 @@ IaC 的核心思想是：**用声明式代码描述你想要的基础设施状�
 
 Terraform 是目前最流行的 IaC 工具，由 HashiCorp 开发。它的工作流程清晰直观，分为四个阶段，就像软件开发的"编码→审查→部署→清理"。
 
-<div class="vue-demo-placeholder" data-demo="TerraformWorkflow">
-<p>📦 Interactive Demo: <strong>TerraformWorkflow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **四阶段工作流**</p>
 
@@ -122,12 +110,6 @@ Terraform 是目前最流行的 IaC 工具，由 HashiCorp 开发。它的工作
 ## 3. 工具对比：选择适合你的 IaC 工具
 
 IaC 领域有多种工具，各有侧重。选择工具时需要考虑团队技术栈、云平台、项目规模等因素。没有"最好"的工具，只有最适合你场景的工具。
-
-<div class="vue-demo-placeholder" data-demo="IaCToolComparison">
-<p>📦 Interactive Demo: <strong>IaCToolComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 工具 | 语言 | 云平台支持 | 学习曲线 | 适用场景 |
 |------|------|-----------|---------|---------|
@@ -155,12 +137,6 @@ IaC 领域有多种工具，各有侧重。选择工具时需要考虑团队技�
 
 这种偏差通常是怎么产生的？有人为了"快速修复"一个线上问题，直接登录控制台手动改了安全组规则；有人为了调试，临时加大了某台服务器的配置但忘了改回来。这些"小改动"日积月累，最终导致代码和实际环境严重脱节。
 
-<div class="vue-demo-placeholder" data-demo="ConfigDrift">
-<p>📦 Interactive Demo: <strong>ConfigDrift</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **配置漂移的危害**</p>
 
@@ -183,12 +159,6 @@ IaC 领域有多种工具，各有侧重。选择工具时需要考虑团队技�
 ## 5. 最佳实践：让 IaC 项目可持续演进
 
 IaC 代码和应用代码一样，需要良好的工程实践来保证可维护性。随着基础设施规模增长，没有章法的 IaC 代码会变成另一种形式的"技术债"。
-
-<div class="vue-demo-placeholder" data-demo="IaCBestPractice">
-<p>📦 Interactive Demo: <strong>IaCBestPractice</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **六条核心最佳实践**</p>
@@ -223,7 +193,6 @@ IaC 代码和应用代码一样，需要良好的工程实践来保证可维护�
 - [AWS CDK Workshop](https://cdkworkshop.com/) - AWS CDK 实战教程
 - [Infrastructure as Code (O'Reilly)](https://www.oreilly.com/library/view/infrastructure-as-code/9781098114664/) - IaC 领域的经典书籍
 - [Spacelift Blog](https://spacelift.io/blog) - IaC 最佳实践和行业趋势
-
 
 ---
 

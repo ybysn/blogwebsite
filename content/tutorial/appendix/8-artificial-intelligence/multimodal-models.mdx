@@ -12,12 +12,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 # 多模态模型（视觉 / 音频 / 视频）
 > 💡 **学习指南**：本章节无需深厚的计算机视觉背景，通过交互式演示带你理解 AI 是如何拥有“眼睛”的。我们将揭秘 GPT-4V、Qwen-VL 等模型背后的核心原理。
 
-<div class="vue-demo-placeholder" data-demo="VlmQuickStart">
-<p>📦 Interactive Demo: <strong>VlmQuickStart</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ## 0. 引言：给大脑装上眼睛
 
 在 [大语言模型入门](./llm-principles.md) 中，我们知道 LLM 本质上是一个被关在黑盒子里、只能通过**文字**来了解世界的“大脑”。
@@ -52,12 +46,6 @@ VLM 的核心任务，就是**把“像素信号”翻译成“文字信号”**
 
 > 🕹️ **交互演示**：点击下方按钮，体验原始图像是如何被规则的网格切割成一个个独立 Patch 的。
 
-<div class="vue-demo-placeholder" data-demo="Patchify">
-<p>📦 Interactive Demo: <strong>Patchify</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 1.2 序列化 (Flatten) —— 排成一句话
 
 完成上一步切块后，我们现在手头拥有的是一个 $14 \times 14$ 的二维方阵。然而，无论是传统的 Transformer 还是现代的 LLM，它们在底层架构上大多只接受**一维的序列输入**（也就是从左到右排成一排的线性数据结构）。
@@ -69,12 +57,6 @@ VLM 的核心任务，就是**把“像素信号”翻译成“文字信号”**
 经过这一步操作，一张图片才真正变成了一串“视觉单词序列”（Visual Token Sequence）。
 
 > 🕹️ **交互演示**：观察下方动画，了解**一个单纯的像素块 (Patch)** 是如何经历矩阵拉伸，最终被映射成一个包含丰富特征维度的高维**向量 (Vector)** 的。
-
-<div class="vue-demo-placeholder" data-demo="LinearProjection">
-<p>📦 Interactive Demo: <strong>LinearProjection</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -96,12 +78,6 @@ Projector 的学术本质是实现**特征隐空间的对齐 (Latent Space Align
 - **输出 (Target)**：输出完全符合 LLM 口味和预期的“LLM 语言”（由图片特征转换而成的等价文本嵌入 Token，使得图像拥有了可以对话的意义）。
 
 通过这层翻译过滤，大模型就会惊奇地发现：“咦？传进来的这段数字串，不就是我平时读的那些带有描述性质的单词组合吗！”，从而顺理成章地将图片特征与自然语言共同处理。
-
-<div class="vue-demo-placeholder" data-demo="Projector">
-<p>📦 Interactive Demo: <strong>Projector</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.2 不同的翻译流派
 
@@ -129,12 +105,6 @@ Projector 的学术本质是实现**特征隐空间的对齐 (Latent Space Align
 有了零件、有了对接标准，接下来我们看它是如何完成全身武装的。主流的多模态视觉语言模型 (Vision-Language Model) 基本都遵循统一的**“三段式”架构模型**。
 
 ### 3.1 VLM 的身体结构
-
-<div class="vue-demo-placeholder" data-demo="ModelArchitectureComparison">
-<p>📦 Interactive Demo: <strong>ModelArchitectureComparison</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 一个典型范式下的 VLM 实体，主要由以下三大部分协同运转：
 
@@ -170,12 +140,6 @@ Projector 的学术本质是实现**特征隐空间的对齐 (Latent Space Align
 - **优化目标**：强制驱使 Projector 学会通过矩阵变化，让这只猫的对应视觉特征（经过翻译后），和自然语言里的“猫”词元向量尽可能重合对齐。
 - **参数控制状态 (Freeze Strategy)**：为了防止破坏原有模型的智慧，在这个阶段研究人员会重度**冻结 (Freeze)** “眼睛”(ViT) 和 “大脑”(LLM) 的几十上百亿参数，**仅仅只开启“视神经”(Projector) 本身的几百万参数训练**。
 
-<div class="vue-demo-placeholder" data-demo="FeatureAlignment">
-<p>📦 Interactive Demo: <strong>FeatureAlignment</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 阶段二：对话 (Visual Instruction Tuning —— 对话演练)
 
 如果第一阶段只会让模型变成报菜名似的认字机，那么第二阶段的任务就是激发它的高级智商，让它真正能根据上下文解答人类复杂的图文结合指令。
@@ -184,12 +148,6 @@ Projector 的学术本质是实现**特征隐空间的对齐 (Latent Space Align
 - **要求它答 (目标输出)**：User 提问：“`&lt;图片>` 左下角那个骑白色自行车的男人有没有戴头盔？” Assistant 回答：“没有，他头上什么都没戴，这在城市里是很危险的行为。”
 - **优化目标**：让大模型不仅能接收视觉线索，还能结合从前的文明常识积淀，将文本逻辑与多模态表征彻底融汇贯通并做出推理。
 - **参数控制状态 (Freeze Strategy)**：此时视神经已经基本调通。在这个精调阶段，一般会继续冻结一部分视觉编码器底层权重，同时**彻底解冻开启 LLM 和 Projector**（或采用 LoRA 配置），进行全局大规模的联合反向传播调校。
-
-<div class="vue-demo-placeholder" data-demo="VLMInference">
-<p>📦 Interactive Demo: <strong>VLMInference</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -239,7 +197,6 @@ Projector 的学术本质是实现**特征隐空间的对齐 (Latent Space Align
 | **Patch**     | -                     | **图像块**。图片被切成的小方块，相当于“视觉单词”。         |
 | **Projector** | -                     | **投射器/翻译官**。连接眼睛和大脑的桥梁。                  |
 | **Alignment** | -                     | **对齐**。让图像特征和文本特征在同一个空间里“互相听得懂”。 |
-
 
 ---
 

@@ -59,12 +59,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 
 限流的核心问题是：**在单位时间内，最多允许多少个请求通过？** 不同的算法在精确度、突发流量处理、实现复杂度上各有取舍。
 
-<div class="vue-demo-placeholder" data-demo="RateLimitAlgorithm">
-<p>📦 Interactive Demo: <strong>RateLimitAlgorithm</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 | 算法 | 原理 | 突发流量 | 精确度 | 实现复杂度 |
 |------|------|---------|--------|-----------|
 | 令牌桶 | 固定速率放令牌，请求消耗令牌 | 允许（桶中有存量） | 高 | 中 |
@@ -88,12 +82,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 限流解决的是"外部请求太多"的问题，而**背压（Backpressure）**解决的是"内部组件速度不匹配"的问题。
 
 当生产者产生数据的速度持续超过消费者处理数据的速度时，中间的缓冲区会不断膨胀，最终导致内存溢出或数据丢失。背压机制就是让消费者能够"反向通知"生产者减速。
-
-<div class="vue-demo-placeholder" data-demo="Backpressure">
-<p>📦 Interactive Demo: <strong>Backpressure</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **背压的四种策略**</p>
@@ -163,7 +151,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-serve
 - [Alibaba Sentinel](https://sentinelguard.io/) - 面向分布式服务的流量控制组件
 - [Resilience4j](https://resilience4j.readme.io/) - Java 轻量级容错库
 - [Token Bucket 算法详解](https://en.wikipedia.org/wiki/Token_bucket) - 令牌桶算法的数学原理
-
 
 ---
 

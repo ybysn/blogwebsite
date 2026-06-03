@@ -147,12 +147,6 @@ public Result register(@RequestBody User user) `{
 - 所有层都依赖 Domain(业务核心,最稳定)
 - **不允许反向依赖**(如 Repository 依赖 Service)
 
-<div class="vue-demo-placeholder" data-demo="LayeredArchitecture">
-<p>📦 Interactive Demo: <strong>LayeredArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 2.2 Controller 层
 
 **职责**:请求的"接待员"
@@ -204,12 +198,6 @@ public class UserController `{
 - 用 `@Valid` 自动校验参数
 - 用 DTO 隔离前后端数据结构
 - 只做"翻译"和"调度",不包含业务逻辑
-
-<div class="vue-demo-placeholder" data-demo="ControllerLayer">
-<p>📦 Interactive Demo: <strong>ControllerLayer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.3 Service 层
 
@@ -269,12 +257,6 @@ public class UserService `{
 - 抛出业务异常,让Controller统一处理
 - 不依赖HTTP概念,可以复用
 
-<div class="vue-demo-placeholder" data-demo="ServiceLayer">
-<p>📦 Interactive Demo: <strong>ServiceLayer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 2.4 Repository 层
 
 **职责**:数据的"仓管员"
@@ -314,12 +296,6 @@ public interface UserRepository extends JpaRepository<User, Long> `{
 - Repository是接口,不包含业务逻辑
 - 用方法名表达查询意图
 - 可以用Query自定义复杂查询
-
-<div class="vue-demo-placeholder" data-demo="RepositoryLayer">
-<p>📦 Interactive Demo: <strong>RepositoryLayer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.5 Domain 层
 
@@ -375,12 +351,6 @@ public class User `{
 - 业务规则封装在 Domain 对象中
 - Domain 层是纯粹的业务逻辑,不依赖框架
 
-<div class="vue-demo-placeholder" data-demo="DomainModel">
-<p>📦 Interactive Demo: <strong>DomainModel</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 3. DTO:层与层之间的"翻译官"
@@ -421,12 +391,6 @@ public class User `{
 **关键原则**:
 每层使用自己的 DTO,不要直接传递 Entity,DTO 只包含必要的字段,这样可以避免暴露内部实现细节,保证各层的独立性。
 
-<div class="vue-demo-placeholder" data-demo="DtoFlow">
-<p>📦 Interactive Demo: <strong>DtoFlow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 4. 依赖方向:分层架构的铁律
@@ -465,12 +429,6 @@ public class OrderRepositoryImpl implements OrderRepository `{
     // 实现细节
 }`
 ```
-
-<div class="vue-demo-placeholder" data-demo="DependencyDirection">
-<p>📦 Interactive Demo: <strong>DependencyDirection</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -705,12 +663,6 @@ Robert C. Martin 提出,将系统分为四个同心圆层,依赖只能从外向�
 - **优点**: 高可测试性、技术栈可替换、业务逻辑清晰
 - **缺点**: 初期开发成本高、层间映射代码多、小项目容易过度设计
 - **适用**: 复杂业务系统、需要长期维护的项目
-
-<div class="vue-demo-placeholder" data-demo="CleanArchitecture">
-<p>📦 Interactive Demo: <strong>CleanArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 #### 六边形架构 (Hexagonal / Ports & Adapters)
 

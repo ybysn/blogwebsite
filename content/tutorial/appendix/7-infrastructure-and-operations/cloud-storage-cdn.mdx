@@ -37,12 +37,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 
 对象存储则像现代仓储物流：每个包裹都有一个唯一的"快递单号"（对象键），你只需报单号，仓库机器人就能从海量包裹中精准取出。
 
-<div class="vue-demo-placeholder" data-demo="ObjectStorage">
-<p>📦 Interactive Demo: <strong>ObjectStorage</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **核心区别一览**：
 
 | 维度         | 传统文件系统           | 对象存储                |
@@ -110,12 +104,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 
 这就是 CDN 的核心价值：**让内容离用户更近**。
 
-<div class="vue-demo-placeholder" data-demo="CdnAcceleration">
-<p>📦 Interactive Demo: <strong>CdnAcceleration</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 2.2 CDN 的核心架构
 
 #### 边缘节点：离用户最近的"快递站"
@@ -131,12 +119,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 - 一线城市：北京、上海、广州、深圳
 - 二线城市：杭州、南京、成都、武汉、西安
 - 海外：香港、新加坡、东京、硅谷、法兰克福
-
-<div class="vue-demo-placeholder" data-demo="EdgeNodeDistribution">
-<p>📦 Interactive Demo: <strong>EdgeNodeDistribution</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 #### 源站：内容的"总仓库"
 
@@ -168,12 +150,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 ### 2.3 CDN 加速的完整流程
 
 让我们跟踪一次真实的用户请求：
-
-<div class="vue-demo-placeholder" data-demo="CachePolicy">
-<p>📦 Interactive Demo: <strong>CachePolicy</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **Step 1：DNS 解析**（智能调度）
 
@@ -226,12 +202,6 @@ DNS 服务器返回：北京联通 CDN 节点 IP（1.2.3.4）
 ## 3. 从上传到访问：完整链路解析
 
 ### 3.1 文件上传的三种方式
-
-<div class="vue-demo-placeholder" data-demo="UploadProcess">
-<p>📦 Interactive Demo: <strong>UploadProcess</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 #### 方式一：客户端 → 服务端 → 对象存储（传统模式）
 
@@ -327,12 +297,6 @@ DNS 服务器返回：北京联通 CDN 节点 IP（1.2.3.4）
 
 ### 3.2 CDN 回源策略详解
 
-<div class="vue-demo-placeholder" data-demo="CachePolicy">
-<p>📦 Interactive Demo: <strong>CachePolicy</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 #### 什么是"回源"？
 
 CDN 边缘节点缓存了源站的内容，但当：
@@ -410,12 +374,6 @@ CDN 边缘节点
 - 开启"跟随 301/302"，避免不必要的回源跳转
 
 ### 3.3 缓存策略配置
-
-<div class="vue-demo-placeholder" data-demo="CachePolicy">
-<p>📦 Interactive Demo: <strong>CachePolicy</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 #### 缓存键（Cache Key）：决定什么算"同一个文件"
 
@@ -516,12 +474,6 @@ output: {
 
 ## 4. 流量调度：让用户访问"最近"的节点
 
-<div class="vue-demo-placeholder" data-demo="TrafficScheduling">
-<p>📦 Interactive Demo: <strong>TrafficScheduling</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 4.1 智能 DNS 调度
 
 传统 DNS 解析：
@@ -579,12 +531,6 @@ DNS 答：1.2.3.4（固定的）
 ---
 
 ## 5. HTTPS 优化：安全与性能的平衡
-
-<div class="vue-demo-placeholder" data-demo="HttpsOptimization">
-<p>📦 Interactive Demo: <strong>HttpsOptimization</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 5.1 为什么 CDN 上 HTTPS 很重要？
 
@@ -720,12 +666,6 @@ HTTP/3 的解决：基于 QUIC（UDP 之上实现可靠传输）
 ---
 
 ## 6. 访问分析：看懂你的 CDN 报表
-
-<div class="vue-demo-placeholder" data-demo="AccessAnalytics">
-<p>📦 Interactive Demo: <strong>AccessAnalytics</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 6.1 核心指标解读
 
@@ -1870,7 +1810,6 @@ const uaConfig = `{
 5. **成本要监控**：命中率、带宽、存储分级，持续优化
 
 这套架构撑起了互联网绝大部分的静态资源访问，理解它，你就理解了现代 Web 性能优化的基石。
-
 
 ---
 

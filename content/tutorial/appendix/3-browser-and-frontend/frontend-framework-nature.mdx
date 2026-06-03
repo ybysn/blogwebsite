@@ -31,12 +31,6 @@ DOM 的全称是 Document Object Model，中文叫"文档对象模型"。
 👇 **动手试试看**：
 把鼠标移到左边的 HTML 代码上，右边 DOM 树中对应的节点会高亮。反过来也一样。每一行 HTML 标签都对应 DOM 树上的一个节点。
 
-<div class="vue-demo-placeholder" data-demo="WhatIsDom">
-<p>📦 Interactive Demo: <strong>WhatIsDom</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **为什么要了解 DOM？** 因为 JavaScript 修改页面的方式，就是操作这棵 DOM 树——增加节点、删除节点、修改节点的内容。而前端框架做的核心工作，就是帮你自动化这些 DOM 操作。后面我们会反复提到 DOM，理解它是理解框架原理的基础。
 
 ---
@@ -48,12 +42,6 @@ DOM 的全称是 Document Object Model，中文叫"文档对象模型"。
 **前端框架**，就是专门帮你**构建网页界面**的框架。目前最常见的有 Vue、React、Svelte、Angular 这几个。
 
 那它们到底帮你解决了什么问题？下面这三张卡片概括了核心逻辑：
-
-<div class="vue-demo-placeholder" data-demo="FrameworkMotivation">
-<p>📦 Interactive Demo: <strong>FrameworkMotivation</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 接下来我们一步步展开，从最基础的问题讲起。
 
@@ -74,12 +62,6 @@ DOM 的全称是 Document Object Model，中文叫"文档对象模型"。
 
 👇 **动手点点看**：
 点击"添加商品"按钮，注意观察：数据（左边）已经变了，但界面（右边）没有跟着更新——它们之间"断开"了。再点"同步界面"手动修复。
-
-<div class="vue-demo-placeholder" data-demo="DataUIGap">
-<p>📦 Interactive Demo: <strong>DataUIGap</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 1.2 为什么 JavaScript 变量变了，界面不会自动变？
 
@@ -152,24 +134,12 @@ Vue 框架：
 👇 **动手点点看**：
 先选"原生 JavaScript"，点"执行"后注意观察——变量改了但界面纹丝不动，你要一步步手动同步每个位置。再切换到"使用框架"，同样点"执行"——变量一改，框架自动完成所有步骤，界面立刻跟上。
 
-<div class="vue-demo-placeholder" data-demo="WhyNoAutoSync">
-<p>📦 Interactive Demo: <strong>WhyNoAutoSync</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 1.4 对比：手动同步 vs 自动同步的实际效果
 
 理解了原理之后，我们来看看在一个稍微复杂一点的场景下，手动同步和自动同步的区别有多大。
 
 👇 **动手点点看**：
 左边是没有框架时的"手动同步"方式——每个显示区域你都需要单独点"同步"按钮来更新。右边是有框架时的"自动同步"方式——你只管点"添加商品"，所有显示区域自动更新。试试在左边故意不同步某个区域，看看会发生什么。
-
-<div class="vue-demo-placeholder" data-demo="ManualVsAutoSync">
-<p>📦 Interactive Demo: <strong>ManualVsAutoSync</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **这就是前端框架存在的根本原因：给 JavaScript 变量加上"被修改时自动通知界面更新"的能力，消灭手动同步带来的错误。**
 
@@ -222,12 +192,6 @@ document.getElementById('total').textContent = '¥396'
 
 👇 **动手点点看**：
 在左边修改数据（State），观察右边的界面（UI）如何自动跟着变化。这就是 `UI = f(State)` 的直观体现。
-
-<div class="vue-demo-placeholder" data-demo="DeclarativeFormula">
-<p>📦 Interactive Demo: <strong>DeclarativeFormula</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 2.3 为什么声明式比命令式好？
 
@@ -294,12 +258,6 @@ Svelte 采用了完全不同的路线。它有一个编译器（Compiler），�
 👇 **动手点点看**：
 选择不同的框架标签，点击"修改数据"，观察每种框架在"引擎盖下"经历了哪些步骤来完成数据变化的检测和界面更新。
 
-<div class="vue-demo-placeholder" data-demo="ReactivityMechanism">
-<p>📦 Interactive Demo: <strong>ReactivityMechanism</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 3.3 三种方式的对比
 
 | 对比维度 | Vue（Proxy 代理） | React（显式调用） | Svelte（编译器） |
@@ -341,12 +299,6 @@ Svelte 采用了完全不同的路线。它有一个编译器（Compiler），�
 
 👇 **动手点点看**：
 点击左边的组件名称，查看它在页面上对应的区域。注意观察：同一个 `ProductCard` 组件被复用了多次，每次显示不同的数据。
-
-<div class="vue-demo-placeholder" data-demo="ComponentTree">
-<p>📦 Interactive Demo: <strong>ComponentTree</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 4.3 组件在代码里长什么样？
 
@@ -392,12 +344,6 @@ Svelte 采用了完全不同的路线。它有一个编译器（Compiler），�
 👇 **动手点点看**：
 观察直接操作 DOM 和批量操作 DOM 的耗时对比。当修改次数增多时，"逐个操作"的耗时会急剧上升。
 
-<div class="vue-demo-placeholder" data-demo="DomOperationCost">
-<p>📦 Interactive Demo: <strong>DomOperationCost</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 5.2 框架怎么解决这个问题？
 
 既然直接操作 DOM 很昂贵，框架就想办法**减少 DOM 操作的次数**。具体有两种策略：
@@ -416,12 +362,6 @@ Svelte 采用了完全不同的路线。它有一个编译器（Compiler），�
 
 👇 **动手点点看**：
 点击"修改数据"，观察虚拟 DOM 如何对比新旧两棵树，找出变化的节点。注意看最右边的"真实 DOM"——只有真正变化的部分才会闪烁。
-
-<div class="vue-demo-placeholder" data-demo="VirtualDomDiff">
-<p>📦 Interactive Demo: <strong>VirtualDomDiff</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 **策略二：编译时精确定位（Svelte 的做法）**
 
@@ -450,12 +390,6 @@ Svelte 不使用虚拟 DOM。它的编译器在你写代码时就分析好了：
 
 👇 **动手点点看**：
 点击不同的框架标签，查看它们在"运行时 ↔ 编译时"光谱上的位置，以及各自在打包体积、运行性能、开发体验上的权衡。
-
-<div class="vue-demo-placeholder" data-demo="FrameworkSpectrum">
-<p>📦 Interactive Demo: <strong>FrameworkSpectrum</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 6.3 行业趋势
 
@@ -506,7 +440,6 @@ Svelte 不使用虚拟 DOM。它的编译器在你写代码时就分析好了：
 | **Compile-time** | 编译时 | 代码在构建阶段被处理的时期，发生在用户打开网页之前。 |
 | **Runtime** | 运行时 | 代码在用户浏览器中执行的时期。 |
 | **Compiler** | 编译器 | 一个程序，把源代码转换成另一种形式的代码。Svelte 的编译器把 `.svelte` 文件转换成高效的 JavaScript。 |
-
 
 ---
 

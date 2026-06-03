@@ -54,23 +54,11 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 
 编译器做的事情完全一样，只不过它翻译的是编程语言。
 
-<div class="vue-demo-placeholder" data-demo="CompilerAnalogy">
-<p>📦 Interactive Demo: <strong>CompilerAnalogy</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 1. 编译器的六步流水线
 
 编译器的工作可以分为六个阶段，像工厂流水线一样，每个阶段处理完交给下一个阶段。
-
-<div class="vue-demo-placeholder" data-demo="Compiler">
-<p>📦 Interactive Demo: <strong>Compiler</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 <div class="admonition admonition-tip">
 <p class="admonition-title">💡 **编译流水线**</p>
@@ -98,12 +86,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-compu
 ## 2. 词法分析：把代码拆成"单词"
 
 词法分析是编译的第一步。编译器从左到右扫描源代码的每个字符，把它们组合成有意义的**Token（词法单元）**。
-
-<div class="vue-demo-placeholder" data-demo="LexerToken">
-<p>📦 Interactive Demo: <strong>LexerToken</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 就像读英文句子时，你的大脑会自动把字母组合成单词一样，词法分析器把字符组合成 Token：
 
@@ -171,12 +153,6 @@ AST 是编译器的"核心数据结构"，后续的语义分析、优化、代�
 
 上面我们用文字描述了 AST 的结构，但"看到"比"读到"更直观。下面的交互组件让你选择不同的表达式，实时观察它们的语法树长什么样。
 
-<div class="vue-demo-placeholder" data-demo="ASTVisualizer">
-<p>📦 Interactive Demo: <strong>ASTVisualizer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 通过可视化你会发现，AST 的核心规律其实很简单：
 
 | 代码结构 | AST 根节点 | 子节点 |
@@ -201,12 +177,6 @@ AST 是编译器的"核心数据结构"，后续的语义分析、优化、代�
 ## 5. 语义分析与代码优化
 
 语法分析确保代码"结构正确"，但结构正确不代表"意思正确"。语义分析负责检查代码的含义是否合法，代码优化则让程序跑得更快。
-
-<div class="vue-demo-placeholder" data-demo="CompilationPractice">
-<p>📦 Interactive Demo: <strong>CompilationPractice</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 4.1 语义分析：检查"意思"对不对
 
@@ -243,12 +213,6 @@ AST 是编译器的"核心数据结构"，后续的语义分析、优化、代�
 
 上面我们提到了几种优化技术的名字，现在来深入看看编译器具体是怎么做的。下面的交互组件展示了 5 种最常见的编译器优化，你可以直观对比优化前后的代码差异。
 
-<div class="vue-demo-placeholder" data-demo="CodeOptimization">
-<p>📦 Interactive Demo: <strong>CodeOptimization</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 现代编译器和 JIT 引擎（如 V8、GCC、LLVM）会自动应用数十种优化。作为开发者，你不需要手动做这些优化，但理解它们能帮你：
 
 - **写出更容易被优化的代码**：比如用 `const` 而不是 `let`，编译器更容易做常量折叠
@@ -268,12 +232,6 @@ AST 是编译器的"核心数据结构"，后续的语义分析、优化、代�
 ## 7. 编译型 vs 解释型 vs JIT
 
 代码写完后，有三种"翻译方式"让它运行起来。这三种方式各有优劣，直接决定了语言的性能特征和使用场景。
-
-<div class="vue-demo-placeholder" data-demo="CompileVsInterpret">
-<p>📦 Interactive Demo: <strong>CompileVsInterpret</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 | 维度 | 编译型 | 解释型 | JIT 即时编译 |
 |------|-------|-------|------------|
@@ -313,7 +271,6 @@ V8 引擎的 JIT 编译器会监测哪些代码被频繁执行（热点代码）
 - [The Super Tiny Compiler](https://github.com/jamiebuilds/the-super-tiny-compiler) - 用 JavaScript 实现的超小编译器
 - [V8 Blog](https://v8.dev/blog) - V8 引擎的 JIT 编译技术博客
 - [LLVM 官网](https://llvm.org/) - 最流行的编译器基础设施
-
 
 ---
 

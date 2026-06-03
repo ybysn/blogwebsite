@@ -80,12 +80,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infra
 - **反向代理**: 前台,引导访客到正确的部门
 - **API网关**: 智能前台,还能检查访客身份(认证)、限制访问人数(限流)
 
-<div class="vue-demo-placeholder" data-demo="ReverseProxy">
-<p>📦 Interactive Demo: <strong>ReverseProxy</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 2. 什么是反向代理?
@@ -218,12 +212,6 @@ Nginx采用**多进程**架构,而不是多线程:
 
 </div>
 
-<div class="vue-demo-placeholder" data-demo="NginxArchitecture">
-<p>📦 Interactive Demo: <strong>NginxArchitecture</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 4. 什么是API网关?
@@ -253,12 +241,6 @@ Nginx采用**多进程**架构,而不是多线程:
 - 认证、限流、日志等横切逻辑统一在网关处理
 - 网关可以做协议转换,对外统一暴露HTTP
 - 后端服务升级,只需要改网关配置,客户端无感知
-
-<div class="vue-demo-placeholder" data-demo="ApiGateway">
-<p>📦 Interactive Demo: <strong>ApiGateway</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 4.2 API网关的核心功能
 
@@ -455,12 +437,6 @@ upstream backend_ip_hash {
 
 </details>
 
-<div class="vue-demo-placeholder" data-demo="LoadBalancing">
-<p>📦 Interactive Demo: <strong>LoadBalancing</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 6. 网关安全:如何守护系统大门?
@@ -492,12 +468,6 @@ upstream backend_ip_hash {
 
 </div>
 
-<div class="vue-demo-placeholder" data-demo="AuthMiddleware">
-<p>📦 Interactive Demo: <strong>AuthMiddleware</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 6.2 HTTPS与SSL终结
 
 **为什么需要HTTPS?**
@@ -520,12 +490,6 @@ upstream backend_ip_hash {
 - **降低开销**: 后端服务不需要处理TLS握手
 - **统一更新**: 证书更新只需在网关操作
 
-</div>
-
-<div class="vue-demo-placeholder" data-demo="SslTermination">
-<p>📦 Interactive Demo: <strong>SslTermination</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
 </div>
 
 ---
@@ -606,12 +570,6 @@ server `{
 
 </div>
 
-<div class="vue-demo-placeholder" data-demo="RateLimiting">
-<p>📦 Interactive Demo: <strong>RateLimiting</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 7.3 熔断:防止故障扩散
 
 **熔断器的工作原理:**
@@ -685,7 +643,6 @@ server `{
 | **灰度发布** | Canary Release           | 将少量流量导到新版本,验证稳定性后逐步扩大比例,降低发布风险。                                                       |
 | **WAF**      | Web Application Firewall | Web应用防火墙,防护SQL注入、XSS、CC攻击等Web安全威胁。                                                              |
 | **CDN**      | Content Delivery Network | 内容分发网络,在全球部署边缘节点,加速静态资源访问。                                                                 |
-
 
 ---
 

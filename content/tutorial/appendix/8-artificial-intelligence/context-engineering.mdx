@@ -21,12 +21,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 
 ## 0. 引言：为什么聊着聊着，它就忘事，还越来越贵？
 
-<div class="vue-demo-placeholder" data-demo="AgentContextFlow">
-<p>📦 Interactive Demo: <strong>AgentContextFlow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 很多人在实际使用大模型时都会遇到类似的情况：
 
 - 聊到一半，模型突然“忘记”之前说过的关键条件；
@@ -35,12 +29,6 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artif
 
 直觉上，我们会以为是：**“这个模型记性不好”**。
 但大多数时候，问题并不在于模型“不会记”，而在于我们**没有设计好它能看到的上下文**。
-
-<div class="vue-demo-placeholder" data-demo="IntroProblemReasonSolution">
-<p>📦 Interactive Demo: <strong>IntroProblemReasonSolution</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 面对这些挑战，单纯依靠“写好提示词”已经捉襟见肘。我们需要一套更系统的工程方法，来在有限的窗口和预算内，让模型始终获得最关键的信息。这正是**上下文工程**试图解决的问题。
 
@@ -142,12 +130,6 @@ Manus 的联合创始人季逸超分享过他们的"踩坑史"：
 
 **Manus 的实践**：通过让 AI "背课文"，他们把成本从 **$0.15 降到 $0.02**，**省了 87%**！
 
-<div class="vue-demo-placeholder" data-demo="ContextWindowVisualizer">
-<p>📦 Interactive Demo: <strong>ContextWindowVisualizer</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ### 3.4 避坑指南：别让时间戳毁了你的“缓存”
 
 很多开发者习惯把“当前时间”写在 System Prompt 的第一句，觉得这样很严谨。
@@ -176,12 +158,6 @@ User: (在这里通过工具调用或用户消息传入当前时间)
 👇 **动手点点看**：
 点击下方的开关，开启**“背课文加速”**，然后多次点击“发送新请求”。
 观察一下：当第一块内容变成“已背过”时，**开口速度（TTFT）**会发生什么变化？
-
-<div class="vue-demo-placeholder" data-demo="KVCache">
-<p>📦 Interactive Demo: <strong>KVCache</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ---
 
@@ -222,17 +198,6 @@ User: (在这里通过工具调用或用户消息传入当前时间)
 1. 先试试**“滑动窗口”**：在下面的聊天框里多发几条消息，看看旧的对话是怎么被无情“挤出去”的。
 2. 再看看**“中间迷失”**：观察一下，当关键信息藏在整段话的中间位置时，检索成功率是不是最低的？
 
-<div class="vue-demo-placeholder" data-demo="SlidingWindow">
-<p>📦 Interactive Demo: <strong>SlidingWindow</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-<div class="vue-demo-placeholder" data-demo="LostInMiddle">
-<p>📦 Interactive Demo: <strong>LostInMiddle</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 **解决方案**：把关键信息放在**开头**（系统提示）或**结尾**（用户问题）。
 
 ---
@@ -266,12 +231,6 @@ Manus 的答案是：**建立“信息等级制度”**。
 试着在下面的演示里，把某条重要的对话“钉”住。
 观察一下：当你继续聊天时，被钉住的信息是不是一直都在，而没钉住的就被挤走了？
 
-<div class="vue-demo-placeholder" data-demo="SelectiveContext">
-<p>📦 Interactive Demo: <strong>SelectiveContext</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 6. 第四步：RAG - 当"记性"需要"图书馆"
@@ -301,12 +260,6 @@ Manus 的经验总结：
 👇 **动手点点看**：
 在搜索框里输入问题（比如“如何重置密码”），看看系统是如何从一大堆文档里只找出最相关的那几条的。
 
-<div class="vue-demo-placeholder" data-demo="RAGSimulation">
-<p>📦 Interactive Demo: <strong>RAGSimulation</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 7. 第五步：压缩 - 如何让"小黑板"写得更密？
@@ -330,12 +283,6 @@ Manus 的经验总结：
 👇 **动手点点看**：
 选择不同的压缩策略，看看长篇大论是如何变短、变精炼的。
 
-<div class="vue-demo-placeholder" data-demo="ContextCompression">
-<p>📦 Interactive Demo: <strong>ContextCompression</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
-
 ---
 
 ## 8. 系统整合：打造 AI 的“记忆宫殿”
@@ -354,12 +301,6 @@ Manus 的经验总结：
 
 👇 **动手点点看**：
 点击“开始建造”，看看我们是如何一层层把这座宫殿盖起来的。
-
-<div class="vue-demo-placeholder" data-demo="MemoryPalace">
-<p>📦 Interactive Demo: <strong>MemoryPalace</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 8.2 为什么这样设计最强？
 
@@ -394,12 +335,6 @@ Manus 团队把这套架构搬上线后，效果立竿见影：
 为了让你更直观地理解这套机制是如何运作的，我们为你准备了**全链路模拟**。
 
 请选择一个场景，点击“下一步”，看看从用户发问到 AI 回答的几秒钟内，**记忆宫殿**是如何动态调取、组装和清理上下文的。
-
-<div class="vue-demo-placeholder" data-demo="MemoryPalaceAction">
-<p>📦 Interactive Demo: <strong>MemoryPalaceAction</strong></p>
-<p>This interactive visualization is not available in the static version.</p>
-<a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/" target="_blank" rel="noopener noreferrer" class="demo-original-link">🔗 View original interactive demo →</a>
-</div>
 
 ### 📝 拿来即用的实战设计
 
@@ -533,7 +468,6 @@ Manus 的四次重构告诉我们：
 - 面对超长文档和知识库时，仅依赖增大上下文窗口并不现实，必须结合检索与压缩机制。
 
 目标是：在给定的模型与上下文上限下，让每一个 token 的投入都具备明确的用途。
-
 
 ---
 
