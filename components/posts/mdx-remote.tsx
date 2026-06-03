@@ -64,7 +64,12 @@ function preprocessMdxSource(source: string): string {
  * patterns incompatible with MDX/JSX parsing.
  */
 function transformSection(text: string): string {
-  return text
+  // Normalize heading levels: strip leading H1 at top of content
+  // (page template already provides <h1>), downgrade other # to ##
+  let result = text.replace(/^#\s+(.+?)(?:\s*\{[^}]*\})?\s*\n+/, '')
+  result = result.replace(/^#\s+/gm, '## ')
+
+  return result
     // Fix auto-link syntax: <https://url> → bare URL
     // MDX treats <https as opening JSX tag
     .replace(/<(https?:\/\/[^>\s]+)>/g, '$1')
