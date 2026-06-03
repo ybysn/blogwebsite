@@ -23,9 +23,9 @@ const components: MDXComponents = {
     </h4>
   ),
   p: ({ children, ...props }) => (
-    <p style={{ lineHeight: 1.65, margin: '1rem 0' }} {...props}>
+    <div style={{ lineHeight: 1.65, margin: '1rem 0' }} {...props}>
       {children}
-    </p>
+    </div>
   ),
   a: ({ href, children, ...props }) => {
     const isExternal = href?.startsWith('http')

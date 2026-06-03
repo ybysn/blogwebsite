@@ -16,12 +16,14 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
   const { t } = useTranslation()
   const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set())
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [sidebarHidden, setSidebarHidden] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('tutorial-sidebar-hidden') === 'true'
-    }
-    return false
-  })
+  const [sidebarHidden, setSidebarHidden] = useState(false)
+  const [sidebarReady, setSidebarReady] = useState(false)
+
+  // Sync hidden state from localStorage on client mount (avoid hydration mismatch)
+  useEffect(() => {
+    setSidebarHidden(localStorage.getItem('tutorial-sidebar-hidden') === 'true')
+    setSidebarReady(true)
+  }, [])
   const asideRef = useRef<HTMLElement>(null)
 
   // Restore sidebar scroll position on mount
@@ -178,7 +180,7 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
       <aside
         ref={asideRef}
         onClick={handleSidebarClick}
-        className={`tutorial-sidebar${mobileOpen ? ' tutorial-sidebar--open' : ''}${sidebarHidden ? ' tutorial-sidebar--hidden' : ''}`}
+        className={`tutorial-sidebar${mobileOpen ? ' tutorial-sidebar--open' : ''}${sidebarReady && sidebarHidden ? ' tutorial-sidebar--hidden' : ''}`}
       >
         <div className="tutorial-sidebar-header">
           <Link
@@ -220,7 +222,7 @@ export function TutorialSidebar({ navigation, currentSlug }: TutorialSidebarProp
 
       {/* Floating expand button when sidebar is hidden (desktop only) */}
       <button
-        className={`tutorial-sidebar-expand${sidebarHidden ? ' tutorial-sidebar-expand--visible' : ''}`}
+        className={`tutorial-sidebar-expand${sidebarReady && sidebarHidden ? ' tutorial-sidebar-expand--visible' : ''}`}
         onClick={toggleSidebar}
         aria-label={t('tutorial.sidebar.expand')}
         title="显示侧边栏"
