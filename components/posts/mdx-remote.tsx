@@ -60,13 +60,36 @@ function preprocessMdxSource(source: string): string {
 }
 
 /**
+ * Escape curly braces inside LaTeX math delimiters ($...$ and $$...$$)
+ * so that MDX doesn't interpret them as JSX expressions.
+ * e.g. $\mathbf{x}$ → $\mathbf&#123;x&#125;$
+ */
+function escapeLatexMathBraces(text: string): string {
+  // Escape $$...$$ display math blocks (multi-line)
+  let result = text.replace(
+    /\$\$([\s\S]*?)\$\$/g,
+    (_, math: string) => `$$${math.replace(/\{/g, '&#123;').replace(/\}/g, '&#125;')}$$`,
+  )
+  // Escape $...$ inline math (single-line)
+  result = result.replace(
+    /\$(.+?)\$/g,
+    (_, math: string) => `$${math.replace(/\{/g, '&#123;').replace(/\}/g, '&#125;')}$`,
+  )
+  return result
+}
+
+/**
  * Transform a non-code-block section of MDX source to fix common
  * patterns incompatible with MDX/JSX parsing.
  */
 function transformSection(text: string): string {
+  // Escape curly braces inside LaTeX math to prevent MDX from treating them
+  // as JSX expressions (e.g. $\mathbf{x}$ → $\mathbf&#123;x&#125;$)
+  let result = escapeLatexMathBraces(text)
+
   // Normalize heading levels: strip leading H1 at top of content
   // (page template already provides <h1>), downgrade other # to ##
-  let result = text.replace(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*\n+/, '')
+  result = result.replace(/^#\s+(.+)(?:\s*\{[^}]*\})?\s*\n+/, '')
   result = result.replace(/^#\s+/gm, '## ')
 
   return result

@@ -1,70 +1,127 @@
 <p align="center">
   <h1 align="center">凌's Blog</h1>
   <p align="center">
-    一个关于技术、自托管和工具的静态博客。<br/>
-    用 MDX 写作，以纯 HTML 交付。无广告，无追踪，无服务端。
+    A statically-generated, MDX-powered personal blog — built with Next.js,<br/>
+    delivered as pure HTML. No ads, no tracking, no backend.
   </p>
 </p>
 
 <p align="center">
-  <a href="https://blog.ybysn.org"><strong>blog.ybysn.org</strong></a>
+  <a href="https://blog.ybysn.org"><strong>blog.ybysn.org</strong></a> &nbsp;·&nbsp;
+  <a href="https://blog.ybysn.org/feed.xml">RSS</a> &nbsp;·&nbsp;
+  <a href="https://github.com/ybysn/blogwebsite">GitHub</a>
 </p>
 
 ---
 
-## 为什么要有这个博客
+## Overview
 
-市面上不缺博客框架。但大多数要么太重（动态 CMS + 数据库），要么太轻（缺少搜索、大纲、评论这些读者真正需要的功能），要么在两者之间做了奇怪的取舍。
+This is the source for my personal technical blog. The site covers networking, server administration, developer tooling, and Windows internals — topics I work with daily. It also hosts a complete [Easy-Vibe](https://github.com/datawhalechina/easy-vibe) AI programming tutorial (182 pages), migrated from VitePress and served as a static course site under `/tutorial`.
 
-这个博客的目标很简单——**写 Markdown，生成静态 HTML，但阅读体验不妥协**。它是我自己的技术笔记，也是我打磨前端工程实践的地方。
+The engineering philosophy is simple: **author in Markdown, ship static HTML, compromise nothing**. Every page is pre-rendered at build time. Search, table of contents, code highlighting, dark mode, i18n, and comments all work without a runtime server.
 
-如果你也想搭一个类似的博客，这个仓库可以直接 fork。改几个常量，删掉我的文章，就是你的。
+If you want a blog with the same architecture, this repository is designed to be forked. Change a handful of constants, delete my posts, and it's yours.
 
-## 一眼看完
+## Architecture
 
 ```text
-content/posts/xxx.mdx   ──→   静态 HTML 页面
-     (你只写这个)              (读者看到这个)
+content/posts/*.mdx   ──▶   Static HTML pages
+content/tutorial/*.mdx ──▶   (readers see this)
+     ↑                                ↑
+  you author here            Next.js builds here
 ```
 
-中间发生了什么：
+| Pipeline Stage | Implementation |
+|:---------------|:---------------|
+| **MDX Compilation** | GFM tables, Shiki dual-theme syntax highlighting, auto-generated heading anchor IDs |
+| **Data Layer** | Build-time filesystem scan → frontmatter extraction → category/tag/search indexes |
+| **Page Generation** | `generateStaticParams()` for all routes; zero client-side data fetching |
+| **Client Enhancement** | Fuse.js search, Giscus comments, sticky TOC with scroll tracking, theme/locale toggles |
 
-| 环节 | 做了什么 |
-|------|----------|
-| MDX 编译 | GFM 表格、代码高亮（Shiki 双主题）、标题自动生成 id 锚点 |
-| 数据层 | 构建时扫描 `content/posts/`，提取 frontmatter，建立分类/标签/搜索索引 |
-| 页面生成 | 所有路由静态预渲染（`generateStaticParams`），零客户端请求 |
-| 客户端增强 | 搜索（Fuse.js）、评论（Giscus）、大纲导航、主题/语言切换 |
+## Features
 
-## 功能
+### Reading Experience
 
-### 写给读者
+| Feature | Detail |
+|:--------|:------|
+| **Full-text search** | Client-side Fuse.js — searches titles, descriptions, and tags with weighted scoring. No backend required. |
+| **Category navigation** | 4 curated categories with bilingual names and descriptions, each with a dedicated listing page. |
+| **Table of contents** | Sticky right sidebar on desktop with `IntersectionObserver`-based active heading tracking. |
+| **Dark mode** | Manual toggle or `prefers-color-scheme` auto-detection. Flash-free via inline `<script>` injected before hydration. |
+| **Bilingual UI** | Full English / 简体中文 toggle for all interface text. Preference persisted in `localStorage`. |
+| **RSS** | Auto-generated `feed.xml` at build time via `scripts/generate-rss.mjs`. |
+| **Comments** | Giscus (GitHub Discussions backend). Automatically follows the active theme and language. |
+| **Tutorial section** | 182-page Easy-Vibe course with collapsible sidebar navigation, prev/next pagination, and CC BY-NC-SA 4.0 attribution. |
 
-- **全文搜索** — 搜标题、描述、标签（Fuse.js，客户端实时过滤，不需要后端）
-- **分类浏览** — 4 个分类：网络与代理、服务器与基础设施、开发工具、Windows 技巧
-- **文章大纲** — 桌面端右侧 sticky 侧边栏，自动跟踪当前章节（IntersectionObserver）
-- **深色模式** — 手动切换或跟随系统，页面加载前注入防闪烁脚本
-- **中英双语** — 所有 UI 文案均可切换，语言偏好持久化
-- **RSS 订阅** — `/feed.xml`，构建时自动生成
-- **评论** — Giscus（GitHub Discussions），自动跟随主题和语言
+### Authoring Experience
 
-### 写给作者
+| Feature | Detail |
+|:--------|:------|
+| **MDX-first** | Standard Markdown with optional JSX component embedding. `.mdx` files in `content/posts/` are articles. |
+| **Reading time** | Auto-estimated with mixed CJK/Latin awareness (400 chars/min for CJK, 200 words/min for Latin). |
+| **Draft mode** | Set `published: false` in frontmatter to hide a post from listings while keeping it accessible by direct URL. |
+| **Open Graph** | Per-post OG metadata (title, description, custom `ogImage`) for social sharing. |
+| **Single-command deploy** | `npm run build` → `git push` → Cloudflare Pages auto-deploys. |
 
-- **MDX 写作** — 标准 Markdown + 嵌入 JSX 组件，`.mdx` 文件即文章
-- **阅读时间** — 自动估算，中英文混合计算（中文 400 字/分，英文 200 词/分）
-- **发布控制** — `published: false` 即隐藏，草稿和工作区可以共存
-- **Open Graph** — 每篇文章独立的 OG 元数据，社交分享友好
-- **一行命令发布** — `npm run build`，推到 GitHub，Pages 自动部署
+### Engineering
 
-### 写给开发者
+| Feature | Detail |
+|:--------|:------|
+| **Fully static** | `output: 'export'` in Next.js config. Output is pure HTML/CSS/JS — deployable to any static host with a single Nginx directive. |
+| **Server/Client separation** | Every interactive page follows `page.tsx` (server, data fetching) + `*-content.tsx` (client, interactivity). |
+| **CSS variable theming** | VitePress-inspired color palette. One set of custom properties drives both light and dark modes. Tailwind tokens are mapped to these variables. |
+| **Motion** | GSAP + ScrollTrigger entrance animations with `gsap.matchMedia()` respecting `prefers-reduced-motion`. |
+| **Dual MDX pipeline** | `@next/mdx` webpack loader (build-time imports) and `@mdx-js/mdx` `evaluate()` (runtime content) share the same component map and plugin chain. |
+| **Tutorial build pipeline** | Custom `convert-tutorial.mjs` script transforms VitePress source into valid MDX — stripping Vue SFC blocks, converting admonitions, rewriting image paths, and escaping incompatible syntax. |
 
-- **完全静态** — `output: 'export'`，产物是纯 HTML/CSS/JS，Nginx 一行配置搞定
-- **server → client 分離** — 每个页面拆 `page.tsx`（服务端读取数据）+ `*-content.tsx`（客户端交互），职责清晰
-- **CSS 变量主题** — VitePress 色板，一套变量同时控制浅色/深色，Tailwind 完全可覆盖
-- **GSAP 动画** — 入场动画通过 `gsap.matchMedia()` 响应 `prefers-reduced-motion`
-- **两个 MDX 通道** — `@next/mdx` webpack loader 和 `@mdx-js/mdx` runtime evaluate 共用同一套组件和插件
+## Project Structure
 
-## 快速开始
+```
+blogwebsite/
+├── app/                              # Next.js App Router
+│   ├── layout.tsx                     # Root layout — metadata, theme/locale init scripts
+│   ├── globals.css                    # Tailwind + CSS custom properties + prose overrides
+│   ├── page.tsx / home-content.tsx    # Homepage (server → client split)
+│   ├── posts/
+│   │   ├── page.tsx                   # Category listing (server)
+│   │   ├── [slug]/page.tsx            # Post detail — MDX rendering, TOC, comments (server)
+│   │   └── category/[category]/       # Per-category post lists
+│   ├── tutorial/
+│   │   ├── page.tsx                   # Tutorial landing page (server)
+│   │   └── [...slug]/page.tsx         # Tutorial content pages (server)
+│   ├── search/                        # Search page
+│   └── about/                         # About page
+│
+├── components/
+│   ├── home/                          # Hero section, post list, section headers
+│   ├── layout/                        # Header, Footer, ThemeProvider, LanguageProvider
+│   ├── posts/                         # MDX runtime compiler, search input, Giscus, post nav, TOC
+│   └── ui/                            # Atomic components: TagBadge, DarkToggle, LanguageToggle
+│
+├── content/
+│   ├── posts/                         # ★ Blog posts (.mdx) — the only directory you touch daily
+│   └── tutorial/                      # Easy-Vibe tutorial content (3 stages + appendix, 182 .mdx files)
+│
+├── lib/
+│   ├── posts.ts                       # Filesystem scanner → frontmatter parser → post cache
+│   ├── tutorial.ts                    # Tutorial scanner → navigation tree → prev/next computation
+│   ├── categories.ts                  # Category definitions + grouping queries
+│   ├── headings.ts                    # MDX heading extraction → TocEntry[] (github-slugger)
+│   ├── i18n.ts                        # Translation dictionary + t() lookup
+│   ├── search.ts                      # Build-time search document index
+│   ├── constants.ts                   # Site name, URL, author, Giscus config, social links
+│   └── utils.ts                       # formatDate, estimateReadingTime (CJK-aware)
+│
+├── types/index.ts                     # PostFrontmatter, PostMeta, Post, TocEntry, Tutorial*
+├── mdx-components.tsx                  # Custom MDX components (h1–h4, a, pre, code, table, blockquote…)
+├── scripts/
+│   ├── generate-rss.mjs               # RSS feed generation (prebuild hook)
+│   └── convert-tutorial.mjs           # VitePress → MDX migration script
+├── next.config.ts                     # MDX plugin chain + output: 'export'
+└── package.json
+```
+
+## Quick Start
 
 ```bash
 git clone git@github.com:ybysn/blogwebsite.git
@@ -73,140 +130,100 @@ npm install
 npm run dev          # http://localhost:3000
 ```
 
-### 改成你自己的博客
+### Making It Your Own
 
-1. **`lib/constants.ts`** — 改站名、域名、作者名、社交链接
-2. **`lib/constants.ts`** — 改 Giscus 配置（去 [giscus.app](https://giscus.app) 生成你自己的）
-3. **`app/globals.css`** — （可选）换主题色，修改 CSS 变量
-4. **`lib/categories.ts`** — 改成你的分类
-5. **删掉 `content/posts/` 里我的文章**，开始写你的
-6. **`public/` 里的 icon** — 换成你自己的 favicon
+1. **`lib/constants.ts`** — Update site name, URL, author, and social links.
+2. **`lib/constants.ts`** — Replace the Giscus configuration with your own from [giscus.app](https://giscus.app).
+3. **`lib/categories.ts`** — Redefine the category list to match your content areas.
+4. **`app/globals.css`** — (Optional) Override the CSS custom properties to change the color scheme.
+5. **Replace `content/posts/`** — Remove my articles and add yours.
+6. **Replace `public/` assets** — Update `favicon.ico` and any other static assets.
+7. **Remove `content/tutorial/`** — Unless you want the Easy-Vibe course on your site.
 
-### 写一篇文章
+### Writing a Post
 
 ```bash
-# 1. 创建文件（文件名 = URL slug）
+# Create a file — the filename becomes the URL slug
 touch content/posts/my-first-post.mdx
-
-# 2. 写 frontmatter + 内容
 ```
 
 ```yaml
 ---
-title: "我的第一篇文章"
+title: "My First Post"
 date: "2026-06-01"
-description: "这篇文章讲了什么（会出现在 SEO 和列表卡片里）"
-tags: ["教程", "前端"]
+description: "A short summary for SEO, RSS, and listing cards."
+tags: ["tutorial", "frontend"]
 published: true
 category: "dev-tools"
 lang: zh-CN
 ---
 ```
 
-然后写 Markdown。支持 GFM 表格、代码块（Shiki 高亮）、`:::center` 容器等等。
+Write standard Markdown below the frontmatter. GFM tables, fenced code blocks with Shiki highlighting, and `:::center` containers are all supported.
 
-`published: false` 的文章不会出现在列表里，但 URL 仍然可访问——可以当草稿用。
+Set `published: false` to hide a post from listings while keeping the URL accessible — useful for drafts.
 
-### 有效分类 ID
+### Categories
 
-| ID | 名称 |
-|----|------|
-| `network-proxy` | 网络与代理 |
-| `server-infra` | 服务器与基础设施 |
-| `dev-tools` | 开发工具 |
-| `windows` | Windows 技巧 |
+| ID | English | 中文 |
+|:---|:--------|:-----|
+| `network-proxy` | Network & Proxy | 网络与代理 |
+| `server-infra` | Server & Infrastructure | 服务器与基础设施 |
+| `dev-tools` | Dev Tools | 开发工具 |
+| `windows` | Windows Tips | Windows 技巧 |
 
-在 `lib/categories.ts` 里可以增删改。
+Categories are defined in `lib/categories.ts`. Add, remove, or rename them there.
 
-## 命令
+## Commands
 
 ```bash
-npm run dev       # 开发服务器（热更新）
-npm run build     # 生产构建 → out/（prebuild 自动生成 RSS）
-npm run start     # 本地预览生产构建
+npm run dev       # Development server with HMR (Turbopack)
+npm run build     # Production build → out/ (runs RSS prebuild script)
+npm run start     # Serve the production build locally
 npm run lint      # ESLint
 ```
 
-## 项目结构
+## Design Decisions
 
-```
-blogwebsite/
-├── app/                            # Next.js App Router（页面）
-│   ├── layout.tsx                   # 根布局（metadata、主题/语言初始化脚本）
-│   ├── globals.css                  # 全局样式 + CSS 变量主题 + Tailwind
-│   ├── page.tsx                     # 首页 (server)
-│   ├── home-content.tsx             # 首页 (client: GSAP hero 动画)
-│   ├── posts/
-│   │   ├── page.tsx                 # 按分类展示文章 (server)
-│   │   ├── [slug]/page.tsx          # 文章详情 + 大纲 (server: MDX 渲染在这里)
-│   │   └── category/[category]/     # 单个分类的文章列表
-│   ├── search/page.tsx              # 搜索页 (server 构建索引 → client Fuse.js)
-│   └── about/page.tsx               # 关于页
-│
-├── components/
-│   ├── home/                        # Hero 区、文章列表区、Section 标题
-│   ├── layout/                      # Header、Footer、ThemeProvider、LanguageProvider
-│   ├── posts/                       # MDX 渲染、搜索输入框、Giscus、文章导航、TOC 大纲
-│   └── ui/                          # 原子组件：TagBadge、DarkToggle、LanguageToggle
-│
-├── content/posts/                   # ★ 你唯一需要日常碰的目录 —— MDX 文章
-│
-├── lib/
-│   ├── posts.ts                     # 扫描 content/ → 解析 frontmatter → 建立缓存
-│   ├── categories.ts                # 分类定义 + 按分类查询
-│   ├── headings.ts                  # MDX 标题提取 → TocEntry[]（github-slugger）
-│   ├── i18n.ts                      # 翻译字典 + t(locale, key, params?)
-│   ├── search.ts                    # 搜索文档构建（标题 + 描述 + 标签）
-│   ├── constants.ts                 # 站点名、URL、Giscus、社交链接
-│   └── utils.ts                     # formatDate、estimateReadingTime（中英混合）
-│
-├── types/index.ts                   # PostFrontmatter、PostMeta、Post、TocEntry…
-├── mdx-components.tsx               # MDX 自定义组件（h1-h4、a、pre、table、blockquote…）
-├── scripts/generate-rss.mjs         # RSS feed.xml 生成（npm run prebuild 触发）
-├── next.config.ts                   # MDX 插件链 + output: 'export'
-└── package.json
-```
+### Static Export over SSR
 
-## 设计决策
+Deploying static files is an order of magnitude simpler than maintaining a Node.js runtime. A single Nginx `location` block, a free GitHub Pages repo, or a Cloudflare Pages project with global CDN — no server to patch, no database to back up, no runtime to monitor.
 
-### 为什么是静态导出而不是 SSR
+The trade-off is a full rebuild on every publish. For a personal blog with tens of posts, build time is under 10 seconds — well within acceptable bounds.
 
-因为部署一个静态站点比维护一个 Node.js 服务简单一个数量级。Nginx 一行配置，GitHub Pages 免费，Cloudflare Pages 全球 CDN。没有服务器要管，没有数据库要备份，没有运行时漏洞要修补。
+### Dual MDX Pipeline
 
-代价是每次发布要全量构建。对于一个个人博客（几十篇文章），构建时间不到 10 秒，完全可以接受。
+`@next/mdx` (webpack loader) handles statically imported `.mdx` pages at build time. `@mdx-js/mdx` `evaluate()` compiles posts and tutorials read dynamically from the filesystem at request time (still at build time in the static export model — the "request" is the static generation pass). Both paths use the same component map (`mdx-components.tsx`) and the same plugin stack (`remark-gfm`, `rehype-slug`, `rehype-pretty-code`).
 
-### 为什么 MDX 跑了两套编译
+### Client-Side Search
 
-`@next/mdx`（webpack loader）处理构建时的静态导入，`@mdx-js/mdx evaluate` 处理从文件系统动态读取的文章内容。两套路径共用同一份 `mdx-components.tsx` 和同一套插件配置（remark-gfm、rehype-slug、rehype-pretty-code）。
+With ~10 posts, the entire search corpus (titles, descriptions, tags) weighs under 50 KB. Fuse.js running in the browser outperforms any server-side solution — zero network latency, instant keystroke-by-keystroke results. For larger content sets, this could be swapped for a pre-built static index or a lightweight search backend.
 
-### 为什么搜索是客户端
+### CSS Variables over Tailwind-Only Theming
 
-11 篇文章，所有标题 + 描述 + 标签加起来不到 50KB。Fuse.js 在浏览器里跑比任何服务端方案都快——零网络延迟，按一个键立刻出结果。
+Tailwind Typography (`@tailwindcss/typography`) is used but its default CSS variables are fully overridden. The VitePress-derived color palette operates through custom properties on `:root` and `.dark`, giving precise control over both modes while keeping the utility-class workflow for component styling.
 
-### 为什么不直接用 Tailwind Typography
+## Tech Stack
 
-用了，但全面 override 了它的 CSS 变量。因为默认的 prose 样式在深色模式下表现不好，而且和 VitePress 色板的设计语言不一致。
-
-## 技术栈
-
-| 层 | 选择 |
-|----|------|
-| 框架 | Next.js 16 (App Router, Turbopack) |
-| 内容 | MDX v3 (remark-gfm, rehype-slug, rehype-pretty-code + Shiki) |
-| 样式 | Tailwind CSS 4 + CSS 自定义属性（VitePress 色板） |
-| 搜索 | Fuse.js v7 |
-| 评论 | Giscus（`@giscus/react`） |
-| 动画 | GSAP + ScrollTrigger（`@gsap/react`） |
-| 日期 | date-fns |
+| Layer | Choice |
+|:------|:-------|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript 5 |
+| Content | MDX v3 (remark-gfm, rehype-slug, rehype-pretty-code) |
+| Syntax Highlighting | Shiki (`github-light` / `github-dark-dimmed`) |
+| Styling | Tailwind CSS 4 + CSS custom properties (VitePress palette) |
+| Search | Fuse.js v7 (client-side, weighted fuzzy matching) |
+| Comments | Giscus (`@giscus/react`) |
+| Animation | GSAP + ScrollTrigger (`@gsap/react`) |
+| Date Handling | date-fns |
 | RSS | feed |
-| 代码高亮 | Shiki (github-light / github-dark-dimmed) |
-| 部署 | 静态导出，部署到 Nginx / GitHub Pages / Cloudflare Pages |
+| Package Manager | npm |
 
-## 部署
+## Deployment
 
-构建产物在 `out/`，推到任何静态托管即可。
+Build output lands in `out/`. Deploy to any static file host.
 
-**Nginx：**
+**Nginx**
 
 ```nginx
 server {
@@ -220,8 +237,14 @@ server {
 }
 ```
 
-**GitHub Pages / Cloudflare Pages / Vercel / Netlify** — 直接指到 `out/` 目录或配置构建命令 `npm run build`，输出目录 `out`。
+**Cloudflare Pages / GitHub Pages / Vercel / Netlify**
 
-## 许可
+| Setting | Value |
+|:--------|:------|
+| Build command | `npm run build` |
+| Output directory | `out` |
+| Node version | ≥ 20 |
 
-MIT — 随便 fork，随便改，随便用。
+## License
+
+MIT — fork freely, modify freely, use freely.

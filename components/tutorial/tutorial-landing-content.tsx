@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import type { TutorialNavigation } from '@/types'
 import { useTranslation } from '@/components/layout/language-provider'
 import { TutorialStageCard } from '@/components/tutorial/tutorial-stage-card'

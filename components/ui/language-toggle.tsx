@@ -15,7 +15,7 @@ export function LanguageToggle() {
       className="lang-toggle"
       aria-label={locale === 'en' ? 'Switch to Chinese' : 'Switch to English'}
     >
-      {locale === 'en' ? '中' : 'EN'}
+      {locale === 'en' ? '中文' : 'EN'}
     </button>
   )
 }

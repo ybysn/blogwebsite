@@ -31,13 +31,10 @@ function getStoredTheme(): Theme | null {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('light')
-
-  useEffect(() => {
-    const stored = getStoredTheme()
-    const initial = stored ?? getSystemTheme()
-    setThemeState(initial)
-  }, [])
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'light'
+    return getStoredTheme() ?? getSystemTheme()
+  })
 
   const applyTheme = useCallback((t: Theme) => {
     const root = document.documentElement

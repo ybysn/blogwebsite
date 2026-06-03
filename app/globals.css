@@ -375,16 +375,16 @@ a:hover {
 }
 
 /* ========== Post card ========== */
+.card-body {
+  padding: 20px 22px;
+}
+
 .post-card {
   cursor: default;
   padding: 0;
   margin-bottom: 1.5rem;
   opacity: 1;
   visibility: visible;
-}
-
-.post-card .card-body {
-  padding: 20px 22px;
 }
 
 .card-title-link {
@@ -494,6 +494,12 @@ a:hover {
 
 .search-result-link:hover {
   text-decoration: none;
+}
+
+/* ========== Code block copy button ========== */
+.copy-btn:hover {
+  border-color: var(--border-strong) !important;
+  background: var(--surface) !important;
 }
 
 /* ========== Post content (prose overrides) ========== */

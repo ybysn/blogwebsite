@@ -40,10 +40,14 @@ function getBrowserLocale(): Locale {
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('en')
 
+  // Sync locale from browser storage on mount. This is a legitimate use of
+  // setState in an effect — the server always renders 'en', and we update to
+  // the user's stored preference once the browser APIs are available.
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    const stored = getStoredLocale()
-    setLocaleState(stored ?? getBrowserLocale())
+    setLocaleState(getStoredLocale() ?? getBrowserLocale())
   }, [])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const applyLocale = useCallback((l: Locale) => {
     document.documentElement.lang = l

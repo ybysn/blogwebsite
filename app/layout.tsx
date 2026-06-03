@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/theme-provider'
 import { LanguageProvider } from '@/components/layout/language-provider'
@@ -49,40 +50,30 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (theme === 'dark' || (!theme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var locale = localStorage.getItem('locale');
-                  if (locale === 'zh-CN' || locale === 'en') {
-                    document.documentElement.lang = locale;
-                  } else {
-                    document.documentElement.lang = 'en';
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
       <body className="min-h-full flex flex-col">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function() {
+            try {
+              var theme = localStorage.getItem('theme');
+              var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              if (theme === 'dark' || (!theme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+              }
+            } catch (e) {}
+          })();`}
+        </Script>
+        <Script id="locale-init" strategy="beforeInteractive">
+          {`(function() {
+            try {
+              var locale = localStorage.getItem('locale');
+              if (locale === 'zh-CN' || locale === 'en') {
+                document.documentElement.lang = locale;
+              } else {
+                document.documentElement.lang = 'en';
+              }
+            } catch (e) {}
+          })();`}
+        </Script>
         <ThemeProvider>
           <LanguageProvider>
             <Header />

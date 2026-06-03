@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
+import { CodeBlock } from '@/components/posts/code-block'
 
 const components: MDXComponents = {
   h1: ({ children, ...props }) => (
@@ -146,23 +147,7 @@ const components: MDXComponents = {
       {children}
     </td>
   ),
-  pre: ({ children, style: propStyle, ...props }) => (
-    <pre
-      style={{
-        background: 'var(--pre-bg)',
-        border: '1px solid var(--border)',
-        borderRadius: '12px',
-        padding: '1rem 1.25rem',
-        overflowX: 'auto',
-        margin: '1.5rem 0',
-        color: 'var(--text-2)',
-        ...(propStyle as React.CSSProperties),
-      }}
-      {...props}
-    >
-      {children}
-    </pre>
-  ),
+  pre: (props) => <CodeBlock {...props} />,
   code: ({ children, style: propStyle, ...props }) => {
     return (
       <code
@@ -184,3 +169,5 @@ const components: MDXComponents = {
 export function useMDXComponents(): MDXComponents {
   return components
 }
+
+export { components }

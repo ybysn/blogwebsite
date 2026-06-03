@@ -1,12 +1,11 @@
 import { compileMdx } from './mdx-remote'
-import { useMDXComponents } from '@/mdx-components'
+import { components } from '@/mdx-components'
 
 /**
  * Server component that compiles and renders MDX source.
  * Uses the shared MDX components from mdx-components.tsx for consistent styling.
  */
 export async function MDXContent({ source }: { source: string }) {
-  const components = useMDXComponents()
   const result = await compileMdx(source)
 
   if (!result) {
