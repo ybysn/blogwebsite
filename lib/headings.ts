@@ -36,14 +36,24 @@ export function extractHeadings(content: string): TocEntry[] {
     if (!headingMatch) continue
 
     const level = headingMatch[1].length as 2 | 3
-    const rawText = headingMatch[2].trim()
+    let rawText = headingMatch[2].trim()
 
     // Strip trailing {#custom-id} if present
-    const text = rawText.replace(/\s*\{#[^}]*\}\s*$/, '')
+    rawText = rawText.replace(/\s*\{#[^}]*\}\s*$/, '')
 
-    const id = slugger.slug(text)
+    // Extract explicit id from inline HTML (e.g. <span id="appendix-1">)
+    const idMatch = rawText.match(/\sid="([^"]+)"/)
+    const explicitId = idMatch ? idMatch[1] : null
 
-    headings.push({ id, text, level })
+    // Strip inline HTML tags for display text
+    const text = rawText.replace(/<[^>]+>/g, '').trim()
+
+    // Strip markdown link syntax: [text](url) → text
+    const cleanText = text.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').trim()
+
+    const id = explicitId || slugger.slug(cleanText)
+
+    headings.push({ id, text: cleanText, level })
   }
 
   return headings
