@@ -89,6 +89,7 @@ export default async function TutorialContentPage({
           >
             {stageLabel}
           </div>
+          <h1 style={{ marginBottom: '0.75rem' }}>{meta.title}</h1>
           <div
             style={{
               display: 'flex',
@@ -101,7 +102,6 @@ export default async function TutorialContentPage({
               <TagBadge key={tag} tag={tag} />
             ))}
           </div>
-          <h1 style={{ marginBottom: '0.75rem' }}>{meta.title}</h1>
           <PostMetaDisplay
             date={meta.date}
             readingTime={meta.readingTime}

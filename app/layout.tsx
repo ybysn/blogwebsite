@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/theme-provider'
 import { LanguageProvider } from '@/components/layout/language-provider'
+import { ArticleFontProvider } from '@/components/layout/article-font-provider'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
@@ -74,13 +75,27 @@ export default function RootLayout({
             } catch (e) {}
           })();`}
         </Script>
+        <Script id="article-font-init" strategy="beforeInteractive">
+          {`(function() {
+            try {
+              var font = localStorage.getItem('article-font');
+              if (font === 'serif' || font === 'kai' || font === 'sans') {
+                document.documentElement.dataset.articleFont = font;
+              } else {
+                document.documentElement.dataset.articleFont = 'sans';
+              }
+            } catch (e) {}
+          })();`}
+        </Script>
         <ThemeProvider>
           <LanguageProvider>
-            <Header />
-            <main className="flex-1 w-full max-w-[1280px] mx-auto px-8 py-16">
-              {children}
-            </main>
-            <Footer />
+            <ArticleFontProvider>
+              <Header />
+              <main className="flex-1 w-full max-w-[1280px] mx-auto px-8 py-16">
+                {children}
+              </main>
+              <Footer />
+            </ArticleFontProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>

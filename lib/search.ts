@@ -8,6 +8,7 @@ export function getSearchDocuments(): SearchDocument[] {
 
   const postDocs: SearchDocument[] = posts.map((post) => ({
     slug: post.slug,
+    href: `/posts/${post.slug}`,
     title: post.title,
     description: post.description,
     content: '',
@@ -17,6 +18,7 @@ export function getSearchDocuments(): SearchDocument[] {
 
   const tutorialDocs: SearchDocument[] = tutorials.map((t) => ({
     slug: `tutorial/${t.slug}`,
+    href: `/tutorial/${t.slug}`,
     title: `[教程] ${t.title}`,
     description: t.description || t.title,
     content: '',

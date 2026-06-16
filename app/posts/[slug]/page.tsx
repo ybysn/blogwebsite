@@ -66,12 +66,12 @@ export default async function PostPage({ params }: PageProps) {
       <TableOfContents headings={headings} />
       <article className="post-article">
         <header style={{ marginBottom: '2.5rem' }}>
+          <h1 style={{ marginBottom: '0.75rem' }}>{meta.title}</h1>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem' }}>
             {meta.tags.map((tag) => (
               <TagBadge key={tag} tag={tag} />
             ))}
           </div>
-          <h1 style={{ marginBottom: '0.75rem' }}>{meta.title}</h1>
           <PostMetaDisplay date={meta.date} readingTime={meta.readingTime} />
         </header>
 

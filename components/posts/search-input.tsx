@@ -72,7 +72,7 @@ export function SearchInput({ documents }: { documents: SearchDocument[] }) {
             {results.map(({ item }) => (
               <Link
                 key={item.slug}
-                href={`/posts/${item.slug}`}
+                href={item.href}
                 className="card search-result-link"
               >
                 <div className="card-body">

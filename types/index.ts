@@ -1,13 +1,15 @@
+export type ContentLocale = 'en' | 'zh-CN'
+
 export interface PostFrontmatter {
   title: string
   date: string
   description: string
   tags: string[]
   published: boolean
-  lang?: string
+  lang: ContentLocale
   featured?: boolean
   ogImage?: string
-  category?: string
+  category: string
 }
 
 export interface PostMeta extends PostFrontmatter {
@@ -27,6 +29,7 @@ export interface TagWithCount {
 
 export interface SearchDocument {
   slug: string
+  href: string
   title: string
   description: string
   content: string
@@ -49,9 +52,9 @@ export interface TutorialFrontmatter {
   tags: string[]
   published: boolean
   stage: number
-  lang?: string
+  lang: ContentLocale
   section?: string
-  original_url?: string
+  original_url: string
 }
 
 export interface TutorialMeta extends TutorialFrontmatter {

@@ -11,11 +11,19 @@ let postsCache: PostMeta[] | null = null
 function validateFrontmatter(data: Record<string, unknown>): data is Record<string, unknown> & PostFrontmatter {
   return (
     typeof data.title === 'string' &&
+    data.title.trim().length > 0 &&
     typeof data.date === 'string' &&
+    data.date.trim().length > 0 &&
     typeof data.description === 'string' &&
+    data.description.trim().length > 0 &&
     Array.isArray(data.tags) &&
-    data.tags.every((t: unknown) => typeof t === 'string') &&
-    typeof data.published === 'boolean'
+    data.tags.length > 0 &&
+    data.tags.every((t: unknown) => typeof t === 'string' && t.trim().length > 0) &&
+    typeof data.published === 'boolean' &&
+    typeof data.lang === 'string' &&
+    (data.lang === 'en' || data.lang === 'zh-CN') &&
+    typeof data.category === 'string' &&
+    data.category.trim().length > 0
   )
 }
 

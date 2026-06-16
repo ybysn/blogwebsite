@@ -38,8 +38,24 @@
   --input-focus-ring: rgba(52, 81, 178, 0.15);
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-card-hover: 0 3px 12px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.07);
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: var(--font-inter, 'Inter'), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  --font-article-sans: var(--font-inter, 'Inter'), 'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-article-serif: 'Source Serif 4', 'Noto Serif SC', 'Source Han Serif SC', SimSun, serif;
+  --font-article-kai: 'LXGW WenKai', 'Kaiti SC', KaiTi, serif;
+  --font-article: var(--font-article-sans);
+}
+
+[data-article-font='serif'] {
+  --font-article: var(--font-article-serif);
+}
+
+[data-article-font='kai'] {
+  --font-article: var(--font-article-kai);
+}
+
+[data-article-font='sans'] {
+  --font-article: var(--font-article-sans);
 }
 
 .dark {
@@ -522,6 +538,13 @@ a:hover {
   max-width: none;
 }
 
+.post-article > header h1,
+.tutorial-article > header h1,
+.post-article > .prose,
+.tutorial-article > .prose {
+  font-family: var(--font-article);
+}
+
 .prose a {
   color: var(--accent-a);
   text-decoration: underline;
@@ -954,6 +977,87 @@ a:hover {
   border-color: var(--accent-a);
   background: var(--surface-hover);
   color: var(--text);
+}
+
+/* ========== Article font toggle ========== */
+.font-toggle-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.font-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-3);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  transition: all 0.15s ease;
+}
+
+.font-toggle:hover,
+.font-toggle[aria-expanded='true'] {
+  border-color: var(--accent-a);
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.font-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.45rem);
+  z-index: 60;
+  min-width: 128px;
+  padding: 0.35rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.font-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.55rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.font-menu-item:hover,
+.font-menu-item--active {
+  background: var(--accent-glow);
+  color: var(--accent-a);
+}
+
+.font-menu-item--active::after {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-left: auto;
+  border-radius: 999px;
+  background: var(--accent-a);
+}
+
+.font-menu-sample {
+  width: 1.6rem;
+  color: var(--text);
+  font-weight: 700;
 }
 
 /* ========== Adjacent post navigation ========== */
