@@ -108,7 +108,7 @@ export default async function TutorialContentPage({
           />
         </header>
 
-        <div className="prose">
+        <div className="prose article-content">
           <MDXContent source={content} />
         </div>
 

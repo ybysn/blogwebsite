@@ -75,7 +75,7 @@ export default async function PostPage({ params }: PageProps) {
           <PostMetaDisplay date={meta.date} readingTime={meta.readingTime} />
         </header>
 
-        <div className="prose">
+        <div className="prose article-content">
           <MDXContent source={content} />
         </div>
 

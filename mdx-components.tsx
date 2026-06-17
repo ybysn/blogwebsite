@@ -92,49 +92,17 @@ const components: MDXComponents = {
     />
   ),
   table: ({ children, ...props }) => (
-    <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
-      <table
-        style={{
-          width: 'auto',
-          margin: '0 auto',
-          borderCollapse: 'separate',
-          borderSpacing: 0,
-          borderRadius: '10px',
-          overflow: 'hidden',
-          border: '1px solid var(--border)',
-        }}
-        {...props}
-      >
-        {children}
-      </table>
-    </div>
+    <table {...props}>
+      {children}
+    </table>
   ),
-  th: ({ children, style: propStyle, ...props }) => (
-    <th
-      style={{
-        padding: '10px 16px',
-        textAlign: 'left',
-        background: 'var(--surface)',
-        color: 'var(--text)',
-        fontWeight: 700,
-        fontSize: '0.9rem',
-        ...(propStyle as React.CSSProperties),
-      }}
-      {...props}
-    >
+  th: ({ children, ...props }) => (
+    <th {...props}>
       {children}
     </th>
   ),
-  td: ({ children, style: propStyle, ...props }) => (
-    <td
-      style={{
-        padding: '8px 16px',
-        borderTop: '1px solid var(--border)',
-        fontSize: '0.9rem',
-        ...(propStyle as React.CSSProperties),
-      }}
-      {...props}
-    >
+  td: ({ children, ...props }) => (
+    <td {...props}>
       {children}
     </td>
   ),

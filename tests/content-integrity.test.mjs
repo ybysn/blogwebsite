@@ -238,6 +238,64 @@ test('MDX prose components preserve paragraph semantics and defer reading rhythm
   }
 })
 
+test('article tables render as compact key-value configuration tables', () => {
+  const css = read('app/globals.css')
+  const mdxSource = read('mdx-components.tsx')
+  const postPageSource = read('app/posts/[slug]/page.tsx')
+  const tutorialPageSource = read('app/tutorial/[...slug]/page.tsx')
+
+  assert.match(
+    postPageSource,
+    /className="prose article-content"/,
+    'post markdown content must be scoped for article table styles',
+  )
+  assert.match(
+    tutorialPageSource,
+    /className="prose article-content"/,
+    'tutorial markdown content must be scoped for article table styles',
+  )
+  assert.match(
+    css,
+    /\.article-content table\s*\{[^}]*width:\s*fit-content;[^}]*min-width:\s*520px;[^}]*max-width:\s*100%;[^}]*margin:\s*16px 0 26px;[^}]*border-radius:\s*8px;[^}]*font-size:\s*15px;[^}]*line-height:\s*1\.55;[^}]*background:\s*#fff;/s,
+    'article tables must use compact key-value sizing instead of filling the reading column',
+  )
+  assert.match(
+    css,
+    /\.article-content tbody td:first-child\s*\{[^}]*width:\s*110px;[^}]*font-weight:\s*600;[^}]*white-space:\s*nowrap;[^}]*background:\s*#fafafa;/s,
+    'field column must stay narrow and stable',
+  )
+  assert.match(
+    css,
+    /\.article-content tbody td:last-child\s*\{[^}]*min-width:\s*280px;[^}]*max-width:\s*520px;/s,
+    'value column must stay compact while leaving room for values',
+  )
+  assert.match(
+    css,
+    /\.article-content table code\s*\{[^}]*padding:\s*1px 5px;[^}]*border:\s*none;[^}]*border-radius:\s*4px;[^}]*background:\s*#f3f4f6;[^}]*line-height:\s*1\.45;[^}]*white-space:\s*normal;[^}]*word-break:\s*break-all;/s,
+    'inline code inside tables must read as compact code, not buttons',
+  )
+  assert.doesNotMatch(
+    css,
+    /\.article-content table code\s*\{[^}]*display:\s*inline-block;/s,
+    'table code must not become button-like inline blocks',
+  )
+  assert.match(
+    css,
+    /@media\s*\(max-width:\s*640px\)\s*\{[\s\S]*?\.article-content table\s*\{[^}]*width:\s*100%;[^}]*min-width:\s*0;[^}]*font-size:\s*14px;[\s\S]*?\.article-content tbody td:first-child\s*\{[^}]*width:\s*88px;[\s\S]*?\.article-content tbody td:last-child\s*\{[^}]*min-width:\s*0;/s,
+    'compact tables must relax width constraints on mobile',
+  )
+  assert.doesNotMatch(
+    mdxSource,
+    /table:\s*\(\{ children,\s*\.\.\.props \}\)\s*=>[\s\S]*?margin:\s*'0 auto'/,
+    'MDX table renderer must not center tables with inline styles',
+  )
+  assert.doesNotMatch(
+    mdxSource,
+    /table:\s*\(\{ children,\s*\.\.\.props \}\)\s*=>[\s\S]*?width:\s*'auto'/,
+    'MDX table renderer must not force auto-width inline styles',
+  )
+})
+
 test('static export SEO files expose sitemap and robots metadata', () => {
   const nextConfigSource = read('next.config.ts')
   const sitemapSource = read('app/sitemap.ts')

@@ -639,25 +639,81 @@ a:hover {
   margin: 1.5em 0;
 }
 
-.prose table {
+/* Article compact key-value table */
+.article-content table {
+  width: fit-content;
+  min-width: 520px;
+  max-width: 100%;
+  margin: 16px 0 26px;
   border-collapse: separate;
   border-spacing: 0;
-  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  font-size: 15px;
+  line-height: 1.55;
+  background: #fff;
 }
 
-.prose th {
-  background: var(--surface);
-  color: var(--text);
+.article-content thead th {
+  padding: 10px 14px;
+  background: #f8fafc;
+  color: #111827;
   font-weight: 700;
-  padding: 10px 16px;
   text-align: left;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.prose td {
-  padding: 8px 16px;
-  border-top: 1px solid var(--border);
+.article-content tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+.article-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.article-content tbody td:first-child {
+  width: 110px;
+  color: #374151;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #fafafa;
+}
+
+.article-content tbody td:last-child {
+  min-width: 280px;
+  max-width: 520px;
+  color: #111827;
+}
+
+.article-content table code {
+  padding: 1px 5px;
+  border: none;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: #1d4ed8;
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: normal;
+  word-break: break-all;
+}
+
+@media (max-width: 640px) {
+  .article-content table {
+    width: 100%;
+    min-width: 0;
+    font-size: 14px;
+  }
+
+  .article-content tbody td:first-child {
+    width: 88px;
+  }
+
+  .article-content tbody td:last-child {
+    min-width: 0;
+  }
 }
 
 /* ========== Hero section ========== */
