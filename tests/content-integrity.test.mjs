@@ -165,6 +165,79 @@ test('article font CSS applies only to reading surfaces and preserves code font'
   )
 })
 
+test('article reading CSS improves long-form prose without affecting chrome', () => {
+  const css = read('app/globals.css')
+
+  assert.match(
+    css,
+    /\.post-article\s+>\s+\.prose,\s*\.tutorial-article\s+>\s+\.prose\s*\{[^}]*color:\s*var\(--text\);/s,
+    'article prose must use the primary text color instead of inheriting muted body text',
+  )
+  assert.match(
+    css,
+    /\.post-article\s+>\s+\.prose,\s*\.tutorial-article\s+>\s+\.prose\s*\{[^}]*font-size:\s*clamp\(1rem,\s*0\.96rem \+ 0\.25vw,\s*1\.075rem\);/s,
+    'article prose must use the requested responsive reading font size',
+  )
+  assert.match(
+    css,
+    /\.post-article\s+>\s+\.prose,\s*\.tutorial-article\s+>\s+\.prose\s*\{[^}]*line-height:\s*1\.88;/s,
+    'article prose must use a Chinese long-form reading line height',
+  )
+  assert.match(
+    css,
+    /\.post-article\s+>\s+\.prose,\s*\.tutorial-article\s+>\s+\.prose\s*\{[^}]*letter-spacing:\s*0;/s,
+    'article prose must not inherit the global body letter spacing',
+  )
+  assert.match(
+    css,
+    /\.post-article\s+>\s+\.prose,\s*\.tutorial-article\s+>\s+\.prose\s*\{[^}]*max-width:\s*780px;/s,
+    'article prose must keep long lines within a comfortable width',
+  )
+  assert.match(
+    css,
+    /\.post-article\s*\{[^}]*max-width:\s*780px;/s,
+    'blog article containers must allow the requested prose width',
+  )
+  assert.match(
+    css,
+    /\.tutorial-layout:has\(\.tutorial-sidebar--hidden\)\s+\.tutorial-article\s*\{[^}]*max-width:\s*780px;/s,
+    'tutorial pages without the sidebar must still cap prose line length',
+  )
+  assert.match(css, /\.prose p\s*\{[^}]*margin:\s*1\.1em 0;[^}]*line-height:\s*1\.88;/s)
+  assert.match(css, /\.prose li\s*\{[^}]*line-height:\s*1\.88;[^}]*margin:\s*0\.4em 0;/s)
+  assert.match(css, /\.prose h2\s*\{[^}]*margin-top:\s*2\.4em;[^}]*margin-bottom:\s*0\.8em;[^}]*line-height:\s*1\.35;/s)
+  assert.match(css, /\.prose h3\s*\{[^}]*margin-top:\s*1\.8em;[^}]*margin-bottom:\s*0\.6em;[^}]*line-height:\s*1\.4;/s)
+  assert.match(css, /\.prose blockquote\s*\{[^}]*color:\s*var\(--text-2\);/s)
+  assert.doesNotMatch(css, /\.prose blockquote\s*\{[^}]*color:\s*var\(--text-3\);/s)
+})
+
+test('MDX prose components preserve paragraph semantics and defer reading rhythm to CSS', () => {
+  const source = read('mdx-components.tsx')
+
+  assert.match(
+    source,
+    /p:\s*\(\{ children,\s*\.\.\.props \}\)\s*=>\s*\(\s*<p\b/s,
+    'MDX paragraph component must render semantic p elements',
+  )
+  assert.doesNotMatch(
+    source,
+    /p:\s*\(\{ children,\s*\.\.\.props \}\)\s*=>\s*\(\s*<div\b/s,
+    'MDX paragraph component must not render div elements',
+  )
+  assert.doesNotMatch(
+    source,
+    /lineHeight:\s*1\.65/,
+    'MDX components must not hard-code the old paragraph line height',
+  )
+  for (const heading of ['h2', 'h3', 'h4']) {
+    assert.doesNotMatch(
+      source,
+      new RegExp(`${heading}:\\s*\\([\\s\\S]*?style=\\{\\{[\\s\\S]*?marginTop`),
+      `MDX ${heading} rhythm should be controlled by CSS, not inline margin styles`,
+    )
+  }
+})
+
 test('static export SEO files expose sitemap and robots metadata', () => {
   const nextConfigSource = read('next.config.ts')
   const sitemapSource = read('app/sitemap.ts')

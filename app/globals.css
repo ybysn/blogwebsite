@@ -40,8 +40,8 @@
   --shadow-card-hover: 0 3px 12px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.07);
   --font-sans: var(--font-inter, 'Inter'), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-  --font-article-sans: var(--font-inter, 'Inter'), 'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-  --font-article-serif: 'Source Serif 4', 'Noto Serif SC', 'Source Han Serif SC', SimSun, serif;
+  --font-article-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  --font-article-serif: 'Noto Serif SC', 'Source Han Serif SC', SimSun, serif;
   --font-article-kai: 'LXGW WenKai', 'Kaiti SC', KaiTi, serif;
   --font-article: var(--font-article-sans);
 }
@@ -545,6 +545,59 @@ a:hover {
   font-family: var(--font-article);
 }
 
+.post-article > .prose,
+.tutorial-article > .prose {
+  color: var(--text);
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.075rem);
+  line-height: 1.88;
+  letter-spacing: 0;
+  max-width: 780px;
+}
+
+.prose p {
+  margin: 1.1em 0;
+  line-height: 1.88;
+}
+
+.prose h1 {
+  margin-top: 2.2em;
+  margin-bottom: 0.8em;
+  font-size: clamp(1.45rem, 1.12rem + 1.2vw, 2rem);
+  line-height: 1.3;
+}
+
+.prose h2 {
+  margin-top: 2.4em;
+  margin-bottom: 0.8em;
+  font-size: clamp(1.25rem, 1.02rem + 0.7vw, 1.55rem);
+  line-height: 1.35;
+}
+
+.prose h3 {
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  font-size: clamp(1.08rem, 1rem + 0.35vw, 1.25rem);
+  line-height: 1.4;
+}
+
+.prose h4 {
+  margin-top: 1.6em;
+  margin-bottom: 0.55em;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.prose ul,
+.prose ol {
+  margin: 1.1em 0;
+  padding-left: 1.65rem;
+}
+
+.prose li {
+  line-height: 1.88;
+  margin: 0.4em 0;
+}
+
 .prose a {
   color: var(--accent-a);
   text-decoration: underline;
@@ -581,8 +634,9 @@ a:hover {
 .prose blockquote {
   border-left: 4px solid var(--accent-a);
   padding-left: 1rem;
-  color: var(--text-3);
+  color: var(--text-2);
   font-style: italic;
+  margin: 1.5em 0;
 }
 
 .prose table {
@@ -821,7 +875,7 @@ a:hover {
 .post-article {
   flex: 1;
   min-width: 0;
-  max-width: 720px;
+  max-width: 780px;
 }
 
 /* ========== Table of Contents ========== */
@@ -1108,6 +1162,11 @@ a:hover {
     font-size: 15px;
   }
 
+  .post-article > .prose,
+  .tutorial-article > .prose {
+    font-size: 1rem;
+  }
+
   .nav-inner {
     padding: 0 1rem;
   }
@@ -1296,9 +1355,9 @@ a:hover {
   max-width: 720px;
 }
 
-/* When sidebar is hidden, let article fill the full width */
+/* When sidebar is hidden, keep the article within the reading width */
 .tutorial-layout:has(.tutorial-sidebar--hidden) .tutorial-article {
-  max-width: none;
+  max-width: 780px;
 }
 
 /* Stage badge */

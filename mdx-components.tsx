@@ -4,29 +4,29 @@ import { CodeBlock } from '@/components/posts/code-block'
 
 const components: MDXComponents = {
   h1: ({ children, ...props }) => (
-    <h1 style={{ fontSize: 'clamp(1.6rem, 1.1rem + 1.8vw, 2.2rem)', fontWeight: 800, marginTop: '2.5rem', marginBottom: '1rem' }} {...props}>
+    <h1 {...props}>
       {children}
     </h1>
   ),
   h2: ({ children, ...props }) => (
-    <h2 style={{ fontSize: 'clamp(1.2rem, 0.95rem + 0.7vw, 1.45rem)', fontWeight: 800, marginTop: '2rem', marginBottom: '0.75rem' }} {...props}>
+    <h2 {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }) => (
-    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }} {...props}>
+    <h3 {...props}>
       {children}
     </h3>
   ),
   h4: ({ children, ...props }) => (
-    <h4 style={{ fontSize: '1.05rem', fontWeight: 600, marginTop: '1rem', marginBottom: '0.5rem' }} {...props}>
+    <h4 {...props}>
       {children}
     </h4>
   ),
   p: ({ children, ...props }) => (
-    <div style={{ lineHeight: 1.65, margin: '1rem 0' }} {...props}>
+    <p {...props}>
       {children}
-    </div>
+    </p>
   ),
   a: ({ href, children, ...props }) => {
     const isExternal = href?.startsWith('http')
@@ -62,31 +62,22 @@ const components: MDXComponents = {
     />
   ),
   ul: ({ children, ...props }) => (
-    <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', margin: '1rem 0' }} {...props}>
+    <ul {...props}>
       {children}
     </ul>
   ),
   ol: ({ children, ...props }) => (
-    <ol style={{ listStyle: 'decimal', paddingLeft: '1.5rem', margin: '1rem 0' }} {...props}>
+    <ol {...props}>
       {children}
     </ol>
   ),
   li: ({ children, ...props }) => (
-    <li style={{ lineHeight: 1.75, marginBottom: '0.25rem' }} {...props}>
+    <li {...props}>
       {children}
     </li>
   ),
   blockquote: ({ children, ...props }) => (
-    <blockquote
-      style={{
-        borderLeft: '4px solid var(--accent-a)',
-        paddingLeft: '1rem',
-        fontStyle: 'italic',
-        color: 'var(--color-text-3)',
-        margin: '1.5rem 0',
-      }}
-      {...props}
-    >
+    <blockquote {...props}>
       {children}
     </blockquote>
   ),
