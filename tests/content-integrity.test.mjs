@@ -165,6 +165,45 @@ test('article font CSS applies only to reading surfaces and preserves code font'
   )
 })
 
+test('static export SEO files expose sitemap and robots metadata', () => {
+  const nextConfigSource = read('next.config.ts')
+  const sitemapSource = read('app/sitemap.ts')
+  const robotsSource = read('app/robots.ts')
+
+  assert.match(nextConfigSource, /output:\s*'export'/, 'site must stay configured for static export')
+  assert.match(sitemapSource, /MetadataRoute\.Sitemap/, 'sitemap must use the Next metadata route type')
+  assert.match(sitemapSource, /export const dynamic = 'force-static'/, 'sitemap must be compatible with static export')
+  assert.match(sitemapSource, /getAllPosts\(\)/, 'sitemap must include published posts')
+  assert.match(sitemapSource, /getAllTutorials\(\)/, 'sitemap must include published tutorials')
+  assert.match(sitemapSource, /`\$\{SITE_URL\}\/posts\/\$\{post\.slug\}`/, 'sitemap must include post detail URLs')
+  assert.match(sitemapSource, /`\$\{SITE_URL\}\/tutorial\/\$\{tutorial\.slug\}`/, 'sitemap must include tutorial detail URLs')
+  assert.match(sitemapSource, /`\$\{SITE_URL\}\/posts`/, 'sitemap must include the posts index')
+  assert.match(sitemapSource, /`\$\{SITE_URL\}\/tutorial`/, 'sitemap must include the tutorial index')
+  assert.match(sitemapSource, /lastModified:\s*new Date\(post\.date\)/, 'post sitemap entries must use post dates')
+  assert.match(sitemapSource, /lastModified:\s*new Date\(tutorial\.date\)/, 'tutorial sitemap entries must use tutorial dates')
+
+  assert.match(robotsSource, /MetadataRoute\.Robots/, 'robots must use the Next metadata route type')
+  assert.match(robotsSource, /export const dynamic = 'force-static'/, 'robots must be compatible with static export')
+  assert.match(robotsSource, /userAgent:\s*'\*'/, 'robots must define the global user agent')
+  assert.match(robotsSource, /allow:\s*'\/'/, 'robots must allow site crawling')
+  assert.match(robotsSource, /sitemap:\s*`\$\{SITE_URL\}\/sitemap\.xml`/, 'robots must point to the sitemap URL')
+})
+
+test('Giscus comment section border follows the active theme', () => {
+  const source = read('components/posts/giscus.tsx')
+
+  assert.match(
+    source,
+    /borderTop:\s*'1px solid var\(--border\)'/,
+    'Giscus section border must use the theme border variable',
+  )
+  assert.doesNotMatch(
+    source,
+    /borderTop:\s*'1px solid rgba\(255,255,255,0\.08\)'/,
+    'Giscus section border must not use a hard-coded dark-only color',
+  )
+})
+
 test('post frontmatter is complete and uses known categories', () => {
   const validCategories = categoryIds()
   const files = walkMdx('content/posts')

@@ -14,7 +14,7 @@ export function GiscusComments() {
       style={{
         marginTop: '3rem',
         paddingTop: '2rem',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
+        borderTop: '1px solid var(--border)',
       }}
     >
       <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>
