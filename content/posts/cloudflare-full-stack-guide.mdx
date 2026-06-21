@@ -32,7 +32,7 @@ wrangler login  # 或设置 CLOUDFLARE_API_TOKEN
 wrangler pages project create blog
 ```
 
-Pages 自动检测到 Next.js 框架，构建命令和输出目录都预填好了。推送代码到 GitHub，Pages 自动触发部署。自定义域名 `blog.ybysn.org` 添加后，SSL 证书几分钟内生效。
+Pages 自动检测到 Next.js 框架，构建命令和输出目录都预填好了。推送代码到 GitHub，Pages 自动触发部署。自定义域名 `blog.example.com` 添加后，SSL 证书几分钟内生效。
 
 相比 Vercel，Cloudflare Pages 的免费额度更慷慨：每月 500 次构建，无限带宽，全球 CDN 加速。
 
@@ -48,11 +48,11 @@ wrangler r2 bucket create blog-assets
 
 # 绑定自定义域名
 wrangler r2 bucket domain add blog-assets \
-  --domain media.ybysn.org \
+  --domain media.example.com \
   --zone-id <your-zone-id>
 ```
 
-现在博客图片可以通过 `https://media.ybysn.org/xxx.png` 直接访问，享受全球 CDN 加速。上传文件也很简单：
+现在博客图片可以通过 `https://media.example.com/xxx.png` 直接访问，享受全球 CDN 加速。上传文件也很简单：
 
 ```bash
 wrangler r2 object put blog-assets/路径/文件名 --file 本地文件 --remote
@@ -74,21 +74,21 @@ export default {
     // 短链跳转
     if (url.pathname.startsWith('/go/')) {
       const links = {
-        github: 'https://github.com/ybysn',
-        blog: 'https://blog.ybysn.org',
-        rss: 'https://blog.ybysn.org/feed.xml',
+        github: 'https://github.com/your-username',
+        blog: 'https://blog.example.com',
+        rss: 'https://blog.example.com/feed.xml',
       };
       const target = links[url.pathname.replace('/go/', '')];
       if (target) return Response.redirect(target, 302);
       return new Response('Not found', { status: 404 });
     }
 
-    return Response.redirect('https://blog.ybysn.org', 302);
+    return Response.redirect('https://blog.example.com', 302);
   },
 };
 ```
 
-部署后，`blog.ybysn.org/go/github` 自动跳转到我的 GitHub 主页。Worker 路由和 Pages 路由互不冲突——`/go/*` 走 Worker，其他路径继续由 Pages 处理。
+部署后，`blog.example.com/go/github` 自动跳转到我的 GitHub 主页。Worker 路由和 Pages 路由互不冲突——`/go/*` 走 Worker，其他路径继续由 Pages 处理。
 
 ```bash
 cd workers/blog-api && wrangler deploy
@@ -126,13 +126,13 @@ docker run -d \
   -e SMTP_HOST=smtp.gmail.com \
   -e SMTP_PORT=587 \
   -e SMTP_SECURITY=starttls \
-  -e SMTP_USERNAME=***@gmail.com \
+  -e SMTP_USERNAME=user@example.com \
   -e SMTP_PASSWORD=<app-password> \
-  -e SMTP_FROM=***@gmail.com \
+  -e SMTP_FROM=user@example.com \
   vaultwarden/server:latest
 ```
 
-Tunnel 配置好 `vault.ybysn.org → http://localhost:8443` 后，手机和浏览器的 Bitwarden 客户端直接连接 `https://vault.ybysn.org` 即可。
+Tunnel 配置好 `vault.example.com → http://localhost:8443` 后，手机和浏览器的 Bitwarden 客户端直接连接 `https://vault.example.com` 即可。
 
 ### 安全建议
 
@@ -180,11 +180,11 @@ wsl --export Ubuntu C:\backup\wsl-ubuntu.tar
 从零到全部跑通，Hermes Agent 自动完成了大部分操作。最终架构：
 
 ```
-ybysn.org
-├── blog.ybysn.org      Pages — Next.js 博客
-├── media.ybysn.org     R2 — 对象存储
-├── blog.ybysn.org/go/* Workers — 短链跳转
-├── vault.ybysn.org     Tunnel — 内网穿透
+example.com
+├── blog.example.com      Pages — Next.js 博客
+├── media.example.com     R2 — 对象存储
+├── blog.example.com/go/* Workers — 短链跳转
+├── vault.example.com     Tunnel — 内网穿透
 └── 定时备份 → R2       每天 / 每周
 ```
 
