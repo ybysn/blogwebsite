@@ -20,6 +20,7 @@ export function Footer() {
           <Link href="/posts" className="footer-col-link">Posts</Link>
           <Link href="/about" className="footer-col-link">About</Link>
           <Link href="/search" className="footer-col-link">Search</Link>
+          <Link href="/tools" className="footer-col-link">Tools</Link>
         </div>
 
         {/* Column 3: Social */}

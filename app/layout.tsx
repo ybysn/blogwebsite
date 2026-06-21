@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/theme-provider'
 import { LanguageProvider } from '@/components/layout/language-provider'
@@ -52,8 +51,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(function() {
+        <script
+          id="theme-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
             try {
               var theme = localStorage.getItem('theme');
               var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -61,10 +62,13 @@ export default function RootLayout({
                 document.documentElement.classList.add('dark');
               }
             } catch (e) {}
-          })();`}
-        </Script>
-        <Script id="locale-init" strategy="beforeInteractive">
-          {`(function() {
+          })();`,
+          }}
+        />
+        <script
+          id="locale-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
             try {
               var locale = localStorage.getItem('locale');
               if (locale === 'zh-CN' || locale === 'en') {
@@ -73,10 +77,13 @@ export default function RootLayout({
                 document.documentElement.lang = 'en';
               }
             } catch (e) {}
-          })();`}
-        </Script>
-        <Script id="article-font-init" strategy="beforeInteractive">
-          {`(function() {
+          })();`,
+          }}
+        />
+        <script
+          id="article-font-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
             try {
               var font = localStorage.getItem('article-font');
               if (font === 'serif' || font === 'kai' || font === 'sans') {
@@ -85,8 +92,9 @@ export default function RootLayout({
                 document.documentElement.dataset.articleFont = 'sans';
               }
             } catch (e) {}
-          })();`}
-        </Script>
+          })();`,
+          }}
+        />
         <ThemeProvider>
           <LanguageProvider>
             <ArticleFontProvider>

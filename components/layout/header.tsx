@@ -20,8 +20,9 @@ export function Header() {
           <Link href="/" className="nav-link">{t('nav.home')}</Link>
           <Link href="/search" className="nav-link">{t('nav.search')}</Link>
           <Link href="/posts" className="nav-link">{t('nav.posts')}</Link>
-          <Link href="/about" className="nav-link">{t('nav.about')}</Link>
           <Link href="/tutorial" className="nav-link">{t('nav.tutorial')}</Link>
+          <Link href="/tools" className="nav-link">{t('nav.tools')}</Link>
+          <Link href="/about" className="nav-link">{t('nav.about')}</Link>
           <ArticleFontToggle />
           <DarkToggle />
           <LanguageToggle />
