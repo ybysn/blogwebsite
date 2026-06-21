@@ -49,3 +49,4 @@ next-env.d.ts
 skills-lock.json
 如何创建密钥（无密码登录）.pdf
 gsap-skills/
+.wrangler/
