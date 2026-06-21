@@ -4,11 +4,26 @@
         <title>凌's Blog</title>
         <link>https://blog.ybysn.org</link>
         <description>A personal blog about technology and more.</description>
-        <lastBuildDate>Sun, 31 May 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 22 Jun 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2026</copyright>
+        <item>
+            <title><![CDATA[Cloudflare 全家桶实战：从博客托管到内网穿透]]></title>
+            <link>https://blog.ybysn.org/posts/cloudflare-full-stack-guide</link>
+            <guid isPermaLink="false">https://blog.ybysn.org/posts/cloudflare-full-stack-guide</guid>
+            <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[用 Hermes Agent 在 WSL 中一站式配置 Cloudflare Pages、R2、Workers、Tunnel 全套免费服务，实现博客托管、对象存储、短链跳转和内网穿透。]]></description>
+            <category>Cloudflare</category>
+            <category>Pages</category>
+            <category>R2</category>
+            <category>Workers</category>
+            <category>Tunnel</category>
+            <category>Vaultwarden</category>
+            <category>WSL</category>
+            <category>教程</category>
+        </item>
         <item>
             <title><![CDATA[3X-UI 面板搭建指南：所有协议详解（从入门到进阶）]]></title>
             <link>https://blog.ybysn.org/posts/3x-ui-setup-guide</link>

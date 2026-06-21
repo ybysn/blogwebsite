@@ -1,0 +1,12 @@
+name = "blog-api"
+main = "index.js"
+compatibility_date = "2026-06-21"
+
+# Route: blog.ybysn.org/go/* → this Worker
+routes = [
+  { pattern = "blog.ybysn.org/go/*", zone_name = "ybysn.org" },
+  { pattern = "blog.ybysn.org/health", zone_name = "ybysn.org" },
+]
+
+[observability]
+enabled = true

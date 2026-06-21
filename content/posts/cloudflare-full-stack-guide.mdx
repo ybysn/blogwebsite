@@ -1,0 +1,191 @@
+---
+title: "Cloudflare 全家桶实战：从博客托管到内网穿透"
+date: "2026-06-22"
+description: "用 Hermes Agent 在 WSL 中一站式配置 Cloudflare Pages、R2、Workers、Tunnel 全套免费服务，实现博客托管、对象存储、短链跳转和内网穿透。"
+tags: ["Cloudflare", "Pages", "R2", "Workers", "Tunnel", "Vaultwarden", "WSL", "教程"]
+published: true
+lang: zh-CN
+category: "server-infra"
+---
+
+Cloudflare 的免费套餐一直被戏称为「互联网慈善家」。Pages 托管、R2 对象存储、Workers 边缘函数、Tunnel 内网穿透——每一项单独拿出来都够良心，合在一起更是个人开发者的瑞士军刀。
+
+本文记录在 WSL (Ubuntu 24.04) 中用 Hermes Agent 一键配置全套 Cloudflare 服务的过程，涵盖：
+
+- **Pages** — 托管 Next.js 博客，Git 自动部署
+- **R2** — 对象存储，自定义域名，无流量费
+- **Workers** — 短链跳转服务，每天 10 万次免费
+- **Tunnel** — 内网穿透，搭配 Vaultwarden 自建密码管理器
+- **备份** — Vaultwarden + WSL 配置自动备份到 R2
+
+---
+
+## 1. Pages — 博客托管
+
+我的博客是基于 Next.js 16 + MDX + Tailwind CSS 的静态站点，之前部署在 Vercel 上。迁移到 Cloudflare Pages 的过程出奇顺利：
+
+```bash
+# 用 wrangler 登录
+wrangler login  # 或设置 CLOUDFLARE_API_TOKEN
+
+# 在 Pages 中创建项目，关联 GitHub 仓库
+wrangler pages project create blog
+```
+
+Pages 自动检测到 Next.js 框架，构建命令和输出目录都预填好了。推送代码到 GitHub，Pages 自动触发部署。自定义域名 `blog.ybysn.org` 添加后，SSL 证书几分钟内生效。
+
+相比 Vercel，Cloudflare Pages 的免费额度更慷慨：每月 500 次构建，无限带宽，全球 CDN 加速。
+
+---
+
+## 2. R2 — 对象存储
+
+R2 是 Cloudflare 的 S3 兼容对象存储，最吸引人的是 **没有流量费**——这在各家云厂商里几乎是独一份。免费套餐 10GB 存储，对个人博客来说绰绰有余。
+
+```bash
+# 创建 bucket
+wrangler r2 bucket create blog-assets
+
+# 绑定自定义域名
+wrangler r2 bucket domain add blog-assets \
+  --domain media.ybysn.org \
+  --zone-id <your-zone-id>
+```
+
+现在博客图片可以通过 `https://media.ybysn.org/xxx.png` 直接访问，享受全球 CDN 加速。上传文件也很简单：
+
+```bash
+wrangler r2 object put blog-assets/路径/文件名 --file 本地文件 --remote
+```
+
+**注意：** 上传必须加 `--remote` 参数，否则默认写入本地缓存。
+
+---
+
+## 3. Workers — 短链服务
+
+Workers 是边缘函数，每天 10 万次免费请求。我用它实现了一个轻量的短链跳转服务：
+
+```js
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+
+    // 短链跳转
+    if (url.pathname.startsWith('/go/')) {
+      const links = {
+        github: 'https://github.com/ybysn',
+        blog: 'https://blog.ybysn.org',
+        rss: 'https://blog.ybysn.org/feed.xml',
+      };
+      const target = links[url.pathname.replace('/go/', '')];
+      if (target) return Response.redirect(target, 302);
+      return new Response('Not found', { status: 404 });
+    }
+
+    return Response.redirect('https://blog.ybysn.org', 302);
+  },
+};
+```
+
+部署后，`blog.ybysn.org/go/github` 自动跳转到我的 GitHub 主页。Worker 路由和 Pages 路由互不冲突——`/go/*` 走 Worker，其他路径继续由 Pages 处理。
+
+```bash
+cd workers/blog-api && wrangler deploy
+```
+
+---
+
+## 4. Tunnel — 内网穿透 + Vaultwarden
+
+Tunnel 是 Cloudflare Zero Trust 的核心组件，可以在不暴露公网端口的情况下，让外部访问本地服务。
+
+### 安装 cloudflared
+
+```bash
+curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 \
+  -o /usr/local/bin/cloudflared && chmod +x /usr/local/bin/cloudflared
+```
+
+WSL 没有浏览器，无法 `cloudflared tunnel login`。替代方案：在 Cloudflare Zero Trust Dashboard 创建 tunnel，拿到 token 后直接运行：
+
+```bash
+cloudflared tunnel run --token <tunnel-token>
+```
+
+### 部署 Vaultwarden
+
+Vaultwarden 是 Bitwarden 兼容的密码管理器，用 Docker 一行部署：
+
+```bash
+docker run -d \
+  --name vaultwarden \
+  --restart unless-stopped \
+  -v /opt/vaultwarden:/data \
+  -p 8443:80 \
+  -e SMTP_HOST=smtp.gmail.com \
+  -e SMTP_PORT=587 \
+  -e SMTP_SECURITY=starttls \
+  -e SMTP_USERNAME=***@gmail.com \
+  -e SMTP_PASSWORD=<app-password> \
+  -e SMTP_FROM=***@gmail.com \
+  vaultwarden/server:latest
+```
+
+Tunnel 配置好 `vault.ybysn.org → http://localhost:8443` 后，手机和浏览器的 Bitwarden 客户端直接连接 `https://vault.ybysn.org` 即可。
+
+### 安全建议
+
+- **关闭 Admin Token** —— 日常不需要时移除 `ADMIN_TOKEN` 环境变量
+- **关闭公开注册** —— `SIGNUPS_ALLOWED=false`（默认）
+- **邀请用户** —— 通过管理面板发送邀请链接，安全可控
+
+---
+
+## 5. 自动备份
+
+数据无价。设置了两层自动备份：
+
+### Vaultwarden 数据库
+
+每天凌晨 3 点备份到本地 + R2，保留 7 天：
+
+```bash
+# systemd timer
+OnCalendar=*-*-* 03:00:00 Asia/Shanghai
+```
+
+### WSL 配置
+
+每周一凌晨 4 点备份 `.env`、配置文件、文档到 R2：
+
+```bash
+# systemd timer
+OnCalendar=Mon *-*-* 04:00:00 Asia/Shanghai
+```
+
+重装系统后，从 R2 下载备份 → 恢复配置 → 三条命令重建所有服务。
+
+### Windows 完整镜像
+
+```powershell
+wsl --shutdown
+wsl --export Ubuntu C:\backup\wsl-ubuntu.tar
+```
+
+---
+
+## 总结
+
+从零到全部跑通，Hermes Agent 自动完成了大部分操作。最终架构：
+
+```
+ybysn.org
+├── blog.ybysn.org      Pages — Next.js 博客
+├── media.ybysn.org     R2 — 对象存储
+├── blog.ybysn.org/go/* Workers — 短链跳转
+├── vault.ybysn.org     Tunnel — 内网穿透
+└── 定时备份 → R2       每天 / 每周
+```
+
+全部免费，全球 CDN 加速，自动备份。Cloudflare 的免费套餐确实像慈善家。
