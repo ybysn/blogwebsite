@@ -95,7 +95,7 @@ export function TutorialLandingContent({
             color: 'var(--text-3)',
           }}
         >
-          {totalChapters} chapters · CC BY-NC-SA 4.0 · Powered by Datawhale
+          {totalChapters} 章 · CC BY-NC-SA 4.0 · Datawhale 出品
         </p>
       </div>
 
@@ -152,7 +152,7 @@ export function TutorialLandingContent({
         }}
       >
         <p style={{ margin: 0 }}>
-          📄 Content from{' '}
+          📄 内容来源{' '}
           <a
             href="https://github.com/datawhalechina/easy-vibe"
             target="_blank"
@@ -161,7 +161,7 @@ export function TutorialLandingContent({
           >
             Easy-Vibe by Datawhale
           </a>
-          , licensed under CC BY-NC-SA 4.0.
+          ，基于 CC BY-NC-SA 4.0 协议授权。
         </p>
       </div>
     </div>

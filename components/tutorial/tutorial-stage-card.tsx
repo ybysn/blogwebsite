@@ -57,7 +57,7 @@ export function TutorialStageCard({
             borderRadius: '16px',
           }}
         >
-          {count} chapters
+          {count} 章
         </span>
       </div>
       <div
@@ -70,7 +70,7 @@ export function TutorialStageCard({
           fontWeight: 500,
         }}
       >
-        Start Learning →
+        开始学习 →
       </div>
     </Link>
   )
