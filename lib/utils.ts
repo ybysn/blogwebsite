@@ -1,25 +1,16 @@
 import { format } from 'date-fns'
-import { enUS, zhCN } from 'date-fns/locale'
-import type { Locale } from '@/lib/i18n'
+import { zhCN } from 'date-fns/locale'
 
-export function formatDate(dateString: string, locale: Locale = 'en'): string {
+export function formatDate(dateString: string, _locale?: string): string {
   const date = new Date(dateString)
-  if (locale === 'zh-CN') {
-    return format(date, 'yyyy年M月d日', { locale: zhCN })
-  }
-  return format(date, 'MMMM d, yyyy', { locale: enUS })
+  return format(date, 'yyyy年M月d日', { locale: zhCN })
 }
 
-export function formatReadingTime(minutes: number, locale: Locale = 'en'): string {
+export function formatReadingTime(minutes: number, _locale?: string): string {
   const ceil = Math.ceil(minutes)
-  if (locale === 'zh-CN') {
-    if (minutes < 1) return '不到 1 分钟'
-    if (minutes === 1) return '约 1 分钟'
-    return `约 ${ceil} 分钟`
-  }
-  if (minutes < 1) return 'Less than 1 min read'
-  if (minutes === 1) return '1 min read'
-  return `${ceil} min read`
+  if (minutes < 1) return '不到 1 分钟'
+  if (minutes === 1) return '约 1 分钟'
+  return `约 ${ceil} 分钟`
 }
 
 // CJK characters: ~400 chars/min vs English: ~200 words/min (reading-time default)

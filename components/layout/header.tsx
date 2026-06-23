@@ -2,14 +2,10 @@
 
 import Link from 'next/link'
 import { DarkToggle } from '@/components/ui/dark-toggle'
-import { LanguageToggle } from '@/components/ui/language-toggle'
 import { ArticleFontToggle } from '@/components/ui/article-font-toggle'
-import { useTranslation } from '@/components/layout/language-provider'
 import { SITE_NAME } from '@/lib/constants'
 
 export function Header() {
-  const { t } = useTranslation()
-
   return (
     <header className="site-header">
       <div className="nav-inner">
@@ -17,15 +13,14 @@ export function Header() {
           {SITE_NAME}
         </Link>
         <div className="nav-links">
-          <Link href="/" className="nav-link">{t('nav.home')}</Link>
-          <Link href="/search" className="nav-link">{t('nav.search')}</Link>
-          <Link href="/posts" className="nav-link">{t('nav.posts')}</Link>
-          <Link href="/tutorial" className="nav-link">{t('nav.tutorial')}</Link>
-          <Link href="/tools" className="nav-link">{t('nav.tools')}</Link>
-          <Link href="/about" className="nav-link">{t('nav.about')}</Link>
+          <Link href="/" className="nav-link">首页</Link>
+          <Link href="/search" className="nav-link">搜索</Link>
+          <Link href="/posts" className="nav-link">文章</Link>
+          <Link href="/tutorial" className="nav-link">教程</Link>
+          <Link href="/tools" className="nav-link">工具</Link>
+          <Link href="/about" className="nav-link">关于</Link>
           <ArticleFontToggle />
           <DarkToggle />
-          <LanguageToggle />
         </div>
       </div>
     </header>

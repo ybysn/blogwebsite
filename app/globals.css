@@ -1058,6 +1058,12 @@ a:hover {
   color: var(--text-3);
   cursor: pointer;
   transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  z-index: 1;
 }
 
 .dark-toggle:hover {
@@ -1093,6 +1099,8 @@ a:hover {
 .font-toggle-wrap {
   position: relative;
   display: inline-flex;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1;
 }
 
 .font-toggle {
@@ -1110,6 +1118,8 @@ a:hover {
   font-weight: 700;
   letter-spacing: 0;
   transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .font-toggle:hover,
@@ -1125,6 +1135,7 @@ a:hover {
   top: calc(100% + 0.45rem);
   z-index: 60;
   min-width: 128px;
+  max-width: calc(100vw - 2rem);
   padding: 0.35rem;
   border-radius: 8px;
   border: 1px solid var(--border);
@@ -1234,6 +1245,13 @@ a:hover {
   .nav-link {
     font-size: 0.78rem;
     padding: 0.3rem 0.5rem;
+  }
+
+  .dark-toggle,
+  .font-toggle {
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
   }
 
   .footer-grid {

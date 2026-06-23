@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
 import { CodeBlock } from '@/components/posts/code-block'
+import { ThemedImage } from '@/components/ui/themed-image'
 
 const components: MDXComponents = {
   h1: ({ children, ...props }) => (
@@ -53,14 +54,7 @@ const components: MDXComponents = {
       </Link>
     )
   },
-  img: (props) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      alt=""
-      {...(props as React.ImgHTMLAttributes<HTMLImageElement>)}
-      style={{ width: '100%', height: 'auto', borderRadius: '12px', margin: '2rem 0' }}
-    />
-  ),
+  img: ThemedImage,
   ul: ({ children, ...props }) => (
     <ul {...props}>
       {children}

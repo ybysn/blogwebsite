@@ -1,6 +1,6 @@
 export const SITE_URL = 'https://blog.ybysn.org'
 export const SITE_NAME = "凌's Blog"
-export const SITE_DESCRIPTION = 'A personal blog about technology and more.'
+export const SITE_DESCRIPTION = '关于技术和更多精彩内容的个人博客。'
 export const AUTHOR = '凌'
 
 export const SOCIAL_LINKS = {

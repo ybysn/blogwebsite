@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
-    locale: 'en_US',
+    locale: 'zh_CN',
     type: 'website',
   },
   twitter: {
@@ -46,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="zh-CN"
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -69,14 +69,7 @@ export default function RootLayout({
           id="locale-init"
           dangerouslySetInnerHTML={{
             __html: `(function() {
-            try {
-              var locale = localStorage.getItem('locale');
-              if (locale === 'zh-CN' || locale === 'en') {
-                document.documentElement.lang = locale;
-              } else {
-                document.documentElement.lang = 'en';
-              }
-            } catch (e) {}
+            document.documentElement.lang = 'zh-CN';
           })();`,
           }}
         />

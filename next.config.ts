@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: { unoptimized: true },
+  allowedDevOrigins: ['192.168.1.5', 'localhost'],
 }
 
 const withMDX = createMDX({

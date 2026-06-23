@@ -1,186 +1,133 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620">
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
     </marker>
     <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0891b2"/>
     </marker>
     <marker id="arrow-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d97706"/>
     </marker>
     <marker id="arrow-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
     </marker>
     <marker id="arrow-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
     </marker>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="0.5"/>
     </pattern>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#020617"/>
-    </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="1000" height="620" fill="url(#bg-grad)"/>
+  <rect width="1000" height="620" fill="#fafafa"/>
   <rect width="1000" height="620" fill="url(#grid)"/>
 
-  <!-- Title -->
-  <text x="500" y="36" fill="white" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle">Cloudflare 全家桶架构总览</text>
-  <text x="500" y="55" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">Pages · R2 · Workers · Tunnel — 全部免费 · 全球 CDN</text>
+  <text x="500" y="36" fill="#111827" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle">Cloudflare 全家桶架构总览</text>
+  <text x="500" y="55" fill="#6b7280" font-family="monospace" font-size="11" text-anchor="middle">Pages · R2 · Workers · Tunnel — 全部免费 · 全球 CDN</text>
 
-  <!-- ============================================================ -->
   <!-- CLOUDFLARE EDGE BOUNDARY -->
-  <!-- ============================================================ -->
-  <rect x="140" y="70" width="560" height="340" rx="14" fill="rgba(251, 191, 36, 0.04)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
-  <text x="154" y="90" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold">Cloudflare Edge Network</text>
+  <rect x="140" y="70" width="560" height="340" rx="14" fill="rgba(217, 119, 6, 0.04)" stroke="#d97706" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="154" y="90" fill="#d97706" font-family="monospace" font-size="11" font-weight="bold">Cloudflare Edge Network</text>
 
-  <!-- ============================================================ -->
-  <!-- Pages (Blog) -->
-  <!-- ============================================================ -->
-  <rect x="210" y="110" width="200" height="80" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
-  <rect x="210" y="110" width="200" height="80" rx="8" fill="rgba(8, 51, 68, 0.35)" stroke="#22d3ee" stroke-width="1.5"/>
-  <text x="310" y="138" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare Pages</text>
-  <text x="310" y="156" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Next.js 16 · MDX · Tailwind</text>
-  <text x="310" y="174" fill="#22d3ee" font-family="monospace" font-size="9" text-anchor="middle">blog.example.com</text>
+  <!-- Pages -->
+  <rect x="210" y="110" width="200" height="80" rx="8" fill="white" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="310" y="138" fill="#155e75" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare Pages</text>
+  <text x="310" y="156" fill="#6b7280" font-family="monospace" font-size="10" text-anchor="middle">Next.js 16 · MDX · Tailwind</text>
+  <text x="310" y="174" fill="#0891b2" font-family="monospace" font-size="9" text-anchor="middle">blog.example.com</text>
 
-  <!-- R2 (Object Storage) -->
-  <rect x="460" y="110" width="200" height="80" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <rect x="460" y="110" width="200" height="80" rx="8" fill="rgba(120, 53, 15, 0.25)" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="560" y="138" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare R2</text>
-  <text x="560" y="156" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">S3 兼容对象存储</text>
-  <text x="560" y="174" fill="#fbbf24" font-family="monospace" font-size="9" text-anchor="middle">media.example.com</text>
+  <!-- R2 -->
+  <rect x="460" y="110" width="200" height="80" rx="8" fill="white" stroke="#d97706" stroke-width="1.5"/>
+  <text x="560" y="138" fill="#92400e" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare R2</text>
+  <text x="560" y="156" fill="#6b7280" font-family="monospace" font-size="10" text-anchor="middle">S3 兼容对象存储</text>
+  <text x="560" y="174" fill="#d97706" font-family="monospace" font-size="9" text-anchor="middle">media.example.com</text>
 
-  <!-- Workers (Short Links) -->
-  <rect x="210" y="240" width="200" height="80" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
-  <rect x="210" y="240" width="200" height="80" rx="8" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1.5"/>
-  <text x="310" y="268" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare Workers</text>
-  <text x="310" y="286" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">边缘短链跳转服务</text>
-  <text x="310" y="304" fill="#34d399" font-family="monospace" font-size="9" text-anchor="middle">blog.example.com/go/*</text>
+  <!-- Workers -->
+  <rect x="210" y="240" width="200" height="80" rx="8" fill="white" stroke="#059669" stroke-width="1.5"/>
+  <text x="310" y="268" fill="#065f46" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare Workers</text>
+  <text x="310" y="286" fill="#6b7280" font-family="monospace" font-size="10" text-anchor="middle">边缘短链跳转服务</text>
+  <text x="310" y="304" fill="#059669" font-family="monospace" font-size="9" text-anchor="middle">blog.example.com/go/*</text>
 
   <!-- Tunnel -->
-  <rect x="460" y="240" width="200" height="80" rx="8" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
-  <rect x="460" y="240" width="200" height="80" rx="8" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1.5"/>
-  <text x="560" y="268" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare Tunnel</text>
-  <text x="560" y="286" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Zero Trust 内网穿透</text>
-  <text x="560" y="304" fill="#a78bfa" font-family="monospace" font-size="9" text-anchor="middle">vault.example.com</text>
+  <rect x="460" y="240" width="200" height="80" rx="8" fill="white" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="560" y="268" fill="#5b21b6" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Cloudflare Tunnel</text>
+  <text x="560" y="286" fill="#6b7280" font-family="monospace" font-size="10" text-anchor="middle">Zero Trust 内网穿透</text>
+  <text x="560" y="304" fill="#7c3aed" font-family="monospace" font-size="9" text-anchor="middle">vault.example.com</text>
 
-  <!-- ============================================================ -->
-  <!-- WSL LOCAL BOUNDARY -->
-  <!-- ============================================================ -->
-  <rect x="750" y="190" width="220" height="250" rx="14" fill="rgba(34, 211, 238, 0.04)" stroke="#22d3ee" stroke-width="1" stroke-dasharray="6,3"/>
-  <text x="764" y="210" fill="#22d3ee" font-family="monospace" font-size="11" font-weight="bold">WSL (Ubuntu 24.04)</text>
+  <!-- WSL BOUNDARY -->
+  <rect x="750" y="190" width="220" height="250" rx="14" fill="rgba(8, 145, 178, 0.04)" stroke="#0891b2" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="764" y="210" fill="#0891b2" font-family="monospace" font-size="11" font-weight="bold">WSL (Ubuntu)</text>
 
   <!-- Vaultwarden -->
-  <rect x="770" y="230" width="180" height="70" rx="8" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
-  <rect x="770" y="230" width="180" height="70" rx="8" fill="rgba(136, 19, 55, 0.30)" stroke="#fb7185" stroke-width="1.5"/>
-  <text x="860" y="258" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Vaultwarden</text>
-  <text x="860" y="276" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Docker · 密码管理器</text>
-  <text x="860" y="292" fill="#fb7185" font-family="monospace" font-size="8" text-anchor="middle">localhost:8443</text>
+  <rect x="770" y="230" width="180" height="70" rx="8" fill="white" stroke="#e11d48" stroke-width="1.5"/>
+  <text x="860" y="258" fill="#be123c" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Vaultwarden</text>
+  <text x="860" y="276" fill="#6b7280" font-family="monospace" font-size="10" text-anchor="middle">Docker · 密码管理器</text>
+  <text x="860" y="292" fill="#e11d48" font-family="monospace" font-size="8" text-anchor="middle">localhost:8443</text>
 
   <!-- Cron Backup -->
-  <rect x="770" y="330" width="180" height="60" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-  <rect x="770" y="330" width="180" height="60" rx="8" fill="rgba(120, 53, 15, 0.20)" stroke="#fbbf24" stroke-width="1.5"/>
-  <text x="860" y="353" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Cron 自动备份</text>
-  <text x="860" y="370" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Vaultwarden + 配置文件</text>
-  <text x="860" y="384" fill="#fbbf24" font-family="monospace" font-size="8" text-anchor="middle">每天 3:00 / 每周一 4:00</text>
+  <rect x="770" y="330" width="180" height="60" rx="8" fill="white" stroke="#d97706" stroke-width="1.5"/>
+  <text x="860" y="353" fill="#92400e" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Cron 自动备份</text>
+  <text x="860" y="370" fill="#6b7280" font-family="monospace" font-size="10" text-anchor="middle">Vaultwarden + 配置文件</text>
+  <text x="860" y="384" fill="#d97706" font-family="monospace" font-size="8" text-anchor="middle">每天 3:00 / 每周一 4:00</text>
 
-  <!-- ============================================================ -->
   <!-- External User -->
-  <!-- ============================================================ -->
-  <rect x="20" y="140" width="90" height="55" rx="8" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
-  <rect x="20" y="140" width="90" height="55" rx="8" fill="rgba(30, 41, 59, 0.4)" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="65" y="163" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Users</text>
-  <text x="65" y="181" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">Browser</text>
+  <rect x="20" y="140" width="90" height="55" rx="8" fill="white" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="65" y="163" fill="#374151" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">Users</text>
+  <text x="65" y="181" fill="#6b7280" font-family="monospace" font-size="10" text-anchor="middle">Browser</text>
 
-  <!-- ============================================================ -->
   <!-- ARROWS -->
-  <!-- ============================================================ -->
+  <path d="M 110 155 L 170 155 L 170 150 L 208 150" fill="none" stroke="#0891b2" stroke-width="1.8" marker-end="url(#arrow-cyan)"/>
+  <text x="155" y="148" fill="#6b7280" font-family="monospace" font-size="9" text-anchor="middle">HTTPS</text>
 
-  <!-- User → Pages (blog) -->
-  <path d="M 110 155 L 170 155 L 170 150 L 208 150" fill="none" stroke="#22d3ee" stroke-width="1.8" marker-end="url(#arrow-cyan)"/>
-  <text x="155" y="148" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">HTTPS</text>
+  <path d="M 110 170 L 160 170 L 160 280 L 208 280" fill="none" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow-emerald)"/>
 
-  <!-- User → Workers (short links) -->
-  <path d="M 110 170 L 160 170 L 160 280 L 208 280" fill="none" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-emerald)"/>
+  <line x1="410" y1="155" x2="458" y2="155" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <text x="434" y="149" fill="#6b7280" font-family="monospace" font-size="8" text-anchor="middle">assets</text>
 
-  <!-- Pages ↔ R2 (media assets) -->
-  <line x1="410" y1="155" x2="458" y2="155" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
-  <text x="434" y="149" fill="#94a3b8" font-family="monospace" font-size="8" text-anchor="middle">assets</text>
+  <line x1="310" y1="190" x2="310" y2="238" stroke="#059669" stroke-width="1.2" marker-end="url(#arrow-emerald)"/>
 
-  <!-- Pages → Workers (go/* links) -->
-  <line x1="310" y1="190" x2="310" y2="238" stroke="#34d399" stroke-width="1.2" marker-end="url(#arrow-emerald)"/>
+  <path d="M 310 320 L 310 420 L 65 420 L 65 197" fill="none" stroke="#0891b2" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="180" y="413" fill="#6b7280" font-family="monospace" font-size="9">302 Redirect</text>
 
-  <!-- Workers → external (redirect) -->
-  <path d="M 310 320 L 310 420 L 65 420 L 65 197" fill="none" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <text x="180" y="413" fill="#94a3b8" font-family="monospace" font-size="9">302 Redirect</text>
+  <path d="M 660 280 L 730 280 L 730 265 L 768 265" fill="none" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#arrow-violet)"/>
+  <text x="710" y="275" fill="#6b7280" font-family="monospace" font-size="9">TCP</text>
 
-  <!-- Tunnel → Vaultwarden -->
-  <path d="M 660 280 L 730 280 L 730 265 L 768 265" fill="none" stroke="#a78bfa" stroke-width="1.8" marker-end="url(#arrow-violet)"/>
-  <text x="710" y="275" fill="#94a3b8" font-family="monospace" font-size="9">TCP</text>
+  <line x1="860" y1="300" x2="860" y2="328" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
 
-  <!-- Vaultwarden → Backup -->
-  <line x1="860" y1="300" x2="860" y2="328" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <path d="M 770 360 L 700 360 L 560 360 L 560 192" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow-amber)"/>
+  <text x="630" y="355" fill="#6b7280" font-family="monospace" font-size="9">备份上传</text>
 
-  <!-- Backup → R2 -->
-  <path d="M 770 360 L 700 360 L 560 360 L 560 192" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow-amber)"/>
-  <text x="630" y="355" fill="#94a3b8" font-family="monospace" font-size="9">备份上传</text>
-
-  <!-- ============================================================ -->
   <!-- GitHub -->
-  <!-- ============================================================ -->
-  <rect x="320" y="430" width="120" height="45" rx="8" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
-  <rect x="320" y="430" width="120" height="45" rx="8" fill="rgba(30, 41, 59, 0.35)" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="380" y="452" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">GitHub</text>
-  <text x="380" y="467" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">Push → Deploy</text>
+  <rect x="320" y="430" width="120" height="45" rx="8" fill="white" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="380" y="452" fill="#374151" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">GitHub</text>
+  <text x="380" y="467" fill="#6b7280" font-family="monospace" font-size="9" text-anchor="middle">Push → Deploy</text>
 
-  <!-- Pages → GitHub (fetch source) -->
-  <path d="M 310 190 L 310 210 L 380 210 L 380 428" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <path d="M 310 190 L 310 210 L 380 210 L 380 428" fill="none" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
 
-  <!-- ============================================================ -->
   <!-- LEGEND -->
-  <!-- ============================================================ -->
-  <rect x="40" y="500" width="900" height="105" rx="10" fill="rgba(15, 23, 42, 0.7)" stroke="#1e293b" stroke-width="1"/>
+  <rect x="40" y="500" width="900" height="105" rx="10" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="500" y="522" fill="#111827" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">图例</text>
 
-  <text x="500" y="522" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">图例</text>
+  <rect x="80" y="536" width="18" height="12" rx="3" fill="white" stroke="#0891b2" stroke-width="1"/>
+  <text x="104" y="546" fill="#374151" font-family="monospace" font-size="10">Pages</text>
+  <rect x="220" y="536" width="18" height="12" rx="3" fill="white" stroke="#d97706" stroke-width="1"/>
+  <text x="244" y="546" fill="#374151" font-family="monospace" font-size="10">R2</text>
+  <rect x="340" y="536" width="18" height="12" rx="3" fill="white" stroke="#059669" stroke-width="1"/>
+  <text x="364" y="546" fill="#374151" font-family="monospace" font-size="10">Workers</text>
+  <rect x="470" y="536" width="18" height="12" rx="3" fill="white" stroke="#7c3aed" stroke-width="1"/>
+  <text x="494" y="546" fill="#374151" font-family="monospace" font-size="10">Tunnel</text>
+  <rect x="600" y="536" width="18" height="12" rx="3" fill="white" stroke="#e11d48" stroke-width="1"/>
+  <text x="624" y="546" fill="#374151" font-family="monospace" font-size="10">Vaultwarden</text>
+  <rect x="750" y="536" width="18" height="12" rx="3" fill="white" stroke="#9ca3af" stroke-width="1"/>
+  <text x="774" y="546" fill="#374151" font-family="monospace" font-size="10">External</text>
 
-  <!-- Row 1 -->
-  <rect x="80" y="536" width="18" height="12" rx="3" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
-  <text x="104" y="546" fill="#94a3b8" font-family="monospace" font-size="10">Pages</text>
-
-  <rect x="220" y="536" width="18" height="12" rx="3" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1"/>
-  <text x="244" y="546" fill="#94a3b8" font-family="monospace" font-size="10">R2 存储</text>
-
-  <rect x="360" y="536" width="18" height="12" rx="3" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1"/>
-  <text x="384" y="546" fill="#94a3b8" font-family="monospace" font-size="10">Workers</text>
-
-  <rect x="500" y="536" width="18" height="12" rx="3" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1"/>
-  <text x="524" y="546" fill="#94a3b8" font-family="monospace" font-size="10">Tunnel</text>
-
-  <rect x="640" y="536" width="18" height="12" rx="3" fill="rgba(136, 19, 55, 0.4)" stroke="#fb7185" stroke-width="1"/>
-  <text x="664" y="546" fill="#94a3b8" font-family="monospace" font-size="10">Vaultwarden</text>
-
-  <rect x="790" y="536" width="18" height="12" rx="3" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1"/>
-  <text x="814" y="546" fill="#94a3b8" font-family="monospace" font-size="10">External</text>
-
-  <!-- Row 2 -->
-  <line x1="80" y1="568" x2="98" y2="568" stroke="#22d3ee" stroke-width="1.8"/>
-  <text x="104" y="572" fill="#94a3b8" font-family="monospace" font-size="10">HTTPS 请求</text>
-
-  <line x1="220" y1="568" x2="238" y2="568" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="244" y="572" fill="#94a3b8" font-family="monospace" font-size="10">备份/资产</text>
-
-  <rect x="360" y="562" width="18" height="12" rx="3" fill="none" stroke="#22d3ee" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="384" y="572" fill="#94a3b8" font-family="monospace" font-size="10">WSL 边界</text>
-
-  <rect x="500" y="562" width="18" height="12" rx="3" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="6,4"/>
-  <text x="524" y="572" fill="#94a3b8" font-family="monospace" font-size="10">Cloudflare 边界</text>
-
-  <line x1="640" y1="568" x2="658" y2="568" stroke="#a78bfa" stroke-width="1.8"/>
-  <text x="664" y="572" fill="#94a3b8" font-family="monospace" font-size="10">TCP Tunnel</text>
-
-  <text x="814" y="572" fill="#64748b" font-family="monospace" font-size="9">全部免费 · 全球 CDN · 自动部署</text>
+  <line x1="80" y1="568" x2="98" y2="568" stroke="#0891b2" stroke-width="1.8"/>
+  <text x="104" y="572" fill="#374151" font-family="monospace" font-size="10">HTTPS</text>
+  <line x1="220" y1="568" x2="238" y2="568" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="244" y="572" fill="#374151" font-family="monospace" font-size="10">备份</text>
+  <rect x="340" y="562" width="18" height="12" rx="3" fill="none" stroke="#0891b2" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="364" y="572" fill="#374151" font-family="monospace" font-size="10">WSL</text>
+  <rect x="470" y="562" width="18" height="12" rx="3" fill="none" stroke="#d97706" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="494" y="572" fill="#374151" font-family="monospace" font-size="10">CF 边界</text>
+  <text x="774" y="572" fill="#9ca3af" font-family="monospace" font-size="9">全部免费 · 全球 CDN</text>
 </svg>

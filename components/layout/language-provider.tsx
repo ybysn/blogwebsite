@@ -31,14 +31,12 @@ function getStoredLocale(): Locale | null {
 }
 
 function getBrowserLocale(): Locale {
-  if (typeof window === 'undefined') return 'en'
-  const nav = navigator.language
-  if (nav.startsWith('zh')) return 'zh-CN'
-  return 'en'
+  if (typeof window === 'undefined') return 'zh-CN'
+  return 'zh-CN'
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('en')
+  const [locale, setLocaleState] = useState<Locale>('zh-CN')
 
   // Sync locale from browser storage on mount. This is a legitimate use of
   // setState in an effect — the server always renders 'en', and we update to

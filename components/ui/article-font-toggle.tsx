@@ -27,29 +27,42 @@ export function ArticleFontToggle() {
   const wrapRef = useRef<HTMLDivElement>(null)
   const labels = ARTICLE_FONT_LABELS[locale]
 
+  // Close on outside click/touch — use click event which works reliably on
+  // both desktop (mouse) and mobile (touch). Delayed registration prevents
+  // the opening tap from immediately closing the menu.
   useEffect(() => {
     if (!open) return
 
-    function handlePointerDown(event: PointerEvent) {
-      if (
-        event.target instanceof Node &&
-        !wrapRef.current?.contains(event.target)
-      ) {
-        setOpen(false)
+    const timer = setTimeout(() => {
+      function handleClickOutside(event: MouseEvent | TouchEvent) {
+        if (
+          event.target instanceof Node &&
+          !wrapRef.current?.contains(event.target)
+        ) {
+          setOpen(false)
+        }
       }
-    }
 
+      document.addEventListener('click', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
+
+      return () => {
+        document.removeEventListener('click', handleClickOutside)
+        document.removeEventListener('touchstart', handleClickOutside)
+      }
+    }, 0)
+
+    return () => clearTimeout(timer)
+  }, [open])
+
+  // Close on Escape
+  useEffect(() => {
+    if (!open) return
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') setOpen(false)
     }
-
-    document.addEventListener('pointerdown', handlePointerDown)
     document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.removeEventListener('pointerdown', handlePointerDown)
-      document.removeEventListener('keydown', handleKeyDown)
-    }
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [open])
 
   return (
@@ -61,7 +74,10 @@ export function ArticleFontToggle() {
         aria-haspopup="menu"
         aria-expanded={open}
         title="Article font"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={(e) => {
+          e.stopPropagation()
+          setOpen((prev) => !prev)
+        }}
       >
         Aa
       </button>
