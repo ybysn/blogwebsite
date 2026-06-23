@@ -4,6 +4,73 @@
 
 ---
 
+## 2026-06-23 (周二)
+
+### 1. 全站中文化
+- 移除 `LanguageToggle` 组件，删除中英文切换按钮
+- 导航、底栏、工具页、教程页全部硬编码中文
+- `app/layout.tsx`: `lang="zh-CN"`, `locale: 'zh_CN'`
+- `language-provider.tsx`: 默认 locale 改为 `zh-CN`，`getBrowserLocale` 强制返回中文
+
+### 2. 深色模式修复
+- **代码块**: 添加 Shiki 双主题切换 CSS (`--shiki-light` / `--shiki-dark`)
+- **表格**: 硬编码颜色全部替换为 CSS 变量 (`var(--bg)`, `var(--surface)`, `var(--text)`)
+- **Script 标签**: 从 `dangerouslySetInnerHTML` 改为 `next/script` 组件
+
+### 3. 文章配图（3 篇文章，6 张 SVG）
+- TLS 握手流程图 → `public/images/posts/tls-handshake.svg` + dark
+- Cloudflare 架构总览 → `cloudflare-architecture.svg` + dark
+- Cloudflare Tunnel 细节 → `cloudflare-tunnel-arch.svg` + dark
+- 新建 `ThemedImage` 客户端组件，根据博客主题自动切换浅色/深色版本
+- 修复 SVG XML 注释中 `--` 非法字符问题
+
+### 4. 手机端适配
+- 添加汉堡菜单（640px 断点），导航链接收入菜单
+- `next.config.ts` 添加 `allowedDevOrigins: ['192.168.1.5']`，解决手机端 JS 被拦截
+- 深色切换按钮 + 字体切换按钮增大触摸目标至 44×44
+- `touch-action: manipulation` 消除 300ms 延迟
+- CSS `scroll-padding-top: 80px` 修复锚点跳转被 sticky header 遮挡
+
+### 5. Hydration 错误修复
+- `DarkToggle`: 添加 `mounted` 状态，挂载前渲染空白 SVG 占位
+- `ThemedImage`: 同样 `mounted` 模式，避免服务端/客户端 src 不一致
+- 修复 `CodeBlock is not defined` 因编辑中断 import 导致的全站 JS 崩溃
+
+### 6. 工具页重构
+- 原单页 7 个工具 → 卡片索引页 + 7 个独立子页面 (`/tools/json`, `/tools/uuid` 等)
+- `[tool]/page.tsx` 服务端组件 + `generateStaticParams`
+- `tool-page-client.tsx` 客户端组件，复用原有 `.btn` `.tool-panel` `.tool-grid` 样式
+- `safeUuid()` 降级方案兼容老浏览器
+
+### 7. 底栏紧凑化
+- 5 栏网格 → 4 栏（Logo 介绍单行 + 链接/订阅/技术栈/更多）
+- 字号缩小至 0.75-0.78rem，padding 减半
+- 手机端 4 栏一字排开
+
+### 8. 教程页中文化
+- 阶段标题: `Stage 1/2/3` → `第 1/2/3 阶段`
+- 移除 `Appendix` 字样，仅保留 `附录`
+- 许可声明、章节计数、按钮文字全部翻译
+- 修复 `tutorial.hero.title` 缺失 i18n key 导致的原始文本显示
+
+### 9. 其他修复
+- `crypto.randomUUID` → `safeUuid` 兼容旧浏览器
+- `tool-page-client.tsx` 导入路径 `../../tools-data` → `../tools-data` 修复生产构建失败
+
+### 提交记录
+```
+8339b4f fix: wrong import path in tool-page-client.tsx
+74c14df fix: anchor links hidden behind sticky header
+372a153 i18n: translate Stage labels, remove Appendix from tutorial nav
+cd089c6 i18n: translate tutorial English text to Chinese
+51f167e fix: replace missing tutorial.hero.title i18n key
+2ec81b5 feat: tools index cards + sub-pages, mobile hamburger, compact footer
+0bb3818 fix: table/code dark mode, hydration mismatches, script tags
+96f0afe feat: pure Chinese site, dark/light theme images, mobile fixes
+```
+
+---
+
 ## 2026-06-03 (周三) — 下午
 
 ### 5. 修复 console error：layout.tsx 中 script 标签警告
