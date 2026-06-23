@@ -18,6 +18,8 @@ Cloudflare 的免费套餐一直被戏称为「互联网慈善家」。Pages 托
 - **Tunnel** — 内网穿透，搭配 Vaultwarden 自建密码管理器
 - **备份** — Vaultwarden + WSL 配置自动备份到 R2
 
+![Cloudflare 全家桶架构总览](/images/posts/cloudflare-architecture.svg)
+
 ---
 
 ## 1. Pages — 博客托管
@@ -133,6 +135,8 @@ docker run -d \
 ```
 
 Tunnel 配置好 `vault.example.com → http://localhost:8443` 后，手机和浏览器的 Bitwarden 客户端直接连接 `https://vault.example.com` 即可。
+
+![Cloudflare Tunnel 内网穿透架构](/images/posts/cloudflare-tunnel-arch.svg)
 
 ### 安全建议
 
