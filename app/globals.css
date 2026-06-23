@@ -647,27 +647,28 @@ a:hover {
   margin: 16px 0 26px;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
   font-size: 15px;
   line-height: 1.55;
-  background: #fff;
+  background: var(--bg);
 }
 
 .article-content thead th {
   padding: 10px 14px;
-  background: #f8fafc;
-  color: #111827;
+  background: var(--surface);
+  color: var(--text);
   font-weight: 700;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
 }
 
 .article-content tbody td {
   padding: 10px 14px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
   vertical-align: middle;
+  color: var(--text);
 }
 
 .article-content tbody tr:last-child td {
@@ -676,28 +677,37 @@ a:hover {
 
 .article-content tbody td:first-child {
   width: 110px;
-  color: #374151;
+  color: var(--text-2);
   font-weight: 600;
   white-space: nowrap;
-  background: #fafafa;
+  background: var(--surface);
 }
 
 .article-content tbody td:last-child {
   min-width: 280px;
   max-width: 520px;
-  color: #111827;
+  color: var(--text);
 }
 
 .article-content table code {
   padding: 1px 5px;
   border: none;
   border-radius: 4px;
-  background: #f3f4f6;
-  color: #1d4ed8;
+  background: var(--code-bg);
+  color: var(--accent-a);
   font-size: 14px;
   line-height: 1.45;
   white-space: normal;
   word-break: break-all;
+}
+
+/* Shiki syntax highlighting — dual theme switching */
+pre code span {
+  color: var(--shiki-light);
+}
+
+.dark pre code span {
+  color: var(--shiki-dark);
 }
 
 @media (max-width: 640px) {

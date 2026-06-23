@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useTheme } from '@/components/layout/theme-provider'
 
 interface ThemedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -8,10 +9,16 @@ interface ThemedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 
 /** 
  * Theme-aware image. For SVG sources ending in .svg, it automatically 
- * tries a -dark variant when the theme is 'dark'. Falls back gracefully.
+ * tries a -dark variant when the theme is 'dark'. Renders light variant
+ * on server and first client render to avoid hydration mismatch.
  */
 export function ThemedImage({ src, alt, style, ...props }: ThemedImageProps) {
   const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const imgStyle: React.CSSProperties = {
     width: '100%',
@@ -21,22 +28,17 @@ export function ThemedImage({ src, alt, style, ...props }: ThemedImageProps) {
     ...style,
   }
 
-  if (typeof src === 'string' && src.endsWith('.svg') && theme === 'dark') {
-    const darkSrc = src.replace(/\.svg$/, '-dark.svg')
-    return (
-      <img
-        alt={alt ?? ''}
-        src={darkSrc}
-        style={imgStyle}
-        {...props}
-      />
-    )
-  }
+  const resolvedSrc = mounted &&
+    typeof src === 'string' &&
+    src.endsWith('.svg') &&
+    theme === 'dark'
+      ? src.replace(/\.svg$/, '-dark.svg')
+      : src
 
   return (
     <img
       alt={alt ?? ''}
-      src={src}
+      src={resolvedSrc}
       style={imgStyle}
       {...props}
     />

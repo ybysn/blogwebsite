@@ -1,17 +1,40 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useTheme } from '@/components/layout/theme-provider'
 
 export function DarkToggle() {
   const { theme, toggleTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Render a consistent placeholder until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <button
+        aria-label="Toggle theme"
+        className="dark-toggle"
+        style={{ pointerEvents: 'auto' }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          className="w-4 h-4"
+          style={{ pointerEvents: 'none' }}
+        />
+      </button>
+    )
+  }
 
   return (
     <button
-      onClick={() => {
-        // Debug: force a visible change to confirm JS runs on mobile
-        document.body.style.outline = document.body.style.outline ? '' : '3px solid red'
-        toggleTheme()
-      }}
+      onClick={toggleTheme}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       className="dark-toggle"
       style={{ pointerEvents: 'auto' }}
