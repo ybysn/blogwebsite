@@ -234,11 +234,11 @@ export function getTutorialNavigation(): TutorialNavigation {
 
   // Build tree
   const stageLabels: TutorialNavigation['stageLabels'] = [
-    { stage: 1, label: 'Stage 1 · 零基础入门' },
-    { stage: 2, label: 'Stage 2 · 初中级开发' },
-    { stage: 3, label: 'Stage 3 · 高级开发' },
+    { stage: 1, label: '第 1 阶段 · 零基础入门' },
+    { stage: 2, label: '第 2 阶段 · 初中级开发' },
+    { stage: 3, label: '第 3 阶段 · 高级开发' },
     { stage: 4, label: 'Vibe Stories' },
-    { stage: 0, label: '附录 · Appendix' },
+    { stage: 0, label: '附录' },
   ]
 
   const tree: TutorialNode[] = []
@@ -249,7 +249,7 @@ export function getTutorialNavigation(): TutorialNavigation {
     const s = t.stage
     let stageNode = stageGroups.get(s)
     if (!stageNode) {
-      const label = stageLabels.find((sl) => sl.stage === s)?.label || `Stage ${s}`
+      const label = stageLabels.find((sl) => sl.stage === s)?.label || `第 ${s} 阶段`
       stageNode = {
         title: label,
         slug: `stage-${s}`,
