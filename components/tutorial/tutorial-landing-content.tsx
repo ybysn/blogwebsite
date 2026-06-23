@@ -76,7 +76,7 @@ export function TutorialLandingContent({
             color: 'var(--text-1)',
           }}
         >
-          {t('tutorial.hero.title')}
+          AI 编程实战教程
         </h1>
         <p
           style={{
