@@ -100,17 +100,31 @@ source ~/.bashrc
 
 **Windows（winget / choco 安装）：**
 
-```powershell
-# 查看安装位置
-where.exe node
+先找到 Node.js 安装位置：
 
-# 如果找不到，重新打开 PowerShell 或手动加 PATH
+```powershell
+where.exe node
+```
+
+如果找不到，说明不在 PATH 中。先让当前窗口生效，再永久保存：
+
+```powershell
+# 1. 当前窗口立即生效
+$env:Path = "$env:Path;C:\Program Files\nodejs"
+
+# 2. 验证
+node -v
+npm -v
+
+# 3. 写入注册表，以后新窗口自动生效
 [Environment]::SetEnvironmentVariable(
     "Path",
-    "$env:Path;C:\Program Files\nodejs",
+    [Environment]::GetEnvironmentVariable("Path", "User") + ";C:\Program Files\nodejs",
     "User"
 )
 ```
+
+> ⚠️ 如果 Node.js 装在别的位置（如 `%LOCALAPPDATA%`），用 `where.exe node` 或去 `C:\Program Files\` 下确认实际路径替换上面的 `C:\Program Files\nodejs`。
 
 > 用 `.msi` 安装包安装时勾选"Add to PATH"可避免此问题。Homebrew（macOS）会自动配置 PATH，一般不需要手动处理。
 
