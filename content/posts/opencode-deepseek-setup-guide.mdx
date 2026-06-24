@@ -190,21 +190,25 @@ opencode --version
 
 # 五、配置 OpenCode 接 DeepSeek API
 
-OpenCode 通过 `opencode.json` 配置提供商。项目级别放在项目根目录，全局级别放在 `~/.opencode/`。
-
-## 方案 A：项目级配置（推荐）
-
-在项目根目录创建 `opencode.json`：
+安装完成后直接启动 OpenCode，用内置的 `/connect` 命令交互式配置：
 
 ```bash
-# macOS / Linux / WSL
-vim opencode.json
-
-# Windows PowerShell
-vim opencode.json
+opencode
 ```
 
-写入：
+进入 TUI 后输入：
+
+```text
+/connect
+```
+
+在弹出的列表里选 **DeepSeek**，然后输入你的 API Key 即可。OpenCode 会自动保存配置，不需要手写任何文件。([OpenCode Providers](https://opencode.ai/docs/providers/))
+
+> 如果你的 DeepSeek API Key 来自 OpenRouter，在 `/connect` 里选 OpenRouter 即可。
+
+## 备选：手动写配置文件
+
+如果偏好手动配置，在项目根目录或 `~/.opencode/` 创建 `opencode.json`：
 
 ```json
 {
@@ -219,42 +223,7 @@ vim opencode.json
 }
 ```
 
-> ⚠️ 注意将 `apiKey` 替换为你的 DeepSeek API Key。`opencode.json` 文件建议加入 `.gitignore` 避免泄露密钥。
-
-DeepSeek 在 OpenCode 中原生支持，不需要指定 `baseURL`。([OpenCode Providers](https://opencode.ai/docs/providers/#deepseek))
-
-## 方案 B：环境变量配置
-
-```bash
-# macOS / Linux / WSL
-export DEEPSEEK_API_KEY=你的DeepSeek_API_Key
-
-# Windows PowerShell
-$env:DEEPSEEK_API_KEY="你的DeepSeek_API_Key"
-```
-
-启动：
-
-```bash
-opencode
-```
-
-## 方案 C：使用 OpenRouter 中转
-
-如果你的 DeepSeek API Key 来自 OpenRouter：
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "openrouter": {
-      "options": {
-        "apiKey": "你的OpenRouter_API_Key"
-      }
-    }
-  }
-}
-```
+> ⚠️ 注意替换 `apiKey`。如果提交到 Git 记得加 `.gitignore`。
 
 ------
 
