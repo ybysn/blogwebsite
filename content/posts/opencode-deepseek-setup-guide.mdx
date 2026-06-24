@@ -126,7 +126,23 @@ npm -v
 
 > ⚠️ 如果 Node.js 装在别的位置（如 `%LOCALAPPDATA%`），用 `where.exe node` 或去 `C:\Program Files\` 下确认实际路径替换上面的 `C:\Program Files\nodejs`。
 
-> 用 `.msi` 安装包安装时勾选"Add to PATH"可避免此问题。Homebrew（macOS）会自动配置 PATH，一般不需要手动处理。
+## PowerShell 执行策略
+
+如果 `node -v` 正常但 `npm -v` 报以下错误：
+
+```text
+无法加载文件 C:\Program Files\nodejs\npm.ps1，因为在此系统上禁止运行脚本
+```
+
+这是 PowerShell 默认禁止脚本执行，运行：
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+> `RemoteSigned` 只要求从网上下载的脚本签名，本地脚本不受限，安全且实用。输入 `Y` 确认后重新打开 PowerShell 即可。
+
+> 用 `.msi` 安装包安装时勾选"Add to PATH"可避免 PATH 问题。Homebrew（macOS）会自动配置 PATH，一般不需要手动处理。
 
 ## WSL
 
