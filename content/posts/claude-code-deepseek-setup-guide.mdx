@@ -24,6 +24,18 @@ irm https://claude.ai/install.ps1 | iex
 
 官方 Windows PowerShell 安装命令就是这个。([Claude Code](https://code.claude.com/docs/en/quickstart))
 
+> ⚠️ **常见报错：`irm` 返回 HTML 而非脚本**
+>
+> 如果执行 `irm https://claude.ai/install.ps1 | iex` 出现 `MissingArgument`、`不支持"var"关键字` 等一堆 PowerShell 语法错误，说明 `claude.ai/install.ps1` 返回的不是安装脚本，而是一个 HTML 网页（通常是地区限制页面 `app-unavailable-in-region`）。
+>
+> 这是因为 Anthropic 对安装端点做了地区检测，非支持地区访问会被 302 重定向到提示页。解决方法：
+>
+> 1. **开代理后重试**：确保 PowerShell 已配置代理（见本文第十三节），再执行安装命令
+> 2. **用 npm 安装**（推荐）：`npm install -g @anthropic-ai/claude-code`，不经过地区检测
+> 3. **用 WinGet 安装**：`winget install Anthropic.ClaudeCode`，同样不经过地区检测
+>
+> npm / WinGet 安装后功能完全一致，只是不会自动更新，需手动升级。
+
 安装完成后验证：
 
 ```powershell
@@ -488,11 +500,14 @@ npm uninstall -g @anthropic-ai/claude-code
 ## Windows + DeepSeek
 
 ```powershell
-$env:HTTP_PROXY="http://127.0.0.1:10808"
-$env:HTTPS_PROXY="http://127.0.0.1:10808"
-$env:ALL_PROXY="http://127.0.0.1:10808"
+# 如果 claude.ai 被地区限制，用 npm 安装更简单
+npm install -g @anthropic-ai/claude-code
 
-irm https://claude.ai/install.ps1 | iex
+# 或者开代理后用官方安装方式
+# $env:HTTP_PROXY="http://127.0.0.1:10808"
+# $env:HTTPS_PROXY="http://127.0.0.1:10808"
+# $env:ALL_PROXY="http://127.0.0.1:10808"
+# irm https://claude.ai/install.ps1 | iex
 
 mkdir "$env:USERPROFILE\.claude" -Force
 vim "$env:USERPROFILE\.claude\settings.json"
