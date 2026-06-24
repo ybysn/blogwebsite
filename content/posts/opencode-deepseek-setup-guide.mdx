@@ -172,11 +172,47 @@ npm install -g opencode-ai
 
 ```powershell
 opencode --version
+where.exe opencode
 ```
 
-> `opencode` 是 npm 全局安装的，自动在 PATH 中，不需要额外配置。
+正常看到版本号和安装路径即成功。
 
-## 3. 其他 Windows 安装方式
+## 3. opencode 命令找不到时修复 PATH
+
+npm 全局包装在 `%APPDATA%\npm`，如果这个路径不在 PATH 里就会找不到命令。
+
+先确认 npm 全局目录：
+
+```powershell
+npm config get prefix
+```
+
+常见输出：
+
+```text
+C:\Users\你的用户名\AppData\Roaming\npm
+```
+
+写入用户 PATH：
+
+```powershell
+$npmPath = "$env:APPDATA\npm"
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+
+[Environment]::SetEnvironmentVariable(
+    "Path",
+    "$userPath;$npmPath",
+    "User"
+)
+```
+
+关闭 PowerShell，重新打开后验证：
+
+```powershell
+opencode --version
+```
+
+## 4. 其他 Windows 安装方式
 
 ```powershell
 choco install opencode
@@ -240,10 +276,16 @@ source ~/.bashrc
 
 确保已安装 Node.js 18+（见上文「零、安装 Node.js」）。
 
-WSL 里按 Linux 方式安装：
+WSL 有 npm 和官方脚本两种方式。推荐 npm（和 Linux 一致），官方脚本方式如下：
 
 ```bash
 npm install -g opencode-ai
+```
+
+或官方脚本：
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
 ```
 
 验证：
@@ -269,6 +311,14 @@ opencode
 ```
 
 在弹出的列表里选 **DeepSeek**，然后输入你的 API Key 即可。OpenCode 会自动保存配置，不需要手写任何文件。([OpenCode Providers](https://opencode.ai/docs/providers/))
+
+也可以用命令行登录：
+
+```bash
+opencode auth login
+```
+
+进入 TUI 后用 `/models` 选择要用的模型。OpenCode 凭据保存在 `~/.local/share/opencode/auth.json`。
 
 > 如果你的 DeepSeek API Key 来自 OpenRouter，在 `/connect` 里选 OpenRouter 即可。
 
@@ -342,7 +392,13 @@ opencode stats              查看用量统计
 opencode auth list          查看已配提供商
 ```
 
-TUI 快捷键：
+TUI 内命令：
+
+| 命令 | 功能 |
+|------|------|
+| `/connect` | 配置模型供应商 |
+| `/models` | 选择模型 |
+| `/help` | 查看帮助 |
 
 | 按键 | 功能 |
 |------|------|
@@ -360,6 +416,12 @@ TUI 快捷键：
 
 ```bash
 npm update -g opencode-ai
+```
+
+或重装最新版：
+
+```bash
+npm install -g opencode-ai@latest
 ```
 
 Homebrew（macOS）：
@@ -386,8 +448,20 @@ brew uninstall opencode
 
 ## 清除配置
 
+**Windows：**
+
+```powershell
+Remove-Item "$env:USERPROFILE\.config\opencode" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item "$env:USERPROFILE\.local\share\opencode" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item "$env:APPDATA\opencode" -Recurse -Force -ErrorAction SilentlyContinue
+```
+
+**macOS / Linux / WSL：**
+
 ```bash
 rm -rf ~/.opencode
+rm -rf ~/.config/opencode
+rm -rf ~/.local/share/opencode
 ```
 
 ------
@@ -397,23 +471,28 @@ rm -rf ~/.opencode
 ## Windows + DeepSeek
 
 ```powershell
-# 安装
+# 安装 Node.js（如果没有）
+winget install OpenJS.NodeJS.LTS
+
+# 安装 OpenCode
 npm install -g opencode-ai
 
-# 配置（用你的 API Key 替换）
-mkdir ~/.opencode -Force
-vim ~/.opencode/opencode.json
-
+# 启动并配置
 opencode
+# 输入 /connect → 选 DeepSeek → 粘贴 API Key
 ```
 
 ## macOS / Linux / WSL + DeepSeek
 
 ```bash
+# 安装 Node.js（如果没有）
+# macOS: brew install node@20
+# Linux: sudo apt install nodejs npm
+
+# 安装 OpenCode
 npm install -g opencode-ai
 
-mkdir -p ~/.opencode
-vim ~/.opencode/opencode.json
-
+# 启动并配置
 opencode
+# 输入 /connect → 选 DeepSeek → 粘贴 API Key
 ```
