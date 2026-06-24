@@ -91,6 +91,11 @@ winget upgrade Anthropic.ClaudeCode
 
 WinGet 安装不会自动更新，需要手动升级。([Claude Code](https://code.claude.com/docs/en/quickstart))
 
+> ⚠️ **WinGet 也可能报 `InternetOpenUrl() failed. 0x80072efd`**
+>
+> WinGet 能找到包信息，但实际下载 `downloads.claude.ai` 时同样会被地区限制拦截，报 `0x80072efd` 网络错误。
+> 代理对 WinGet 不一定生效（WinGet 走系统代理的方式比较玄学），所以受限地区最稳的方案还是 **npm 安装**（见第六节）。
+
 ------
 
 # 三、macOS 安装 Claude Code
