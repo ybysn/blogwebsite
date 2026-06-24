@@ -1,0 +1,843 @@
+---
+title: "OpenCode + DeepSeek API 的全平台安装教程"
+date: "2026-06-24"
+description: "覆盖 Windows、macOS、Linux、WSL 全平台的 OpenCode 安装指南，包含 DeepSeek API 配置、v2rayN 本地代理配置、终端自动代理脚本与排错方法。"
+tags: ["OpenCode", "DeepSeek", "教程", "代理", "终端", "开发环境"]
+published: true
+lang: zh-CN
+category: "dev-tools"
+---
+
+OpenCode 是开源的 AI 编程助手，支持终端、桌面应用、IDE 插件、Web 等多种形态。GitHub 177K+ stars，兼容 75+ LLM 提供商，无地区限制。([OpenCode](https://opencode.ai))
+
+> 为什么不选 Claude Code？Claude Code 安装脚本会做地区检测，非支持地区返回 302 重定向而非安装脚本，导致 `irm https://claude.ai/install.ps1 | iex` 报一堆 PowerShell 语法错误、`winget` 下载 `downloads.claude.ai` 时报 `0x80072efd`。而 OpenCode 走 npm registry，全球无墙，安装零障碍。
+
+------
+
+# 一、Windows 安装 OpenCode
+
+OpenCode 需要 Node.js 18+。先检查：
+
+```powershell
+node -v
+npm -v
+```
+
+如果没有 Node.js，从 [nodejs.org](https://nodejs.org/) 下载安装。
+
+## 1. npm 安装（推荐）
+
+```powershell
+npm install -g opencode-ai
+```
+
+## 2. 验证安装
+
+```powershell
+opencode --version
+```
+
+> `opencode` 是 npm 全局安装的，自动在 PATH 中，不需要额外配置。
+
+## 3. 其他 Windows 安装方式
+
+```powershell
+# Chocolatey
+choco install opencode
+
+# Scoop
+scoop install opencode
+```
+
+------
+
+# 二、macOS 安装 OpenCode
+
+## 1. npm 安装
+
+```bash
+npm install -g opencode-ai
+```
+
+## 2. Homebrew 安装
+
+```bash
+brew install anomalyco/tap/opencode
+```
+
+> 推荐使用 anomalyco/tap，更新比官方 Homebrew formula 更及时。([OpenCode](https://opencode.ai/docs/))
+
+验证：
+
+```bash
+opencode --version
+```
+
+------
+
+# 三、Linux 安装 OpenCode
+
+```bash
+npm install -g opencode-ai
+```
+
+验证：
+
+```bash
+opencode --version
+```
+
+刷新 shell（如果找不到命令）：
+
+```bash
+source ~/.bashrc
+```
+
+------
+
+# 四、WSL 安装 OpenCode
+
+WSL 里按 Linux 方式安装：
+
+```bash
+npm install -g opencode-ai
+```
+
+验证：
+
+```bash
+opencode --version
+```
+
+------
+
+# 五、配置 OpenCode 接 DeepSeek API
+
+OpenCode 通过 `opencode.json` 配置提供商。项目级别放在项目根目录，全局级别放在 `~/.opencode/`。
+
+## 方案 A：项目级配置（推荐）
+
+在项目根目录创建 `opencode.json`：
+
+```bash
+# macOS / Linux / WSL
+vim opencode.json
+
+# Windows PowerShell
+vim opencode.json
+```
+
+写入：
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "deepseek": {
+      "options": {
+        "apiKey": "你的DeepSeek_API_Key"
+      }
+    }
+  }
+}
+```
+
+> ⚠️ 注意将 `apiKey` 替换为你的 DeepSeek API Key。`opencode.json` 文件建议加入 `.gitignore` 避免泄露密钥。
+
+DeepSeek 在 OpenCode 中原生支持，不需要指定 `baseURL`。([OpenCode Providers](https://opencode.ai/docs/providers/#deepseek))
+
+## 方案 B：环境变量配置
+
+```bash
+# macOS / Linux / WSL
+export DEEPSEEK_API_KEY=你的DeepSeek_API_Key
+
+# Windows PowerShell
+$env:DEEPSEEK_API_KEY="你的DeepSeek_API_Key"
+```
+
+启动：
+
+```bash
+opencode
+```
+
+## 方案 C：使用 OpenRouter 中转
+
+如果你的 DeepSeek API Key 来自 OpenRouter：
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "openrouter": {
+      "options": {
+        "apiKey": "你的OpenRouter_API_Key"
+      }
+    }
+  }
+}
+```
+
+------
+
+# 六、启动 OpenCode
+
+进入项目目录：
+
+```bash
+cd /path/to/my-project
+opencode
+```
+
+Windows 示例：
+
+```powershell
+cd E:\your-project
+opencode
+```
+
+OpenCode 启动后显示 TUI 界面，默认使用计划模式（Plan agent），可以先分析项目结构再动手。
+
+## 切换模式
+
+在 TUI 中按 `Tab` 在计划模式（plan）和构建模式（build）之间切换：
+- **Plan**：先分析、提问、制定计划
+- **Build**：直接执行代码修改
+
+## 一键执行
+
+跳过 TUI，直接执行任务：
+
+```bash
+opencode run "解释当前项目的目录结构和技术栈"
+opencode run "添加用户登录功能并写测试" --agent build
+```
+
+------
+
+# 七、常用命令
+
+在 OpenCode 内或终端：
+
+```text
+opencode run '...'          一键执行任务
+opencode -c                 继续上次会话
+opencode -s <session_id>    恢复指定会话
+opencode --model <model>    指定模型
+opencode session list       列出会话
+opencode stats              查看用量统计
+opencode auth list          查看已配提供商
+```
+
+TUI 快捷键：
+
+| 按键 | 功能 |
+|------|------|
+| `Enter` | 发送消息（可能需要按两次） |
+| `Tab` | 切换 Plan / Build 代理 |
+| `Ctrl+P` | 打开命令面板 |
+| `Ctrl+X M` | 切换模型 |
+| `Ctrl+X N` | 新会话 |
+| `Ctrl+X L` | 切换会话 |
+| `Ctrl+C` | 退出 |
+
+------
+
+# 八、更新 OpenCode
+
+```bash
+npm update -g opencode-ai
+```
+
+Homebrew（macOS）：
+
+```bash
+brew upgrade opencode
+```
+
+------
+
+# 九、卸载
+
+## npm
+
+```bash
+npm uninstall -g opencode-ai
+```
+
+## Homebrew
+
+```bash
+brew uninstall opencode
+```
+
+## 清除配置
+
+```bash
+rm -rf ~/.opencode
+```
+
+------
+
+# 十、终端自动代理配置
+
+目标：
+
+```text
+代理软件开启 → 终端自动使用代理
+代理软件关闭 → 终端自动清除代理
+代理软件重启 → 终端自动恢复代理
+```
+
+默认代理端口：
+
+```text
+127.0.0.1:10808
+```
+
+------
+
+## 10.1 Windows PowerShell 自动代理
+
+适用于：
+
+- Windows 10 / Windows 11
+- PowerShell
+- Windows Terminal
+- Tabby Windows 端
+- v2rayN
+
+### 1. 创建 PowerShell 配置文件
+
+```powershell
+if (!(Test-Path $PROFILE)) {
+    New-Item -ItemType File -Force $PROFILE | Out-Null
+}
+```
+
+### 2. 编辑 PowerShell 配置文件
+
+```powershell
+vim $PROFILE
+```
+
+### 3. 追加下面内容
+
+```powershell
+# ===== Auto Proxy for PowerShell =====
+$Global:AutoProxyHost = "127.0.0.1"
+$Global:AutoProxyPort = 10808
+$Global:AutoProxyUrl = "http://${Global:AutoProxyHost}:${Global:AutoProxyPort}"
+$Global:AutoProxyEnabled = $false
+
+function proxy_on {
+    $env:HTTP_PROXY = $Global:AutoProxyUrl
+    $env:HTTPS_PROXY = $Global:AutoProxyUrl
+    $env:ALL_PROXY = $Global:AutoProxyUrl
+
+    $env:http_proxy = $Global:AutoProxyUrl
+    $env:https_proxy = $Global:AutoProxyUrl
+    $env:all_proxy = $Global:AutoProxyUrl
+
+    $Global:AutoProxyEnabled = $true
+}
+
+function proxy_off {
+    Remove-Item Env:HTTP_PROXY -ErrorAction SilentlyContinue
+    Remove-Item Env:HTTPS_PROXY -ErrorAction SilentlyContinue
+    Remove-Item Env:ALL_PROXY -ErrorAction SilentlyContinue
+
+    Remove-Item Env:http_proxy -ErrorAction SilentlyContinue
+    Remove-Item Env:https_proxy -ErrorAction SilentlyContinue
+    Remove-Item Env:all_proxy -ErrorAction SilentlyContinue
+
+    $Global:AutoProxyEnabled = $false
+}
+
+function proxy_auto {
+    $proxyOnline = Test-NetConnection $Global:AutoProxyHost -Port $Global:AutoProxyPort -InformationLevel Quiet
+
+    if ($proxyOnline) {
+        if (-not $Global:AutoProxyEnabled) {
+            proxy_on
+        }
+    } else {
+        if ($Global:AutoProxyEnabled) {
+            proxy_off
+        }
+    }
+}
+
+function proxy_status {
+    $proxyOnline = Test-NetConnection $Global:AutoProxyHost -Port $Global:AutoProxyPort -InformationLevel Quiet
+
+    if ($proxyOnline) {
+        Write-Host "Proxy port is online: $Global:AutoProxyUrl"
+    } else {
+        Write-Host "Proxy port is offline"
+    }
+
+    Get-ChildItem Env: | Where-Object { $_.Name -match "proxy" }
+}
+
+function prompt {
+    proxy_auto
+    "PS $($executionContext.SessionState.Path.CurrentLocation)> "
+}
+
+proxy_auto
+# ===== Auto Proxy End =====
+```
+
+### 4. 重新加载配置
+
+```powershell
+. $PROFILE
+```
+
+### 5. 查看状态
+
+```powershell
+proxy_status
+```
+
+------
+
+## 10.2 macOS zsh 自动代理
+
+适用于：
+
+- macOS
+- Terminal
+- iTerm2
+- Tabby macOS 端
+- Clash
+- v2rayN / v2rayU / V2rayXS
+- sing-box
+
+### 1. 备份 zsh 配置
+
+```bash
+cp ~/.zshrc ~/.zshrc.backup.$(date +%Y%m%d-%H%M%S) 2>/dev/null || touch ~/.zshrc
+```
+
+### 2. 编辑 zsh 配置
+
+```bash
+vim ~/.zshrc
+```
+
+### 3. 追加下面内容
+
+```bash
+# ===== Auto Proxy for macOS zsh =====
+__AUTO_PROXY_HOST="127.0.0.1"
+__AUTO_PROXY_PORT="10808"
+__AUTO_PROXY_URL="http://${__AUTO_PROXY_HOST}:${__AUTO_PROXY_PORT}"
+__AUTO_PROXY_ENABLED="0"
+
+proxy_on() {
+  export HTTP_PROXY="$__AUTO_PROXY_URL"
+  export HTTPS_PROXY="$__AUTO_PROXY_URL"
+  export ALL_PROXY="$__AUTO_PROXY_URL"
+
+  export http_proxy="$__AUTO_PROXY_URL"
+  export https_proxy="$__AUTO_PROXY_URL"
+  export all_proxy="$__AUTO_PROXY_URL"
+
+  __AUTO_PROXY_ENABLED="1"
+}
+
+proxy_off() {
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+
+  __AUTO_PROXY_ENABLED="0"
+}
+
+proxy_auto() {
+  if nc -z -G 1 "$__AUTO_PROXY_HOST" "$__AUTO_PROXY_PORT" >/dev/null 2>&1; then
+    if [ "$__AUTO_PROXY_ENABLED" != "1" ]; then
+      proxy_on
+    fi
+  else
+    if [ "$__AUTO_PROXY_ENABLED" != "0" ]; then
+      proxy_off
+    fi
+  fi
+}
+
+proxy_status() {
+  if nc -z -G 1 "$__AUTO_PROXY_HOST" "$__AUTO_PROXY_PORT" >/dev/null 2>&1; then
+    echo "Proxy port is online: $__AUTO_PROXY_URL"
+  else
+    echo "Proxy port is offline"
+  fi
+
+  env | grep -i proxy
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd proxy_auto
+
+proxy_auto
+# ===== Auto Proxy End =====
+```
+
+### 4. 重新加载配置
+
+```bash
+source ~/.zshrc
+```
+
+### 5. 查看状态
+
+```bash
+proxy_status
+```
+
+------
+
+## 10.3 Linux bash 自动代理
+
+适用于：
+
+- Ubuntu
+- Debian
+- Fedora
+- Arch
+- Linux bash
+- Tabby Linux 端
+
+### 1. 备份 bash 配置
+
+```bash
+cp ~/.bashrc ~/.bashrc.backup.$(date +%Y%m%d-%H%M%S) 2>/dev/null || touch ~/.bashrc
+```
+
+### 2. 编辑 bash 配置
+
+```bash
+vim ~/.bashrc
+```
+
+### 3. 追加下面内容
+
+```bash
+# ===== Auto Proxy for Linux bash =====
+__AUTO_PROXY_HOST="127.0.0.1"
+__AUTO_PROXY_PORT="10808"
+__AUTO_PROXY_URL="http://${__AUTO_PROXY_HOST}:${__AUTO_PROXY_PORT}"
+__AUTO_PROXY_ENABLED="0"
+
+proxy_on() {
+  export HTTP_PROXY="$__AUTO_PROXY_URL"
+  export HTTPS_PROXY="$__AUTO_PROXY_URL"
+  export ALL_PROXY="$__AUTO_PROXY_URL"
+
+  export http_proxy="$__AUTO_PROXY_URL"
+  export https_proxy="$__AUTO_PROXY_URL"
+  export all_proxy="$__AUTO_PROXY_URL"
+
+  __AUTO_PROXY_ENABLED="1"
+}
+
+proxy_off() {
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+
+  __AUTO_PROXY_ENABLED="0"
+}
+
+proxy_auto() {
+  timeout 1 bash -c "cat < /dev/null > /dev/tcp/${__AUTO_PROXY_HOST}/${__AUTO_PROXY_PORT}" >/dev/null 2>&1
+
+  if [ "$?" = "0" ]; then
+    if [ "$__AUTO_PROXY_ENABLED" != "1" ]; then
+      proxy_on
+    fi
+  else
+    if [ "$__AUTO_PROXY_ENABLED" != "0" ]; then
+      proxy_off
+    fi
+  fi
+}
+
+proxy_status() {
+  timeout 1 bash -c "cat < /dev/null > /dev/tcp/${__AUTO_PROXY_HOST}/${__AUTO_PROXY_PORT}" >/dev/null 2>&1
+
+  if [ "$?" = "0" ]; then
+    echo "Proxy port is online: $__AUTO_PROXY_URL"
+  else
+    echo "Proxy port is offline"
+  fi
+
+  env | grep -i proxy
+}
+
+PROMPT_COMMAND="proxy_auto${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+
+proxy_auto
+# ===== Auto Proxy End =====
+```
+
+### 4. 重新加载配置
+
+```bash
+source ~/.bashrc
+```
+
+### 5. 查看状态
+
+```bash
+proxy_status
+```
+
+------
+
+## 10.4 Linux zsh 自动代理
+
+适用于：
+
+- Linux zsh
+- Oh My Zsh
+- Tabby Linux 端
+
+### 1. 备份 zsh 配置
+
+```bash
+cp ~/.zshrc ~/.zshrc.backup.$(date +%Y%m%d-%H%M%S) 2>/dev/null || touch ~/.zshrc
+```
+
+### 2. 编辑 zsh 配置
+
+```bash
+vim ~/.zshrc
+```
+
+### 3. 追加下面内容
+
+```bash
+# ===== Auto Proxy for Linux zsh =====
+__AUTO_PROXY_HOST="127.0.0.1"
+__AUTO_PROXY_PORT="10808"
+__AUTO_PROXY_URL="http://${__AUTO_PROXY_HOST}:${__AUTO_PROXY_PORT}"
+__AUTO_PROXY_ENABLED="0"
+
+proxy_on() {
+  export HTTP_PROXY="$__AUTO_PROXY_URL"
+  export HTTPS_PROXY="$__AUTO_PROXY_URL"
+  export ALL_PROXY="$__AUTO_PROXY_URL"
+
+  export http_proxy="$__AUTO_PROXY_URL"
+  export https_proxy="$__AUTO_PROXY_URL"
+  export all_proxy="$__AUTO_PROXY_URL"
+
+  __AUTO_PROXY_ENABLED="1"
+}
+
+proxy_off() {
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+
+  __AUTO_PROXY_ENABLED="0"
+}
+
+proxy_auto() {
+  timeout 1 bash -c "cat < /dev/null > /dev/tcp/${__AUTO_PROXY_HOST}/${__AUTO_PROXY_PORT}" >/dev/null 2>&1
+
+  if [ "$?" = "0" ]; then
+    if [ "$__AUTO_PROXY_ENABLED" != "1" ]; then
+      proxy_on
+    fi
+  else
+    if [ "$__AUTO_PROXY_ENABLED" != "0" ]; then
+      proxy_off
+    fi
+  fi
+}
+
+proxy_status() {
+  timeout 1 bash -c "cat < /dev/null > /dev/tcp/${__AUTO_PROXY_HOST}/${__AUTO_PROXY_PORT}" >/dev/null 2>&1
+
+  if [ "$?" = "0" ]; then
+    echo "Proxy port is online: $__AUTO_PROXY_URL"
+  else
+    echo "Proxy port is offline"
+  fi
+
+  env | grep -i proxy
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd proxy_auto
+
+proxy_auto
+# ===== Auto Proxy End =====
+```
+
+### 4. 重新加载配置
+
+```bash
+source ~/.zshrc
+```
+
+### 5. 查看状态
+
+```bash
+proxy_status
+```
+
+------
+
+## 10.5 WSL 自动代理
+
+适用于：
+
+- Windows 11
+- WSL Ubuntu
+- WSL Debian
+- Windows 主机运行 v2rayN
+- WSL 内使用 OpenCode
+
+WSL 里访问 Windows 主机代理，推荐使用 Windows 主机 IP，而不是固定写 `127.0.0.1`。
+
+### 1. 备份 WSL bash 配置
+
+```bash
+cp ~/.bashrc ~/.bashrc.backup.$(date +%Y%m%d-%H%M%S) 2>/dev/null || touch ~/.bashrc
+```
+
+### 2. 编辑 WSL bash 配置
+
+```bash
+vim ~/.bashrc
+```
+
+### 3. 追加下面内容
+
+```bash
+# ===== Auto Proxy for WSL =====
+__AUTO_PROXY_PORT="10808"
+__AUTO_PROXY_ENABLED="0"
+
+__get_windows_host() {
+  local host
+  host=$(grep -oP 'nameserver \K\S+' /etc/resolv.conf 2>/dev/null | head -1)
+  echo "${host:-127.0.0.1}"
+}
+
+__AUTO_PROXY_HOST=$(__get_windows_host)
+__AUTO_PROXY_URL="http://${__AUTO_PROXY_HOST}:${__AUTO_PROXY_PORT}"
+
+proxy_on() {
+  export HTTP_PROXY="$__AUTO_PROXY_URL"
+  export HTTPS_PROXY="$__AUTO_PROXY_URL"
+  export ALL_PROXY="$__AUTO_PROXY_URL"
+
+  export http_proxy="$__AUTO_PROXY_URL"
+  export https_proxy="$__AUTO_PROXY_URL"
+  export all_proxy="$__AUTO_PROXY_URL"
+
+  __AUTO_PROXY_ENABLED="1"
+}
+
+proxy_off() {
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+
+  __AUTO_PROXY_ENABLED="0"
+}
+
+proxy_auto() {
+  timeout 1 bash -c "cat < /dev/null > /dev/tcp/${__AUTO_PROXY_HOST}/${__AUTO_PROXY_PORT}" >/dev/null 2>&1
+
+  if [ "$?" = "0" ]; then
+    if [ "$__AUTO_PROXY_ENABLED" != "1" ]; then
+      proxy_on
+    fi
+  else
+    if [ "$__AUTO_PROXY_ENABLED" != "0" ]; then
+      proxy_off
+    fi
+  fi
+}
+
+proxy_status() {
+  timeout 1 bash -c "cat < /dev/null > /dev/tcp/${__AUTO_PROXY_HOST}/${__AUTO_PROXY_PORT}" >/dev/null 2>&1
+
+  if [ "$?" = "0" ]; then
+    echo "Proxy port is online: $__AUTO_PROXY_URL"
+  else
+    echo "Proxy port is offline"
+  fi
+
+  env | grep -i proxy
+}
+
+PROMPT_COMMAND="proxy_auto${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+
+proxy_auto
+# ===== Auto Proxy End =====
+```
+
+### 4. 重新加载配置
+
+```bash
+source ~/.bashrc
+```
+
+### 5. 查看状态
+
+```bash
+proxy_status
+```
+
+------
+
+# 最短安装路径
+
+## Windows + DeepSeek
+
+```powershell
+# 安装
+npm install -g opencode-ai
+
+# 配置（用你的 API Key 替换）
+mkdir ~/.opencode -Force
+vim ~/.opencode/opencode.json
+
+opencode
+```
+
+## macOS / Linux / WSL + DeepSeek
+
+```bash
+npm install -g opencode-ai
+
+mkdir -p ~/.opencode
+vim ~/.opencode/opencode.json
+
+opencode
+```
