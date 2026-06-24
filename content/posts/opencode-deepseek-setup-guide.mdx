@@ -14,16 +14,87 @@ OpenCode 是开源的 AI 编程助手，支持终端、桌面应用、IDE 插件
 
 ------
 
-# 一、Windows 安装 OpenCode
+# 零、安装 Node.js
 
-OpenCode 需要 Node.js 18+。先检查：
+OpenCode 依赖 Node.js 18+，先装环境。
+
+## Windows
+
+去 [nodejs.org](https://nodejs.org/) 下载 LTS 版安装包（`.msi`），双击安装，一路 Next。安装时勾选 **"Automatically install the necessary tools"**。
+
+安装完成后**重新打开 PowerShell**，验证：
 
 ```powershell
 node -v
 npm -v
 ```
 
-如果没有 Node.js，从 [nodejs.org](https://nodejs.org/) 下载安装。
+> 如果提示 `node` 不是可识别的命令，说明安装时没勾"Add to PATH"，重新运行安装程序选 Repair 即可。
+
+也可以通过包管理器安装：
+
+```powershell
+# winget（Windows 11 自带）
+winget install OpenJS.NodeJS.LTS
+
+# Chocolatey
+choco install nodejs-lts
+```
+
+## macOS
+
+```bash
+# Homebrew（推荐）
+brew install node@20
+
+# 或者去 nodejs.org 下载 .pkg 安装包
+```
+
+验证：
+
+```bash
+node -v
+npm -v
+```
+
+## Linux
+
+```bash
+# Ubuntu / Debian
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Fedora
+sudo dnf install nodejs
+
+# Arch
+sudo pacman -S nodejs npm
+```
+
+验证：
+
+```bash
+node -v
+npm -v
+```
+
+## WSL
+
+WSL 里按 Linux 方式安装（Ubuntu 最常见）：
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+node -v
+npm -v
+```
+
+------
+
+# 一、Windows 安装 OpenCode
+
+确保已安装 Node.js 18+（见上文「零、安装 Node.js」）。
 
 ## 1. npm 安装（推荐）
 
@@ -53,6 +124,8 @@ scoop install opencode
 
 # 二、macOS 安装 OpenCode
 
+确保已安装 Node.js 18+（见上文「零、安装 Node.js」）。
+
 ## 1. npm 安装
 
 ```bash
@@ -77,6 +150,8 @@ opencode --version
 
 # 三、Linux 安装 OpenCode
 
+确保已安装 Node.js 18+（见上文「零、安装 Node.js」）。
+
 ```bash
 npm install -g opencode-ai
 ```
@@ -96,6 +171,8 @@ source ~/.bashrc
 ------
 
 # 四、WSL 安装 OpenCode
+
+确保已安装 Node.js 18+（见上文「零、安装 Node.js」）。
 
 WSL 里按 Linux 方式安装：
 
