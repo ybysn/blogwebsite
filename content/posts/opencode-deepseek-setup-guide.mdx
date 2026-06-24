@@ -78,6 +78,37 @@ node -v
 npm -v
 ```
 
+## 检查 PATH
+
+安装后如果 `node` 命令找不到，说明没加入 PATH，手动加：
+
+**Linux / WSL：**
+
+```bash
+# 查看 node 安装位置
+which node || find /usr -name node -type f 2>/dev/null | head -1
+
+# 如果 which 为空，说明不在 PATH 中，手动添加到 ~/.bashrc
+echo 'export PATH="/usr/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+**Windows（winget / choco 安装）：**
+
+```powershell
+# 查看安装位置
+where.exe node
+
+# 如果找不到，重新打开 PowerShell 或手动加 PATH
+[Environment]::SetEnvironmentVariable(
+    "Path",
+    "$env:Path;C:\Program Files\nodejs",
+    "User"
+)
+```
+
+> 用 `.msi` 安装包安装时勾选"Add to PATH"可避免此问题。Homebrew（macOS）会自动配置 PATH，一般不需要手动处理。
+
 ## WSL
 
 WSL 里按 Linux 方式安装（Ubuntu 最常见）：
