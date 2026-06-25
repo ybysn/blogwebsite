@@ -6,6 +6,7 @@ tags: ["SSL", "TLS", "HTTPS", "安全", "证书", "Let's Encrypt", "教程"]
 published: true
 lang: zh-CN
 category: "server-infra"
+ogImage: "/images/posts/tls-handshake.svg"
 ---
 
 原文来源：[SSL/TLS Certificates Explained: How HTTPS Actually Works](https://www.samnet.dev/learn/networking/ssl-certificates-explained/)
@@ -104,11 +105,7 @@ SSL 证书是一种包含以下内容的数字文档：
 
 浏览器并不直接信任单个证书，而是信任一组根证书颁发机构。证书链的工作原理如下：
 
-```
-Root CA（受浏览器/操作系统信任）
-  └── Intermediate CA（由 Root CA 签名）
-       └── 你的证书（由 Intermediate CA 签名）
-```
+![SSL/TLS 证书信任链](/images/posts/certificate-chain.svg)
 
 当你的服务器提供其证书时，它也会发送中间证书。你的浏览器会沿着证书链一直查找受信任的根证书颁发机构 (CA)。如果链中的任何环节缺失或无效，你就会收到证书错误。
 

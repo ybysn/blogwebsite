@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" font-family="monospace">
+  <defs>
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Arrowhead -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#6b7280"/>
+    </marker>
+
+    <!-- Shadows -->
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="620" fill="#fafafa"/>
+  <rect width="800" height="620" fill="url(#grid)"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#111827">OpenCode + DeepSeek API 全平台安装流程</text>
+
+  <!-- Step labels (left side) -->
+  <g font-size="11" fill="#9ca3af" text-anchor="end">
+    <text x="62" y="117">① 平台选择</text>
+    <text x="62" y="195">② 前置环境</text>
+    <text x="62" y="273">③ 安装 CLI</text>
+    <text x="62" y="351">④ 配置连接</text>
+    <text x="62" y="429">⑤ API 服务</text>
+    <text x="62" y="507">⑥ 就绪</text>
+  </g>
+
+  <!-- Row 1: Platform boxes -->
+  <!-- Windows -->
+  <rect x="100" y="90" width="135" height="52" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="167" y="113" text-anchor="middle" font-size="12" font-weight="bold" fill="#155e75">⊞ Windows</text>
+  <text x="167" y="131" text-anchor="middle" font-size="9" fill="#6b7280">winget · choco</text>
+
+  <!-- macOS -->
+  <rect x="260" y="90" width="135" height="52" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="327" y="113" text-anchor="middle" font-size="12" font-weight="bold" fill="#155e75">⌘ macOS</text>
+  <text x="327" y="131" text-anchor="middle" font-size="9" fill="#6b7280">brew · .pkg</text>
+
+  <!-- Linux -->
+  <rect x="420" y="90" width="135" height="52" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="487" y="113" text-anchor="middle" font-size="12" font-weight="bold" fill="#155e75">🐧 Linux</text>
+  <text x="487" y="131" text-anchor="middle" font-size="9" fill="#6b7280">apt · dnf · pacman</text>
+
+  <!-- WSL -->
+  <rect x="580" y="90" width="135" height="52" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="647" y="113" text-anchor="middle" font-size="12" font-weight="bold" fill="#155e75">🐚 WSL</text>
+  <text x="647" y="131" text-anchor="middle" font-size="9" fill="#6b7280">Ubuntu · Debian</text>
+
+  <!-- Arrows: platforms → Node.js -->
+  <line x1="167" y1="142" x2="167" y2="160" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="327" y1="142" x2="327" y2="160" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="487" y1="142" x2="487" y2="160" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="647" y1="142" x2="647" y2="160" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Merge lines -->
+  <line x1="167" y1="160" x2="647" y2="160" stroke="#6b7280" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="400" y1="160" x2="400" y2="170" stroke="#6b7280" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Row 2: Node.js (emerald) -->
+  <rect x="180" y="172" width="440" height="44" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="400" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#065f46">安装 Node.js 18+</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="216" x2="400" y2="242" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row 3: npm install (violet) -->
+  <rect x="200" y="244" width="400" height="44" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="400" y="270" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">npm install -g opencode-ai</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="288" x2="400" y2="314" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row 4: Configure (amber) -->
+  <rect x="180" y="316" width="440" height="44" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="400" y="338" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">opencode 启动 → /connect → 选择 DeepSeek</text>
+  <text x="400" y="353" text-anchor="middle" font-size="10" fill="#6b7280">TUI 交互式配置，自动保存凭据</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="360" x2="400" y2="386" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row 5: DeepSeek API (rose) -->
+  <rect x="230" y="388" width="340" height="44" rx="8" fill="#ffffff" stroke="#e11d48" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="400" y="410" text-anchor="middle" font-size="13" font-weight="bold" fill="#be123c">DeepSeek API</text>
+  <text x="400" y="425" text-anchor="middle" font-size="9" fill="#6b7280">api.deepseek.com · 兼容 OpenAI SDK</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="432" x2="400" y2="458" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row 6: Result (emerald) -->
+  <rect x="200" y="460" width="400" height="52" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="485" text-anchor="middle" font-size="15" font-weight="bold" fill="#065f46">✓ AI 编程助手就绪</text>
+  <text x="400" y="503" text-anchor="middle" font-size="10" fill="#6b7280">Plan 计划模式 · Build 构建模式 · 75+ LLM 提供商</text>
+
+  <!-- Footer note -->
+  <text x="400" y="590" text-anchor="middle" font-size="10" fill="#d1d5db">OpenCode · DeepSeek · 全平台 · 零障碍</text>
+</svg>
