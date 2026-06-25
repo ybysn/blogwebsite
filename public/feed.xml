@@ -4,11 +4,37 @@
         <title>凌's Blog</title>
         <link>https://blog.ybysn.org</link>
         <description>A personal blog about technology and more.</description>
-        <lastBuildDate>Mon, 22 Jun 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 25 Jun 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2026</copyright>
+        <item>
+            <title><![CDATA[CI/CD 在 AI Agent 上的核心作用：从自动部署到自动验收]]></title>
+            <link>https://blog.ybysn.org/posts/cicd-aiagent-workflow</link>
+            <guid isPermaLink="false">https://blog.ybysn.org/posts/cicd-aiagent-workflow</guid>
+            <pubDate>Thu, 25 Jun 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[CI/CD 对 AI Agent 最大的价值不是自动部署，而是给 AI 写代码加一层自动验收系统。本文详细讲解 AI Agent + CI/CD 的典型流程、GitHub Actions 配置示例，以及如何在 Agent 项目中加入约束规则。]]></description>
+            <category>CI/CD</category>
+            <category>AI Agent</category>
+            <category>GitHub Actions</category>
+            <category>自动化</category>
+            <category>DevOps</category>
+            <category>教程</category>
+        </item>
+        <item>
+            <title><![CDATA[OpenCode + DeepSeek API 的全平台安装教程]]></title>
+            <link>https://blog.ybysn.org/posts/opencode-deepseek-setup-guide</link>
+            <guid isPermaLink="false">https://blog.ybysn.org/posts/opencode-deepseek-setup-guide</guid>
+            <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[覆盖 Windows、macOS、Linux、WSL 全平台的 OpenCode 安装指南，包含 DeepSeek API 配置、v2rayN 本地代理配置、终端自动代理脚本与排错方法。]]></description>
+            <category>OpenCode</category>
+            <category>DeepSeek</category>
+            <category>教程</category>
+            <category>代理</category>
+            <category>终端</category>
+            <category>开发环境</category>
+        </item>
         <item>
             <title><![CDATA[Cloudflare 全家桶实战：从博客托管到内网穿透]]></title>
             <link>https://blog.ybysn.org/posts/cloudflare-full-stack-guide</link>
@@ -36,19 +62,6 @@
             <category>代理</category>
             <category>Xray</category>
             <category>CDN</category>
-        </item>
-        <item>
-            <title><![CDATA[Claude Code 命令行版 + DeepSeek API 的全平台安装教程]]></title>
-            <link>https://blog.ybysn.org/posts/claude-code-deepseek-setup-guide</link>
-            <guid isPermaLink="false">https://blog.ybysn.org/posts/claude-code-deepseek-setup-guide</guid>
-            <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[覆盖 Windows、macOS、Linux、WSL 全平台的 Claude Code 安装指南，包含 DeepSeek API 配置、v2rayN 本地代理配置、终端自动代理脚本与排错方法。]]></description>
-            <category>Claude Code</category>
-            <category>DeepSeek</category>
-            <category>教程</category>
-            <category>代理</category>
-            <category>终端</category>
-            <category>开发环境</category>
         </item>
         <item>
             <title><![CDATA[Cloudflare 配置指南：DNS、SSL、CDN 与安全防护]]></title>

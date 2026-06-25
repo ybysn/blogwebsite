@@ -1,4 +1,5 @@
 ---
+ogImage: "/images/posts/cloudflare-cdn-arch.svg"
 title: "Cloudflare 配置指南：DNS、SSL、CDN 与安全防护"
 date: "2026-05-31"
 description: "从零配置 Cloudflare 的完整指南，涵盖域名添加、DNS 记录管理、SSL/TLS 加密模式选择、缓存优化、WAF 防火墙规则以及代理流量 CDN 兼容方案。"
@@ -18,6 +19,9 @@ category: "network-proxy"
 > **快速上手：** 打开 dash.cloudflare.com → 添加站点 → 输入你的域名 → 选择 Free 套餐 → Cloudflare 会分配两个 Nameserver → 去域名注册商处修改 Nameserver → 等待生效（5 分钟到 24 小时）。生效后，将 SSL/TLS 设为 **Full (Strict)** 并开启 **Always Use HTTPS**。
 
 > **需要 VPS 吗？** [Vultr](https://www.vultr.com/?ref=9891619)（免费额度）、[DigitalOcean](https://m.do.co/c/0faa855ea85d)（$200 免费额度）或 [RackNerd](https://my.racknerd.com/aff.php?aff=19190)（便宜年付套餐）。
+
+
+![Cloudflare CDN/DNS 代理架构](/images/posts/cloudflare-cdn-arch.svg)
 
 ## 第一步：添加域名
 
