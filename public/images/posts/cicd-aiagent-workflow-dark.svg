@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580">
+  <defs>
+    <marker id="arrow-user" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrow-agent" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrow-git" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrow-pipeline" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-fail" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185"/>
+    </marker>
+    <marker id="arrow-pass" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
+    </marker>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="580" fill="#020617"/>
+  <rect width="1000" height="580" fill="url(#grid)"/>
+
+  <!-- Title -->
+  <text x="500" y="28" fill="white" font-family="monospace" font-size="16" font-weight="bold" text-anchor="middle">CI/CD + AIAgent 工作流</text>
+
+  <!-- Row 1: User -> Agent -> Git -->
+  <!-- User -->
+  <rect x="60" y="48" width="180" height="55" rx="8" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+  <rect x="60" y="48" width="180" height="55" rx="8" fill="rgba(30, 41, 59, 0.40)" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="150" y="70" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">用户</text>
+  <text x="150" y="86" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">下达任务</text>
+
+  <line x1="245" y1="75" x2="322" y2="75" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow-user)"/>
+
+  <!-- AI Agent -->
+  <rect x="330" y="48" width="340" height="55" rx="8" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+  <rect x="330" y="48" width="340" height="55" rx="8" fill="rgba(8, 51, 68, 0.35)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="500" y="70" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">AI Agent</text>
+  <text x="500" y="86" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">理解需求 → 修改代码 → 本地自检</text>
+
+  <line x1="675" y1="75" x2="752" y2="75" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrow-agent)"/>
+
+  <!-- Git Push -->
+  <rect x="760" y="48" width="180" height="55" rx="8" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+  <rect x="760" y="48" width="180" height="55" rx="8" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="850" y="70" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Git Push</text>
+  <text x="850" y="86" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">触发 CI</text>
+
+  <!-- Down arrow to pipeline -->
+  <line x1="850" y1="103" x2="850" y2="142" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-git)"/>
+
+  <!-- GitHub Actions Boundary -->
+  <rect x="40" y="150" width="920" height="250" rx="12" fill="rgba(52, 211, 153, 0.03)" stroke="#34d399" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="60" y="172" fill="#34d399" font-family="monospace" font-size="13" font-weight="bold">GitHub Actions CI Pipeline</text>
+
+  <!-- Pipeline stages -->
+  <!-- Install -->
+  <rect x="65" y="192" width="145" height="55" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="65" y="192" width="145" height="55" rx="8" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="137" y="214" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Install</text>
+  <text x="137" y="232" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">安装依赖</text>
+
+  <line x1="215" y1="219" x2="242" y2="219" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-pipeline)"/>
+
+  <!-- Lint -->
+  <rect x="250" y="192" width="145" height="55" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="250" y="192" width="145" height="55" rx="8" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="322" y="214" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Lint</text>
+  <text x="322" y="232" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">代码规范</text>
+
+  <line x1="400" y1="219" x2="427" y2="219" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-pipeline)"/>
+
+  <!-- TypeCheck -->
+  <rect x="435" y="192" width="145" height="55" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="435" y="192" width="145" height="55" rx="8" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="507" y="214" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">TypeCheck</text>
+  <text x="507" y="232" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">类型检查</text>
+
+  <line x1="585" y1="219" x2="612" y2="219" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-pipeline)"/>
+
+  <!-- Test -->
+  <rect x="620" y="192" width="145" height="55" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="620" y="192" width="145" height="55" rx="8" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="692" y="214" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Test</text>
+  <text x="692" y="232" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">单元测试</text>
+
+  <line x1="770" y1="219" x2="797" y2="219" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-pipeline)"/>
+
+  <!-- Build -->
+  <rect x="805" y="192" width="145" height="55" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="805" y="192" width="145" height="55" rx="8" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="877" y="214" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">Build</text>
+  <text x="877" y="232" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">构建验证</text>
+
+  <!-- Split to outcomes -->
+  <line x1="877" y1="247" x2="877" y2="275" stroke="#34d399" stroke-width="1.5"/>
+  <line x1="877" y1="275" x2="370" y2="275" stroke="#34d399" stroke-width="1.5"/>
+  <line x1="370" y1="275" x2="370" y2="295" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-pass)"/>
+
+  <line x1="877" y1="275" x2="630" y2="275" stroke="#34d399" stroke-width="1.5"/>
+  <line x1="630" y1="275" x2="630" y2="295" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arrow-fail)"/>
+
+  <!-- Pass outcome -->
+  <rect x="220" y="300" width="300" height="50" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="220" y="300" width="300" height="50" rx="8" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="370" y="322" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">✅ CI 通过</text>
+  <text x="370" y="340" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">自动部署 (Vercel / Netlify / VPS)</text>
+
+  <!-- Fail outcome -->
+  <rect x="540" y="300" width="280" height="50" rx="8" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
+  <rect x="540" y="300" width="280" height="50" rx="8" fill="rgba(136, 19, 55, 0.30)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="680" y="322" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">❌ CI 失败</text>
+  <text x="680" y="340" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">AI 读日志 → 定位原因 → 修复</text>
+
+  <!-- Feedback arrow back to AI Agent -->
+  <path d="M 540 325 L 60 325 L 60 75 L 322 75" fill="none" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow-fail)"/>
+  <text x="290" y="318" fill="#fb7185" font-family="monospace" font-size="10" text-anchor="middle">失败反馈循环</text>
+
+  <!-- Legend -->
+  <rect x="40" y="400" width="920" height="110" rx="10" fill="rgba(15, 23, 42, 0.7)" stroke="#1e293b" stroke-width="1"/>
+
+  <text x="500" y="420" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">图例</text>
+
+  <!-- Row 1: boxes -->
+  <rect x="70" y="436" width="18" height="12" rx="3" fill="#0f172a" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="70" y="436" width="18" height="12" rx="3" fill="rgba(30, 41, 59, 0.40)" stroke="#94a3b8" stroke-width="1"/>
+  <text x="94" y="447" fill="white" font-family="monospace" font-size="10">用户输入</text>
+
+  <rect x="180" y="436" width="18" height="12" rx="3" fill="rgba(8, 51, 68, 0.35)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="204" y="447" fill="white" font-family="monospace" font-size="10">AI Agent</text>
+
+  <rect x="300" y="436" width="18" height="12" rx="3" fill="rgba(76, 29, 149, 0.25)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="324" y="447" fill="white" font-family="monospace" font-size="10">Git 操作</text>
+
+  <rect x="430" y="436" width="18" height="12" rx="3" fill="rgba(6, 78, 59, 0.30)" stroke="#34d399" stroke-width="1"/>
+  <text x="454" y="447" fill="white" font-family="monospace" font-size="10">CI 检查阶段</text>
+
+  <rect x="580" y="436" width="18" height="12" rx="3" fill="rgba(136, 19, 55, 0.30)" stroke="#fb7185" stroke-width="1"/>
+  <text x="604" y="447" fill="white" font-family="monospace" font-size="10">CI 失败</text>
+
+  <!-- Row 2: lines -->
+  <line x1="70" y1="470" x2="100" y2="470" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="106" y="475" fill="white" font-family="monospace" font-size="10">失败反馈路径</text>
+
+  <line x1="280" y1="470" x2="310" y2="470" stroke="#34d399" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="316" y="475" fill="white" font-family="monospace" font-size="10">GitHub Actions 边界</text>
+
+  <!-- Row 3: principles -->
+  <text x="500" y="498" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">核心原则：AI 不靠"感觉写好了"，必须通过自动化检查才算完成</text>
+</svg>

@@ -1,0 +1,313 @@
+---
+title: "CI/CD 在 AI Agent 上的核心作用：从自动部署到自动验收"
+date: "2026-06-25"
+description: "CI/CD 对 AI Agent 最大的价值不是自动部署，而是给 AI 写代码加一层自动验收系统。本文详细讲解 AI Agent + CI/CD 的典型流程、GitHub Actions 配置示例，以及如何在 Agent 项目中加入约束规则。"
+tags: ["CI/CD", "AI Agent", "GitHub Actions", "自动化", "DevOps", "教程"]
+published: true
+lang: zh-CN
+category: "dev-tools"
+ogImage: "/images/posts/cicd-aiagent-workflow.svg"
+---
+
+CI/CD 对 AI Agent 最大的价值不是"自动部署"，而是给 AI 写代码加一层**自动验收系统**。
+
+在没有 CI 的时候，AI 经常会改了 A 模块弄坏 B 模块、修了前端但后端接口坏了、删了报错代码但功能也没了。你不得不手动检查每一个改动，回归成本极高。
+
+有了 CI/CD 之后，职责就清晰了：
+
+- **AI Agent 负责**：理解需求 → 修改代码 → 提交变更 → 根据 CI 日志修复问题
+- **CI/CD 负责**：安装依赖 → 代码检查 → 类型检查 → 测试 → 构建 → 部署
+
+最终目标是：**AI 不再靠"感觉写好了"，必须通过自动化检查才算完成。**
+
+![CI/CD + AIAgent 工作流](/images/posts/cicd-aiagent-workflow.svg)
+
+---
+
+## 一、AI Agent + CI/CD 的典型流程
+
+### 1. 用户下达任务
+
+给 AI Agent 的指令要明确包含验收条件：
+
+> 修复商品详情页加载失败的问题，完成后确保测试和构建通过。
+
+### 2. AI Agent 修改代码
+
+AI Agent 可以改动项目的任意部分——前端页面、后端接口、数据库逻辑、配置文件、测试文件——但必须遵循项目已有的架构约束。
+
+### 3. AI Agent 本地自检
+
+修改后，AI Agent 应先本地运行检查命令。
+
+前端项目：
+
+```bash
+npm install
+```
+
+```bash
+npm run lint
+```
+
+```bash
+npm run test
+```
+
+```bash
+npm run build
+```
+
+Python 项目：
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+pytest
+```
+
+```bash
+python -m compileall .
+```
+
+### 4. 推送到 GitHub
+
+提交后触发 GitHub Actions。使用语义化的分支名和 commit message：
+
+```bash
+git checkout -b fix/login-button
+```
+
+```bash
+git add .
+git commit -m "fix: repair login button click handler"
+git push origin fix/login-button
+```
+
+### 5. CI 自动检查
+
+CI 自动运行依赖安装、代码规范检查、单元测试、构建测试、安全扫描。
+
+### 6. CI 失败时，AI Agent 读取日志继续修复
+
+把报错日志直接发给 AI Agent：
+
+> 这是 GitHub Actions 报错日志，分析失败原因，只修复必要问题。
+
+这是 AI Agent 最高效的工作模式——因为日志是明确输入，比让 AI 猜问题可靠得多。
+
+### 7. CI 通过后自动部署
+
+部署到 Vercel、Netlify、Docker Server 或 VPS。
+
+---
+
+## 二、最适合 AI Agent 的 CI/CD 检查项
+
+对 AI 编程来说，建议至少配置这几类检查：
+
+| 检查项 | 作用 |
+|--------|------|
+| lint | 防止格式和基础语法问题 |
+| typecheck | 防止类型错误 |
+| test | 防止改坏已有功能 |
+| build | 防止项目无法打包 |
+| e2e | 防止页面流程坏掉 |
+| security scan | 检查依赖漏洞 |
+| deploy preview | 每次 PR 自动生成预览站点 |
+
+---
+
+## 三、GitHub Actions 示例：前端项目
+
+在项目根目录创建 workflow 文件：
+
+```bash
+mkdir -p .github/workflows
+```
+
+创建 `.github/workflows/ci.yml`：
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+```
+
+对应 `package.json` 里需要有：
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "vite build"
+  }
+}
+```
+
+---
+
+## 四、GitHub Actions 示例：Python 项目
+
+创建 `.github/workflows/ci.yml`：
+
+```yaml
+name: Python CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+
+      - name: Syntax check
+        run: python -m compileall .
+```
+
+---
+
+## 五、AI Agent 项目中应该加的约束
+
+在 `CLAUDE.md`、`AGENTS.md` 或你的 Agent 约束文件里加入：
+
+```markdown
+## CI/CD 工作规则
+
+1. 每次修改代码后，必须先本地运行项目已有的检查命令。
+2. 优先运行：
+   - npm run lint
+   - npm run typecheck
+   - npm run test
+   - npm run build
+3. 如果某个命令不存在，不要擅自新增复杂工具链，先说明缺失。
+4. 修复 CI 报错时，只修复导致失败的最小问题。
+5. 不允许为了通过 CI 删除测试、跳过检查、关闭类型检查或降低规则强度。
+6. 每次提交前必须说明：
+   - 修改了什么
+   - 为什么这样改
+   - 已运行哪些检查
+   - 是否还有未解决问题
+```
+
+---
+
+## 六、AI Agent 最佳工作模式
+
+关键原则：**不要让 AI Agent 直接"完成项目"。让它完成一个小任务，然后必须通过 CI。**
+
+好的指令示例：
+
+> 修复登录页按钮无响应的问题。
+>
+> 要求：
+> 1. 只改必要代码；
+> 2. 不重构无关模块；
+> 3. 修改后运行 lint、typecheck、build；
+> 4. 如果 CI 失败，只根据日志修复失败原因；
+> 5. 输出修改摘要和验证结果。
+
+这比"帮我优化整个项目"稳定得多。
+
+---
+
+## 七、CI/CD 对 AI Agent 的实际价值
+
+### 1. 防止 AI 胡乱改代码
+
+CI 能立刻拦住改 A 坏 B、修前端坏后端、为了消除报错而删功能等问题。
+
+### 2. 让 AI 根据日志修复
+
+"这是 CI 报错日志，定位失败原因并修复"——这是 AI Agent 最适合处理的任务类型，因为日志是明确输入，比让 AI 猜问题可靠。
+
+### 3. 降低人工验收成本
+
+你不需要每次都手动检查能不能启动、能不能构建、有没有类型错误、有没有测试失败。CI 自动完成。
+
+### 4. 适合多人或多 Agent 协作
+
+如果你用 Claude、Codex、OpenCode 等多个 Agent 改同一个项目，CI/CD 就是统一的验收标准。
+
+---
+
+## 八、推荐项目流程
+
+```
+需求 → AI Agent 拆任务 → 新建分支 → 修改代码
+    → 本地检查 → 提交 PR → GitHub Actions 检查
+    → Vercel 预览 → 合并 main → 自动部署
+```
+
+---
+
+## 九、最小可用 CI/CD 配置
+
+你的项目一开始不用搞太复杂。先配这 3 个就够：
+
+1. `npm run build`
+2. `npm run typecheck`
+3. `npm run test`
+
+没有测试时，至少保留：
+
+1. `npm run build`
+2. `npm run typecheck`
+
+CI/CD 的关键不是配置多，而是让 AI Agent 每次修改都必须经过自动验证。
