@@ -8,6 +8,7 @@ export function DarkToggle() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- mounted pattern for hydration safety
     setMounted(true)
   }, [])
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import { TOOLS } from '../tools-data'
 
@@ -138,11 +138,8 @@ function UrlTool() {
 /* ------------------------------------------------------------------ */
 
 function UuidTool() {
-  const [uuids, setUuids] = useState<string[]>([])
+  const [uuids, setUuids] = useState<string[]>(() => [safeUuid()])
   const [copied, setCopied] = useState<number | null>(null)
-  const [ready, setReady] = useState(false)
-  useEffect(() => { setUuids([safeUuid()]); setReady(true) }, [])
-  if (!ready) return <div className="tool-panel"><div className="tool-header"><h2>UUID 生成器</h2></div><p style={{ color: 'var(--text-3)' }}>加载中...</p></div>
   return (
     <div className="tool-panel">
       <div className="tool-header">
@@ -170,7 +167,7 @@ function UuidTool() {
 /* ------------------------------------------------------------------ */
 
 function TimestampTool() {
-  const now = Date.now()
+  const [now] = useState(() => Date.now())
   const [tsInput, setTsInput] = useState('')
   const [tsResult, setTsResult] = useState('')
   const [copied, setCopied] = useState(false)
