@@ -10,26 +10,28 @@ export function PostCard({ post, basePath = '/posts' }: { post: PostMeta; basePa
   const { locale } = useLocale()
 
   return (
-    <article className="post-card card animate-in">
-      <div className="card-body">
-        <Link
-          href={`${basePath}/${post.slug}`}
-          className="card-title-link"
-        >
-          {post.title}
-        </Link>
-        <div className="card-meta">
-          <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
-          <span className="card-meta-dot" aria-hidden="true">&middot;</span>
-          <span>{formatReadingTime(post.readingTime, locale)}</span>
+    <Link
+      href={`${basePath}/${post.slug}`}
+      style={{ textDecoration: 'none' }}
+    >
+      <article className="post-card card animate-in" style={{ cursor: 'pointer' }}>
+        <div className="card-body">
+          <div className="card-title-link">
+            {post.title}
+          </div>
+          <div className="card-meta">
+            <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
+            <span className="card-meta-dot" aria-hidden="true">&middot;</span>
+            <span>{formatReadingTime(post.readingTime, locale)}</span>
+          </div>
+          <p className="card-desc">{post.description}</p>
+          <div className="card-tags">
+            {post.tags.map((tag) => (
+              <TagBadge key={tag} tag={tag} />
+            ))}
+          </div>
         </div>
-        <p className="card-desc">{post.description}</p>
-        <div className="card-tags">
-          {post.tags.map((tag) => (
-            <TagBadge key={tag} tag={tag} />
-          ))}
-        </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   )
 }
