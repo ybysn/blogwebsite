@@ -1,4 +1,4 @@
-import { getAllNotes } from '@/lib/notes'
+import { getNoteCategories } from '@/lib/notes'
 import { NotesContent } from '@/app/notes/notes-content'
 
 export const metadata = {
@@ -7,6 +7,6 @@ export const metadata = {
 }
 
 export default function NotesPage() {
-  const notes = getAllNotes()
-  return <NotesContent notes={notes} />
+  const categories = getNoteCategories()
+  return <NotesContent categories={categories} />
 }

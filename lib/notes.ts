@@ -6,6 +6,7 @@ import { estimateReadingTime } from '@/lib/utils'
 export interface NoteFrontmatter {
   title: string
   date: string
+  category: string
   description: string
   tags: string[]
   published: boolean
@@ -31,6 +32,8 @@ function validateFrontmatter(data: Record<string, unknown>): data is Record<stri
     data.title.trim().length > 0 &&
     typeof data.date === 'string' &&
     data.date.trim().length > 0 &&
+    typeof data.category === 'string' &&
+    data.category.trim().length > 0 &&
     typeof data.description === 'string' &&
     data.description.trim().length > 0 &&
     Array.isArray(data.tags) &&
@@ -79,7 +82,11 @@ export function getAllNotes(): NoteMeta[] {
   return notes
 }
 
-export function getNoteBySlug(slug: string): Note | null {
+export function getNoteBySlug(category: string, slug: string): Note | null {
+  // find the note by category + slug
+  const note = getAllNotes().find((n) => n.slug === slug && n.category === category)
+  if (!note) return null
+
   const filePath = path.join(NOTES_DIR, `${slug}.mdx`)
   const mdPath = path.join(NOTES_DIR, `${slug}.md`)
 
@@ -106,6 +113,40 @@ export function getNoteBySlug(slug: string): Note | null {
   }
 }
 
-export function getAllNoteSlugs(): string[] {
-  return getAllNotes().map((n) => n.slug)
+export interface NoteCategorySlug {
+  category: string
+  slug: string
+}
+
+export function getAllNoteSlugs(): NoteCategorySlug[] {
+  return getAllNotes().map((n) => ({ category: n.category, slug: n.slug }))
+}
+
+export interface NoteCategory {
+  category: string
+  label: string
+  notes: NoteMeta[]
+}
+
+const CATEGORY_LABELS: Record<string, string> = {
+  'data-structures': '数据结构与算法',
+}
+
+export function getNoteCategories(): NoteCategory[] {
+  const notes = getAllNotes()
+  const map = new Map<string, NoteMeta[]>()
+
+  for (const note of notes) {
+    const existing = map.get(note.category) || []
+    existing.push(note)
+    map.set(note.category, existing)
+  }
+
+  return Array.from(map.entries())
+    .map(([category, catNotes]) => ({
+      category,
+      label: CATEGORY_LABELS[category] || category,
+      notes: catNotes,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label))
 }

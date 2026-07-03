@@ -9,16 +9,16 @@ import { SITE_URL } from '@/lib/constants'
 import { MDXContent } from '@/components/posts/mdx-content'
 
 interface PageProps {
-  params: Promise<{ slug: string }>
+  params: Promise<{ category: string; slug: string }>
 }
 
 export async function generateStaticParams() {
-  return getAllNoteSlugs().map((slug) => ({ slug }))
+  return getAllNoteSlugs().map(({ category, slug }) => ({ category, slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params
-  const note = getNoteBySlug(slug)
+  const { category, slug } = await params
+  const note = getNoteBySlug(category, slug)
   if (!note) return { title: '笔记未找到' }
 
   return {
@@ -30,14 +30,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       publishedTime: note.meta.date,
       tags: note.meta.tags,
-      url: `${SITE_URL}/notes/${slug}`,
+      url: `${SITE_URL}/notes/${category}/${slug}`,
     },
   }
 }
 
 export default async function NotePage({ params }: PageProps) {
-  const { slug } = await params
-  const note = getNoteBySlug(slug)
+  const { category, slug } = await params
+  const note = getNoteBySlug(category, slug)
   if (!note) notFound()
 
   const { meta, content } = note
