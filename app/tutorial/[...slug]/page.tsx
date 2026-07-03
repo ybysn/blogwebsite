@@ -15,6 +15,7 @@ import { TutorialNav } from '@/components/tutorial/tutorial-nav'
 import { TutorialAttribution } from '@/components/tutorial/tutorial-attribution'
 import { TableOfContents } from '@/components/posts/table-of-contents'
 import { TagBadge } from '@/components/ui/tag-badge'
+import { Breadcrumbs } from '@/components/notes/breadcrumbs'
 import { PostMetaDisplay } from '@/components/posts/post-meta-display'
 
 interface PageProps {
@@ -82,6 +83,14 @@ export default async function TutorialContentPage({
     <div className="tutorial-layout">
       <TutorialSidebar navigation={nav} currentSlug={meta.slug} />
       <article className="tutorial-article">
+        <Breadcrumbs
+          items={[
+            { label: '📚 教程', href: '/tutorial' },
+            { label: stageLabel },
+            { label: meta.title },
+          ]}
+        />
+
         <header style={{ marginBottom: '2.5rem' }}>
           <div
             className="tutorial-stage-badge"

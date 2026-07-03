@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getPostBySlug, getAllPostSlugs, getAdjacentPosts } from '@/lib/posts'
+import { getCategoryById } from '@/lib/categories'
 import { extractHeadings } from '@/lib/headings'
 import { TagBadge } from '@/components/ui/tag-badge'
 import { PostNav } from '@/components/posts/post-nav'
@@ -9,6 +10,7 @@ import { GiscusComments } from '@/components/posts/giscus'
 import { TableOfContents } from '@/components/posts/table-of-contents'
 import { SITE_URL } from '@/lib/constants'
 import { MDXContent } from '@/components/posts/mdx-content'
+import { Breadcrumbs } from '@/components/notes/breadcrumbs'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -60,11 +62,27 @@ export default async function PostPage({ params }: PageProps) {
   const { meta, content } = post
   const { prev, next } = getAdjacentPosts(slug)
   const headings = extractHeadings(content)
+  const category = getCategoryById(meta.category)
 
   return (
     <div className="post-layout">
       <TableOfContents headings={headings} />
       <article className="post-article">
+        <Breadcrumbs
+          items={[
+            { label: '📝 文章', href: '/posts' },
+            ...(category
+              ? [
+                  {
+                    label: category.name['zh-CN'] ?? category.name.en,
+                    href: `/posts/category/${category.id}`,
+                  },
+                ]
+              : []),
+            { label: meta.title },
+          ]}
+        />
+
         <header style={{ marginBottom: '2.5rem' }}>
           <h1 style={{ marginBottom: '0.75rem' }}>{meta.title}</h1>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem' }}>
