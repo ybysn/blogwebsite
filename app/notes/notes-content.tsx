@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import type { NoteMeta } from '@/lib/notes'
 import { PostCard } from '@/components/posts/post-card'
 import type { PostMeta } from '@/types'
@@ -28,9 +27,7 @@ export function NotesContent({ notes }: { notes: NoteMeta[] }) {
       </div>
       <div className="post-list">
         {notes.map((note) => (
-          <Link key={note.slug} href={`/notes/${note.slug}`} style={{ textDecoration: 'none' }}>
-            <PostCard post={note as unknown as PostMeta} />
-          </Link>
+          <PostCard key={note.slug} post={note as unknown as PostMeta} basePath="/notes" />
         ))}
       </div>
     </main>

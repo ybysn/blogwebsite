@@ -6,14 +6,14 @@ import { formatDate, formatReadingTime } from '@/lib/utils'
 import { useLocale } from '@/components/layout/language-provider'
 import { TagBadge } from '@/components/ui/tag-badge'
 
-export function PostCard({ post }: { post: PostMeta }) {
+export function PostCard({ post, basePath = '/posts' }: { post: PostMeta; basePath?: string }) {
   const { locale } = useLocale()
 
   return (
     <article className="post-card card animate-in">
       <div className="card-body">
         <Link
-          href={`/posts/${post.slug}`}
+          href={`${basePath}/${post.slug}`}
           className="card-title-link"
         >
           {post.title}
