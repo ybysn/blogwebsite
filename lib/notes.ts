@@ -150,3 +150,11 @@ export function getNoteCategories(): NoteCategory[] {
     }))
     .sort((a, b) => a.label.localeCompare(b.label))
 }
+
+export function getNotesByCategory(category: string): NoteMeta[] {
+  return getAllNotes().filter((n) => n.category === category)
+}
+
+export function getCategoryLabel(category: string): string {
+  return CATEGORY_LABELS[category] || category
+}

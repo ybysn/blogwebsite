@@ -1,8 +1,11 @@
 'use client'
 
+import Link from 'next/link'
 import type { NoteCategory } from '@/lib/notes'
-import { PostCard } from '@/components/posts/post-card'
-import type { PostMeta } from '@/types'
+
+const CATEGORY_ICONS: Record<string, string> = {
+  'data-structures': '🖥️',
+}
 
 export function NotesContent({ categories }: { categories: NoteCategory[] }) {
   if (categories.length === 0) {
@@ -25,30 +28,34 @@ export function NotesContent({ categories }: { categories: NoteCategory[] }) {
         <h1 className="page-title">📒 学习笔记</h1>
         <p className="page-subtitle">记录学习过程中的知识点和心得</p>
       </div>
-      {categories.map((cat) => (
-        <section key={cat.category} style={{ marginBottom: '3rem' }}>
-          <h2
-            style={{
-              fontSize: '1.4rem',
-              fontWeight: 700,
-              marginBottom: '1.25rem',
-              paddingBottom: '0.5rem',
-              borderBottom: '2px solid var(--border)',
-            }}
+      <div className="post-list">
+        {categories.map((cat) => (
+          <Link
+            key={cat.category}
+            href={`/notes/${cat.category}`}
+            style={{ textDecoration: 'none' }}
           >
-            {cat.label}
-          </h2>
-          <div className="post-list">
-            {cat.notes.map((note) => (
-              <PostCard
-                key={note.slug}
-                post={note as unknown as PostMeta}
-                basePath={`/notes/${note.category}`}
-              />
-            ))}
-          </div>
-        </section>
-      ))}
+            <article className="post-card card animate-in" style={{ cursor: 'pointer' }}>
+              <div className="card-body" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <span style={{ fontSize: '2.5rem', flexShrink: 0 }}>
+                  {CATEGORY_ICONS[cat.category] || '📂'}
+                </span>
+                <div>
+                  <div
+                    className="card-title-link"
+                    style={{ fontSize: '1.25rem', fontWeight: 700 }}
+                  >
+                    {cat.label}
+                  </div>
+                  <p className="card-desc" style={{ marginTop: '0.35rem' }}>
+                    {cat.notes.length} 篇笔记
+                  </p>
+                </div>
+              </div>
+            </article>
+          </Link>
+        ))}
+      </div>
     </main>
   )
 }
