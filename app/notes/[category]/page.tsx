@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getNotesByCategory, getNoteCategories, getCategoryLabel } from '@/lib/notes'
+import { getNotesByCategory, getNoteCategories, getCategoryLabel, getCategoryConfig } from '@/lib/notes'
 import { CategoryNotesContent } from '@/app/notes/category-content'
 
 interface PageProps {
@@ -26,6 +26,15 @@ export default async function CategoryPage({ params }: PageProps) {
   if (notes.length === 0) notFound()
 
   const label = getCategoryLabel(category)
+  const config = getCategoryConfig(category)
 
-  return <CategoryNotesContent category={category} label={label} notes={notes} />
+  return (
+    <CategoryNotesContent
+      category={category}
+      label={label}
+      notes={notes}
+      total={config?.total}
+      status={config?.status}
+    />
+  )
 }

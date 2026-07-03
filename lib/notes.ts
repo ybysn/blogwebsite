@@ -83,7 +83,6 @@ export function getAllNotes(): NoteMeta[] {
 }
 
 export function getNoteBySlug(category: string, slug: string): Note | null {
-  // find the note by category + slug
   const note = getAllNotes().find((n) => n.slug === slug && n.category === category)
   if (!note) return null
 
@@ -113,6 +112,38 @@ export function getNoteBySlug(category: string, slug: string): Note | null {
   }
 }
 
+// ---- Category config ---------------------------------------------------------
+
+export interface CategoryConfig {
+  label: string
+  icon: string
+  total?: number
+  status: 'ongoing' | 'completed'
+}
+
+const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
+  'data-structures': {
+    label: '数据结构与算法',
+    icon: '🖥️',
+    total: 30,
+    status: 'ongoing',
+  },
+}
+
+export function getCategoryConfig(category: string): CategoryConfig | undefined {
+  return CATEGORY_CONFIG[category]
+}
+
+export function getCategoryLabel(category: string): string {
+  return CATEGORY_CONFIG[category]?.label || category
+}
+
+export function getCategoryIcon(category: string): string {
+  return CATEGORY_CONFIG[category]?.icon || '📂'
+}
+
+// ---- Slugs & Categories -----------------------------------------------------
+
 export interface NoteCategorySlug {
   category: string
   slug: string
@@ -125,11 +156,10 @@ export function getAllNoteSlugs(): NoteCategorySlug[] {
 export interface NoteCategory {
   category: string
   label: string
+  icon: string
+  total?: number
+  status: 'ongoing' | 'completed'
   notes: NoteMeta[]
-}
-
-const CATEGORY_LABELS: Record<string, string> = {
-  'data-structures': '数据结构与算法',
 }
 
 export function getNoteCategories(): NoteCategory[] {
@@ -143,11 +173,17 @@ export function getNoteCategories(): NoteCategory[] {
   }
 
   return Array.from(map.entries())
-    .map(([category, catNotes]) => ({
-      category,
-      label: CATEGORY_LABELS[category] || category,
-      notes: catNotes,
-    }))
+    .map(([category, catNotes]) => {
+      const config = CATEGORY_CONFIG[category]
+      return {
+        category,
+        label: config?.label || category,
+        icon: config?.icon || '📂',
+        total: config?.total,
+        status: config?.status || 'ongoing',
+        notes: catNotes,
+      }
+    })
     .sort((a, b) => a.label.localeCompare(b.label))
 }
 
@@ -155,6 +191,20 @@ export function getNotesByCategory(category: string): NoteMeta[] {
   return getAllNotes().filter((n) => n.category === category)
 }
 
-export function getCategoryLabel(category: string): string {
-  return CATEGORY_LABELS[category] || category
+// ---- Adjacent notes ----------------------------------------------------------
+
+export interface AdjacentNotes {
+  prev: NoteMeta | null
+  next: NoteMeta | null
+}
+
+export function getAdjacentNotes(category: string, slug: string): AdjacentNotes {
+  const notes = getNotesByCategory(category)
+  const idx = notes.findIndex((n) => n.slug === slug)
+  if (idx === -1) return { prev: null, next: null }
+
+  return {
+    prev: idx > 0 ? notes[idx - 1] : null,
+    next: idx < notes.length - 1 ? notes[idx + 1] : null,
+  }
 }

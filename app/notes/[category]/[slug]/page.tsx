@@ -1,12 +1,14 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getNoteBySlug, getAllNoteSlugs } from '@/lib/notes'
+import { getNoteBySlug, getAllNoteSlugs, getAdjacentNotes, getCategoryLabel } from '@/lib/notes'
 import { extractHeadings } from '@/lib/headings'
 import { TagBadge } from '@/components/ui/tag-badge'
 import { PostMetaDisplay } from '@/components/posts/post-meta-display'
 import { TableOfContents } from '@/components/posts/table-of-contents'
 import { SITE_URL } from '@/lib/constants'
 import { MDXContent } from '@/components/posts/mdx-content'
+import { Breadcrumbs } from '@/components/notes/breadcrumbs'
+import { NoteNav } from '@/components/notes/note-nav'
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>
@@ -42,11 +44,21 @@ export default async function NotePage({ params }: PageProps) {
 
   const { meta, content } = note
   const headings = extractHeadings(content)
+  const { prev, next } = getAdjacentNotes(category, slug)
+  const categoryLabel = getCategoryLabel(category)
 
   return (
     <div className="post-layout">
       <TableOfContents headings={headings} />
       <article className="post-article">
+        <Breadcrumbs
+          items={[
+            { label: '📒 笔记', href: '/notes' },
+            { label: categoryLabel, href: `/notes/${category}` },
+            { label: meta.title },
+          ]}
+        />
+
         <header style={{ marginBottom: '2.5rem' }}>
           <h1 style={{ marginBottom: '0.75rem' }}>{meta.title}</h1>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '1rem' }}>
@@ -59,6 +71,8 @@ export default async function NotePage({ params }: PageProps) {
         <div className="prose article-content">
           <MDXContent source={content} />
         </div>
+
+        <NoteNav category={category} prev={prev} next={next} />
       </article>
     </div>
   )
