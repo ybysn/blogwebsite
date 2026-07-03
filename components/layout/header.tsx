@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: '/search', label: '搜索' },
   { href: '/posts', label: '文章' },
   { href: '/tutorial', label: '教程' },
+  { href: '/notes', label: '笔记' },
   { href: '/tools', label: '工具' },
   { href: '/about', label: '关于' },
 ]
