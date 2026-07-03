@@ -55,6 +55,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta
+          name="impact-site-verification"
+          {...({ value: '4b24f7da-a05d-4d05-9feb-497f1e4e597e' } as any)}
+        />
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function() {
             try {
