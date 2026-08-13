@@ -41,6 +41,8 @@ export function ThemedImage({ src, alt, style, ...props }: ThemedImageProps) {
       alt={alt ?? ''}
       src={resolvedSrc}
       style={imgStyle}
+      loading="lazy"
+      decoding="async"
       {...props}
     />
   )
