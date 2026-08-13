@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from 'react'
 import { useParams } from 'next/navigation'
-import { TOOLS } from '../tools-data'
 
 function copyToClipboard(text: string) {
   navigator.clipboard.writeText(text)

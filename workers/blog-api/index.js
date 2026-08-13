@@ -1,5 +1,5 @@
-export default {
-  async fetch(request, env) {
+const worker = {
+  async fetch(request) {
     const url = new URL(request.url);
 
     // CORS headers
@@ -37,3 +37,5 @@ export default {
     return Response.redirect('https://blog.ybysn.org', 302);
   },
 };
+
+export default worker;

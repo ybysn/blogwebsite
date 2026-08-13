@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-unused-vars -- 一次性迁移脚本，回调参数存在未使用的情况 */
 /**
  * convert-tutorial.mjs
  *

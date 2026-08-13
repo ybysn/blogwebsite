@@ -37,6 +37,7 @@ export function ThemedImage({ src, alt, style, ...props }: ThemedImageProps) {
       : src
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element -- 静态导出(output:export)下 next/image 优化不可用，原生 img 是正确做法
     <img
       alt={alt ?? ''}
       src={resolvedSrc}
