@@ -12,6 +12,7 @@ import { SITE_URL, AUTHOR } from '@/lib/constants'
 import { MDXContent } from '@/components/posts/mdx-content'
 import { Breadcrumbs } from '@/components/notes/breadcrumbs'
 import { BlogPostingJsonLd } from '@/components/seo/blog-posting-jsonld'
+import { ReadingProgress } from '@/components/posts/reading-progress'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -112,6 +113,7 @@ export default async function PostPage({ params }: PageProps) {
         <PostNav prev={prev} next={next} />
         <GiscusComments />
       </article>
+      <ReadingProgress />
     </div>
   )
 }

@@ -14,6 +14,7 @@ import { TutorialSidebar } from '@/components/tutorial/tutorial-sidebar'
 import { TutorialNav } from '@/components/tutorial/tutorial-nav'
 import { TutorialAttribution } from '@/components/tutorial/tutorial-attribution'
 import { TableOfContents } from '@/components/posts/table-of-contents'
+import { ReadingProgress } from '@/components/posts/reading-progress'
 import { TagBadge } from '@/components/ui/tag-badge'
 import { Breadcrumbs } from '@/components/notes/breadcrumbs'
 import { PostMetaDisplay } from '@/components/posts/post-meta-display'
@@ -125,6 +126,7 @@ export default async function TutorialContentPage({
         <TutorialNav prev={prev} next={next} />
       </article>
       <TableOfContents headings={headings} />
+      <ReadingProgress />
     </div>
   )
 }

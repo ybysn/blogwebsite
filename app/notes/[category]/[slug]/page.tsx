@@ -10,6 +10,7 @@ import { MDXContent } from '@/components/posts/mdx-content'
 import { Breadcrumbs } from '@/components/notes/breadcrumbs'
 import { NoteNav } from '@/components/notes/note-nav'
 import { BlogPostingJsonLd } from '@/components/seo/blog-posting-jsonld'
+import { ReadingProgress } from '@/components/posts/reading-progress'
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>
@@ -91,6 +92,7 @@ export default async function NotePage({ params }: PageProps) {
 
         <NoteNav category={category} prev={prev} next={next} />
       </article>
+      <ReadingProgress />
     </div>
   )
 }
