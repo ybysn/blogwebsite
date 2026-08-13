@@ -87,19 +87,10 @@ export function ReadingProgress() {
           transform={`rotate(-90 ${size / 2} ${size / 2})`}
         />
       </svg>
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="var(--accent-b)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="reading-progress-arrow"
-      >
-        <polyline points="6 15 12 9 18 15" />
-      </svg>
+      <span className="reading-progress-percent" aria-hidden="true">
+        {Math.round(progress)}
+        <small>%</small>
+      </span>
     </button>
   )
 }

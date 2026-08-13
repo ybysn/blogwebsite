@@ -1982,9 +1982,21 @@ pre code span {
   left: 0;
 }
 
-.reading-progress-arrow {
+.reading-progress-percent {
   position: relative;
   z-index: 1;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-b);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5px;
+}
+
+.reading-progress-percent small {
+  font-size: 8px;
+  font-weight: 500;
 }
 
 @media (max-width: 640px) {
