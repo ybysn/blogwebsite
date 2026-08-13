@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import type { NoteMeta } from '@/lib/notes'
 import { PostCard } from '@/components/posts/post-card'
 import type { PostMeta } from '@/types'
@@ -33,9 +34,9 @@ export function CategoryNotesContent({ category, label, notes, total, status }: 
             alignItems: 'center',
           }}
         >
-          <a href="/notes" style={{ color: 'var(--text-muted)', textDecoration: 'underline', fontSize: '0.9rem' }}>
+          <Link href="/notes" style={{ color: 'var(--text-muted)', textDecoration: 'underline', fontSize: '0.9rem' }}>
             ← 返回笔记分类
-          </a>
+          </Link>
           {status && (
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
               {STATUS_MAP[status]}

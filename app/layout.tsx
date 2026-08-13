@@ -57,7 +57,7 @@ export default function RootLayout({
       <head>
         <meta
           name="impact-site-verification"
-          {...({ value: '4b24f7da-a05d-4d05-9feb-497f1e4e597e' } as any)}
+          {...({ value: '4b24f7da-a05d-4d05-9feb-497f1e4e597e' } as unknown as React.HTMLAttributes<HTMLMetaElement>)}
         />
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function() {
