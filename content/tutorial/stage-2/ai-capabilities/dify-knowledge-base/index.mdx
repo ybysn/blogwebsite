@@ -56,7 +56,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/ai-capab
 
 这就是 AI 智能体（AI Agent）的雏形：一个具备目标、知识、工具和执行路径的自动化单元。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > 注意：当前业界所说的简单版本的“智能体”，大多指基于 LLM + 工具 + 知识库组合而成的增强型应用，并非所谓能够自主规划的智能体。简单的智能体虽不具备真正的推理与长期规划能力，但已足以支撑大量企业级自动化场景。我们将会在之后的章节详细介绍真正的具备自主规划和行动能力的智能体。
 
@@ -72,7 +72,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/ai-capab
 
 RAG 的基本思路是：在用户提问时，系统首先从企业知识库中检索出与问题语义最相关的若干文本片段（例如产品手册中的某一段、HR制度中的某一条款），然后将这些片段作为上下文“注入”到大模型的输入中，引导它基于真实资料生成回答。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 图片来源：[https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -80,7 +80,7 @@ RAG 的基本思路是：在用户提问时，系统首先从企业知识库中�
 
 在实际业务中，这项技术尤为重要，因为大模型常常会产生“幻觉”。例如，若你以 CFO 或咨询顾问的身份询问某个时间段的具体数据，模型很可能编造日期和事件。引入 RAG 后，回答的可控性与可靠性将得到显著提升。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image3.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image3.webp)
 
 图片来源：[https://www.databricks.com/glossary/retrieval-augmented-generation-rag](https://www.databricks.com/glossary/retrieval-augmented-generation-rag)
 
@@ -107,7 +107,7 @@ RAG 的基本思路是：在用户提问时，系统首先从企业知识库中�
 
 这就引出了更高阶的 AI 应用范式：AI 工作流（AI Workflow）。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 工作流是指将一个复杂任务拆解为多个有序、可配置、可自动执行的子步骤，并通过可视化或代码方式编排它们之间的逻辑关系，如条件判断、循环或并行执行。将 AI 能力 SOP 化（即标准化操作流程），意味着把如何用 AI 完成某项任务的经验固化为可重复使用的模板。
 
@@ -117,7 +117,7 @@ AI 工作流的使用人群非常广泛。产品经理无需写代码，即可�
 
 此外，值得注意的是，AI 工作流通常可用一种中间表示（Intermediate Representation）来描述。不同工作流平台的具体表达方式虽有差异，但大多采用结构化文件（如 JSON、YAML 等）来定义节点类型、输入输出及执行逻辑，其结构类似下图所示：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image5.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image5.webp)
 
 简言之，如果说智能体让 AI 从会聊天走向能做事，那么工作流则让 AI 从偶尔做成一件事迈向“稳定、可靠、规模化地完成一类事。在接下来的实践中，我们还将借助 Dify 平台，上手并亲手构建完整的 AI 工作流，体验从想法到可运行应用的完整过程。
 
@@ -150,11 +150,11 @@ AI 工作流的使用人群非常广泛。产品经理无需写代码，即可�
 
 Dify 定位是LLM应用开发与运营平台，致力于提供AI应用从构思、部署到优化的全生命周期管理。其核心是一个低代码平台，旨在帮助开发者和非技术背景的创新者快速构建生产级AI应用。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image6.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image6.webp)
 
 在功能上，Dify覆盖了可视化工作流编排、智能体构建、知识库管理、多模型支持等功能。平台允许通过拖拽节点设计复杂任务流程，并支持创建基于意图的Agent。其知识库功能突出，能处理多种格式文档并进行高效的向量检索。同时，Dify兼容支持包括GPT、Claude及众多开源模型在内的多种LLM，构建的应用可一键发布为标准API便于集成。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 技术架构方面，Dify以开源和可私有化部署为特色，强调灵活性、扩展性及企业级合规。目标用户包括开发者团队和业务创新者，典型应用场景涵盖企业知识库与智能客服、内容创作自动化、垂直领域AI助手以及企业AI中台。
 
@@ -162,11 +162,11 @@ Dify 定位是LLM应用开发与运营平台，致力于提供AI应用从构思�
 
 Coze是字节跳动推出的AI智能体开发平台，以极致易用性为核心，让无编程经验的用户也能轻松创建、调试并发布功能丰富的AI聊天机器人。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image8.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image8.webp)
 
 其核心是将Bot构建简化为搭积木式操作。用户可通过界面轻松配置角色与知识库，并利用丰富的内置插件库为Bot添加新闻、旅游、图像生成等多类外部能力。创建好的Bot可一键快速发布至豆包、飞书、微信公众号等多个平台。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image9.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image9.webp)
 
 技术架构完全服务于低门槛使用，后端集成字节自有模型并封装复杂流程，强调多模态理解与实时响应。作为一个主要以云服务形式提供的平台，其私有化部署能力相对有限。典型应用场景包括个人助理与娱乐Bot、智能客服与问答系统、在线教育助手以及快速原型验证。
 
@@ -176,7 +176,7 @@ n8n是一个通用的可编程工作流自动化平台，其核心定位是连�
 
 它通过庞大的集成节点库支持数百种SaaS服务、数据库及协议，并采用可视化与代码结合的方式：用户可在画布拖拽节点，同时注入JavaScript或Python代码编写自定义逻辑。n8n擅长处理后端数据密集型任务，如数据同步、ETL流程与API编排。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image10.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image10.webp)
 
 关键技术特性是“源码可见”和“可自托管”，用户可将其私有化部署以完全掌控数据与环境，这使其对数据安全要求高的行业极具吸引力。其主要目标用户是开发者、技术运营及数据分析师。n8n 最大的优势，在于拥有极其强大的社区生态。网络上拥有随处可见丰富的 n8n 分享视频，为用户提供了便捷的学习参考与经验借鉴；同时，它支持连接 YouTube、Instagram 等全球众多不同生态平台，能够帮助用户轻松打破跨平台数据与服务的壁垒，实现多生态流程的自动化流转。
 
@@ -196,7 +196,7 @@ n8n是一个通用的可编程工作流自动化平台，其核心定位是连�
 
 Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界面，将 Agent 工作流、RAG 流水线、工具能力、模型管理、可观测性等功能结合在一起，帮助你快速地从原型走向生产环境。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 你可以在 Dify 中使用大语言模型和各种功能不同的工具来搭建“工作流”。所谓工作流，就是把原本需要你手动一步步完成的操作——例如数据检索、大模型调用、网页搜索、结果过滤、格式整理等——按照业务逻辑串联起来，变成一个自动化、可复用的流程。如果没有工作流，每次你都需要把同样的内容复制粘贴给大模型，非常低效、容易出错，也难以在真实业务中复用。
 
@@ -211,7 +211,7 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 5. 条件节点：检查大模型生成的回答中是否包含清晰的质保时间（例如“1 年”、“3 年”），如果有则继续下一步，如果没有则让它回复“请提供产品型号”。
 6. 输出节点（类似 ANSWER）：将最终答案返回给用户，并自动把本次咨询记录到表格中。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 在整个过程中，你不需要手动去翻知识库、反复调整模型的回答、或单独记录数据——工作流会把这些步骤“连起来自动跑”。并且它非常灵活：例如，如果你之后想加一个新规则“当用户问质保范围时，调用另一个知识库”，只需要在工作流中多加一个条件节点，而无需重构整个系统。
 
@@ -223,7 +223,7 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 
 你需要参考该教程入门 web 部署平台的基本使用方式：[如何部署 Web 应用](/zh-cn/stage-2/backend/zeabur-deployment/)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image13.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image13.webp)
 
 你需要学习如何在 Zeabur 上部署一个自己的 Dify，部署后进入到对应链接注册并登录后继续跟随下列教程操作即可。
 
@@ -233,21 +233,21 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 
 访问 Dify 首页 [https://cloud.dify.ai/apps](https://cloud.dify.ai/apps) 并注册和登录后，选择 Studio，你会看到如下界面：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image14.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image14.webp)
 
 在左侧找到 `CREATE APP` 区块，点击 `Create from Blank`。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image15.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 在 APP Type 中找到 Chatbot（如果一开始没看到，可以点击“查看更多类型”的按钮，然后在完整列表中找到）。选择 Chatbot 之后，在下方输入应用的名称和描述，最后点击创建。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image17.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image17.webp)
 
 创建完成后，你会看到类似下面的界面。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image18.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image18.webp)
 
 中间区域的 “INSTRUCTIONS” 指的是内置指令，你可以把它理解为默认提示词或系统提示词。
 
@@ -257,11 +257,11 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 
 你可以在 INSTRUCTIONS 区域自由输入角色提示词，观察对话效果；也可以点击 Generate，让大模型自动帮你生成提示词。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 注意右上角会出现许多不同模型的选项，这意味着你可以点击切换不同的对话模型，从而比较它们在语气、逻辑推理、长文本处理等方面的差异，寻找最适合你需求的模型。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image20.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image20.webp)
 
 ## 2.3 支持自定义模型供应商
 
@@ -276,45 +276,45 @@ Dify 能够灵活接入来自 OpenAI、Azure、Anthropic 等主流服务商的�
    2. https://marketplace.dify.ai/plugins/langgenius/siliconflow
 2. 如果你是自己部署的 Dify，你可以在对应系统设置界面进入插件市场进行操作
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image21.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image21.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image22.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image22.webp)
 
 进入插件市场后，搜索对应的插件名称即可。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image23.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image23.webp)
 
 3. 安装结束后，我们能够配置支持新的模型供应商，在设置里的模型提供商部分，我们可以看到目前支持的所有模型商：
-   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image24.png)
+   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image24.webp)
 4. 在开始使用前，需要先完成模型的配置。对于 OpenAI-API-compatible 插件，你可以点击 “Add Model” 来添加并配置任意模型。你可以在 “Model Type” 中选择该模型是LLM还是 Embedding，你需要确保模型的类型被正确配置。
    你需要写入具体的模型名字、模型 endpoint URL 以及 API Key 才能确保模型启用，如果你初步觉得配置该参数麻烦，你可以直接跳到后者的 SiliconFLow 平台的 Key 配置，或者安装 OpenRouter 等第三方服务商插件进行简单的模型支持配置。（确保服务商内有剩余可使用额度）
 
-   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image25.png)
+   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image25.webp)
 
    对于 `SiliconFlow` 插件，只需要点击 Setup 配置 key 后即可使用 Embedding 和 Rerank 模型进行测试，你可以点击 Get you API Key from SiliconFlow 获得鉴权密钥。
 
-   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image26.png)
+   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image26.webp)
 
 5. 配置完成后，你可以点击模型列表查看当前支持多少模型，此时已经完成了基础模型的全部配置。
-   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image27.png)
+   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image27.webp)
 
    其中支持了绝大部分常见的 Embedding 与 Rerank 模型：
 
-   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image28.png)
+   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image28.webp)
 
    此时如果你想要修改 Dify 默认使用模型的配置，你还可以点击 System Model Settings 按钮修改默认的所有模型。
 
-   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image29.png)
+   ![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image29.webp)
 
 ## 2.4 创建第一个 Dify 知识库
 
 到这里，我们已经完成了最简单的 Agent 创建，但它还缺少一个知识库。现在，请点击顶部菜单中的 `Knowledge`，进入知识库创建页面。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image30.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image30.webp)
 
 然后点击左侧的 `Create Knowledge`，创建你的第一个知识库。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image31.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image31.webp)
 
 在这个界面中，你可以上传多种类型的文件（例如 pdf、txt 等）来构建知识库。可以上传很长的文本，或者把维基百科上的内容复制下来保存成 txt 文件进行上传。本例中，我们会上传一份关于 Elon Musk 的维基百科 txt 文件。
 
@@ -324,7 +324,7 @@ Dify 能够灵活接入来自 OpenAI、Azure、Anthropic 等主流服务商的�
 
 你也可以调整 **Chunk overlap（切片重叠）** 选项。它决定相邻片段之间是否会保留一部分重叠内容。适当的重叠有助于避免重要信息被拆到不同片段而难以理解。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image32.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image32.webp)
 
 在设置中还有一个选项叫做 **Chunk using Q&A format in English** 。启用后，系统会使用大语言模型，将知识库的一部分内容转换成问答形式来存储，这在某些场景下可以显著提升检索效果。
 
@@ -336,7 +336,7 @@ Dify 能够灵活接入来自 OpenAI、Azure、Anthropic 等主流服务商的�
 
 Embedding 模型的选择会显著影响最终的检索效果（例如匹配准确度、响应速度等）。在这里，我们推荐优先使用 Qwen 0.6B 的 Embedding 模型，你也可以切换到 4B 或 8B 版本，直观对比不同参数规模下检索效果的差异。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
 在此处，你还会看到另一个模型设置叫做 **Rerank model** ，默认值是 **Jina-rerank-m0** 。（如果你非校园内的学生，此时你可能会看到 Rerank 模型缺失的报错，你需要在模型处配置 rerank 模型才能在此处启用使用）
 
@@ -346,33 +346,33 @@ Rerank 模型的主要作用，是对“初步筛选出的候选结果”进行�
 
 推荐系统同理：它可能首先找出 500 个“可能适合你”的商品，再通过 Rerank 模型排序，让你最可能购买的商品排在列表顶部。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 当所有设置完成后，点击 **Save & Process** ，系统就会进入知识库向量化阶段。在这一阶段，Embedding 模型会把切分后的文本转换为向量表示。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image35.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image35.webp)
 
 处理完成后，点击 **Go to document** ，可以查看已经处理完毕并存储好的知识库内容。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image36.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image36.webp)
 
 直接点击知识库名称，可以查看每个切片的具体内容。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image37.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image37.webp)
 
 在这里，你可以对任意不合适的文本片段进行精确的编辑或删除操作。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
 在左侧边栏中，选择 **Retrieval Testing** 可以对知识库进行召回测试，检查检索是否正常工作。每次测试会返回若干相似度最高的切片。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 如果你希望看到更多的切片结果，需要点击 `VECTOR SEARCH` 设置：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image40.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image40.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image41.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image41.webp)
 
 Top K 指的是向量检索时，返回与查询向量最相似的前 K 个文本切片数量。当前设置为 3，表示会返回相似度最高的 3 段文本。
 
@@ -380,15 +380,15 @@ Score Threshold 则是一个“得分阈值”：只有相似度得分大于或�
 
 现在知识库部分就全部准备好了。接下来，点击顶部菜单栏中的 “studio”，找到刚才创建的智能体，为它接入我们已经配置好的知识库。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image42.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image42.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image43.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image43.webp)
 
 此时，在每一轮对话中，你都可以在回答中看到被命中的知识库来源。点击对应条目即可查看检索到的具体文本片段。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image45.webp)
 
 ## 2.5 更多 DIfy 常见操作
 
@@ -398,11 +398,11 @@ Score Threshold 则是一个“得分阈值”：只有相似度得分大于或�
 
 还记得之前提到的工作流的中间表示法吗？Dify 支持通过 DSL（Domain Specific Language） 格式导入和导出工作流。DSL 是一种基于 JSON 的标准化描述方式，能够完整保留工作流的节点结构、连接关系和配置参数。你可以很容易导入和导出 DSL 文件，分享工作流给其他人使用，或者导入别人的工作流进行参考。具体而言，我们能够容易在工作台页面看到工作流的导入按钮：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image46.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image46.webp)
 
 而对于工作流的导出，我们只需要点击单个工作流块的右下角即可找到导出按钮：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image47.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image47.webp)
 
 通过使用 DSL 文件，你可以轻松地在不同 Dify 实例之间迁移或共享复杂的工作流设计。
 
@@ -410,7 +410,7 @@ Score Threshold 则是一个“得分阈值”：只有相似度得分大于或�
 
 如果你觉得自己搭建的工作流或者智能体过于简单，Dify平台提供了丰富的示例项目，帮助你快速了解如何构建复杂应用。这些示例项目涵盖了多种业务场景。你可以点击 Explora 查看别人构建的工作流进行学习。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 创建第一个 Dify Workflow 应用
 
@@ -418,9 +418,9 @@ Score Threshold 则是一个“得分阈值”：只有相似度得分大于或�
 
 你可以选择从空白处创建，或者直接从模板处创建，此处演示如何从空白处创建工作流：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image49.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 在这里我们会看见两个选择，分别是 Chatflow 与 Workflow，这两者该如何选择呢？关键是你需要理解你所要构建的，其核心是持续对话，还是任务流程。
 
@@ -439,7 +439,7 @@ Workflow 则专注于流程的自动化执行。它像一条预设的流水线�
 
 此处我们选择 Chatflow 作为案例进行介绍，点击 Chatflow 后进入到操作台界面：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image51.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image51.webp)
 
 我们来简单介绍工作流界面的页面。其中整个界面的核心是中央的编辑画布，你将以可视化方式在这里构建应用逻辑。如图所示，一个基础的工作流通常始于 START 节点（用于接收输入），经由连线将数据传递至 LLM 节点进行处理，最终通过 ANSWER 节点输出结果。每个节点代表一个功能模块，而连线则决定了任务执行的顺序。
 
@@ -455,19 +455,19 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 在画布右键点击“Add Node”即可添加节点，也可以在左侧的节点面板中查看所有可用节点：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image52.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image52.webp)
 
 同时，可以打开工具选择面板，查看支持调用的各类工具：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image53.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image53.webp)
 
 下面是一些常用节点和工具的简要说明。不需要一次性全部掌握，建议先留个印象，在实际使用中逐步熟悉，必要时再回查阅。
 
 1. LLM与推理节点
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image54.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image54.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image55.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image55.webp)
 
 此类节点负责工作流中的核心流程。
 
@@ -479,7 +479,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 2. 逻辑与流程控制节点
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image56.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image56.webp)
 
 此类节点定义工作流的执行路径与规则。
 
@@ -489,7 +489,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 3. 数据操作与集成节点
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image57.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image57.webp)
 
 - Code 节点：代码处理单元，负责在工作流中执行自定义代码逻辑，可实现数据格式转换、复杂计算等个性化处理需求。其配置重点在于代码语法的正确性与执行环境的适配。
 - Template 节点：模板处理单元，负责将动态数据填充至预设模板中，生成符合格式要求的内容（如定制化文案、报告框架）。其配置重点在于模板语法的编写与变量映射规则的设置。
@@ -502,7 +502,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 ### 2.6.2 常见工具介绍
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image58.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image58.webp)
 
 在 Dify 中，大部分工具都可以直接作为节点放在画布上，像其他节点一样被上下游连线，只要你提供的输入符合该节点（工具）的参数规范，它就能正常执行并产出可继续流转的结果。
 
@@ -567,15 +567,15 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 本次教程我们选择创建 Workflow 而不是 Chatflow，选择 User Input：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image59.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image59.webp)
 
 随后点击 Start 的 User Input 节点，定义一个名为 `user_text` 的字符串类型变量，作为整个流程的输入源。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image60.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image60.webp)
 
 保存后点击右上角的 Test Run，你能够看到需要指定对应的文本输入进行处理：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image61.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image61.webp)
 
 随后我们需要点击输入节点后的 + 符号，选择 Question Classifier 节点添加，并且我们需为其配置四类标签，并为每个标签提供清晰的描述和示例。
 
@@ -590,13 +590,13 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 从 buy_food / complain / chitchat / other 中选择一个最合适的标签。如果用户在抱怨的同时也点了餐，请优先判断其核心情绪，若重点在于表达不满，应归为 complain。如果只是轻微吐槽但主要意图是下单，则归为 buy_food。若实在难以判断，使用 other 作为兜底
 ```
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 设定完成后，你可以在右上角的播放键单独测试该节点是否能够正常运行：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image63.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image63.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image64.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image64.webp)
 
 从 OUTPUT 的结果来看，我们的分类是准确的。你可以进行多种不同类型输入的测试，验证我们分类器的稳定性。
 
@@ -622,11 +622,11 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 同样的，为了确保一切顺利，你可以点击该节点右上角的播放箭进行具体的对话测试验证效果，比如对话说“我想要喝珍珠奶茶”等，查看回复是否符合预期。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 接下来我们处理并行 LLM 的输出值，我们在 `Variable Aggregator` 节点的配置面板中，找到 `ASSIGN VARIABLES`（分配变量）区域，点击后依次将之前的大模型回复加入即可。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 接下来我们需要对所有的输出进行聚合，最后得到我们想要的结果，包含用户的输入、分类、以及回复。由于我们使用的是 Workflow 而不是 Chatflow，故没有 Answer 节点选择进行结果的聚合，我们能够选择其他节点变相实现结果的聚合与输出，此时选择 Template 节点，在变量部分指定用户意图分类结果、用户的输入值、变量聚合的最终回复，并且在 CODE 中写入最后回复的 json 格式模板，我们可以得到：
 
@@ -642,11 +642,11 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 }
 ```
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image67.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image67.webp)
 
 最后加入 output 节点即完成所有操作：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image68.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image68.webp)
 
 #### 工作流运行测试
 
@@ -669,7 +669,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 在 Test Run 中运行后，我们能够看到工作流的执行过程，此时根据分类走了正确的流程，并得到了最后的 output 结果。至此，全流程完成。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 运行第一个模板 Workflow 应用
 
@@ -677,33 +677,33 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 导入后第一步直接运行，我们根据每一步报错的地方和原因解决具体问题即可，如果遇到解决不了的问题，你可以截图后询问大模型进行解决。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image70.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image70.webp)
 
 刚进入感觉十分复杂，没关系，我们点击右上角的 Preview 运行工作流，直到报错出现：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 我们需要根据报错的节点解决问题，打开后发现是没有配置 Tavily 的 API Token，Tavily 的搜索API 是一个专为 AI 设计的搜索引擎，提供实时、准确和事实性的结果。此时根据提示操作：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image73.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image73.webp)
 
 经过处理后，搜索引擎能够正常工作：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 继续修正模型调用导致的问题后，你应该能够得到如下结果，结合大模型理解下的详细搜索：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image75.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image75.webp)
 
 我们在最后能够看到对应的参考文档地址：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image76.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image76.webp)
 
 如果你想理解每个环节的作用，最好的方法是将每个环节的 output 记录为一个变量，最后在输出的时候打印每个中间变量的结果，还有一个方法就是你可以在上方找到 Process 的过程，点击后可以查看每个环节的细节：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image77.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image77.webp)
 
 ## 2.8 将 Dify 作为 API 提供方
 
@@ -717,25 +717,25 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 如果你的本地开发环境还没有完整配置好，也不用担心。只要你信任自己的代码助手（不管是 [z.ai](http://z.ai) 还是 Trae），遇到任何不懂的地方或报错，都可以直接把问题抛给它，它会根据你的描述给出详细的解决方案。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image78.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image78.webp)
 
 右侧的区域叫做 Copilot 交互窗口，或者 Agent 窗口。如果你看不到它，可以点击右上角的侧边栏图标来打开。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image79.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image79.webp)
 
 打开侧边栏后，你会看到 `Builder` 选项。这就是 Agent 模式。你可以简单地把 “Builder” 理解为 [z.ai](http://z.ai) 的“开发模式”，它同样可以帮你操作本地电脑环境、安装依赖、打开网页等。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image80.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image80.webp)
 
 点击 “Builder” 后，你会看到 “Chat” 模式和 “Builder with MCP” 模式。 Chat 模式主要用于与当前文件夹进行交互，或者和大模型进行自然语言对话。（你可以通过点击 Trae 左上角的 “File” 打开一个文件夹，然后在该文件夹内进行编辑。这种情况下，Builder 所有的新建文件操作都会发生在这个文件夹中。）
 
 Builder with MCP 模式则为 Agent 提供了更多工具（例如让大模型连接到其他软件、获取天气信息等）。你可以简单地认为 MCP 是一个让大模型更方便调用各种外部工具的能力集合。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image81.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image81.webp)
 
 在下方区域，你还可以看到模型选择的下拉列表，可以点击切换不同模型。这里你可以选择 Kimi k2 或 GLM。如果你使用的是国际版 Trae，也可以选择 ChatGPT 或 Claude。 不过，随着国内大模型的快速发展，Kimi、Qwen、GLM 等模型的综合能力已经基本接近 Claude 3.5 或 3.7，对于日常开发场景来说完全够用。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image82.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image82.webp)
 
 上面是对 Trae 的一个简要介绍。接下来，我们可以回顾在 [z.ai](http://z.ai) 中的操作步骤，并在 Trae 中复用这些思路。
 
@@ -745,25 +745,25 @@ Builder with MCP 模式则为 Agent 提供了更多工具（例如让大模型�
 
 还记得刚才创建的那个 Agent 吗？ 先点击右上角的 “Publish”，然后点击 “Publish Update”，最后点击 “Access API Reference” 进入 API 文档。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 进入 API 文档后，找到 “Send Chat Message” 这一部分，点击进入，然后在右侧找到 “Request” 和 “Response” 示例并复制出来。
 
 为什么一定要复制这两部分内容？ 因为它们是 API 的“核心信息”： 有了 Key、请求示例和返回示例，我们就可以让大模型帮我们生成调用服务的代码，并且根据返回结构把需要的字段提取出来。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image85.webp)
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 在找到会话所需的 Request 和 Response 示例之后，我们还需要获取一个 API Key。在文档右上角，你会看到 “API key” 相关选项。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image87.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image87.webp)
 
 点击 “Create new Secret key”，就可以创建属于你自己的 API Key。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image88.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image88.webp)
 
 现在一切准备就绪。我们会把刚才拿到的 API Key、Request 示例和 Response 示例一起交给 Trae Builder。
 
@@ -833,25 +833,25 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 }
 ```
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image89.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image89.webp)
 
 在这个阶段，你可能会发现生成出来的程序并不能一次性正常运行——比如对话会出现奇怪的错误，或者没有任何返回结果。当出现这种情况时，你可以尝试切换到另一个大语言模型，或者把错误信息复制出来，详细描述问题，再发给模型让它根据反馈继续迭代。
 
 此时你的工作方式已经非常接近真实开发过程了。在日常开发中，我们经常会在与大模型协作时遇到各种问题，为了更好地解决这些问题，我们需要提供更多上下文信息。除了提供错误信息，你还可以复制更完整的文档内容（例如在文档左侧 “Send message” 部分中复制更多说明），一并交给模型，让它在更多细节的基础上给出更完整的解决方案。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 此时浏览器是嵌在 Trae 内部的。你可以点击顶部的指南针图标，把网页在外部浏览器中全屏打开。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image91.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image91.webp)
 
 如果运气不错，你可能在第一次尝试时就能获得一个可以正常交互的前端页面。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 不过，由于大模型本身具有一定随机性，有时你可能在单轮对话中一切顺利，但在多轮对话时出现异常。因此，建议你进行多轮对话测试，确保程序在多轮交互场景下也能稳定运行。
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 到这里，你已经学会了如何构建一个简单的 Dify 知识库 Agent，并使用 Trae 替代 [z.ai](http://z.ai) 来搭建一个交互式前端。从现在开始，Trae 将成为我们构建各种原型时的主要开发工具，逐步取代 [z.ai](http://z.ai)。你可以尝试用 Trae 重新实现之前的贪吃蛇游戏，看看会有什么不同的体验。加油！
 
@@ -947,19 +947,19 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 - 当密码不正确时，提供第二次尝试机会（不提供第三次）
 - 当用户提及要再次登录时，为用户提供重新输入密码的机会
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image94.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image94.webp)
 
 参考输入输出：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Love loop workflow 工作流解密挑战
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image96.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image96.webp)
 
 在这个解密挑战中，你需要修复当前工作流的问题，让工作流最后的输出类似如下显示：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image97.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image97.webp)
 
 如果你遇到无法解决的问题，请截图询问大模型，或查阅官方文档得到结果：[https://docs.dify.ai/en/use-dify/getting-started/quick-start](https://docs.dify.ai/en/use-dify/getting-started/quick-start)
 
@@ -985,7 +985,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 有时候可能你会把 Dify 部署在自己的服务器，但是服务器的对外地址通常都是 http 而不是 https 的，但当我们请求一个只支持 HTTP 的服务时，你可能会看到类似这样的提示（启用 F12 浏览器调试信息模式，查看有问题的点）：
 
-![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/tutorial/images/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 出现这个问题的原因，是因为我们默认把 Dify 部署在一台只支持 HTTP 而不支持 HTTPS 的服务器上。 HTTPS（HyperText Transfer Protocol Secure）是在 HTTP（超文本传输协议）的基础上增加了 SSL/TLS 加密层，可以简单理解为“更安全版的 HTTP”。
 

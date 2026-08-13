@@ -29,7 +29,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/personal
 
 与微信朋友圈、知乎或 LinkedIn 不同，它不依赖于任何社交平台的算法推荐，也不会因为平台倒闭而消失。它是一个长期稳定、可被 Google/Google Scholar 索引的 **个人展示空间** 。它通常包含你的简介 (Bio)、发表的论文 (Publications)、参与的项目 (Projects) 以及技术博客 (Blog)。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 为什么要构建自己的网页
 
@@ -51,19 +51,19 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/personal
 
  **第一种方式：从零手写 (**  **HTML**  **/**  **CSS**  **/**  **JS** **)** 这是计算机专业的传统路线。你需要一个字一个字地敲代码。优点是极其灵活，想做什么样都行；缺点是门槛极高，容易在调样式（CSS）中崩溃，不适合专注于内容的我们。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image2.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image2.webp)
 
  **第二种方式：可视化建站 (**  **Wix**  **/**  **WordPress** **)** 类似“搭积木”。优点是简单拖拽；缺点是通常需要付费，且生成的代码臃肿，不具备“学术极客感”，很难做深度定制。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image3.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image3.webp)
 
 **第三种方式：基于 ****GitHub**** 模板 (Static Site Generator)** 这是学术界和极客圈**最推荐**的主流路线。我们直接复刻（Fork）别人写好的成熟模版（如 Jekyll 或 Hugo 框架），然后只修改配置文件和内容。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image4.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image4.webp)
 
  **第四种方式：Vibe Coding（AI 视觉生成流）** 依托于具备强大多模态视觉理解能力的 AI Agent，你只需要在网上看到一个喜欢的网页风格，直接截一张图发给 AI：“照着这个图给我写一个网页”。AI 就能瞬间将图片中的视觉元素解析并生成对应的底层代码。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image5.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image5.webp)
 
  **本教程的选择：** **GitHub Pages + 学术模板 + AI 修改。** 原因很简单：
 
@@ -105,7 +105,7 @@ Elon Musk 虽然不是大学教授，但他也有不少公开的“技术白皮�
 
 准备好这个工具后，在接下来的实战中，我们就不需要面对枯燥的代码框发呆了，而是直接在这里打开项目，通过右侧的对话框用自然语言（中文）指挥 AI 帮我们写代码、改 Bug、甚至重构整个页面。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image6.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image6.webp)
 
 ## 2.3 Git 下载
 
@@ -124,7 +124,7 @@ Elon Musk 虽然不是大学教授，但他也有不少公开的“技术白皮�
 * **情况 A（已安装）** ：如果你看到类似 `git version 2.xx.x` 的回复，恭喜你，你可以直接跳过下载步骤！
 * **情况 B（未安装）** ：如果你看到“命令未找到”或一系列红色报错信息，请继续往下看。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image7.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image7.webp)
 
 **第二步：AI 辅助安装**
 
@@ -162,7 +162,7 @@ Trae 会给你一段代码（通常是 `winget install --id Git.Git`）。
 
  *新手特别提醒* ：实际情况是，如果直接去官网下载，往往会卡住或者下载失败。因此，我们强烈建议直接访问 [RubyInstaller for Windows - 国内镜像](https://rubyinstaller.cn/) 网站进行下载 ，速度会快很多。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image8.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image8.webp)
 
 **第二步：执行安装**
 
@@ -170,13 +170,13 @@ Trae 会给你一段代码（通常是 `winget install --id Git.Git`）。
 
 勾选后，一路按提示默认点击“Next”完成安装。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image9.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image9.webp)
 
 **第三步：配置开发套件**
 
 安装进度条走完后，会自动弹出如下的黑色的命令行窗口。不要慌张，直接在光标处输入数字 `3`（代表安装 MSYS2 基础环境和 MINGW 工具链），然后按下回车键。耐心等待屏幕上的代码跑完，窗口自动关闭即可。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image10.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image10.webp)
 
 **第四步：验收成果**
 
@@ -188,7 +188,7 @@ Trae 会给你一段代码（通常是 `winget install --id Git.Git`）。
 
 如果你看到 Trae 回复了类似 `ruby 3.x.x` 的版本号，恭喜你，Windows 下的 Ruby 环境配置彻底成功！
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image11.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image11.webp)
 
 ### 2.4.2 Mac安装
 
@@ -233,7 +233,7 @@ Mac 系统的配置相对更具有“极客范”，通常需要敲黑客一样�
 1. **访问官网** ：打开 [https://github.com/](https://github.com/)。
 2. **点击注册** ：点击右上角的  **"Sign up"** 。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **填写信息** ：
 4. **Email** ：输入你的真实邮箱。
@@ -241,11 +241,11 @@ Mac 系统的配置相对更具有“极客范”，通常需要敲黑客一样�
 6. **Username（关键！）** ：**请慎重起名！** 因为你的个人主页网址将是 **`https://你的用户名.github.io`**。建议使用你的英文名拼音、常用 ID 或者由字母数字组成的简洁名称，**不要**起类似 `a1b2c3d4` 这种乱码，否则你的个人主页链接会很难记。
 7. **验证与启动** ：完成人机验证（通常是旋转图片或选出螺旋星系），去邮箱查收验证码。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image13.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image13.webp)
 
 注册完成后，你就拥有了一块属于自己的互联网“地皮”，接下来的章节，我们将开始在这块地皮上动工了！
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image14.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image14.webp)
 
 # 3 从模板到第一个可访问页面
 
@@ -277,7 +277,7 @@ Mac 系统的配置相对更具有“极客范”，通常需要敲黑客一样�
 
 * 解释 ：这步操作相当于把别人的“代码仓库”完整复制了一份钥匙到你自己的 GitHub 账号下。现在，你拥有了这个网站的所有权。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image15.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image15.webp)
 
 **第三步：重命名仓库（最关键的一步）**
 
@@ -285,7 +285,7 @@ Mac 系统的配置相对更具有“极客范”，通常需要敲黑客一样�
 
  **⚠️ 新手必读** ：这是 GitHub Pages 的铁律！ 例如，如果你的 GitHub 用户名是 `musk-fan`，那么仓库名**必须**叫 `musk-fan.github.io`。只有这样，GitHub 才会自动为你分配免费的域名。如果名字不对，后续网页将无法打开。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image16.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image16.webp)
 
 ## 3.2 获取 Github 项目URL
 
@@ -296,7 +296,7 @@ Mac 系统的配置相对更具有“极客范”，通常需要敲黑客一样�
 3. 确保选择 **HTTPS** 选项卡。
 4. 点击复制按钮，复制那个以 `.git` 结尾的URL（例如 `https://github.com/musk-fan/musk-fan.github.io.git`）。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image17.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image17.webp)
 
 ## 3.3 将项目拉到本地
 
@@ -306,7 +306,7 @@ Mac 系统的配置相对更具有“极客范”，通常需要敲黑客一样�
 
 在你的电脑上新建一个文件夹（例如命名为 `MyWebsite`），然后右键选择 “用 Trae 打开”（或者打开 Trae 后选择 Open Folder）。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image18.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image18.webp)
 
 **第二步，下达克隆命令**
 
@@ -322,7 +322,7 @@ Trae 打开后，呼出右侧的 AI 对话框（Chat），输入以下自然语�
 
 Trae 会自动调起底部的终端并执行命令。等待几秒钟，当你看到左侧的文件目录里多出了 `_config.yml`、`index.html` 等文件时，说明项目已经成功“搬”到了你的电脑上！
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image19.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image19.webp)
 
 ## 3.4 本地预览网页
 
@@ -355,7 +355,7 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 接下来，我们更改的内容，只要按 `Ctrl+S` 保存，再刷新一下浏览器，你会发现**网页内容就会随之而变**
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image20.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image20.webp)
 
 确认本地没问题后，我们就可以进入下一章，开始大刀阔斧地把这个网站变成“马斯克”的形状了。
 
@@ -391,7 +391,7 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 将我提供给你的图片素材（`University_of_Pennsylvania.jpg`、`Queen_University.jpg`）放入项目文件夹的对应位置（通常是 `/assets/images/badges/`）。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image21.png)![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image21.webp)![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **第二步：下达****指令**
 
@@ -427,13 +427,13 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 我们可以看到此时Trae已经完成了我们的所有修改要求
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image23.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image23.webp)
 
 **第三步，刷新本地浏览器**
 
 此时我们刷新本地浏览器，看到均正确更换
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image24.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image24.webp)
 
 ### 4.2.2 优化迭代：添加“论文”与项目
 
@@ -441,13 +441,13 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 在学术主页的语境下，我们可以把“Publications”（出版物）的概念重新定义为 **`“Technical White Papers & Visionary Plans”`** （技术白皮书与愿景规划）。这不仅不违和，反而非常符合他“实干派”的人设。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image25.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image25.webp)
 
 **第一步：准备素材**
 
 将我提供给你的封面图片（ 分别为 `Hyperloop_Alpha_sketch.jpg` 、`SpaceX_Starship.jpg`、`Neuralink_sewing_machine_robot.jpg`）下载下来，放入 `/assets/images/covers/` 文件夹中（并将文件夹中原有的示例图片删除）。
 
-![img](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image26.png)![img](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image27.png)![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![img](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image26.webp)![img](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image27.webp)![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **第二步：下达****指令**
 
@@ -511,7 +511,7 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 等待构建完成后，你会发现原本枯燥的论文列表，已经变成了充满未来感的“黑科技展示”。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image33.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image33.webp)
 
 ### 4.2.3 最后打磨：社交链接与头像
 
@@ -546,7 +546,7 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 此时在本地，你已经拥有了一个完整、专业、且充满“马斯克风格”的个人学术主页。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image34.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image34.webp)
 
 ## 4.3 注入灵魂的 UI 定制（风格篇）
 
@@ -554,7 +554,7 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
  **场景示例** ：如果你觉得灰色背景太沉闷，想改成“火星红”。 直接问 Trae：*“我想把侧边栏的背景颜色改成暗红色（#8B0000），体现火星的感觉。请问我应该修改哪个 **CSS** 或 SCSS 文件？请直接给我代码。”*
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image35.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image35.webp)
 
 如果你喜欢上述图片中的“SpaceX Dashboard”风格，可以直接复制下面这段“设计师级”Prompt：
 
@@ -637,7 +637,7 @@ Abstract: 一句话摘要。
 
 拿到这份整理好的**纯净文本**后，再喂给 Trae，准确率会提升 100%。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image36.png)![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image37.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image36.webp)![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image37.webp)
 
 **第三步：替换核心内容（两条路径）**
 
@@ -655,7 +655,7 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 
 你需要自己在左侧文件栏找到并点击打开这个文件，然后参考 Trae 的提示，像做填空题一样，把 ChatGPT 帮你整理好的内容填进去。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image38.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image38.webp)
 
 2. **模式 B：全自动托管（适合追求效率的你）**
 
@@ -677,7 +677,7 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 2. 在左侧侧边栏找到并点击  **Pages** 。
 3. 在 **Build and deployment** 下方，将 **Source** 选项从 `Deploy from a branch` 切换为  **`GitHub Actions`** 。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image39.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image39.webp)
 
 **第二步：自动配置 Jekyll****工作流**
 
@@ -686,7 +686,7 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 1. 找到 **Jekyll** (By GitHub Actions) 的卡片。
 2. 点击卡片上的 **Configure** 按钮。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image40.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image40.webp)
 
 **第三步：提交配置文件**
 
@@ -696,9 +696,9 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 2. 直接点击页面右上角的绿色按钮  **`Commit changes...`** 。
 3. 在弹出的确认框里再次点击  **`Commit changes`** 。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image41.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image41.webp)
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image42.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image42.webp)
 
 **第四步：等待并验收**
 
@@ -708,7 +708,7 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 2. 你会看到一个名为 `Deploy Jekyll site to Pages` 的任务正在转圈。
 3. 耐心等待 1-2 分钟，直到那个黄色的圆圈变成  **绿色的对号 (✅)** 。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image43.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image43.webp)
 
 **第五步：访问你的网站**
 
@@ -726,11 +726,11 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 4. 点击  **Sync Changes (**  **Push** **)** 推送到 main 分支。
 5. 稍等片刻，等到 **Actions** 标签下所有的进程均完成。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image44.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image44.webp)
 
 现在，恭喜你！打开你的 **`https://你的用户名.github.io/`**，你已经拥有了一个完整、专业、且充满“马斯克风格”的个人学术主页。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image45.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image45.webp)
 
 # 6 进阶玩法：从零手写个人主页
 
@@ -774,7 +774,7 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 技术要求： 请把所有 CSS 样式和 HTML 结构都写在一个 index.html 文件里。请直接生成完整代码。
 ```
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image46.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image46.webp)
 
 **第三步，生成和预览**
 
@@ -788,11 +788,11 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 
 你会收到一个类似 `http://localhost:8000` 的链接，在浏览器上复制并打开该链接，你就会看到一个酷炫的、背景可能有星星在闪烁的“火星主页”。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image47.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image47.webp)
 
 但我们发现当前页面目前只是一个非常酷炫的“着陆页”或“引导屏”，作为一个完整的个人主页来说，它的信息量太少了，缺乏学术主页应有的深度。因此基于这个框架风格，我们开始补充和完善里面关于 Elon Musk 的学术信息。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image48.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image48.webp)
 
 **第四步，进一步完善信息**
 
@@ -833,7 +833,7 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 
 返回浏览器刷新一下页面，这个赛博朋克风的学术页面，就大功告成了！当然，你也可以根据自己的喜好继续完善，只需要像上述过程一样，明确地把目标需求告诉 Trae，它自然会帮你实现繁琐的编码过程。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image49.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image49.webp)
 
 ## 6.3 如何部署“手搓”的网站
 
@@ -844,7 +844,7 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 1. 登录 GitHub 网页端。
 2. 点击右上角的 **+** 号 -> **New** **repository** 。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image50.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image50.webp)
 
 3. **Repository** **name**：填入 `mars-profile`（或者任何你喜欢的名字）。
 
@@ -854,13 +854,13 @@ Trae 会在**对话框里**告诉你： “你需要修改的文件是 `_pages/a
 5. **⚠️ 千万不要勾选 "Add a README file"！** （其余选项保持默认即可）
 6. 点击 **Create  repository** 。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image51.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image51.webp)
 
 **第二步：把本地代码推送到云端**
 
 创建完成后，GitHub 会跳转到一个页面，上面有一堆乱七八糟的代码。别慌，我们在复制下面图片中的这个仓库链接
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image52.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image52.webp)
 
 回到 Trae，在 Chat 框中输入：
 
@@ -878,7 +878,7 @@ Trae 通常会帮你执行以下“标准三连招”（你可能只需要点击
 
 等 Trae 完成提交任务后，我们回到 GitHub 刷新网页，点击顶部的  **Code** ，就可以看到我们在 Trae 上编写的代码已经成功传到 GitHub 仓库中了。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image53.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image53.webp)
 
 **第三步：开启 ****GitHub**** Pages**
 
@@ -891,17 +891,17 @@ Trae 通常会帮你执行以下“标准三连招”（你可能只需要点击
    2. **Branch** : 选择 `main` 分支，文件夹选 `/(root)`。
 4. 点击  **Save** 。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image54.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image54.webp)
 
 当你点击 Save 之后，网页并不会在一秒钟内“变”出来。GitHub 的后台就像一个小机器人工厂，它需要花大概 **1 到 2 分钟**的时间，把你上传的代码打包、编译，然后发布到全球的服务器上。
 
 耐心等待后刷新页面，你会在 **GitHub** Pages这个大标题的正下方，看到一行带网址的提示，通常写着：**"Your site is live at `https://你的用户名.github.io/mars-link/`"**。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image55.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image55.webp)
 
 点开它，你的“火星指挥中心”就上线了！
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image56.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image56.webp)
 
 # 7  写在最后
 
@@ -917,7 +917,7 @@ Trae 通常会帮你执行以下“标准三连招”（你可能只需要点击
 
 别让这块地荒着。去折腾，去破坏，去重建，直到它长成你最喜欢的样子。
 
-![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](/tutorial/images/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***去吧，让世界看到你！***
 

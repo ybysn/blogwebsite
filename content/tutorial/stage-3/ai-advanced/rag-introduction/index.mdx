@@ -37,7 +37,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advan
 
 检索增强生成（Retrieval-Augmented Generation，RAG）是当前生成式 AI 中非常重要的一种技术方式。它的基本思路是：在让大模型生成回答之前，先从外部知识库中检索出与问题相关的信息，再把这些检索结果连同用户的问题一起交给模型，让模型在参考真实资料的基础上作答。这个外部知识库可以是企业内部的制度与流程文档、产品知识库，也可以是行业数据库、法规标准库等。
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image1.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image1.webp)
 
 但此时我们会有一个疑问：既然大模型本身已经可以“直接回答问题”，为什么还需要额外增加“检索增强生成”这一层？尤其是现在大模型的上下文窗口越来越大，似乎只要把相关资料都提供给模型，让它先理解再回答，也能解决大部分需求。
 
@@ -46,7 +46,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advan
 1. **成本与效率的问题** ：
    即便大模型的上下文持续扩容，试图将所有文档 “一股脑通通塞进去” 的做法，在实际应用中依然不现实。核心矛盾集中在两点：
 2. 推理成本与上下文长度呈强正相关：上下文越长，推理成本几乎呈线性甚至超线性上升。以单次调用为例，8K Token 与 200K Token 对应的价格、响应延迟，完全处于不同量级，长上下文的成本门槛显著更高；
-   ![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image2.png)
+   ![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image2.webp)
 
    > 上下文（context）从意义上指模型在回答当前问题时所“参考”的背景信息与对话历史；从技术上则是指一次推理时输入给模型的 Token 序列（如 system/user 指令、历史消息、检索片段等）的总和。
    >
@@ -86,7 +86,7 @@ RAG（Retrieval-Augmented Generation，检索增强生成）的核心思路是�
 
 在典型的 RAG 系统中，用户的问题不会被直接丢给大模型，而是先由检索模块从企业知识库中找到最相关的文档片段，再将这些内容与原始提问一起组合成完整的上下文，输入给大模型生成回答。这种"先检索、再生成"的方式，让模型能够基于真实参考资料进行推理，而不是仅凭参数中"记住"的知识进行推测。我们可以参考一个典型案例：
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image3.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image3.webp)
 
 1. **索引阶段**
 
@@ -303,7 +303,7 @@ RAG 技术的起源可以追溯到 2017 年的 DrQA 框架，该框架首次尝�
 
 整体来看，RAG 的演进大致可以分为三个阶段：
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image4.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image4.webp)
 
 ## 4.1 第一代 RAG：Naive RAG（基础检索增强）
 
@@ -431,11 +431,11 @@ Naive RAG可以理解为基础的 RAG 形态，它在工程上非常直接，典
 
 MTEB为各类Embedding模型提供了一个统一、客观的评估框架。它通过8大类任务、56个数据集，全面评测模型在检索、聚类、分类、重排序、文本匹配、语义相似度等多种场景下的表现。模型在MTEB上的整体得分，能够反映其向量表示能力的通用性和稳健性，可作为选型的重要数据参考。最新排名和详细结果可通过 [HuggingFace MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard) 查看。
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image5.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image5.webp)
 
 尽管榜单上存在大量模型，你可以根据实际需求进行选择，并不需要掌握所有的模型（一般来说，选择大模型厂商自带的 Embedding 模型，或者使用云服务平台部署对外使用的模型就大概率不会错，因为这个是大多人检验后的标准），你还可以在侧边栏中选择具体的类别或者语言进行筛选：
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image6.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image6.webp)
 
 此外，在筛选 Embedding 模型时，需重点关注直接影响 RAG 性能的两个核心参数：维度和上下文长度。其中，维度是指模型输出向量的维度数（如 128 维、768 维），它本质上反映了描述语义信息时所使用的“特征数量”。维度越高，向量能刻画的语义细节越丰富、区分度越强，例如一个 768 维的向量可以从品种、口感、产地等数百个角度精细表征“苹果”，从而更适用于医疗、法律等需要精准检索的专业场景；维度越低，则计算与存储成本越小、检索速度越快，适合千万级文档等高并发、强实时性要求的通用场景。
 
@@ -692,7 +692,7 @@ LLM裁判的优势在于能进行更接近人类的整体性判断——它可�
 
 当然，如果团队资源有限或希望快速建立基线，参考业界成熟的公开评测基准也是一个可行的起点。截至2025年，已有诸多涵盖通用领域和垂直行业的基准可供选择（见图表）。
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image7.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image7.webp)
 
 在选择时，应首先明确评测目的：是建立能力基线，还是为上线做最终验证？其次，需评估基准数据是否覆盖了所关心的场景、问题类型和难度。对于新闻、金融等时效性强的场景，必须考察基准是否包含实时数据测试；而对于历史知识处理，静态基准可能已足够。最后，还需权衡标注成本，是直接采用已完整标注的基准，还是使用原始数据自行标注。
 
@@ -710,7 +710,7 @@ Hugging Face提供了一个基于Chroma向量数据库的语义缓存实现方�
 
 [https://huggingface.co/learn/cookbook/semantic_cache_chroma_vector_database](https://huggingface.co/learn/cookbook/semantic_cache_chroma_vector_database)
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image8.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image8.webp)
 
 背景：大多数教程搭建的RAG系统只适合单用户测试，当系统部署到生产环境后，面对几十到几千次的重复查询（比如客服场景中用户反复询问"如何退款"），每次都要执行向量数据库检索和LLM调用，响应时间会明显增加，成本也会快速上升。通过引入语义缓存层，可以在保证答案质量的前提下，大幅减少对原始数据源的访问压力。
 
@@ -726,7 +726,7 @@ Hugging Face的另一个教程展示了如何使用Unstructured库构建完整�
 
 [https://huggingface.co/learn/cookbook/rag_with_unstructured_data](https://huggingface.co/learn/cookbook/rag_with_unstructured_data)
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image9.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image9.webp)
 
 背景：企业场景中的知识往往分散在PDF、PowerPoint、EPUB、HTML等多种格式中，传统的数据预处理方法要么只能处理单一格式（比如只支持PDF），要么在格式转换过程中丢失关键信息（特别是表格、标题层级等结构化内容），导致RAG系统无法准确理解和检索这些信息。
 
@@ -760,7 +760,7 @@ AIOps RAG竞赛的EasyRAG项目专注于运维场景下的问答任务，技术�
 
 [http://blog.csdn.net/hustyichi/article/details/143323746](http://blog.csdn.net/hustyichi/article/details/143323746)
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image10.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image10.webp)
 
 背景：运维工程师日常工作中需要查阅大量技术文档，这些文档不仅包含文字说明，还包含监控图表、系统架构图、性能曲线等图片信息。比如当系统出现性能问题时，工程师需要快速查询"CPU使用率超过80%时应该如何处理"，答案可能分散在文字说明和监控图表中。传统RAG系统只能处理文字，无法理解图表中的趋势和数值，导致答案不完整。该项目最终获得初赛第一、复赛第二的成绩。
 
@@ -782,7 +782,7 @@ KDD Cup 2024 Meta RAG挑战赛的冠军方案展示了如何整合非结构化We
 
 https://arxiv.org/pdf/2410.00005
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image11.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image11.webp)
 
 背景：任务1要求基于5个网页做检索摘要，比如用户搜索"星际穿越导演是谁"，系统需要从给定的网页中提取答案。任务2在任务1基础上增加了Mock API（模拟访问结构化知识图谱），系统可以调用API查询电影数据库、人物关系等结构化信息。任务3进一步扩大难度，基于50个网页与Mock API处理复杂查询，比如"哪些由诺兰导演的电影票房超过5亿美元"，这需要同时查询知识图谱（导演作品关系）和网页（票房数据）。每个查询需在30秒内完成，核心目标是提升多源数据整合的准确性并减少幻觉。
 
@@ -808,7 +808,7 @@ https://arxiv.org/pdf/2410.00005
 
 相关研究：[https://arxiv.org/pdf/2410.05779](https://arxiv.org/pdf/2410.05779)， [https://arxiv.org/pdf/2502.11371](https://arxiv.org/pdf/2502.11371)， https://arxiv.org/pdf/2404.16130
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image12.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image12.webp)
 
 传统RAG依靠寻找和问题相似的文本段落来工作，这就像在一堆材料里挑出看起来最相关的几段话。对于直接查找某个具体信息，这种方法很有效。但如果一个问题需要联系多份文档、结合不同线索才能回答，它的表现就会打折扣。
 
@@ -822,7 +822,7 @@ Graph RAG的做法，就是先主动画出这幅全景图。系统会利用大�
 
 相关研究：https://arxiv.org/pdf/2502.08826
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image13.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image13.webp)
 
 现实世界的数据从来不是单一文本。工程师排查服务器故障时，需要同时看温度监控曲线、设备面板截图和系统日志；医生做诊断时，需要把 CT / MRI 影像、检查报告和电子病历放在一起看。传统的文本 RAG 最多只能检索到“温度异常”“怀疑肺结节”这样的文字描述，却难以把这些描述与具体的曲线走势、影像病灶形态对应起来，更做不到用“图/音/视频”去反向检索相关文档和知识。
 
@@ -834,7 +834,7 @@ Multimodal RAG（多模态 RAG）解决的是这种“模态之间互相看不�
 
 相关介绍：https://jina.ai/news/late-chunking-in-long-context-embedding-models/
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image14.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image14.webp)
 
 想象你正在阅读一篇关于柏林的维基百科文章，传统RAG系统会先将其切成独立段落再生成向量。当第一句提到"柏林是德国首都"后，后续段落中的"该城市"、"它的人口"等指代词就失去了与"柏林"的关联。此时若查询"柏林的人口是多少"，系统会因为"柏林"和"人口数据"从未在同一文本块出现而检索失败。这个问题在长文档场景更为严重：一份200页的保险合同中，"免赔额"的定义在第5页，具体适用条件在第30页，传统的固定长度切分（如每512 tokens一块）会将这些相关信息分散到40多个独立文本块中，实验数据显示这种割裂会导致语义相似度从0.85暴跌至0.71。
 
@@ -850,7 +850,7 @@ Late Chunking颠覆了"先切后编"的传统流程，改为"先编后切"：利
 
 RAG技术已从最初的检索增强生成工具，发展为构建智能体认知架构的关键部分。 传统RAG系统基于提问、检索、回答的简单模式，本质是被动接受查询，不具备主动行动的能力。为了突破这种被动性并处理更复杂的认知任务，RAG与智能体能力进行了深度融合，由此诞生了Agentic RAG这一新范式。 在此范式中，RAG的角色发生了根本转变：它不再仅仅是外部知识的被动提供者，而是在智能体的主动规划、目标指引和反思能力驱动下，成为支撑智能行为的核心处理单元。这种融合使系统整体具备了目标导向、迭代优化和自主决策的能力，显著提升了人机交互的深度与质量。具体而言，Agentic RAG能够理解复杂任务，自主拆解问题，规划检索策略，并在获取初步信息后评估结果质量，决定是否深入探索，从而胜任传统RAG难以应对的多步骤复杂任务。
 
-![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image15.png)
+![](/tutorial/images/stage-3/ai-advanced/rag-introduction/images/image15.webp)
 
 Agentic RAG实现上述复杂任务处理的关键，在于其建立了一个多层次的主动循环工作机制。 面对复杂查询，智能体首先分析问题本质，将其拆解为子问题，并为每个子问题设计精准的检索策略。获得初步结果后，智能体进行评估与反思，判断信息的完整性和相关性，识别知识缺口，并动态生成更精确的新查询。这种迭代过程常包含多跳检索，即基于前一轮结果发现新的检索方向，形成类似人类研究者的知识探索链条。然而，要支撑这种持续的、迭代的智能行为，尤其是实现长期交互中的个性化和知识积累，仅依赖单次会话的短期上下文（短期记忆）是远远不够的。这引出了对长期、结构化记忆能力的需求。
 

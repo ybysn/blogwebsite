@@ -26,7 +26,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-pl
 
 Android App 是运行在 Android 操作系统上的原生应用程序。与小程序不同，它不依赖微信等宿主，直接运行在系统层。它拥有独立的桌面图标，启动速度快，交互流畅，并且可以深度调用蓝牙、传感器、后台服务等系统底层功能。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image1.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image1.webp)
 
 ## 1.2 Android App开发
 
@@ -42,7 +42,7 @@ Android 开发是指构建上述应用程序的全过程。在本教程的Vibe C
 
 **第一种方式：原生开发（Native Development）** 这是 Google 官方推荐的正统路线。直接使用 **Kotlin** 语言和 **Jetpack** **Compose** 框架进行开发。它的优势是性能最好，能无障碍调用所有手机硬件。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image2.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image3.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image2.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image3.webp)
 
 **第二种方式：跨平台开发（Cross-Platform）** 例如 Flutter 或 React Native。主打“写一套代码，同时生成 Android 和 iOS 应用”。
 
@@ -50,7 +50,7 @@ Android 开发是指构建上述应用程序的全过程。在本教程的Vibe C
 
 **本教程的选择：以原生开发（** **Kotlin + Compose）**为基础，结合 AI 工具完成编码。 原因很简单：原生开发的 Jetpack Compose 代码结构非常清晰，极度适合 AI 理解和生成。我们不需要从零手写代码，而是通过自然语言指挥 Trae 生成高质量的原生代码。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image4.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image4.webp)
 
 ## 1.4 本文介绍的 Android App 开发步骤
 
@@ -80,7 +80,7 @@ Trae 是我们进行 **Vibe Coding** 的主战场。你可以把它简单理解�
 
 请访问官网 [https://www.trae.cn](https://www.trae.cn) ，根据你的电脑系统（Windows 或 Mac）下载对应的版本。安装过程非常简单，和安装普通软件一样，双击安装包并按提示点击“下一步”即可完成。准备好这个工具后，在接下来的实战中，我们就不需要面对枯燥的代码框发呆了，而是直接在这里打开项目，通过对话框用自然语言指挥 AI 帮我们写代码、改 Bug。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image5.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image5.webp)
 
 ## 2.3 Android Studio 下载
 
@@ -90,7 +90,7 @@ Trae 是我们进行 **Vibe Coding** 的主战场。你可以把它简单理解�
 
 虽然现代版本的 Android Studio 已经极大简化了配置流程，但它底层依然依赖 **JDK (Java Development Kit)** 环境。如果你是第一次接触开发，或者在安装过程中遇到了“环境变量”或“SDK 配置”相关的报错，请不要慌张。你可以参考下面这篇详细的避坑指南，它会手把手教你完成这些基础配置：[Android Studio2024版本安装环境SDK、Gradle配置](https://blog.csdn.net/keiraee/article/details/142321644?ops_request_misc=elastic_search_misc&request_id=a2b858d1f665095c53afa9114ad8864d&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-142321644-null-null.142^v102^pc_search_result_base4&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image6.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image6.webp)
 
 ## 2.4 新建一个项目
 
@@ -100,7 +100,7 @@ Trae 是我们进行 **Vibe Coding** 的主战场。你可以把它简单理解�
 
 在弹出的模板列表中，请选择 **"Empty Activity"** （注意图标上有 Jetpack Compose 的标志）。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image7.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image8.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image7.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image8.webp)
 
 **第二步：填写项目配置**
 
@@ -114,7 +114,7 @@ Trae 是我们进行 **Vibe Coding** 的主战场。你可以把它简单理解�
 | **Minimum SDK**   | API\*\*\*\*30                                      | 覆盖超 90% 现役设备，平衡兼容性与功能    |
 | **Language**      | Kotlin（推荐）                                     | Kotlin是 Google 官方推荐语言，更简洁安全 |
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image9.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image9.webp)
 
 **第三步：等待构建**
 
@@ -134,7 +134,7 @@ Trae 是我们进行 **Vibe Coding** 的主战场。你可以把它简单理解�
 
 如果你的 Android Studio 右侧底部状态栏正在显示下载进度条（Gradle Building...），请根据下图操作暂停正在下载的依赖，避免文件冲突。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image10.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image10.webp)
 
 2. **加速 Gradle 构建工具下载**
 
@@ -146,13 +146,13 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip
 
 切记，只需要把[services.gradle.org/distributions](http://services.gradle.org/distributions)替换成[mirrors.cloud.tencent.com/gradle](https://mirrors.cloud.tencent.com/gradle/)就行了，其余地方不要动
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image11.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image11.webp)
 
 3. **加速依赖库下载**
 
 接着，在左侧目录的根节点下找到并打开 `settings.gradle.kts` 文件。，请将 `repositories` 大括号内的内容替换为以下代码：
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image12.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image12.webp)
 
 将上图框起来部分都替换成以下代码（这是2025年2月21日最新更新的源）
 
@@ -172,13 +172,13 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip
 
 变成如下图的样子
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image13.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image13.webp)
 
 4. **保存应用更改**
 
 到了这一步我们记得保存一下，然后点击右上角的那个 `Try Again`，软件会重新开始下载配置。耐心等待几分钟，当底部控制台出现 `BUILD SUCCESSFUL`字样时，说明环境搭建彻底成功，我们已经准备好开始写代码了。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image14.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image14.webp)
 
 ## 2.6 理解项目结构
 
@@ -240,7 +240,7 @@ app/
 
 3、如果我们对生成的效果不满意，我们可以回退到上一个版本
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image15.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image15.webp)
 
 ## 3.2 运行与查看（模拟器调试）
 
@@ -254,27 +254,27 @@ app/
 
 在面板中点击“Add a new device” 按钮选择创建 “Create Virual device”，进入设备选择窗口。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image16.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image16.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image17.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image17.webp)
 
 在弹出的硬件选择窗口中，选择 “Phone”（手机） 分类下的 “Smart Phone”（中等屏幕手机） 选项（也可根据需求选择其他分辨率的设备，如 “Pixel” 系列），点击 “Next”。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image18.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image18.webp)
 
 **第二步：配置系统镜像**
 
 进入 “System Image”（系统镜像）对话框，在列表中选中 “API 36.1” 系统版本（若该版本未下载，右侧会显示 “Download”按钮，点击按钮下载镜像文件，下载完成后再选中），点击 “Finish”。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image19.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image19.webp)
 
 **第三步：启动模拟器**
 
 创建成功后，你的设备管理器列表中会出现刚刚添加的手机。点击它右侧的 **三角形播放按钮** 。 稍等片刻，一个外形像真实手机的窗口就会弹出来。这就是你的安卓模拟器。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image20.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image20.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image21.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image21.webp)
 
 **第四步：运行 App**
 
@@ -282,9 +282,9 @@ app/
 
 几秒钟后，你应该能看到模拟器屏幕亮起，中间出现了一个白色的木鱼图案，上方显示着“功德：0”。试着点击它，看看数字是否增加，动画是否生效。这就是你的第一个 Android App！
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image22.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image22.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image23.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image23.webp)
 
 ## 3.3 优化迭代（添加素材与音效）
 
@@ -299,11 +299,11 @@ app/
 
 这是我为您找的图片和声音素材，如果您不便于去寻找相关素材可以直接使用
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image24.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image24.webp)
 
 敲击音效下载链接 https://www.aigei.com/s?q=%E6%9C%A8%E9%B1%BC&type=sound，选择第一个1s的音效即可
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image25.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image25.webp)
 
 **第二步：下达迭代\*\***指令\*\*
 
@@ -316,15 +316,15 @@ app/
 3. 点击时，在木鱼上方出现一个暂时的文字 "+1"，然后慢慢飘走消失（类似游戏里的跳字效果）。
 ```
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image26.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image26.webp)
 
 **第三步：验收成果**
 
 等待 Trae 修改完代码后，回到 Android Studio，点击顶部的绿色运行按钮（Re-run），重启模拟器。 此刻，你的应用已经脱胎换骨。试着连续点击，你应该能听到清脆的“笃笃”声，看到“功德+1”的文字在鼠标下跳跃。这就完成了从“Demo”到“产品”的关键跨越。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image27.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image27.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image28.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image28.webp)
 
 ## 3.4 遇到 Bug 怎么办？（与 AI 的调试闭环）
 
@@ -358,9 +358,9 @@ AI 生成的代码不一定一次就完美，就像顶尖的程序员也无法�
 请直接给出修改后的 MainActivity.kt 代码。
 ```
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image29.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image29.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image30.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image30.webp)
 
 ## 3.5 最终成果展示
 
@@ -392,7 +392,7 @@ AI 生成的代码不一定一次就完美，就像顶尖的程序员也无法�
 请直接给出修改后的 MainActivity.kt 完整代码，保持之前的动画和音效逻辑不变。
 ```
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image31.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image31.webp)
 
 # 4 真机调试与打磨
 
@@ -411,7 +411,7 @@ AI 生成的代码不一定一次就完美，就像顶尖的程序员也无法�
 2. 进入【开发者选项】，找到并开启 **【无线调试】** 开关。
 3. 点击【无线调试】文字进入详情页，选择 **【使用二维码配对设备】** ，此时手机会打开扫描框。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image32.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image33.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image32.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image33.webp)
 
 **第二步：电脑端配对**
 
@@ -419,7 +419,7 @@ AI 生成的代码不一定一次就完美，就像顶尖的程序员也无法�
 2. 在下拉菜单中选择【Pair Devices Using Wi-Fi】。
 3. 屏幕上会弹出一个二维码。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image34.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image34.webp)
 
 **第三步：扫码连接**
 
@@ -427,11 +427,11 @@ AI 生成的代码不一定一次就完美，就像顶尖的程序员也无法�
 2. 手机和电脑会同时提示“配对成功”。
 3. 此时，Android Studio 顶部的设备栏中会自动显示你的手机型号（例如 `Google Pixel 8`）。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image35.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image35.webp)
 
 4. 运行设备：点击 ▶️ 运行
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image36.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image36.webp)
 
 ## 4.2 usb有线调试
 
@@ -445,9 +445,9 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 2. 切换到中间的 **SDK Tools** 选项卡。
 3. 在列表中勾选 **Google USB Driver **，点击 **Apply** 进行下载和安装。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image37.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image38.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image37.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image38.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image39.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image39.webp)
 
 ### **4.1.2 下载和真机一样版本的SDK**
 
@@ -455,7 +455,7 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 
 这里以oppo手机为例：打开设置---点击关于本机---查看你的安卓版本（示例中为Android 12）
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image40.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image40.webp)
 
 **第二步，选择你安卓手机的安卓系统版本进行下载**
 
@@ -463,19 +463,19 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 2. 默认为中间的**SDK Platforms**选项卡。
 3. 选择Android 12.0 点击apply进行下载
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image41.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image41.webp)
 
 ### 4.1.3 打开手机开发者模式
 
 打开手机设置，进入开发者选项，找到并开启 **【** **USB** **调试**】 开关。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image42.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image42.webp)
 
 ### 4.1.4 系统中安装Usb驱动
 
 此时，拿起你的手机，屏幕上应该会弹出一个重要的安全警告框：“允许 USB 调试吗？”。 请务必勾选 “始终允许”，然后点击“允许”或“确定”。这是电脑获得手机控制权的关键授权。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image43.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image43.webp)
 
 ### 4.1.5 在我们的手机中运行APP
 
@@ -485,7 +485,7 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 
 现在，试着点击屏幕上的木鱼，感受一下那来自真实物理马达的震动反馈，这才是 Vibe Coding 的最终完全体体验。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image44.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image45.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image46.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image44.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image45.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image46.webp)
 
 # 5 将APP打包APK
 
@@ -497,15 +497,15 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 
 **操作步骤非常简单：** 在 Android Studio 顶部菜单栏中找到 Build，鼠标悬停在 Generate App Bundles or APKs 上，然后在弹出的子菜单中点击 Generate APKs。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image47.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image47.webp)
 
 接下来等待5秒左右，时长因项目大小而定，就可以在整个AS界面的右下方控制台看到这样的提示框，点击蓝色文字 locate 文件夹会自动弹出，里面那个名为 `app-debug.apk` 的文件，就是我们要的安装包。
 
 你可以直接把它通过微信或 QQ 发送给任何安卓手机，对方接收后即可安装使用。值得注意的是debug并未是发行版。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image48.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image48.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image49.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image49.webp)
 
 ## 5.2 打包Realse版
 
@@ -525,19 +525,19 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 - Android App Bundle (.aab)：这是 Google Play 要求的格式，体积更小，但不能直接安装到手机上。
 - APK：这是通用的安装包格式，可以直接安装。 _建议：为了演示方便，这里我们先选择 APK，点击 Next。_
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image50.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image51.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image50.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image51.webp)
 
 **第二步：创建数字密钥 (KeyStore)**
 
 这是新手最容易卡住的地方。因为是第一次打包正式版，我们需要新建一个“密钥库”。 在 Key store path 下方点击 **Create new** 。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image52.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image52.webp)
 
 在弹出的窗口中，你需要填写一些信息，就像注册账号一样。这里我们强烈建议密钥库密码和密钥别名密码 **设为一样的** ，并且 **一定要记下来** ！如果密码丢了，你的 App 以后就再也无法更新了。
 
 填写完毕后点击 OK，你会回到上一个界面，此时刚才填好的密钥信息已经自动填充进去了。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image53.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image54.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image53.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image54.webp)
 
 **第三步：生成正式包**
 
@@ -545,9 +545,9 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 
 等待片刻，当右下角再次弹出“Generate Signed APK”成功的提示时，点击 **locate** 。这次你看到的文件夹里，躺着的就是经过数字签名的正式版安装包（通常名为 `app-release.apk`）。这个文件，才是你作为开发者交付的最终产品。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image55.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image55.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image56.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image57.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image56.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image57.webp)
 
 # **6 正式上线到应用商店/市场**
 
@@ -563,7 +563,7 @@ Mac 用户请直接跳过这一步，插上手机即可识别。 Windows 用户�
 
 目前，几乎所有国内主流应用商店（华为、小米、OV、应用宝等）在提交应用时，都**强制要求**提供《计算机软件著作权登记证书》（简称“软著”）。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image58.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image59.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image58.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image59.webp)
 
 - **什么是软著？** 它是证明 App 归你所有的法律文件。
 - **获取成本** ：你需要向版权局申请。自己申请通常需要 2-3 个月，找代理机构加急办理需要花费几百到上千元不等。
@@ -603,9 +603,9 @@ ViVO开发者联盟地址：https://dev.vivo.com.cn
 
 **以腾讯应用宝为例：** 访问腾讯开放平台，点击注册。建议使用 QQ 账号直接登录。注意，注册用的 QQ 号一旦绑定很难解绑，建议使用专门的工作 QQ。根据页面提示，选择“个人开发者”或“企业开发者”，上传身份证照片并进行人脸识别验证。认证通过后，点击【创建应用】即可开始。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image60.png)![](/tutorial/images/stage-3/cross-platform/android-app/images/image61.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image60.webp)![](/tutorial/images/stage-3/cross-platform/android-app/images/image61.webp)
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image62.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image62.webp)
 
 ### 6.1.3 发布流程与准备资料
 
@@ -634,7 +634,7 @@ ViVO开发者联盟地址：https://dev.vivo.com.cn
 - **科学的网络环境** ：你需要能够顺畅访问 Google Play Console（开发者控制台）。
 - **正式版安装包** ：注意，Google Play 强制要求上传 **. aab** ( Android App Bundle ) 格式的文件，而不是 APK。在 Android Studio 打包时选择 "Android App Bundle" 即可，步骤与打包 APK 几乎一致。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image63.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image63.webp)
 
 ### 6.2.2 Google Play Console 发布流程（文字概览）
 
@@ -657,7 +657,7 @@ ViVO开发者联盟地址：https://dev.vivo.com.cn
 
 在 Production（正式版） 菜单下，点击 Create new release，上传你的 .aab 文件。点击保存并提交审核。Google Play 的审核通常非常快（1-3 天），通过后你的 App 就能被全球用户下载了。
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image64.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image64.webp)
 
 _若您已经完成开发者账号注册，该视频教程可指导您完成后续操作 ：_[Android应用上传GooglePlay谷歌市场全流程教程](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)\*
 
@@ -673,7 +673,7 @@ _若您已经完成开发者账号注册，该视频教程可指导您完成后�
 
 很期待你的下一个作品，加油！
 
-![](/tutorial/images/stage-3/cross-platform/android-app/images/image65.png)
+![](/tutorial/images/stage-3/cross-platform/android-app/images/image65.webp)
 
 **_祝你在 Android 开发的世界里，玩得开心！_**
 

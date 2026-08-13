@@ -87,13 +87,13 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-pl
 
 1. 在浏览器地址栏输入 https://mp.weixin.qq.com ，打开微信公众平台网页，用你的微信扫码登录。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image1.webp)
 
 2. 在首页选择「小程序」，按照页面提示完成注册流程，填写邮箱、手机号以及主体类型（个人或企业）。
-   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image2.png)
+   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image2.webp)
 3. 注册成功并进入后台后，找到「开发管理」或「开发设置」页面，就能看到一个唯一的编号，名字叫 AppID 。这个编号后面会用在项目配置里，相当于你这个小程序在微信里的身份证。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image3.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image3.webp)
 
 建议你把 AppID 记录在一个方便找到的地方。后续章节在配置项目时，我们会直接把这个值填进去，让本地项目和线上小程序对应起来。
 
@@ -105,7 +105,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-pl
 2. 下载完成后，双击安装包，按照安装向导一步步点击下一步。如果你不清楚要改什么设置，保持默认选项就可以。
 3. 安装结束后，从桌面或开始菜单启动微信开发者工具。首次启动时，它会在屏幕上显示一个二维码，提示你用手机微信扫码登录。用自己的微信扫码并确认授权后，就可以进入主界面。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image4.png)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image5.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image4.webp)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image5.webp)
 
 后面当我们在 Trae 中准备好项目文件之后，就会把构建好的小程序导入到微信开发者工具里，在这里看到真实的运行效果。
 
@@ -115,11 +115,11 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-pl
 
 你可以 **先安装 Trae** 。打开浏览器访问 https://www.trae.cn ，根据页面提示下载适合你系统的版本。安装过程和普通软件一样，双击安装包，按提示完成即可。安装完成后，你会得到一个可以打开本地文件夹、查看代码、和 AI 对话的 IDE，后续所有 vibecoding 步骤都会在这里进行。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image6.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image6.webp)
 
 **接着安装 HBuilderX** 。访问 https://www.dcloud.io/hbuilderx.html ，选择对应操作系统的发行包下载。HBuilderX 的包体非常小，启动速度也很快。安装完成后，你可以先熟悉一下它的界面，不需要深入研究功能；在后面的章节中，我们会用它来创建一个 uni-app 小程序模板，作为整个项目的起点。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image7.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image7.webp)
 
 完成本节的所有步骤之后，你已经具备了完整的开发环境：有微信小程序的账号和 AppID，有可以预览的小程序运行环境，也有可以和 AI 一起写代码的 IDE。在接下来的部分，我们会从**创建第一个小程序项目骨架**开始，让这些工具真正跑起来。
 
@@ -127,19 +127,19 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-pl
 
 1. 点击新建项目
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image8.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image8.webp)
 
 2. 选择默认模板，给小程序起名，选择存放路径，带你及右下角的创建：
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image9.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image9.webp)
 
 3. 显示创建成功！
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image10.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image10.webp)
 
 4. 接着可以在对应的文件夹中找到该文件夹，在Trae里面打开该文件夹，可以看到地基文件已经全部建造好：
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image11.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image11.webp)
 
 # 3. 小程序开发
 
@@ -170,16 +170,16 @@ Trae 收到这条指令之后，会自动阅读当前项目结构，判断应该
 
 1. 它会在对话区解释自己的思路，比如会在哪个目录下新增页面、打算如何组织游戏逻辑。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image12.png)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image13.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image12.webp)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image13.webp)
 
 2. 它会直接对真实项目文件做增删改，而不是只给你一段「示例代码」让你自己拷贝。
 3. 修改完成后，Trae 会生成一个简短的小结，告诉你：这次它改了哪些文件，大致做了哪些事情。
 
 如果你对这一轮修改不满意（或者觉得某一步有问题），也不用紧张。Trae 在你发出对话的对话框外的左上角提供了「回退」能力，你可以一键把工程恢复到本次指令执行之前的状态，相当于给这次操作加了一个安全的撤销键。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image14.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image14.webp)
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image15.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image15.webp)
 
 ## 3.3 在 HBuilderX 和微信开发者工具中查看效果
 
@@ -187,11 +187,11 @@ AI 完成第一轮开发之后，代码已经落在项目里了，但这时候�
 
 具体做法是：回到 HBuilderX，找到顶部菜单的「运行」选项，选择「运行到小程序模拟器」中的「微信开发者工具」。这一操作会触发项目编译，并将结果交给微信开发者工具打开。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image16.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image16.webp)
 
 底部的输出窗口会显示编译的过程。如果最终状态是「ready」且没有报错，就说明构建成功，你可以切到微信开发者工具里查看这一版小程序的界面和功能。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image17.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image17.webp)
 
 在大多数情况下，HBuilderX 会自动帮你打开微信开发者工具，让你直接看到新的小程序。如果没有自动打开，你可以按下面的方式处理：
 
@@ -201,7 +201,7 @@ AI 完成第一轮开发之后，代码已经落在项目里了，但这时候�
 
 这样我们就可以微信小程序开发者工具中看到我们Vibecoding的小程序：
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image18.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image18.webp)
 
 ## 3.4 用自然语言反复调整和完善小程序，直到我们满意
 
@@ -213,11 +213,11 @@ AI 完成第一轮开发之后，代码已经落在项目里了，但这时候�
 
 只要你把需求讲得足够清楚，AI 会自动定位到对应界面和逻辑文件，替你完成控件样式、交互绑定和方向处理等改动。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image19.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image19.webp)
 
 修改完成后，再回到微信开发者工具中查看。 如果没有立刻看到变化，可以尝试点击开发者工具上的「运行」按钮，或者刷新小程序预览窗口，让最新的构建结果生效。 仍然没有更新时，可以在 HBuilderX 中先停止运行，再重新执行一次「运行到小程序模拟器」，即可看到调整之后的小程序：
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image20.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image20.webp)
 
 ## 3.5 出现问题怎么办：继续用自然语言沟通
 
@@ -235,7 +235,7 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 
 通过这几轮往返，你会从最初的“毛坯版本”，逐步打磨出一个更贴近自己喜好的摇杆版贪吃蛇小程序。例如我给出了一种图画风格，让AI根据此风格来调整小程序的UI风格：
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image21.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image21.webp)
 
 ## 3.6 最终成品与本节小结
 
@@ -248,7 +248,7 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 
 最终开发成品如下：
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image22.png)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image23.png)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image24.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image22.webp)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image23.webp)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image24.webp)
 
 在这一节里，你已经看到了一个完整的闭环：
 
@@ -294,7 +294,7 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 
 这串编号需要和项目中的配置一一对应，否则微信会认为你上传的是「别人的小程序」，自然无法正常预览和发布。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image25.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image25.webp)
 
 ### 4.1.2 在项目中填写 AppID
 
@@ -306,7 +306,7 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 2. 在左侧文件树中找到 `manifest.json`，双击打开。
 3. 下拉到「微信小程序配置」这一栏，你会看到一个输入框，提示类似「微信小程序 AppID（请在微信开发者工具中获取）」。
 4. 把刚才在公众平台上看到的 AppID 原样粘贴进来，保存文件。
-   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image26.png)
+   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image26.webp)
 
 到这里为止，你的本地项目就已经认领了这个小程序身份。接下来，只要通过微信开发者工具上传版本，它就会被记在这个 AppID 名下。
 
@@ -324,11 +324,11 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
    2. 项目备注：写一段简短说明，比如「完成基本功能的开发」。
 3. 检查无误后，点击「上传」按钮。下面的输出区域会显示编译过程，所有步骤变成绿色并提示上传完成，就说明这一版已经成功提交到了微信服务器。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image27.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image27.webp)
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image28.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image28.webp)
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image29.png)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image30.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image29.webp)![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image30.webp)
 
 ### 4.1.4 在管理后台中把版本设为体验版
 
@@ -341,9 +341,9 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 3. 在页面的「开发版本」一栏，你应该能看到刚刚上传的那个版本：版本号是 `1.0.0`，备注是你写的那一段说明，时间是刚刚的上传时间。
 4. 在这一行的右侧，会有一个下拉按钮或操作按钮，可以选择「设为体验版」，点击之后，确认操作，注意在这一步之前请确保你已经在首页-小程序类目设置好了你的主营类目。
 
-   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image31.png)
+   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image31.webp)
 
-   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image32.png)
+   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image32.webp)
 
 完成之后，这个版本就变成了你的小程序「体验版」。你可以在后台生成体验版二维码，也可以把自己和同事加入「体验成员」，让大家用微信扫描后，在真机上体验这款贪吃蛇小程序。
 
@@ -370,7 +370,7 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 
 一开始进度会显示 0%，随着你完成每一步，系统会自动把进度向前推进。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image33.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image33.webp)
 
 ### 4.2.2 填写小程序基本信息
 
@@ -385,7 +385,7 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
    2. 展示图片可以上传几张小程序页面的截图，例如首页、游戏页面、设置界面等，这些会出现在详情页中，帮助用户了解内容。
 4. 其他必要信息 例如标签、服务区域等，根据页面提示填写即可。 原则只有一个：所有填写的内容都要和这款贪吃蛇小程序真实功能相符。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image34.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image34.webp)
 
 全部填写完毕后，点击保存或下一步，发布流程中的第一步就完成了。
 
@@ -393,20 +393,20 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 
 完成基本信息后，向导会引导你进入「小程序类目」步骤。 类目可以理解为小程序在微信里的「归属分类」，决定它在审核时会被归入哪一类应用，也会影响后续展示和运营。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image35.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image35.webp)
 
 在这个页面，你会看到「添加类目」按钮。点击后，可以从系统提供的分类树中选择适合你小程序的方向，例如：
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image36.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image36.webp)
 
 1. 先选择「教育」这一大类；
 2. 再在下面选择「教育工具 / 教学辅助」等更具体的子类，本次我选择了教育器具，当做大家学习Vibecoding的教具吧~
 
 你在自己的项目里，只需要根据实际用途选择最贴切的一项即可。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image37.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image37.webp)
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image38.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image38.webp)
 
 确认类目后，点击保存。如果页面提示「创建类目成功」，并在列表中显示你刚刚添加的那一项，就说明这一步已经完成。
 
@@ -414,18 +414,18 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 
 接下来，发布流程会要求你完成「运营信息 / 小程序备案」部分。这一步是为了验证小程序的主体身份，确保上线的应用有明确责任人。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image39.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image39.webp)
 
 在个人主体的示例下，大致会经历这样几个动作：
 
 1. 选择备案类型 页面会让你在不同主体类型之间进行选择，例如「个人」「企业」等。根据你注册小程序时的主体保持一致即可。
 2. 填写主体信息 包括姓名、证件类型、证件号码等基本信息。 这一部分需要与注册信息保持一致，否则可能会在审核时被退回。
 3. 上传证明材料 页面通常会要求你上传身份证照片或其他证明文件，具体格式、清晰度和大小要求会写在说明里。 按提示准备好图片后上传，确保内容清晰可辨。
-   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image40.png)
+   ![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image40.webp)
 
 提交之后，系统会进入「审核中」状态，页面上会显示类似「信息已提交，请耐心等待」的提示。这个过程可能需要一定时间，你可以在后台随时查看备案进度。
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image41.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image41.webp)
 
 ### 4.2.5 提交审核并等待正式发布
 
@@ -441,7 +441,7 @@ AI 会根据你当前的项目状态和描述，给出修改建议并直接应�
 
 提交进行审核，要上传操作视频和页面，填好信息提交即可 ，点击“提交发布”，就正式发布了
 
-![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image42.png)
+![](/tutorial/images/stage-3/cross-platform/wechat-miniprogram/images/image42.webp)
 
 # 5. 总结
 

@@ -27,7 +27,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-pl
 
 想象一下：你打开一篇 5000 字的技术博客，点一下插件按钮，几秒钟后，一份精炼的中文摘要就出现在侧边栏里。这就是我们要构建的东西。
 
-![placeholder: 一张效果预览图，左边是一个长文章网页，右边是 Chrome 侧边栏中显示的 AI 生成的摘要](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: 一张效果预览图，左边是一个长文章网页，右边是 Chrome 侧边栏中显示的 AI 生成的摘要](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
 ## 1.2 Chrome 插件的基本架构
 
@@ -52,7 +52,7 @@ Chrome 插件（基于 Manifest V3）由几个核心部分组成，它们各司�
     → AI 返回摘要
     → Service Worker 把摘要发回侧边栏显示
 ```
-![placeholder: 一张架构流程图，展示 Content Script、Service Worker、Side Panel 之间的消息传递关系](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image2.png)
+![placeholder: 一张架构流程图，展示 Content Script、Service Worker、Side Panel 之间的消息传递关系](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
 
 ## 1.3 两种 AI 方案：云端 API vs 浏览器内置 AI
 
@@ -157,7 +157,7 @@ AI 会帮你生成完整的项目骨架。让我们逐个看看每个文件的�
 * `scripting`：允许插件向页面注入脚本来读取内容
 * `sidePanel`：允许使用 Chrome 侧边栏 API
 
-![placeholder: manifest.json 文件在编辑器中的截图](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image2b.png)
+![placeholder: manifest.json 文件在编辑器中的截图](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image2b.webp)
 
 ## 2.3 准备图标
 
@@ -180,7 +180,7 @@ Chrome 插件需要三个尺寸的图标：16x16、48x48、128x128。你可以�
 
 你会看到插件出现在列表中，右上角的工具栏也会多出一个图标。
 
-![placeholder: Chrome 扩展管理页面的截图，展示如何开启开发者模式并加载插件](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image3.png)
+![placeholder: Chrome 扩展管理页面的截图，展示如何开启开发者模式并加载插件](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image3.webp)
 
 > **提示**：每次修改代码后，回到 `chrome://extensions/` 页面，点击插件卡片上的 **刷新按钮（🔄）** 即可更新。
 
@@ -277,7 +277,7 @@ async function handleSummarize(tabId) `{
 }
 ```
 
-![](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image4.png)
+![](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image4.webp)
 
 ## 3.3 侧边栏 UI：展示总结结果
 
@@ -306,7 +306,7 @@ sidepanel.js：
 - 收到结果后隐藏加载动画，展示摘要
 - "复制" 按钮使用 navigator.clipboard.writeText 复制文字
 ```
-![placeholder: 侧边栏 UI 效果截图，展示总结按钮、加载状态和摘要结果三种状态](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image5.png)
+![placeholder: 侧边栏 UI 效果截图，展示总结按钮、加载状态和摘要结果三种状态](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image5.webp)
 
 ## 3.4 设置页面：配置 API Key
 
@@ -324,9 +324,9 @@ sidepanel.js：
 
 > **安全提醒**：API Key 存储在 `chrome.storage.local` 中，仅在本地设备上保存。但如果你要发布到 Chrome Web Store 供他人使用，更安全的做法是搭建一个后端代理服务器，避免 API Key 直接暴露在客户端。
 
-![placeholder: 设置页面的截图，展示 AI 提供商选择和 API Key 输入框 p1](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image6-1.png)
-![placeholder: 设置页面的截图，展示 AI 提供商选择和 API Key 输入框 p2](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image6-2.png)
-![placeholder: 设置页面的截图，展示 AI 提供商选择和 API Key 输入框 p3](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image6-3.png)
+![placeholder: 设置页面的截图，展示 AI 提供商选择和 API Key 输入框 p1](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image6-1.webp)
+![placeholder: 设置页面的截图，展示 AI 提供商选择和 API Key 输入框 p2](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image6-2.webp)
+![placeholder: 设置页面的截图，展示 AI 提供商选择和 API Key 输入框 p3](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image6-3.webp)
 
 # 第 4 章：使用 Chrome 内置 AI（无需 API Key）
 
@@ -345,7 +345,7 @@ sidepanel.js：
 * 在 Chrome 138–144 版本中，该开关更名为 Summarization API for Gemini Nano。
 * 在 Chrome 145+ 版本中，Summarization API for Gemini Nano 已被移除，其总结功能已整合到 Prompt API for Gemini Nano
 
-![placeholder: chrome://flags 页面截图，展示 Summarization API 的开关位置](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image7.png)
+![placeholder: chrome://flags 页面截图，展示 Summarization API 的开关位置](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image7.webp)
 
 ## 4.2 使用 Summarizer API
 
@@ -397,7 +397,7 @@ async function summarizeWithBuiltinAI(text) `{
 3. 当选择 OpenAI 或 Claude 时，显示 API Key 输入框
 ```
 
-![placeholder: 更新后的设置页面截图，展示三个 AI 提供商选项，选中 Chrome 内置 AI 时 API Key 输入框隐藏](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image8.png)
+![placeholder: 更新后的设置页面截图，展示三个 AI 提供商选项，选中 Chrome 内置 AI 时 API Key 输入框隐藏](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image8.webp)
 
 # 第 5 章：测试与调试
 
@@ -420,7 +420,7 @@ async function summarizeWithBuiltinAI(text) `{
 2. 在 Console 面板中，点击左上角的下拉框，选择你的插件名称
 3. 就能看到 Content Script 的 console 输出
 
-![placeholder: Chrome DevTools 调试插件的截图，展示如何选择不同的执行上下文来调试不同组件](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image9.png)
+![placeholder: Chrome DevTools 调试插件的截图，展示如何选择不同的执行上下文来调试不同组件](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
 
 ## 5.2 常见问题排查
 
@@ -456,8 +456,8 @@ async function summarizeWithBuiltinAI(text) `{
 
 Google 会对提交的插件进行审核，通常需要几个工作日。权限越少、描述越清晰，审核通过越快。
 
-![placeholder: Chrome Web Store Developer Dashboard 的截图，展示插件上传和信息填写界面](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image10.png)
-![placeholder: Chrome Web Store Developer Dashboard 的截图，展示插件上传和信息填写界面p2](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image10-1.png)
+![placeholder: Chrome Web Store Developer Dashboard 的截图，展示插件上传和信息填写界面](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image10.webp)
+![placeholder: Chrome Web Store Developer Dashboard 的截图，展示插件上传和信息填写界面p2](/tutorial/images/stage-3/cross-platform/browser-ai-extension/images/image10-1.webp)
 
 # 第 7 章：写在最后
 

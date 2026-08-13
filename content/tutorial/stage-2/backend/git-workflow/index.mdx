@@ -37,16 +37,16 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/
 
 1. 前往 [Git 官方下载页面](https://git-scm.com/download/win) 并下载适合你系统的安装程序：[安装包](https://github.com/git-for-windows/git/releases/download/v2.51.0.windows.1/Git-2.51.0-64-bit.exe)。默认情况下，推荐使用 x64 安装程序。
 2. 双击安装程序并按照安装向导说明进行操作：
-   ![](/tutorial/images/stage-2/backend/git-workflow/images/image5.png)
+   ![](/tutorial/images/stage-2/backend/git-workflow/images/image5.webp)
    1. 建议保持默认选项。如果你需要自定义，请注意以下几点：（在大多数情况下，你可以一直点击"Next"）
       - 选择 Git 使用的默认编辑器：选择你喜欢的编辑器（如 VS Code）。你可以默认选择第一个选项，即 Vim（一个文本编辑器），或选择"Visual Studio Code as Git's default editor"选项（需要预先安装 VS Code）。你可以保持默认选择并点击"Next"继续。
-        ![](/tutorial/images/stage-2/backend/git-workflow/images/image6.png)
+        ![](/tutorial/images/stage-2/backend/git-workflow/images/image6.webp)
       - 选择如何使用 Git：这三个选项控制 Git 在系统中的可访问性。建议选择选项 2（"from command line and 3rd-party software"）——它将基本的 Git 工具添加到 PATH 中，让你可以在 Git Bash、命令提示符、PowerShell 和 IDE 中使用 Git，而不会使系统混乱。
-        ![](/tutorial/images/stage-2/backend/git-workflow/images/image7.png)
+        ![](/tutorial/images/stage-2/backend/git-workflow/images/image7.webp)
 
 3. 安装后，在桌面上右键单击。如果在菜单中看到"Git Bash Here"，则安装成功。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image8.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image8.webp)
 
 ### MacOS
 
@@ -100,18 +100,18 @@ GitHub 是一个基于 Git 的代码托管平台。它不仅为 Git 仓库提供
 
 GitHub 不仅是世界上最大的代码托管平台，也是全球最活跃、最具影响力的开源社区。这里"开源"的核心思想是任何人都可以下载并运行软件的源代码。这种模式允许世界各地的人们检查彼此的代码并进行修改，或基于此创建新项目。例如，你可以在 GitHub 上找到各种学习教程以及用于训练 GPT 模型的框架（如 PyTorch）的完整源代码。每天，无数人在全球范围内协作审查和改进代码。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image9.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image9.webp)
 
 许多大公司在 GitHub 上开源他们的程序或教程，以获得行业竞争优势——这也可以看作是一种广告形式。在 GitHub 社区中，项目获得的"星标 (stars)"数量是衡量其价值的主要指标；项目或组织拥有的星标越多，其可信度和影响力就越大。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image10.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image10.webp)
 
 在我们的课程中，支持资源和作业也将上传到专用的 GitHub 仓库。通过上传作业的过程，你将逐渐熟悉并掌握 GitHub 的使用，为未来应用程序开发中的版本控制打下坚实的基础。
 
 ## 注册 GitHub 账号
 
 1. 访问 [GitHub 官网](https://github.com/) 并点击右上角的"Sign up"。
-   ![](/tutorial/images/stage-2/backend/git-workflow/images/image11.png)
+   ![](/tutorial/images/stage-2/backend/git-workflow/images/image11.webp)
 2. 输入你的电子邮件地址（建议使用常用邮箱，因为验证和通知将发送到那里），设置密码（必须包含字母、数字和特殊字符）。
 3. 完成人工验证，按照提示验证邮箱，你的账号就创建好了。
 
@@ -119,9 +119,9 @@ GitHub 不仅是世界上最大的代码托管平台，也是全球最活跃、�
 
 接下来，我们将创建第一个存储文件夹，也称为仓库或"repo"。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image12.png)![](/tutorial/images/stage-2/backend/git-workflow/images/image13.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image12.webp)![](/tutorial/images/stage-2/backend/git-workflow/images/image13.webp)
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image14.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image14.webp)
 
 1. Repository name：向他人显示的仓库名称。
 2. Description：仓库的详细描述。
@@ -135,15 +135,15 @@ GitHub 不仅是世界上最大的代码托管平台，也是全球最活跃、�
 
 建议勾选"Add README"，将仓库可见性设置为"Private"，并根据自己的喜好填写仓库名称和描述，然后点击"Create repository"完成创建第一个远程仓库。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image15.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image15.webp)
 
 之后，你将拥有一个没有任何额外文件的干净仓库。接下来你可以开始上传文件了。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image16.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image16.webp)
 
 获取仓库的命令是 `git clone`，但它需要仓库地址。你可以通过点击绿色的"Code"按钮找到仓库地址，你会看到 HTTPS 和 SSH 选项。通常，你可以使用这两种方法中的任何一种将仓库下载到本地机器（只有这样你才能修改和上传文件）。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image17.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image17.webp)
 
 一般来说，通过 HTTP 克隆的仓库适合临时下载和测试他人的仓库，但不建议用于自己的开发。为了更好的学习体验，你应该先设置 SSH 认证。
 
@@ -185,13 +185,13 @@ SSH 认证依赖于密钥对（公钥 + 私钥），它们是匹配的加密文�
    1. 使用 Trae 获取公钥（推荐）
       提示词：`Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/tutorial/images/stage-2/backend/git-workflow/images/image18.png)
+   ![](/tutorial/images/stage-2/backend/git-workflow/images/image18.webp)
 
    输入提示词后，你还需要在左侧终端按 Enter 键，否则命令会一直等待而不执行。由于 Trae 无法帮你执行任何条件判断，我们只需要一直按 Enter 即可。
 
    最后，你会看到右侧的 Trae 返回了它读取的公钥。你只需复制它并准备在下一步中粘贴。
 
-   ![](/tutorial/images/stage-2/backend/git-workflow/images/image19.png) 2. 手动获取公钥
+   ![](/tutorial/images/stage-2/backend/git-workflow/images/image19.webp) 2. 手动获取公钥
    打开你的本地终端（在 Windows 上使用 Git Bash 或 PowerShell；在 macOS/Linux 上使用终端），输入以下命令（将 your_email@example.com 替换为你注册 GitHub 账号时使用的邮箱）：
 
    ```bash
@@ -212,12 +212,12 @@ SSH 认证依赖于密钥对（公钥 + 私钥），它们是匹配的加密文�
    3. macOS/Linux：在终端运行 cat ~/.ssh/id_ed25519.pub 并复制所有输出（从开头的 SSH-ed25519 到结尾的邮箱）。
 2. 登录 GitHub 并进入"SSH Key Management"页面：
    1. 点击右上角头像 → Settings → 左侧菜单 SSH and GPG keys → 点击 New SSH key。
-      ![](/tutorial/images/stage-2/backend/git-workflow/images/image20.png)![](/tutorial/images/stage-2/backend/git-workflow/images/image21.png)
+      ![](/tutorial/images/stage-2/backend/git-workflow/images/image20.webp)![](/tutorial/images/stage-2/backend/git-workflow/images/image21.webp)
    2. 输入任何标题（例如，your local computer's SSH），然后将你刚刚获取的 SSH 公钥粘贴到这里。
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image22.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image22.webp)
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image23.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image23.webp)
 
 3. 验证绑定是否成功
 
@@ -246,7 +246,7 @@ ssh -T git@github.com
 
 你可以直接告诉它你想克隆的仓库地址
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image24.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull : 从远程仓库获取更新
 
@@ -262,7 +262,7 @@ prompt:`Help me pull this repository AIID-TEST in ./AIID-TEST.`
 
 prompt:`I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/tutorial/images/stage-2/backend/git-workflow/images/image25.png)
+![](/tutorial/images/stage-2/backend/git-workflow/images/image25.webp)
 
 推送成功。现在你可以在 GitHub 上看到更新的内容了。
 

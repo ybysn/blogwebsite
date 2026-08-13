@@ -91,7 +91,7 @@ API Key 是你请求 AI 服务的「通行证」，它是一串密码字符串�
 
 让我们看看 DeepSeek 在 GPQA 基准排名中与其他顶级模型的表现对比。值得注意的是，DeepSeek 是一个开源（每个人都可以从互联网下载模型）模型，而其他常见模型如 Grok、Google Gemini 和 ChatGPT 都是闭源的。正如我们所见，DeepSeek 已经很大程度上接近了第一梯队的模型。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-16-48.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-16-48.webp)
 
 GPQA 是“研究生级 Google-Proof 问答基准”的缩写，这是一个用于科学问答任务的研究生级基准。以下是详细介绍。
 
@@ -108,23 +108,23 @@ GPQA 包含 448 个多项选择题，涵盖生物学、物理学和化学的子�
 
 接下来我们进行演示，你可以跟随操作走一遍全流程。首先注册 [DeepSeek](https://platform.deepseek.com/usage) 账号并创建一个 API Key，并且充值少量费用进行验证。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-57-41.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-57-41.webp)
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-13.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-13.webp)
 
 点击“API KEYS”并在屏幕下方找到“create new API key”。你最终会得到一个像 sk-8573341c39fc44315aadc071c53rh7d2 这样的 API key。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-32.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-32.webp)
 
 一旦你获得了密钥，你就拥有了调用模型的权限。
 
 此时，你可以直接阅读 [API](https://api-docs.deepseek.com/) 文档，它通常提供 curl 或 Python 的调用示例。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-56.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-56.webp)
 
 找到示例后，你可以将文档中的所有内容以及密钥复制到 AI IDE 的对话框中，要求它帮你集成大语言模型到之前已经开发的原型中。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-59-31.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-59-31.webp)
 
 使用提示词参考如下：
 
@@ -149,9 +149,9 @@ curl  \
 
 经过一段时间的 AI 代码生成，我们很容易得到对应的文案生成按钮进行测试，如果你找不到入口，可以让 AI IDE 告诉你从什么页面可以点到该页面，如果实在找不到，可以让 AI IDE 直接基于你的想法重构改进，得到最后的文案生成结果。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-23-23.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-23-23.webp)
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-26-35.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-26-35.webp)
 
 当然，此处你可能想问，我怎么知道真正调用了大模型而不只是内置了固定的回复？你可以输入自定义的文案，让大模型根据你及时指定的自定义分析，生成对应的文案。
 
@@ -225,8 +225,8 @@ MiniMax 的 API 格式与 DeepSeek 几乎完全一致（都是 OpenAI 兼容格�
 
 **Qwen3 VL** 是阿里云通义千问团队推出的多模态视觉语言模型系列中的最新版本。VL 代表「Vision-Language」，即视觉语言模型。它能够理解图像内容，并根据图像生成文字描述、回答关于图像的问题、提取图像信息等。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-27.png)
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-41.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-27.webp)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-41.webp)
 
 **Qwen3 VL 的主要能力包括：**
 
@@ -273,11 +273,11 @@ SiliconFlow 在开源大模型的推理服务方面较为成熟，是使用国�
 
 进入到 SiliconFlow 平台的首页，我们可以看到有很多模型可以选择，左上角找到筛选器，点击展开筛选器，选择视觉标签，我们能看到很多图片转文本模型，比如智谱 GLM-4.6V，或者是 Qwen3-VL。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-05-04.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-05-04.webp)
 
 我们可以选择任意一个进行测试，这里以 `Qwen/Qwen3-VL-8B-Instruct` 为例。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-07-44.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-07-44.webp)
 
 进入 [ SiliconFlow 平台](https://cloud.siliconflow.cn/me/account/ak)，在 API 密钥中点击「新建 API 密钥」，创建一个新的 API Key。
 
@@ -354,9 +354,9 @@ caption = caption_image(image_path)
 ```
 
 最后得到生成结果：
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-34-36.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-34-36.webp)
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-35-41.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-35-41.webp)
 
 <div>
 
@@ -373,12 +373,12 @@ caption = caption_image(image_path)
 
 ::: details 了解更多：什么是 [Seedream 即梦](https://seed.bytedance.com/en/seedream4_5)？
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-17.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-17.webp)
 
 > 也许你已经知道 Nano Banana（Google 开发），但你最好不要错过 Seedream。Seedream 4.5 是字节跳动打造的新一代图像创作模型。它将图像生成和图像编辑能力集成到一个统一的架构中。这使得它能够灵活处理复杂的多模态任务，如基于知识的生成、复杂推理和参考一致性。此外，它的推理速度比前代产品快得多，并且可以生成分辨率高达 4K 的令人惊叹的高清图像。
 >
-> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-38.png)
-> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-50.png)
+> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-38.webp)
+> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-50.webp)
 
 **主要能力：**
 
@@ -415,29 +415,29 @@ caption = caption_image(image_path)
 
 [访问首页页面](https://www.volcengine.com/experience/ark?launch=seedream)后，点击登录。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-07.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-07.webp)
 
 登录后，找到页面右上角的充值选项。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-22.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-22.webp)
 
 进行充值需要实名认证。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-30.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-30.webp)
 
 认证成功后，你可以[充值 1 元用于测试](https://console.volcengine.com/finance/fund/recharge)。
 
 返回[初始界面](https://www.volcengine.com/experience/ark?launch=seedream)并点击 API 访问。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-43.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-43.webp)
 
 首先，创建一个 API key，然后点击选择选项。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-01.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-01.webp)
 
 这将带你进入第 2 步。在这里，你需要确认调用的服务是 Seedream 4.5，并复制提供的调用示例。（此处截图时间比较早起，故而模型版本仍然是 4.0）
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-11.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-11.webp)
 
 准备好 API Key 和调用示例后，你可以直接将它们粘贴到 AI IDE 中，让它生成前端交互演示或把能力接入现有原型。注意到在图片中可以选择是文生图还是多张图片生成单张图，你需要根据当前的需求进行选择参考代码。
 
@@ -476,7 +476,7 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 
 实现效果如下:
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-21-13.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-21-13.webp)
 
 值得注意的是，由于生成图片可能会经常遇到一些奇怪的问题，建议你需要让 AI IDE 能够显示完整的报错信息，方便复制粘贴进行修改（否则可能会反复显示生成失败但是不知道为什么），例如你可以说：
 
@@ -488,7 +488,7 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 
 在电商的业务中，我们可能会想让用户上传的衣服能够自动穿在人物身上，又或者是自动生成商品吸引人的售卖图、海报。这里我们尝试的提示词是让它生成一个电商海报：
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-14-10.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-14-10.webp)
 
 你可以根据自己想象的业务场景，使用文生图或者图生图 API 实现不同的功能。
 
@@ -505,14 +505,14 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 
 > Recraft 是一款面向设计师、插画师和营销人员的 AI 工具——于 2022 年在美国成立，总部位于伦敦。它帮助生成/迭代视觉效果（图像、矢量艺术、3D 图形），具有高质量输出（任何文本大小/长度）、精确元素定位和品牌一致性设计等优势。受到 200 个国家/地区 300 多万用户（包括奥美、Netflix）的信任，并已创建了 3.5 亿多张图像，其团队旨在使其成为必备的设计师工具，确保创作者能够控制他们的 AI 辅助工作流程。
 >
-> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-34.png)
-> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-42.png)
+> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-34.webp)
+> ![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-42.webp)
 
 首先，我们仍然需要找到[ API 入口](https://www.recraft.ai/profile/api)以获取 API Key。
 
 由于这里没有提供免费额度，我们需要自己充值 1,000 积分。这个网站支持支付宝和微信支付，所以很容易获得 1,000 积分（注意：不要充值超过必要的金额）。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/image40.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/image40.webp)
 
 之后，我们仍然遵循同样的方法：去官方文档找到相应的请求示例：
 
@@ -535,7 +535,7 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 
 根据文字描述生成全新的图片。你输入一段提示词，模型会理解你的意图并生成符合描述的图像。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-43-30.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-43-30.webp)
 
 **主要能力：**
 
@@ -556,11 +556,11 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 - **图像扩展**：扩展图片边界，生成新内容
 - **智能修图**：自动美化、调整光影、修复瑕疵
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-17.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-17.webp)
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-29.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-29.webp)
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-33.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-33.webp)
 
 **为什么选择 Qwen Image 系列？**
 
@@ -583,7 +583,7 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 
 如果你选择"Image"，你将只看到当前支持的所有文生图模型。在这种情况下，我们将使用 Qwen/Qwen-Image。
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-52-56.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-52-56.webp)
 
 一切设置好后，我们需要参考相应的图像生成 API 文档。你可以在官方文档页面找到任何标记为"API Reference"的部分。点击它，然后导航到[图像生成的 API 部分](https://docs.siliconflow.cn/cn/api-reference/images/images-generations)并找到相关的请求示例。
 
@@ -738,7 +738,7 @@ LMArena 更适合用来判断“多数人更偏好哪个模型的回答”。投
 2. 先选一个你要做的方向（例如通用对话 / 编程 / 视觉）
 3. 选 Top 3 里你能用的那个（能访问、价格能接受、延迟能接受）
 
-![](/tutorial/images/stage-1/integrating-ai-capabilities/images/image.png)
+![](/tutorial/images/stage-1/integrating-ai-capabilities/images/image.webp)
 
 ## Artificial Analysis
 

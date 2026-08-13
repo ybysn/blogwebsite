@@ -17,7 +17,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/
 
 在开始之前，我们先弄清楚"部署（Deployment）"到底是什么意思。任何一个网站想要被外部用户访问，都必须有一个可以公开访问的网络地址（这个地址可以是 IP 地址，比如 123.45.67.89，也可以是域名，比如 [google.com](https://google.com/) 等）。但只有地址是不够的——你写好的网页代码（例如 HTML、CSS、JavaScript 文件，或者使用 React、Vue 等框架写的项目），以及相关的图片 / 视频资源，都必须"放"在一台 24 小时在线的服务器上，由它来响应网络请求，这样任何人的浏览器才能访问并下载这些资源。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image1.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image1.webp)
 
 图片来源：https://www.hostinger.com/tutorials/what-is-cloud-hosting
 
@@ -28,11 +28,11 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/
 如果手动部署，一个项目往往需要好几个步骤，每一步都可能踩坑。常见关键步骤包括：
 
 1. **服务器准备**：你需要先购买云服务器（比如阿里云、腾讯云、或 AWS EC2），选择服务器所在地区（如上海、新加坡）、配置（CPU、内存、磁盘大小等），还要学会如何远程连接服务器（例如通过 SSH 工具登录）。
-   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image2.png)
+   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image2.webp)
 2. **环境配置**：Web 应用需要在特定"环境"中才能运行——例如运行 Node.js 项目必须先安装 Node.js；运行 Python 项目必须安装 Python 以及对应的第三方库。如果环境版本不匹配，程序就可能报错、无法启动。
 3. **上传资源**：你需要把本地的代码和资源上传到服务器上，常用的方法包括 FTP 或 Git。如果项目体积比较大（比如包含视频文件），中途一旦断线，有时需要重新上传。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image3.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image3.webp)
 
 4. **启动服务并测试**：上传完成后，你还需要在服务器上执行命令启动应用，并测试"分配的网络地址是否能访问"。如果访问不了，有可能是服务器防火墙没有放行对应端口（比如你的应用监听 3000 端口，但该端口被防火墙拦截），也可能是程序本身有 Bug，这时就需要查看服务器日志进行排查。
    > 💡 可以把端口理解为区分同一台设备上不同应用的"房间号"，而 IP 则是这台设备的"门牌号"。IP 和端口合在一起（IP:port），就可以精确定位到某一个网络服务。
@@ -40,7 +40,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/
 
 像 CloudBase、Vercel、Zeabur 这样的"低代码部署平台"，就是为了解决上述复杂问题而诞生的。它们会帮你自动完成"买服务器、配环境、上传代码、启动服务、监控运行"等步骤。你只需要把自己的代码仓库（比如 GitHub 或 GitLab）连接到平台，或者直接上传代码，它就会自动拉取代码、识别应用类型、配置对应的运行时环境，最后给你一个可以被任何人访问的公网地址。它甚至可以一键绑定你自己的域名。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 接下来，我们会分别介绍这三个平台的特点和使用方法，帮助你选择最适合自己的部署方案。
 
@@ -306,7 +306,7 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 在之前的课程中，我们已经简单接触过 Dify。现在，我们可以通过 [Zeabur](https://zeabur.com/projects) 非常轻松地启动自己的 Dify 服务。首先打开 [控制台页面](https://zeabur.com/projects)，我们先看一下上面的各个区域。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 在这个页面上，你首先能看到许多方块，这些就是已经启动的服务。在顶部菜单中，你会看到 Agent、Servers、Docs、Templates 等几个选项，它们分别代表：
 
@@ -319,15 +319,15 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 在页面右上角，你还能看到自己的余额。默认情况下，每个月会有 5 美元左右的免费额度。关于细节计费规则暂时可以不用太在意，只需要知道：只要服务器在运行，就会消耗额度。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image6.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image6.webp)
 
 点击余额可以查看每日的消耗明细。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image7.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image7.webp)
 
 现在我们来创建自己的 Dify 服务。首先，在 [控制台首页](https://zeabur.com/projects) 点击 "New Project"。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image8.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image8.webp)
 
 接下来是各个创建方式的解释：
 
@@ -335,46 +335,46 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
    可以连接到你的 GitHub 账号。绑定之后，就可以直接从 GitHub 仓库里选择项目部署（GitHub 是目前全球最大的代码托管平台）。
 2. **Template（模板）**  
     可以基于模板来部署服务。Zeabur 内置了很多预设项目模板（例如 Dify、n8n 等），你可以基于这些模板快速创建并部署应用。
-   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image9.png)
+   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image9.webp)
 3. **Databases（数据库）**  
    用于部署数据库服务，比如 MySQL、MongoDB 等常见数据库。
-   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image10.png)
+   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image10.webp)
 4. **Functions（函数）**  
    可以部署函数服务，你可以编写 JavaScript 或 Python 代码，让它们以函数的形式被调用。
-   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image11.png)
+   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image11.webp)
 
-   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image12.png)
+   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image12.webp)
 
 5. **Local Project（本地项目）**  
    上传一个本地文件夹，Zeabur 会自动识别其中的启动脚本。这适合将你已经在本地开发好的项目快速部署到 Zeabur 上。
-   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image13.png)
+   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image13.webp)
 6. **Docker Image**  
    部署已经打包好的 Docker 镜像。如果你的项目已经被打成了 Docker 镜像（例如存放在 Docker Hub 或其他镜像仓库中），可以在这里直接部署。
-   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image14.png)
+   ![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image14.webp)
 7. **Cursor**  
    如果你安装了 Cursor（例如 Cursor IDE），可以通过这个入口将 Cursor 中的项目直接部署到 Zeabur。
 
 如果你想部署自己的 Dify 服务，推荐选择 **Template** 方式，然后在搜索框中输入 "dify"。可以看到很多由不同作者维护的版本，你可以任选其一（比如 v1.6.0 版本）。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image15.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image15.webp)
 
 接着，输入任意一个名称，Zeabur 会基于这个名称生成一个临时的自定义域名。之后所有人都可以通过这个网址访问你的服务。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image16.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image16.webp)
 
 创建完成后，你会看到多个程序（服务）依次启动。需要耐心等待所有服务都进入"已启动"状态。（Dify 服务是由多个程序组成的，每个程序负责不同的功能，它们之间会相互协作。）
 
 一般来说，你只需要点击左侧的 Dify 应用，就可以看到默认的访问入口地址。但在本例中，由于前面还套了一层 nginx，你需要点击 nginx 服务来获取最终访问地址。可以理解为：nginx 就是负责对外统一"收发请求"的主程序，它会把外部访问的地址分发给内部各个服务。点击左侧的 Nginx，在详情页中可以看到当前的服务地址，然后在浏览器里打开这个地址，等待服务完全启动。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image17.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image17.webp)
 
 稍等片刻后，你就能看到 Dify 的登录界面了。输入邮箱地址和注册密码，就可以开始使用你自己的 Dify 服务了。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image18.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image18.webp)
 
 如果你有兴趣，还可以顺便启动一个 n8n 服务。n8n 也是海外非常流行的一款 AI 工作流平台。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image19.png)![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image19.webp)![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## 使用 Zeabur 与 Trae 部署贪吃蛇游戏
 
@@ -384,37 +384,37 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 ### 使用 HTML 框架实现
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 对于 Trae 来说，生成一个基于 HTML 的贪吃蛇网页游戏非常简单。游戏生成完成后，你只需要按照前面介绍的 Zeabur 本地部署方式，把包含所有文件的文件夹上传上去即可。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image24.png)![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image25.png)![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image26.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image24.webp)![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image25.webp)![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image26.webp)
 
 完成后，你就会进入该服务的详情界面：
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 点击左侧的 "Network" 选项，在页面中找到 "Public Address" 区域。点击 "Generate Domain"，即可生成一个对外访问地址，你可以输入任意喜欢的名称。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image28.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image28.webp)
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image29.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image29.webp)
 
 生成完成后，只要在浏览器中打开这个地址，就可以运行你自己的贪吃蛇游戏了。其它 HTML 类型的 Web 应用也可以用完全相同的方式来部署。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image30.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image30.webp)
 
 ### 使用 React 框架实现
 
 前面我们学习了如何部署基于 HTML 的 Web 应用。接下来，我们再尝试部署一个目前更常用的前端框架：React 应用。相比纯 HTML，React 被认为是一种更加成熟、现代的前端开发框架。它通过组件化的方式组织页面结构，能够显著加快复杂页面的开发，是企业级项目中非常主流的选择。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### 重构为 React 架构
 
 在 Trae 中，你只需要向 Agent 说明："帮我把这份代码重构成 React 架构"，就可以比较轻松地把原本基于 HTML 的结构重构成 React 项目。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 不过，相比简单的 HTML 文件，React 应用依赖更复杂的构建工具和项目结构，因此部署过程也会稍微麻烦一些。一个典型的问题体现在端口设置上：默认情况下，React 应用一般会监听 3000 端口（你也可以在配置文件或启动日志中看到这一点）。
 
@@ -451,15 +451,15 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 要把 React 默认监听端口（3000）改成 Zeabur 所要求的 8080，有很多做法。最简单的方式，就是直接在 Trae 里对 Agent 下指令："请帮我把这个 React 项目的默认端口改为 8080。"Trae 就会帮你修改项目中对应的配置文件。修改完成后，你只需重新打包并按前面的方式上传到 Zeabur 即可。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image33.webp)
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image34.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image34.webp)
 
 在网络设置中指定一个访问 URL，方式和部署 HTML 项目时基本相同，就可以启动 React 版本的服务。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image35.webp)
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image36.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image36.webp)
 
 对于其它需要修改端口号的程序，你也可以采用同样的思路：先改默认端口，再上传到 Zeabur 部署。至此，你已经掌握了将常见 Web 应用部署到服务器的基础技能。
 
@@ -473,11 +473,11 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 如果要找到项目的管理入口，首先点击项目中的 "Settings" 选项。
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 进入设置页面后，将页面拉到最下方，你会看到类似下面的界面：
 
-![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image22.png)
+![](/tutorial/images/stage-2/backend/zeabur-deployment/images/image22.webp)
 
 你可以点击 "Suspend All Services" 来暂停所有服务以降低费用；如果服务出现问题，可以点击 "Restart All Services" 对全部服务进行重启。如果你确定不再需要这个项目，可以点击 "Delete Project" 将整个项目彻底删除。
 

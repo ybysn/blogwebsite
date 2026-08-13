@@ -102,7 +102,7 @@ user_info = {
 
 总的来说，在现实世界中有太多不同形态、用途的数据值得我们详细分析，每种数据可能都需要专门的数据库用于存储，具体可参考下图——是不是感觉非常多？
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image1.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 为什么我们需要数据库
 
@@ -296,23 +296,23 @@ Examples of NoSQL databases：
 
 在清晰把握 Supabase 的整体定位后，接下来我们将沿着 Supabase 控制台的操作路径，逐项拆解它具体提供哪些核心能力，以及每项能力对应的核心职责。我们会详细介绍 supabase 涉及的每个选项，帮助你快速入门 supabase 的基本操作。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image2.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image2.webp)
 
 访问 Supabase 官网并登录后，在控制台首页点击 New project 进入创建流程；
 
 输入需要配置的主要内容 Project Name、数据库密码，地址只需要选择为与程序目标用户最接近的区域即可。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image3.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image3.webp)
 
 创建成功后，控制台左侧侧边栏将显示所有核心功能模块（Table Editor、SQL Editor、Database、Authentication 等），后续操作将围绕这些模块展开。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image4.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image4.webp)
 
 ### 表编辑器
 
 Table Editor 可以当成是 Supabase 的可视化数据表编辑器，它能让你像操作 Excel 一样直接查看和修改数据库里的数据，无需编写 SQL 语句，只需要用鼠标交互即可修改数据内容。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image5.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image5.webp)
 
 其中值得关注的是 Schema，Schema 可理解为数据库内的 “资源容器”，用于对表、视图、函数、索引等资源进行分组管理，主要作用有二：一是避免命名冲突（不同 Schema 下可存在同名table），二是实现权限隔离（如仅允许特定用户访问某 Schema 下的表）；
 
@@ -321,13 +321,13 @@ Table Editor 可以当成是 Supabase 的可视化数据表编辑器，它能让
 - `public`：默认的公共资源容器，开发者新建的业务表（如 “文章表”“评论表”）均存储于此；
 - `auth`：用户认证专属容器，其中的 `users` 表自动存储所有注册用户信息（如用户 ID、邮箱、登录时间），不建议手动修改此 Schema 下的默认表，避免影响认证功能；
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image6.png)![](/tutorial/images/stage-2/backend/database-supabase/images/image7.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image6.webp)![](/tutorial/images/stage-2/backend/database-supabase/images/image7.webp)
 
 ### SQL 编辑器
 
 SQL Editor 作为 Supabase 的 SQL 语句执行器，可让你用代码的方式直接操作数据库。你可以让大模型直接生成 SQL 语句，在右侧输入后点击 RUN 即可用语句创建或修改 table，也可以直接在 Results 中直接看到筛选出的 table 数据。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image8.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image8.webp)
 
 你可以在运行 RUN 之后，在 Table Editor 的 public schema 里找到新建后的数据表；并且运行后的语句会保存在左侧的 PRIVATE 栏中，甚至可以点击下方的爱心标志对这一条查询或创建语句进行收藏。
 
@@ -335,47 +335,47 @@ SQL Editor 作为 Supabase 的 SQL 语句执行器，可让你用代码的方式
 
 Database 是 Supabase 的数据库管理中心，支持可视化地查看和管理所有数据表，并通过表的相互连线理解不同表间的关联关系（即外键约束，表示数据间的引用关系）。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image9.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image9.webp)
 
 如果你想要手动新建 table，可以在 tables 中直接新建表格，我们会在之后的教程中详细讲解。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image10.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image10.webp)
 
 ### 身份认证
 
 Authentication 负责管理用户的注册、登录和权限。默认的用户管理系统数据都在此处存储，它提供了开箱即用的用户注册、登录、密码重置、邮箱验证等功能，并支持第三方 OAuth 登录（如微信、GitHub、Google 等）。所有用户数据会自动同步到数据库的 `auth.users` 表中。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image11.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image11.webp)
 
 你可以在 Provider 选项中找到不同 supabase 支持的用户信息登录入口，默认使用 Email；如果你想使用 Github 或者 Google 账户进行登录，还需要更多属性配置，我们会在下面的课程中进行详细讲解。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image12.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image12.webp)
 
 在 Sign In / Providers 里还包含了对注册邮箱行为的控制，如果你不想每次邮箱注册都必须让用户接受邀请后才能成为用户，你可以取消 Confirm email 的强制要求。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image13.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image13.webp)
 
 如果你想切换非 Supabase 的其他 auth 系统服务商，你可以点击 Third Party Auth，比如此处就使用 Clerk 作为第三方的系统服务商。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image14.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image14.webp)
 
 如果你担心注册用户在短期内访问量过大，你可以在 Rate Limits 中启用对应的流量限制策略：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image15.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image15.webp)
 
 ### 存储
 
 Storage 是 Supabase 的存储系统，兼容 amazon cloud 的 s3 概念，可用于存储任意类型的文件（如图片、视频、文档、音频等），并提供访问权限管理（公开或私有）和下载链接获取（永久链接或临时链接），你能够很方便在应用中对用户涉及到的文件内容进行上传与下载管理，并与 Supabase 的认证系统无缝集成，实现精细化的访问控制。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image16.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image16.webp)
 
 我们将会在本节课的进阶 project 中讲解 storage 的具体用法。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image17.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image17.webp)
 
 如果你想使用 S3 的相关协议进行操作，可以直接使用对应的配置：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image18.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image18.webp)
 
 > Amazon Cloud（亚马逊云服务，简称 AWS）是亚马逊提供的云计算平台（就像一个大型的网络机房，你可以按需租用计算和存储资源）。S3（Simple Storage Service）是 AWS 里专门用来存储文件的服务（类似一个无限大的网盘，可以存图片、视频、备份等各种文件），它是目前最流行的对象存储服务，已经成为了事实上的行业标准。
 >
@@ -385,15 +385,15 @@ Storage 是 Supabase 的存储系统，兼容 amazon cloud 的 s3 概念，可�
 
 如果你不想部署后端，但是想使用数据库和函数操作，你可以使用 Edge Functions 构建无需自建服务器的后端核心能力，它是 Supabase 提供的全球分布式服务端函数。简单来说，它让你无需购买和管理自己的后端服务器，就能直接编写并部署在云端的后端代码。这些函数部署在全球网络的边缘节点上，会自动在离你的用户最近的位置运行，从而大幅降低网络延迟，提供极致的响应速度。你可以在 Supabase 的仪表盘中直接创建、编辑和部署，整个开发流程非常便捷。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image19.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image19.webp)
 
 Edge Functions 的一个核心用途是充当安全的中间层，保护你的敏感信息和鉴权密钥。在前端代码中直接调用第三方服务（如 OpenAI、Stripe）会暴露你的 API Key，带来极大的安全风险。通过 Edge Functions，你的前端应用只与你的 supabase 函数通信，所有秘密只在 supabase 中保管。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image20.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image20.webp)
 
 Edge Functions 的函数使用 secrets 中暴露的密钥作为环境变量，通过 `Deno.env.get` 加载，从而实现第三方服务的调用。这样一来，敏感密钥就永远不会暴露在客户端（你的浏览器），彻底杜绝了被盗用的风险。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image21.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image21.webp)
 
 请求 Supabase Edge Function 时，需在请求头携带对应的 Supabase 密钥，下面是一个极简示例：
 
@@ -450,15 +450,15 @@ Realtime 主要包含三大核心功能，覆盖了绝大多数实时场景：
 
 Project Settings 是 Supabase 项目的高级配置部分，你可在此实现计算资源的深度调度，以及各类功能底层参数的精细化配置。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image22.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image22.webp)
 
 在入门阶段，我们只需聚焦以下两个核心板块，一个是 Data API，我们在此可获取关键的 “Supabase URL”， 它是形如 `https://xxx.supabase.co` 的 RESTful 端点，是所有数据查询、新增、修改、删除操作的 “入口地址”。前端或服务端需通过该 URL 初始化 Supabase 客户端，建立与数据库的连接。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image23.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image23.webp)
 
 另一个重点是 API Keys，选择 “Legacy anon, service_role API keys” 标签页，其中的 anon public 密钥 是前端场景的重要身份凭证，它的权限被 RLS 严格限制，仅能访问用户被授权的数据。而 service_role 密钥属于 “服务端高权限密钥”，具备绕过行级安全的能力，可执行批量数据操作、系统级配置等敏感操作。绝对禁止公开分享，若泄露需立即生成新密钥并更新服务端配置。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image24.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image24.webp)
 
 其余配置项在当前阶段无需深究，待后续有进阶使用需求时再逐一探索即可。
 
@@ -471,15 +471,15 @@ Project Settings 是 Supabase 项目的高级配置部分，你可在此实现�
 1. （推荐）借助大语言模型生成适配 Supabase 的 SQL 语句，直接在 **SQL Editor（** 前文介绍的 SQL 语句执行器）中粘贴执行，高效快捷，我们会在下个部分环节重点说明这个操作过程。
 2. 通过可视化操作创建：在左侧侧边栏找到 Database 模块，点击进入后选中侧边栏的 Tables，在右侧点击 New table 按钮，即可通过图形化界面创建数据表。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image25.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image25.webp)
 
 值得注意的是，对应数据表的名称以及存储的数据类型可在下方的 Columns 中指定。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image26.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image26.webp)
 
 对于关系数据库，其中很重要的特点是表与表之间的关联，你可以在下方找到 `Foreign keys` ，点击创建相应的关联关系：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image27.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image27.webp)
 
 其中 `Foreign keys` 表达了表与表之间的关联关系：一个或一组字段，它在当前表（子表）中的值，会引用另一张表（父表）中主键的值。
 
@@ -519,7 +519,7 @@ CREATE TABLE 学生表 (
 
 在 Supabse 中，点击添加 Foreign Key 后，你可直接选择进行关联表对应列的选取
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image28.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image28.webp)
 
 ## 2.3 SQL Editor 简介与数据库基本操作
 
@@ -554,7 +554,7 @@ CREATE TABLE IF NOT EXISTS orders (
 
 成功执行后，系统将提示脚本已完成。你可以在 Table Editor 中看到对应的表被创建完成：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image29.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image29.webp)
 
 ### **2.3.2 **`INSERT`** - 填充初始数据**
 
@@ -588,7 +588,7 @@ INSERT INTO orders (user_id, status, amount, details, placed_at, is_paid) VALUES
 
 执行成功后，此时表中已经插入了原始数据，你可以进入到 Table Editor 界面刷新后看到结果，也可以直接在 SQL Editor 界面中新建窗口，执行查询语句 `SELECT * FROM orders;`查看结果：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image30.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image30.webp)
 
 ### **2.3.3 **`SELECT`** - 读取与查询数据**
 
@@ -617,7 +617,7 @@ SELECT id, details -> 'items' AS item_list FROM orders;
 - **示例 1:** 返回 `orders` 表中的所有行和列，与第二步的输出类似。
 - **示例 2:** 仅返回状态为 'pending' 的订单，且只包含指定的列：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image31.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image31.webp)
 
 - **示例 3:** 仅返回已支付的订单，并显示指定的列：
 
@@ -717,15 +717,15 @@ RLS 正是为解决这类数据安全与隔离需求而生。它允许开发者�
 
 启用 RLS 策略的方式很灵活，你可以在 Supabase 数据库管理界面中的 “RLS” 按钮，直接配置并启用策略：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image32.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image32.webp)
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image33.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image33.webp)
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image34.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image34.webp)
 
 主动配置难免显得麻烦，通常，我们在数据表语句创建、初始化的时候就会自动考虑植入对应的 RLS 策略。我们只需在 SQL Editor 中执行类似如下语句，即可自动开启对应数据表的行级安全策略。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image35.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image35.webp)
 
 # 3. 第一个 SQL 应用
 
@@ -737,7 +737,7 @@ RLS 正是为解决这类数据安全与隔离需求而生。它允许开发者�
 
 若已配置 SSH 密钥，建议使用 SSH 地址进行 clone（git@github.com:THU-SIGS-AIID/Project5-Supabase-Demos.git）以提升安全性；若 SSH 或 HTTPS 连接遇到网络问题，可以直接点击仓库页面的 “Download ZIP”，获取压缩包后解压即可看到完整代码。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image36.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image36.webp)
 
 Clone 后，你同样可以让 Trae 或者是 Claude Code 帮你启动项目，例如直接在 Agent 界面中说明： `帮我直接启动这个项目里面的 project 1 `，或者复制对应想启动 project 的绝对路径，粘贴给大模型让大模型直接启动。
 
@@ -826,9 +826,9 @@ export function maybeCreateBrowserClient(): SupabaseClient | null {
 
 创建完数据库，填写完对应的 Supabase Link 相关配置后，即可看到如下界面，你可以尝试对商品进行增删查改，并观察 Supabase 中对应部分数据表的变化。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image37.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image37.webp)
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image38.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image38.webp)
 
 ### 📚 作业
 
@@ -854,7 +854,7 @@ const { error: err } = await supabaseClient.auth.signUp({
 });
 ```
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image39.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image39.webp)
 
 登录成功后，Supabase 会自动为用户创建一个会话（session），并在后续所有数据库请求中自动携带认证信息；通过 RLS 的作用，每个用户根据对应的认证信息只能看到自己的账户信息（已购买项目、钱包剩余额度），无法看到其他用户的账户信息，这就实现了不同用户登录后的数据隔离，每个人只能看到自己的内容。
 
@@ -862,15 +862,15 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 成功使用邮箱注册账户、在邮箱确认注册账户后，登录后进入 Shop 界面即可看到如下内容：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image40.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image40.webp)
 
 但此时点击 admin，你并不能看到如下界面，你需要尝试在数据表中找到控制用户权限的部分，将权限修改为 `admin`，从而能够在 Admin 界面正常看到如下内容：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image41.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image41.webp)
 
 值得提示的是，目前每次注册新的邮箱，你都需要在邮箱中进行注册确认才可登录；但这一步并非是必须的，你可以在 Supabase 的 Authentication 栏目中找到 Sign In / Providers，点击Confirm email 取消邮箱的强制确认。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image42.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image42.webp)
 
 ### 📚 作业
 
@@ -904,7 +904,7 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 根据上面所提到的 SOP ，让我们通过一个具体的实际案例 `Project5-Supabase-Demos/apps_snakegame`来实践：为一个已有的“贪吃蛇”游戏项目增加分数排行榜单，包含用户登录与数据库基础功能。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image43.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 分析项目，识别数据需求
 
@@ -918,13 +918,13 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 此时你会得到类似如下返回：
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image44.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image44.webp)
 
 ### 4.2.2 生成 `init.sql` 脚本
 
 确定需要的部分，我们可以让 AI 生成需要在 Supabase 执行的数据库初始化脚本：“请你基于上面的分析，帮我在项目中生成 scripts/init.sql 脚本用于在 Supabase 中初始化所需数据库”。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image45.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image45.webp)
 
 ### 4.2.3 改造项目代码
 
@@ -936,9 +936,9 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 在代码修改过程中，若出现实际效果与预期不符的情况（如排行榜数据不显示、登录验证失效等），只需完整记录具体现象并反馈给 AI，即可逐步接近正确结果。改造成功的标准为：用户能顺利完成注册与登录操作，且登录后可正常查看对应的游戏排行榜单。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image46.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image46.webp)
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image47.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image47.webp)
 
 ### 📚 课程作业
 
@@ -967,7 +967,7 @@ Supabase 将这些后端能力打包为开箱即用的服务（PostgreSQL数据�
 
 本项目 `Project5-Supabase-Demos/apps/project-burger-shop-auth-advanced-supabase-6`)完整地演示了如何实现这些高级功能。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image48.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image48.webp)
 
 ### 5.2.1 OAuth 流程：第三方登录是如何工作的？
 
@@ -981,7 +981,7 @@ Supabase 将这些后端能力打包为开箱即用的服务（PostgreSQL数据�
 4. Supabase 交换访问令牌（Access Token）：我们的后端（由 Supabase 托管，无需自建）会拿着这个授权码，向 Google 官方接口发起请求，换取可用于获取用户信息的 Access Token（授权码仅用于换 Token，避免 Token 直接在前端传输）。
 5. 创建账户并建立会话：Supabase 使用 Access Token 从 Google 拉取用户的公开信息（如邮箱、头像），并在我们的项目中为该用户自动创建账户（若首次登录）或直接关联现有账户，最终生成一个有效的用户会话（Session），完成登录。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image49.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image49.webp)
 
 ### 5.2.2 配置 Google Cloud 获取 Client ID 和 Secret
 
@@ -1002,7 +1002,7 @@ Supabase 将这些后端能力打包为开箱即用的服务（PostgreSQL数据�
 13. 在 “Application type” 中选择 “Web application”。
 14. 为它取一个名字，例如 “Supabase Auth”。
 15. 在 “Authorized redirect URIs” 部分，点击 “ADD URI”，并填入你的 Supabase 项目的回调 URL。你可以在 Supabase Dashboard 的 “Authentication” -> “Providers” -> “Google” 中找到这个 URL，它的格式通常是 `https://&lt;你的项目ID>.supabase.co/auth/v1/callback`。
-    ![](/tutorial/images/stage-2/backend/database-supabase/images/image50.png)
+    ![](/tutorial/images/stage-2/backend/database-supabase/images/image50.webp)
 16. 点击 “CREATE”。
 17. **获取 Client ID 和 Client Secret** :
 18. 创建成功后，一个弹窗会显示你的 **Client ID** 和 **Client Secret** 。请务必**立即复制并妥善保存** 它们。
@@ -1024,7 +1024,7 @@ Supabase 将这些后端能力打包为开箱即用的服务（PostgreSQL数据�
 7. 点击 “Register application”。
 8. **获取 Client ID 和 Client Secret** :
 9. 注册成功后，页面会显示你的 **Client ID** 。
-   ![](/tutorial/images/stage-2/backend/database-supabase/images/image51.png)
+   ![](/tutorial/images/stage-2/backend/database-supabase/images/image51.webp)
 10. 点击 “Generate a new client secret” 来生成你的 **Client Secret** 。同样，请**立即复制并保存** 它。
 
 ### 5.2.4 在 Supabase 中配置 Provider
@@ -1042,7 +1042,7 @@ Supabase 将这些后端能力打包为开箱即用的服务（PostgreSQL数据�
    2. 将你从 GitHub 获取的 **Client ID** 和 **Client Secret** 粘贴到对应的输入框中。
    3. 点击 “Save”。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image52.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image52.webp)
 
 至此，你已经能够使用第三方账户在构建的网站中进行登录，你可以直接让 AI 基于 `Project5-Supabase-Demos/apps/project-burger-shop-auth-advanced-supabase-6`项目作为参考，在你的项目的基础上支持用户登录系统，以最小成本集成包含 github 与 google 鉴权的用户登录界面。
 
@@ -1059,7 +1059,7 @@ Supabase 将这些后端能力打包为开箱即用的服务（PostgreSQL数据�
 
 除了 Reset password 功能外，你还能看到许多其他与用户管理相关的高级功能设定（例如 Invite user 等），你可根据对应功能各自的开发文档，结合 Vibe coding 工具自行添加对应功能。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image53.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image53.webp)
 
 ## 5.3 实时功能
 
@@ -1067,7 +1067,7 @@ Supabase 的实时功能是其最强大的特性之一，为构建协作文档�
 
 本项目 `Project5-Supabase-Demos/apps/project-burger-shop-realtime-orders-3 `通过构建一个 多人实时聊天室、光标位置共享 功能，展示了 Supabase Realtime 涉及到的三大核心能力：数据库变更监听 (Postgres Changes)、广播 (Broadcast) 和 在线状态 (Presence)。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image54.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image54.webp)
 
 如果你觉得相关代码部分有一定难度，可以直接让 AI 参考该部分文档内容，对你的程序进行修改。
 
@@ -1252,9 +1252,9 @@ ch.on('broadcast', { event: 'cursor' }, ({ payload }) => {
 
 本项目 `project-burger-shop-storage-uploads-4` 便通过一个用户头像上传功能，深入演示了如何利用 Supabase Storage 构建现代化的文件上传系统，让开发者直观理解非结构化文件从上传到通过 URL 访问的完整流程。此外，本项目使用 `Uppy` 库来提供一个优秀的文件上传界面，并结合 `Tus` 插件实现了可续传上传，通过将 Uppy 的上传端点指向 Supabase 的标准 API (`<supabaseUrl>/storage/v1/upload/resumable`) 进行工作，你可以参考类似的方式实现上传功能组件。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image55.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image55.webp)
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image56.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image56.webp)
 
 ### 5.4.1. 存储桶
 
@@ -1337,7 +1337,7 @@ Edge Function 是 Serverless（无服务器架构）生态中极具核心价值�
 
 本项目 `Project5-Supabase-Demos/apps/project-burger-shop-edge-function-5`通过一个与大语言模型（LLM）实时流式对话的功能，展示了 Edge Functions 的最简应用流程。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image57.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image57.webp)
 
 ### 5.5.1 LLM Chat 案例解析
 
@@ -1381,16 +1381,16 @@ Supabase 提供了非常友好的界面，让你无需接触命令行即可完�
 3. 在左侧导航栏中，点击像代码一样的图标，进入 “Edge Functions”。
 4. **创建新函数** :
 5. 点击 “Create a new function” 按钮。
-   ![](/tutorial/images/stage-2/backend/database-supabase/images/image58.png)
+   ![](/tutorial/images/stage-2/backend/database-supabase/images/image58.webp)
 6. 为函数命名，例如 `llm-chat`。
 7. **粘贴代码** :
-   ![](/tutorial/images/stage-2/backend/database-supabase/images/image59.png)
+   ![](/tutorial/images/stage-2/backend/database-supabase/images/image59.webp)
 8. 在弹出的在线编辑器中， **删除所有默认的占位代码** 。
 9. 打开你本地的 `llm-chat.ts` 文件， **复制其全部内容** 。
 10. 将复制的代码**粘贴**到 Supabase 的在线编辑器中。
 11. **配置\*\***环境变量\*\* ** (Secrets)** :
     1. 在侧边栏找到 Secrets。
-       ![](/tutorial/images/stage-2/backend/database-supabase/images/image60.png)
+       ![](/tutorial/images/stage-2/backend/database-supabase/images/image60.webp)
     2. Name: 输入 `OPENAI_API_KEY`。
     3. Value: 粘贴你自己的 OpenAI API Key。
     4. 点击 “Save”。在这里设置的 Secret 会被加密存储，并安全地注入到你的函数运行时环境中。
@@ -1410,7 +1410,7 @@ Clerk 是一款专注于身份认证与用户管理的专业开发工具，核�
 
 本部分将介绍如何从零开始配置 Clerk 服务，并将其与 Supabase 进行整合。你可以在项目 `project-burger-shop-auth-advanced-clerk-7` 中体验全流程。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image61.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image61.webp)
 
 ### 5.6.1 创建 Clerk 应用与获取密钥
 
@@ -1419,15 +1419,15 @@ Clerk 是一款专注于身份认证与用户管理的专业开发工具，核�
 1. 注册与创建:
    1. 访问 [dashboard.clerk.com](https://dashboard.clerk.com/) 并注册账号。
    2. 点击 "Create application" 。
-      ![](/tutorial/images/stage-2/backend/database-supabase/images/image62.png)
+      ![](/tutorial/images/stage-2/backend/database-supabase/images/image62.webp)
    3. 输入应用名称（例如 "Burger Shop"）。
    4. 在 "How will your users sign in?" 中，默认勾选 Email , Google , GitHub 。
    5. 点击 Create application 。
 2. 获取 API Keys:
    1. 创建成功后，你会被引导至 API Keys 页面。
-      ![](/tutorial/images/stage-2/backend/database-supabase/images/image63.png)
+      ![](/tutorial/images/stage-2/backend/database-supabase/images/image63.webp)
    2. 找到 Publishable key (以 `pk_` 开头) 和 Secret key (以 `sk_` 开头)。
-      ![](/tutorial/images/stage-2/backend/database-supabase/images/image64.png)
+      ![](/tutorial/images/stage-2/backend/database-supabase/images/image64.webp)
    3. 将它们复制到你的 `.env.local` 文件中（参考本项目 `.env.example`）：
 
       ```bash
@@ -1597,7 +1597,7 @@ serve(async (req) => {
 - 在 Clerk Dashboard -> **Webhooks** 中添加 Endpoint，填入Supabase Edge Function 的 URL。
 - 勾选 `user.created`, `user.updated`, `user.deleted` 等事件。
 
-![](/tutorial/images/stage-2/backend/database-supabase/images/image65.png)
+![](/tutorial/images/stage-2/backend/database-supabase/images/image65.webp)
 
 一旦设置成功，你能够在 Message Attempts 中看到不同请求信息，点击后可看到详细的请求返回参数结果；如果 webhook 在请求 Edge function 时出现问题，你可以快速在返回值中找到详细原因结果。推荐你同时对照 Clerk 和 Supabase 的请求日志信息，用于分析各个函数设定是否正确。
 

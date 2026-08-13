@@ -46,7 +46,7 @@ original_url: "https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-pl
 
 **一句话总结**：PWA 是"会自己存文件的网页"——它既有网站的轻量（无需安装、自动更新），又有原生 App 的体验（离线可用、可添加到桌面）。
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image0.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image0.webp)
 
 ## 1.2 为什么选择 PWA？
 
@@ -100,7 +100,7 @@ npm --version
 
 如果能看到版本号输出（如 `v18.17.0` 和 `9.6.7`），说明安装成功。
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image1.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image1.webp)
 
 ## 2.3 AI 编程助手安装
 
@@ -191,9 +191,9 @@ PWA 需要图标才能被安装。我们至少需要两个尺寸：**192x192** �
 或者你也可以用任何设计工具（Figma、Canva）做一个你喜欢的图标，放到 `public/` 目录下。
 
 **192x192**
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/icon-192.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/icon-192.webp)
 **512x512**
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/icon-512.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/icon-512.webp)
 
 ## 2.7 配置 vite-plugin-pwa
 
@@ -250,7 +250,7 @@ export default defineConfig(`{
 * `display: 'standalone'`：安装后以独立窗口运行，没有浏览器地址栏，看起来像原生 App。
 * `workbox.globPatterns`：告诉 Service Worker 要缓存哪些类型的文件，这些文件在离线时也能访问。
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image2.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image2.webp)
 
 # 3 番茄农场 PWA 开发
 
@@ -299,7 +299,7 @@ export default defineConfig(`{
 2. 我们可以直观的看到它对哪些代码进行了改写
 3. 如果我们对生成的效果不满意，我们可以回退到上一个版本
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image3.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image3.webp)
 
 ## 3.2 运行与查看（本地开发服务器）
 
@@ -330,8 +330,8 @@ npm run dev
 
 试着点击"开始专注"按钮，看看倒计时是否正常工作。点击菜地，看看是否能购买种子并种植。这就是你的第一个 PWA 应用雏形！
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image10.png)
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image11.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image10.webp)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image11.webp)
 
 ## 3.3 优化迭代（添加 SVG 作物和动画）
 
@@ -372,7 +372,7 @@ npm run dev
 
 AI 会再次修改代码，帮你处理复杂的 SVG 绘制和动画逻辑。修改完成后，刷新浏览器页面，你应该能看到精美的作物图案和流畅的生长动画。
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image4.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image4.webp)
 
 ## 3.4 添加音效和提示（可选）
 
@@ -396,7 +396,7 @@ AI 会再次修改代码，帮你处理复杂的 SVG 绘制和动画逻辑。修
 
 AI 会帮你添加音效和提示功能，让你的番茄农场更加生动有趣。
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image5.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image5.webp)
 
 # 4 本地体验 PWA
 
@@ -426,7 +426,7 @@ PWA 的 Service Worker 只在生产构建中生效（开发模式下不会注册
 
 安装后的 PWA 看起来就像一个原生桌面应用——没有地址栏，没有标签页，有自己的窗口和图标。现在你可以随时打开番茄农场，开始专注种菜之旅！
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image6.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image6.webp)
 
 **macOS Safari 安装步骤：**
 
@@ -445,7 +445,7 @@ PWA 的 Service Worker 只在生产构建中生效（开发模式下不会注册
 
 你也可以打开 Chrome DevTools（F12）→ Application → Service Workers，查看 Service Worker 的运行状态和缓存的资源列表。
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image7.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image7.webp)
 
 ## 4.4 数据持久化与同步方案
 
@@ -619,7 +619,7 @@ AI 会自动处理所有部署步骤，你只需要在提示时：
 
 打开它，你会发现它以全屏模式运行，没有浏览器的地址栏和导航按钮，和原生 App 几乎一模一样。现在你可以随时随地开始专注种菜了！
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image8.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image8.webp)
 
 ## 6.2 iPhone 安装
 
@@ -643,7 +643,7 @@ Google 提供了一个叫 **Lighthouse** 的工具，可以给你的 PWA 打分�
 
 一个合格的番茄农场 PWA 应该在 PWA 评分上拿到满分。如果有扣分项，Lighthouse 会告诉你具体原因和修复建议。
 
-![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image9.png)
+![](/tutorial/images/stage-3/cross-platform/pwa-local-app/images/image9.webp)
 
 # 7 写在最后
 
