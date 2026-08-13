@@ -8,9 +8,10 @@ import { PostNav } from '@/components/posts/post-nav'
 import { PostMetaDisplay } from '@/components/posts/post-meta-display'
 import { GiscusComments } from '@/components/posts/giscus'
 import { TableOfContents } from '@/components/posts/table-of-contents'
-import { SITE_URL } from '@/lib/constants'
+import { SITE_URL, AUTHOR } from '@/lib/constants'
 import { MDXContent } from '@/components/posts/mdx-content'
 import { Breadcrumbs } from '@/components/notes/breadcrumbs'
+import { BlogPostingJsonLd } from '@/components/seo/blog-posting-jsonld'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -34,6 +35,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: meta.title,
     description: meta.description,
+    alternates: {
+      canonical: `${SITE_URL}/posts/${slug}`,
+    },
     openGraph: {
       title: meta.title,
       description: meta.description,
@@ -66,6 +70,14 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <div className="post-layout">
+      <BlogPostingJsonLd
+        title={meta.title}
+        description={meta.description}
+        date={meta.date}
+        url={`${SITE_URL}/posts/${slug}`}
+        author={AUTHOR}
+        tags={meta.tags}
+      />
       <TableOfContents headings={headings} />
       <article className="post-article">
         <Breadcrumbs

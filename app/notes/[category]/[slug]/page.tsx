@@ -5,10 +5,11 @@ import { extractHeadings } from '@/lib/headings'
 import { TagBadge } from '@/components/ui/tag-badge'
 import { PostMetaDisplay } from '@/components/posts/post-meta-display'
 import { TableOfContents } from '@/components/posts/table-of-contents'
-import { SITE_URL } from '@/lib/constants'
+import { SITE_URL, AUTHOR } from '@/lib/constants'
 import { MDXContent } from '@/components/posts/mdx-content'
 import { Breadcrumbs } from '@/components/notes/breadcrumbs'
 import { NoteNav } from '@/components/notes/note-nav'
+import { BlogPostingJsonLd } from '@/components/seo/blog-posting-jsonld'
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>
@@ -26,6 +27,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: note.meta.title,
     description: note.meta.description,
+    alternates: {
+      canonical: `${SITE_URL}/notes/${category}/${slug}`,
+    },
     openGraph: {
       title: note.meta.title,
       description: note.meta.description,
@@ -33,6 +37,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: note.meta.date,
       tags: note.meta.tags,
       url: `${SITE_URL}/notes/${category}/${slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: note.meta.title,
+      description: note.meta.description,
     },
   }
 }
@@ -49,6 +58,14 @@ export default async function NotePage({ params }: PageProps) {
 
   return (
     <div className="post-layout">
+      <BlogPostingJsonLd
+        title={meta.title}
+        description={meta.description}
+        date={meta.date}
+        url={`${SITE_URL}/notes/${category}/${slug}`}
+        author={AUTHOR}
+        tags={meta.tags}
+      />
       <TableOfContents headings={headings} />
       <article className="post-article">
         <Breadcrumbs
